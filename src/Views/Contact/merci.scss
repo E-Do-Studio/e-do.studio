@@ -1,0 +1,111 @@
+@import '../../Assets/scss/styles.scss';
+
+.pageMerci{
+    
+
+    padding-top:100px;
+    padding-bottom:100px;
+    
+    @include lg{
+        padding-top:250px;
+        padding-bottom:190px;
+    }
+
+    @include xl{
+        padding-top:300px;
+        padding-bottom:250px;
+    }
+    
+    @include qhd{
+        padding-top: 400px;
+        padding-bottom:400px;
+    }
+    
+}
+
+.emailEnvoye{
+    font-size: 30px;
+    line-height: 1.33;
+    letter-spacing: -0.72px;
+
+    width:calc(100% - 62px);
+    max-width:600px;
+    // margin-left:auto;
+    // margin-right:auto;
+
+
+    margin-left:32px;
+
+    padding-top:90px;
+
+    @include lg{
+        padding-top:0;
+        max-width:800px;
+        font-size: 40px;
+        line-height: 1.25;
+        letter-spacing: -0.96px;
+    }
+
+    @include xl{
+        margin-left:70px;
+    }
+
+    @include qhd{
+        font-size: 50px;
+        line-height: 1.25;
+        letter-spacing: -0.96px;
+    }
+
+
+ 
+    
+}
+
+
+
+.PC_GlobalTextBasMerci{
+    margin-top:100px;
+    // background:red;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include lg{
+        align-items: flex-start;
+        margin-bottom:28px;
+    }
+
+    .PC_NosCoordonnees{
+
+        margin-left:32px;
+
+        @include xl{
+            margin-left:70px;
+        }
+
+        .PC_NosCoordonneesText{
+            span{
+                display: inline-block;
+                padding-bottom:5px;
+                border-bottom:1px solid black;
+                font-size: 14px;
+                letter-spacing: -0.34px;
+
+                // @include lg{margin-left:5px;}
+                @include qhd{font-size: 15px;}
+            }
+            
+        }
+        .PC_NosCoordonneesFleche{
+            text-align: center;
+            margin-top:20px;
+
+            @include lg{
+                text-align: left;
+                margin-top:28px;
+            }
+        }
+    }
+}
+
+

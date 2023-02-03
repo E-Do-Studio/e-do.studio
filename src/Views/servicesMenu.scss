@@ -1,0 +1,262 @@
+@import '../Assets/scss/styles.scss';
+
+
+.pageMenuServices{
+    padding-top:90px;
+    width:100%;
+    height:100vh;
+
+    box-sizing: border-box;
+
+    min-height:400px;
+
+    @include xl{
+        padding-top:0; 
+        
+    }
+
+    .ServiceMenuElement{
+        width:100vw;
+        height:calc(88vh - 90px);
+        box-sizing:border-box;
+
+        
+        
+        // min-height:400px;
+        // background:orange;
+
+        // overflow: hidden;
+        // display: flex;
+        // flex-direction: column;
+        // justify-content: flex-end;
+        
+        @include xl{
+            width:25vw;
+            border-right: solid 1px rgba(151, 151, 151, 0.28);
+            height:calc(100vh);
+            padding-top:76px; 
+        }
+
+
+        .ServiceMenuElementWrapper{
+            width:100%;
+            padding:0 31px;
+            box-sizing:border-box;
+            height:calc(88vh - 90px + 160px);
+            max-width: 450px;
+            margin-left:auto;
+            margin-right:auto;
+            // flex:1;
+            // background:orangered;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: all 0.3s ease-out;
+            // transform: translateY(-180px);
+
+            @include xl{height:calc(88vh - 20px + 160px); }
+            @include qhd{height:calc(88vh - 90px + 160px);}
+
+            .SME_IMGBloc{
+                flex-shrink:0;
+                // margin-bottom:50px;
+                // background:blue;
+                flex:1;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                transition: all 0.3s ease-out;
+                // @media screen and (min-height: 600px){margin-bottom: 70px;}
+                // @media screen and (min-height: 640px){margin-bottom: 85px;}
+                // @media screen and (min-height: 740px){margin-bottom: 105px;}
+                // @media screen and (min-height: 780px){margin-bottom: 120px;}
+
+                @include xl{
+                    margin-bottom:60px;
+                    align-items: flex-end;
+                }
+
+                @include qhd{margin-bottom:120px;}
+
+                .SME_IMG{
+                    width:100%;
+                    margin-left:auto;
+                    margin-right:auto;
+                    opacity:0;
+                    @include xl{width:87%;}
+                    @include qhd{width:93%;}
+                }
+            }
+    
+            .SME_TitreBloc{
+                flex-shrink:0;
+                padding-bottom:10px;
+                border-top:1px solid black;
+                padding-top:22px;
+                // background:purple;
+
+                @include xl{
+                    border-top:unset;
+                }
+
+                @include qhd{padding-top:30px;}
+
+                @media screen and (min-height: 600px){padding-bottom:18px;}
+                @media screen and (min-height: 640px){padding-bottom:25px;}
+                @media screen and (min-height: 680px){padding-bottom:45px;}
+                @media screen and (min-height: 740px){padding-bottom:55px;}
+                @media screen and (min-height: 780px){padding-bottom:65px;}
+                
+                h1{
+                    font-size: 25px;
+                    font-weight: 300;
+                    letter-spacing: -0.6px;
+                    margin-top:13px;
+
+                    @include qhd{
+                        font-size: 28px;
+                        margin-top:22px;
+                    }
+                }
+
+                .SME_Buttons{
+                    display: flex;
+                    flex-direction: row;
+                    a, button{
+                        padding:10px 0;
+                        // background:red;
+                        font-size: 10px;
+                        font-weight: 300;
+                        letter-spacing: -0.24px;
+                        border-bottom:1px solid black;
+                        padding-bottom:5px;
+                        margin-top:15px;
+
+                        &:first-child{margin-right:20px;}
+    
+                        @media screen and (min-height: 640px){margin-top:20px;}
+                        @media screen and (min-height: 680px){margin-top:30px;}
+                    }
+                }
+
+                .sousTitreFees{
+                    position: relative;
+                    top: 10px;
+                    color: #828282;
+                    font-size: 14px;
+                }
+
+                .sousTitreBloc{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+    
+                    h2{
+                        font-size: 20px;
+                        letter-spacing: -0.6px;
+                        font-weight: 300;
+                    }
+
+                }
+            }
+    
+            .SME_Detail{
+                flex-shrink:0;
+                // background:green;
+                height:160px;
+                opacity: 0;
+
+                transition: opacity 0.2s ease-out;
+
+                @media screen and (min-height: 680px){transform:translateY(-15px);}
+                @media screen and (min-height: 740px){transform:translateY(-25px);}
+                @media screen and (min-height: 780px){transform:translateY(-35px);}
+
+
+                .SME_Tarif{
+                    margin-top:14px;
+
+                    &:first-child{margin-top:unset;}
+
+                    @include xl{
+                        margin-top:18px;
+                        &:first-child{margin-top:unset;}
+                    }
+
+                    @include qhd{
+                        margin-top:24px;
+                        &:first-child{margin-top:unset;}
+                    }
+                    .titre{
+                        font-size: 16px;
+                        font-weight: 300;
+                        letter-spacing: -0.38px;
+
+                        @include xl{
+                            font-size: 20px;
+                            letter-spacing: -0.48px;
+                        }
+
+                        @include qhd{font-size: 22px;}
+                    }
+
+                    .tarifBloc{
+                        display: flex;
+                        flex-direction: row;
+                        margin-top:10px;
+                        @include xl{margin-top:12px;}
+                        @include qhd{margin-top:15px;}
+                        // svg{}
+                        .tarifPrix{
+                            font-size: 15px;
+                            font-weight: 300; 
+                            letter-spacing: -0.36px;
+                            margin-left:30px;
+
+                            @include qhd{font-size: 17px;}
+                        }
+                    }
+                }
+            }
+
+        }
+
+    }
+
+
+
+    .PMS_BoutonNav{
+        // background:green;
+        position:absolute;
+        height:53px;
+        width:53px;
+        cursor:pointer;
+
+        // .PMS_BoutonPCNextButton{
+        //     height:110px;
+        //     width:110px;
+        //     // background:red;
+        // }
+    }
+
+    .PMS_BoutonPCNext{
+
+        bottom:40px;
+        right:30px;
+    }
+
+    .PMS_BoutonPCPrev{
+        bottom:40px;
+        left:50px;
+
+        .PMS_BoutonPCPrecButton{
+            transform: rotate(180deg);
+        }
+    }
+
+
+    .animationWrapper{
+        overflow:hidden;
+    }
+}

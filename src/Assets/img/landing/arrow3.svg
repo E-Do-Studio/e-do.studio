@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+    <g fill="none" fill-rule="evenodd">
+        <g>
+            <g>
+                <g>
+                    <g>
+                        <g transform="translate(-1330.000000, -3653.000000) translate(71.000000, 2778.000000) translate(429.000000, 876.000000) translate(831.000000, 0.000000)">
+                            <circle cx="17" cy="17" r="17" stroke="#979797"/>
+                            <path stroke="#000" d="M0 17c0 9.389 7.611 17 17 17s17-7.611 17-17S26.389 0 17 0"/>
+                            <path stroke="#000" stroke-width=".5" d="M14.571 12.143L21.857 17.607 14.571 23.071"/>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,25 @@
+@import '../Assets/scss/styles.scss';
+
+.SectionMentionsLegales{
+    padding:100px 32px;
+
+    max-width:500px;
+    font-size:15px;
+    line-height: 1.42;
+    margin-left:auto;
+    margin-right:auto;
+
+    @include lg{
+        font-size:17px;
+        line-height: 1.42;
+        max-width:800px;
+    }
+
+    h1{
+        text-align: center;
+    }
+
+    p{
+        margin-top:40px;
+    }
+}

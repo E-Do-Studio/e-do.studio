@@ -1,0 +1,274 @@
+@import '../../Assets/scss/styles.scss';
+
+.sectionArguments {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    width:100%;
+    // overflow: hidden;
+    @include lg{
+        min-height:670px;
+    }
+    @include xl{
+        min-height:640px;
+    }
+    @include xxl{
+        min-height:620px;
+    }
+    .SAR_ImgContainer {
+        height: 30vh;
+        min-height: 180px;
+        text-align: center;
+        // background: red;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        @include lg{
+            min-height: unset;
+            height: 50vh;
+        }
+    img {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        min-width: 100%;
+        min-height: 100%;
+        object-fit: cover;
+        margin-top:80px;
+    }
+}
+
+.SAR_Liste {
+    padding:30px 30px;
+    @include lg{padding:unset;}
+
+    flex:1;
+    .SAR_ArgumentUniqueContainer {
+        // background:red;
+        // flex:1;
+        // height:100%;
+        display: flex;
+        flex-direction: column;
+        max-width: 290px;
+        margin-left:auto;
+        margin-right:auto;
+        // justify-content: space-between;
+
+        @include lg{
+            max-width:unset;
+        }
+        
+        .TitreContainer {
+            display: flex;
+            align-items: flex-start;
+            h1 {
+                font-size: 80px;
+                font-weight: 300;
+            }
+            svg {
+                width:32px;
+                margin-left:10px;
+                margin-top:4px;
+            }
+        }
+    }
+        .h4Container{
+
+            @media screen and (min-height:655px){margin-top:10px;}
+            @media screen and (min-height:700px){margin-top:25px;}
+            @media screen and (min-height:750px){margin-top:40px;}
+
+            h4 {
+                display: inline;
+                // background:blue;
+                font-weight: 300;
+                font-size: 15px;
+                line-height: 1.5;
+                border-bottom:1px solid rgb(48, 48, 48);
+    
+
+    
+                
+                @include rwd(340){
+                    font-size: 16px;
+                    line-height: 1.55;
+                }
+
+                @include rwd(352){
+                    font-size: 16px;
+                    line-height: 1.63;
+                }
+            }
+        }
+
+        p {
+            margin-top:8px;
+            
+            font-weight: 300;
+            font-stretch: normal;
+            font-style: normal;
+            font-size: 15px;
+            line-height: 1.35;
+
+            @media screen and (min-height:655px){margin-top:20px;}
+            @media screen and (min-height:700px){margin-top:30px;}
+            @media screen and (min-height:750px){margin-top:30px;}
+
+            // overflow: scroll;
+
+            // @
+
+            @include rwd(340){
+                margin-top:20px;
+                font-size: 16px;
+                line-height: 1.42;
+            }
+
+            @include rwd(352){
+                margin-top:30px;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+        }
+    }
+}
+
+
+
+.SliderArguments{
+
+}
+
+.SAR_Liste{
+    @include lg{
+        padding:unset;
+    }
+}
+
+.SAR_ListeDesktop{
+    display:flex;
+    flex-direction: row;
+
+
+
+    .SAR_ArgumentUniqueContainer{
+        padding:30px 25px;
+        min-height:50vh;
+        box-sizing:border-box;
+        width:33.33%;
+        // display: flex;
+        // flex-direction: row;
+
+        @include rwd(1110){padding:40px 30px;}
+        @include rwd(1200){padding:40px 40px;}
+        @include rwd(1350){padding:60px 60px;}
+        @include rwd(1420){padding:80px 72px;}
+        
+
+        @include qhd{padding:110px 110px;}
+
+        .SAR_ArgumentUniqueContainer_Wrapper{
+            // background:red;
+            @include rwd(1100){
+                margin-left:auto;
+                margin-right:auto;
+                max-width: 340px;
+            }
+
+            @include rwd(1600){ max-width: 380px;}
+            @include qhd{ max-width: 440px;}
+            @include rwd(2200){ max-width: 500px;}
+            @include rwd(2500){ max-width: 540px;}
+        }
+
+
+        // background:blue;
+        .TitreContainer {
+            h1 {
+                font-size: 60px !important;
+                font-weight: 300;
+                @include qhd{
+                    font-size: 80px !important;
+                }
+
+                @include rwd(2200){ font-size: 90px !important;}
+                @include rwd(2500){ font-size: 95px !important;}
+            }
+            svg {
+                width:32px;
+                margin-left:10px;
+                margin-top:4px;
+                @include qhd{
+                    width:42px !important;
+                }
+            }
+        }
+
+
+        .h4Container{
+            margin-top:10px;
+
+            @include rwd(1110){margin-top:30px;}
+            @include qhd{margin-top:45px;}
+            // @include xl{margin-top:45px;}
+            h4{
+                font-size: 14px;
+                @include rwd(1600){font-size:15px;}
+                @include qhd{
+                    font-size:16px;
+                }
+                @include rwd(2200){ font-size:18px;}
+                @include rwd(2500){ font-size:19px;}
+            }
+        }
+        p{
+            font-size:16px;
+            margin-top:12px;
+            line-height: 1.4;
+
+            @include rwd(1100){line-height: 1.5;}
+            @include rwd(1200){line-height: 1.6;}
+            @include rwd(1400){line-height: 1.71; }
+            @include rwd(1600){font-size:15px;line-height: 1.75;}
+            @include qhd{
+                font-size:16px;
+                margin-top:16px;
+                line-height: 1.81;
+            }
+
+            @include rwd(2200){ font-size:18px;}
+            @include rwd(2500){ font-size:19px;}
+        }
+    }
+
+
+
+    .SAR_ArgumentUniqueContainer1{
+
+        border-bottom:1px solid rgba(151, 151, 151, .5);
+        border-left:1px solid rgba(151, 151, 151, .5);
+        border-right:1px solid rgba(151, 151, 151, .5);
+    
+
+
+        @include rwd(1420){padding:80px 72px 80px 80px;}
+        @include qhd{padding:110px 110px 110px 110px;}
+
+        
+    }
+    .SAR_ArgumentUniqueContainer2{
+
+        border-bottom:1px solid rgba(151, 151, 151, .5);
+        @include qhd{padding:110px 110px 110px 110px;}
+    }
+    .SAR_ArgumentUniqueContainer3{
+        border-bottom:1px solid rgba(151, 151, 151, .5);
+        border-left:1px solid rgba(151, 151, 151, .5);
+        border-right:1px solid rgba(151, 151, 151, .5);
+
+        @include rwd(1420){padding:80px 80px 80px 72px;}
+        @include qhd{padding:110px 110px 110px 110px;}
+    }
+
+}

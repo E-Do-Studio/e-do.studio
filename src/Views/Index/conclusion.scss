@@ -1,0 +1,159 @@
+@import "../../Assets/scss/styles.scss";
+
+.sectionConclusion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+
+  height: 100%;
+  width: 100%;
+  // background:red;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+
+  // background:orange;
+
+  .SC_Text {
+    font-size: 31px;
+    font-weight: 300;
+    line-height: 1.25;
+    letter-spacing: -0.84px;
+
+    // width:calc(100% - 42px);
+    margin-left: auto;
+    margin-right: auto;
+
+    max-width: 400px;
+
+    @include rwd(340) {
+      font-size: 35px;
+      line-height: 1.29;
+    }
+
+    @include rwd(700) {
+      font-size: 38px;
+    }
+
+    @include lg {
+      text-align: center;
+      max-width: 80vw;
+      font-size: 40px;
+      line-height: 1.3;
+      letter-spacing: -1.2px;
+    }
+
+    @include xl {
+      font-size: 46px;
+      line-height: 1.4;
+    }
+
+    @include xxl {
+      font-size: 50px;
+      max-width: 72vw;
+    }
+
+    @include rwd(1600) {
+      max-width: 65vw;
+    }
+    @include rwd(1800) {
+      max-width: 57vw;
+    }
+    @include qhd {
+      font-size: 60px;
+      max-width: 1400px;
+    }
+
+    .SC_Picto {
+      display: inline;
+      transform: scale(0.9) translateY(1px);
+      margin-left: 10px;
+      margin-right: 6px;
+
+      @include rwd(700) {
+        transform: scale(1) translateY(0px);
+      }
+      @include lg {
+        transform: scale(1.12) translateY(-1px);
+      }
+      @include xl {
+        transform: scale(1.25) translateY(-2px);
+        margin-left: 15px;
+        margin-right: 8px;
+      }
+      @include xxl {
+        transform: scale(1.28) translateY(-2px);
+        margin-left: 15px;
+        margin-right: 8px;
+      }
+      @include qhd {
+        transform: scale(1.55) translateY(-4px);
+        margin-left: 22px;
+        margin-right: 14px;
+      }
+    }
+  }
+}
+
+.SC_Ligne {
+  display: block;
+  overflow: hidden;
+  .SC_Mot {
+    display: inline-block;
+    opacity: 0;
+  }
+}
+
+.SC_PictoHover {
+  position: relative;
+  cursor: pointer;
+}
+
+.SC_PictoHoverBloc {
+  width: 260px;
+  height: 140px;
+  background: red;
+  overflow: hidden;
+  position: absolute;
+  // top:30vh;
+  opacity: 0;
+
+  display: none;
+
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.boutonAnimationConclu {
+  // background:red;
+  width: 20px;
+  height: 70px;
+  bottom: 0px;
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+  text-align: center;
+  cursor: pointer;
+
+  @include lg {
+    height: 120px;
+  }
+  @include xl {
+    // width:80px;
+    // height:80px;
+    bottom: 0px;
+  }
+}
+
+.SC_FlecheBas {
+  opacity: 0;
+}

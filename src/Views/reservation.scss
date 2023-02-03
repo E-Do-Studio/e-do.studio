@@ -1,0 +1,15 @@
+@import '../Assets/scss/styles.scss';
+
+
+.pageReservation{
+    padding-top:40px;
+    padding-bottom:40px;
+    // height:calc(100vh - 100px);
+    // min-height:2000px;
+
+    @include lg{
+        padding-top:100px;
+        padding-bottom:100px;
+        // min-height:1600px;
+    }
+}

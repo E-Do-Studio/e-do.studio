@@ -1,0 +1,615 @@
+@import '../../Assets/scss/styles.scss';
+
+.pageService{
+
+    .animationWrapper{
+        overflow: hidden;
+    }
+
+    .animationWrapperTitre{
+        overflow: hidden;
+        width:80vw;
+        // background:blue;
+        margin-right:-80%;
+    }
+
+    .animationWrapperTitre2{
+        padding-top:20px;
+        transform:translateY(-20px);
+        overflow: hidden;
+    }
+
+    .PS_Presentation{
+        // height:100vh;
+        padding-top:115px;
+        padding-left:31px;
+        padding-right:31px;
+        padding-bottom:75px;
+        box-sizing: border-box;
+        // justify-content: space-evenly;
+        // background:red;
+        max-width: 400px;
+        margin-left:auto;
+        margin-right:auto;
+
+        @include lg{
+            height:100vh;
+            min-height: 700px;
+            width:100%;
+            padding-top:72px;
+            box-sizing: border-box;
+            display:flex;
+            flex-direction: column;
+            max-width: unset;
+            justify-content: center;
+            align-items: center;
+
+        }
+
+
+
+
+        .PS_PresentationWrapper{
+            display: flex;
+            flex-direction: column;
+        
+            @include lg{
+                flex-direction: row;
+                
+                justify-content: space-between;
+                width:100%;
+                max-width: 850px;
+                padding-left:70px;
+                padding-right:70px;
+            }
+
+            @include rwd(1070){
+                width:100%;
+                max-width: 930px;
+
+            }
+    
+            @include xl{
+                max-width: 1050px;
+                padding-left:51px;
+                padding-right:51px;
+            }
+
+            @include xxl{
+                max-width: 1200px;
+            }
+
+            @include qhd{
+                max-width: 1500px;
+            }
+
+            .titreCat{
+                font-size: 16px;
+                font-weight: 300;
+                letter-spacing: -0.38px;
+
+                @include lg{
+                    width:130px;
+                    padding-top:13px;
+                    // background:red;
+                }
+
+                @include xxl{
+                    padding-top:16px;
+                }
+
+                @include qhd{
+                    padding-top:18px;
+                }
+            }
+            .titreService{
+                margin-top:36px;
+                @include lg{
+                    width:320px;
+                    margin-top:0px;
+                }
+
+                @include xl{
+                    width:360px;
+                }
+
+                @include xxl{
+                    width:400px;
+                }
+
+                @include qhd{
+                    width:600px;
+                }
+
+                .titreServiceTitre{
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    align-items: flex-start;
+                    h1{
+                        font-size: 25px;
+                        font-weight: 300;
+                        line-height: 1.4;
+                        letter-spacing: -0.6px;
+                        @include lg{
+                            font-size: 50px;
+                            font-weight: 300;
+                            letter-spacing: -1.44px;
+                            width:800px;
+                            position: relative;
+                            margin-right:-95%;
+                            // background:blue;
+                        }
+
+                        @include xl{
+                            font-size: 55px;
+                        }
+
+                        @include xxl{
+                            font-size: 60px;
+                        }
+
+                        @include qhd{
+                            font-size: 70px;
+                        }
+                    }
+                    h2{
+                        font-size: 20px;
+                        font-weight: 300;
+                        letter-spacing: -0.48px;
+                    }
+        
+                }
+
+                .paragraphes{
+                    p{
+                        font-size: 16px;
+                        font-weight: 300;
+                        line-height: 1.63;
+                        letter-spacing: -0.38px;
+        
+                        margin-top:15px;
+        
+                        &:nth-child(1){
+                            margin-top:9px;
+                        }
+
+                        @include lg{
+                            font-size: 14.5px;
+                            line-height: 1.5;
+                            letter-spacing: -0.36px;
+                            max-width: 320px;
+                            &:nth-child(1){
+                                margin-top:20px;
+                            }
+                        }
+
+                        @include xl{
+                            font-size: 15px;
+                            line-height: 1.57;
+                            margin-top:20px;
+                            &:nth-child(1){
+                                margin-top:25px;
+                            }
+                        }
+
+                        @include xxl{
+                            font-size: 15px;
+                            line-height: 1.67;
+                            max-width: 360px;
+                            &:nth-child(1){
+                                margin-top:35px;
+                            }
+                        }
+
+                        @include qhd{
+                            font-size: 17px;
+                            line-height: 1.75;
+                            max-width: 500px;
+                            margin-top:35px;
+                            &:nth-child(1){
+                                margin-top:40px;
+                            }
+                        }
+                    }
+                }
+
+                .grosNombre{
+                    font-size: 50px;
+                    font-weight: 300;
+                    letter-spacing: -1.92px;
+                    margin-top:20px;
+
+                    @include xl{
+                        font-size: 60px;
+                        margin-top:25px;
+                    }
+
+                    @include xxl{
+                        font-size: 80px;
+                        margin-top:40px;
+                    }
+
+                    @include qhd{
+                        margin-top:45px;
+                    }
+                }
+
+            }
+
+
+
+
+
+            .sliderTop{
+                padding-top:75px;
+                position: relative;
+                // background:green;
+
+                @include lg{
+                    width:360px;
+                    height:250px;
+                    align-self: flex-end;
+                    padding-top:0px;
+                }
+
+                @include xl{
+                    width:430px;
+                    height:275px;
+                    margin-bottom:5px;
+                }
+
+                @include xxl{
+                    width:500px;
+                    height:330px;
+                }
+
+                @include qhd{
+                    width:650px;
+                    height:400px;
+                }
+
+                .sliderTopUnique{
+                    height:208px;
+                    width:100%;
+                    // background:red;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: center;
+                    align-items: center;
+
+                    text-align: center;
+
+                    @include lg{
+                        width:360px;
+                        height:250px;
+                    }
+
+                    @include xl{
+                        width:430px;
+                        height:275px;
+                    }
+
+                    @include xxl{
+                        width:500px;
+                        height:330px;
+                    }
+
+                    @include qhd{
+                        width:650px;
+                        height:400px;
+                    }
+
+                    .sliderTopUnique_IMG{
+                        // background:green;
+                        margin-left:auto;
+                        margin-right:auto;
+                        max-width: 100%;
+                        max-height: 100%;
+
+                    }
+                }
+
+                .sliderTopControlsBox{
+                    display: flex;
+                    flex-direction: row;
+                    position: absolute;
+                    top:35px;
+                    right:0;
+
+                    @include lg{
+                        bottom:0;
+                        top:unset;
+                        right:-50px;
+                    }
+
+                    .sliderTopControl{
+                        cursor:pointer;
+                        // height: 12px;
+                        width:7px;
+                        // background:green;
+                    }
+
+                    .sliderTopControlsLeft{
+
+                    }
+
+                    .sliderTopControlsRight{
+                        margin-left:35px;
+
+                        @include lg{
+                            margin-left:25px;
+                        }
+                        svg{
+                            transform: rotate(180deg);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+
+    .PS_Tarifs{
+        display:flex;
+        flex-direction: column;
+        padding:0 31px;
+        box-sizing: border-box;
+        max-width:400px;
+        margin-left:auto;
+        margin-right:auto;
+
+        padding-bottom:90px;
+
+        @include lg{
+            flex-direction: row-reverse;
+            justify-content: space-between;
+            align-items: center;
+            max-width:900px;
+            padding-bottom:120px;
+            position:relative;
+        }
+
+        @include rwd(1070){max-width:970px;}
+        @include xl{max-width:1150px;}
+        @include xxl{max-width:1250px;}
+        @include qhd{max-width:1450px;}
+
+
+        .PS_TarifsText{
+
+            position: relative;
+
+            @include lg{
+                width: 40%;
+                max-width: 320px;
+            }
+            @include xl{
+                margin-right:40px;
+            }
+
+            @include xxl{margin-right:60px;}
+            @include qhd{margin-right:90px;max-width: 380px;}
+
+            .PS_TarifsTextUnique{
+                margin-top:40px;
+                &:first-child{margin-top:0;}
+
+                @include lg{
+                    margin-top:70px;
+                    &:first-child{margin-top:0;}
+                }
+
+                h1{
+                    font-size: 25px;
+                    font-weight: 300;
+                    letter-spacing: -0.6px;
+                    transform: translateY(120%);
+                    @include lg{
+                        font-size: 40px;
+                        font-weight: 300;
+                        letter-spacing: -0.96px;  
+                    }
+
+                    
+                    @include qhd{
+                        font-size: 46px;
+                    }
+                    
+                }
+                .PS_TarifsTextUniqueDetail{
+                    display: flex;
+                    flex-direction: row;
+                    margin-top:8px;
+
+                    @include lg{
+                        margin-top:20px;
+                    }
+
+                    svg{
+                        transform: translateX(-110%);
+                    }
+                    .tarif{
+                        margin-left:42px;
+                        font-size: 15px;
+                        font-weight: 300;
+                        letter-spacing: -0.36px;
+                        transform: translateY(110%);
+
+                        @include lg{
+                        }
+
+                        @include qhd{
+                            font-size: 17px;
+                        }
+                    }
+                }
+            }
+
+            .boutonReserverBlock{
+                text-align: right;
+                .boutonReserver{
+                    display: inline-flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius:2000px;
+                    background:black;
+                    color:white;
+                    font-size: 14px;
+                    font-weight: 300;
+                    letter-spacing: -0.24px;
+                    text-align: center;
+                    width:70px;
+                    height:70px;
+                    overflow: hidden;
+                    margin-top:38px;
+
+
+
+                    @include lg{
+                        width:85px;
+                        height:85px;
+                    }
+                }
+            }
+
+            .titreTarifs{
+                position: absolute;
+                top:0;
+                right:0;
+                font-size: 15px;
+                letter-spacing: -0.36px;
+
+                .tarifAnim{
+                    transform:translateY(40px);
+                }
+                
+
+                @include lg{
+                    padding-top:3px;
+                }
+            }
+
+            .feesBox{
+                position: absolute;
+                width: 135px;
+                padding: 15px;
+                background-color: #F4F4F4;
+                color: #828282;
+                top: 325px;
+                left: -290px;
+
+                @include sm{
+                    position: block;
+                    top: 30px;
+                    left: 0;
+                }
+            }
+
+        }
+        .PS_TarifsIMGBox{
+            margin-top:50px;
+            text-align: center;
+            // background:red;
+            display: flex;
+            justify-content: center;
+            align-items:center;
+            
+
+            @include lg{
+                margin-top:0;
+                width:54%;
+                margin-bottom:30px;
+            }
+
+            .PS_TarifsIMG{
+                opacity:0;
+                width:100%;
+            }
+        }
+
+        .titreSection{
+            position:absolute;
+            bottom:40px;
+            left:0;
+
+            font-size: 15px;
+            font-weight: 300;
+            letter-spacing: -0.36px;
+
+            .titreSectionFonce{
+                color:black;
+            }
+
+            .titreSectionClair{
+                color:rgba(0, 0, 0, 0.2);
+            }
+        }
+    }
+
+
+    .PS_AutresServices{
+        background:black;
+        padding: 65px 0;
+        color:white;
+
+        
+
+        .PS_AutresServicesWrapper{
+            position:relative;
+            // max-width:500px;
+            margin-left:auto;
+            margin-right:auto;
+
+            @include rwd(600){
+                margin-left:80px;
+            }
+
+            @include lg{
+                margin-left:auto;
+                margin-right:auto;
+                // margin-left:80px;
+                margin-left:0px;
+            }
+
+            // @include rwd(1250){
+            //     margin-left:130px;
+            // }
+            // @include rwd(1500){
+            //     margin-left:180px;
+            // }
+            // @include rwd(1700){margin-left:300px;}
+            // @include rwd(2000){margin-left:320px;}
+            // @include rwd(2400){margin-left:410px;}
+            
+
+            .PS_TitreSection{
+
+                position:absolute;
+                top:-20px;
+                left:31px;
+
+                @include lg{
+                    top:100px;
+                    left:111px;
+                }
+
+                
+
+                @include rwd(1250){
+                    left:161px;
+                }
+                @include rwd(1500){
+                    left:211px;
+                }
+                @include rwd(1700){left:331px;}
+                @include rwd(2000){left:351px;}
+                @include rwd(2400){left:441px;}
+    
+            }
+    
+        }
+
+        
+    }
+}

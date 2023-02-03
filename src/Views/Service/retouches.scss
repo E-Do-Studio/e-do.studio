@@ -1,0 +1,430 @@
+@import "../../Assets/scss/styles.scss";
+
+@font-face {
+  font-family: "ABCFavorit-Regular";
+  src: url("../../Assets/fonts/ABCFavorit-Regular.woff2") format("woff2"),
+    url("../../Assets/fonts/ABCFavorit-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "ABCFavorit-Light";
+  src: url("../../Assets/fonts/ABCFavorit-Light.woff2") format("woff2"),
+    url("../../Assets/fonts/ABCFavorit-Light.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.retouchesMobile {
+  .accroche {
+    padding: 115px 32px 26px 32px;
+
+    span {
+      font-size: 16px;
+      font-weight: 300;
+    }
+
+    h1 {
+      font-size: 25px;
+      font-weight: 300;
+      margin-top: 36px;
+      margin-bottom: 32px;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 25px;
+      font-weight: 300;
+      margin-bottom: 32px;
+    }
+
+    .retouche {
+      height: 300px;
+      text-align: center;
+      margin-bottom: 32px;
+      position: relative;
+
+      .old {
+        content: " ";
+        width: 85px;
+        height: 122px;
+        background-color: #d9d9d9;
+        margin-right: 20px;
+        position: relative;
+        top: 39px;
+      }
+
+      .new {
+        content: " ";
+        width: 140px;
+        height: 200px;
+        background-color: #cbbfbf;
+      }
+
+      .gif {
+        width: 55%;
+      }
+    }
+
+    .scrollDownButtonBox {
+      text-align: center;
+    }
+  }
+
+  .galerie {
+    width: 100%;
+
+    .row {
+      width: 100%;
+      height: 50vw;
+
+      div {
+        width: 50vw;
+        height: 50vw;
+
+        img {
+          width: 50vw;
+        }
+      }
+
+      .imgLeftBox {
+        float: left;
+
+        img {
+          background-color: #d9d9d9;
+        }
+      }
+
+      .imgRightBox {
+        float: right;
+
+        img {
+          background-color: #cbbfbf;
+        }
+      }
+    }
+  }
+
+  .tarifs {
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 32px;
+    box-sizing: border-box;
+
+    h2 {
+      font-size: 24px;
+      font-weight: light;
+      margin-bottom: 24px;
+    }
+
+    .package {
+      width: 100%;
+      border-radius: 12px;
+      background-color: white;
+      color: black;
+      padding: 24px 24px 15px 24px;
+      box-sizing: border-box;
+      margin-bottom: 39px;
+
+      .title {
+        font-size: 24px;
+        margin-bottom: 32px;
+      }
+
+      hr {
+        margin-bottom: 9px;
+      }
+
+      .price {
+        font-size: 26px;
+      }
+    }
+  }
+
+  .bandeau {
+    padding: 39px 39px 18px 39px;
+    margin-bottom: 10px;
+    .onQuotation {
+      transition: all 1.5s ease;
+      span {
+        text-decoration: none;
+      }
+    }
+    .contactButton {
+      width: 28px;
+      transform: rotate(315deg);
+      margin-right: 7px;
+      position: relative;
+      top: 2px;
+    }
+
+    .contactForm {
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s;
+      font-weight: 900;
+    }
+
+    .contactForm:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      background-color: #000;
+      width: 0;
+      transition: all 0.5s;
+    }
+
+    .contactForm:hover:before {
+      width: 100%;
+    }
+
+    h3 {
+      font-size: 36px;
+      font-weight: 300;
+      line-height: 48px;
+    }
+
+    span {
+      font-size: 28px;
+      line-height: 52px;
+      font-weight: 300;
+    }
+  }
+}
+
+.retouchesDesktop {
+  .accroche {
+    padding: 208px 180px 108px 180px;
+    text-align: center;
+
+    .flexContainer {
+      display: flex;
+      justify-content: space-between;
+      text-align: left;
+      height: 420px;
+
+      .left {
+        width: 10%;
+        margin-top: 49px;
+
+        .nosServices {
+          font-family: "ABCFavorit-Light";
+          font-size: 14px;
+        }
+      }
+
+      .center {
+        width: 34%;
+        margin-top: 49px;
+
+        h1 {
+          font-size: 60px;
+          font-weight: 300;
+        }
+
+        p {
+          font-size: 15px;
+          margin-top: 13px;
+          line-height: 25px;
+        }
+      }
+
+      .right {
+        width: 34%;
+
+        .retouche {
+          width: 100%;
+          position: relative;
+
+          .old {
+            width: 160px;
+            height: 230px;
+            background-color: #d9d9d9;
+            position: absolute;
+            top: 0;
+            left: 0;
+          }
+
+          .retouch {
+            width: 258px;
+            height: 371px;
+            background-color: #cbbfbf;
+            position: absolute;
+            top: 49px;
+            left: 104px;
+            z-index: 5;
+          }
+
+          .gif {
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+
+  .galerie {
+    width: 100%;
+    display: flex;
+
+    .firstSquare {
+      width: 25%;
+      height: 25vw;
+
+      img {
+        width: 100%;
+        height: 100%;
+        background-color: #d9d9d9;
+      }
+    }
+
+    .secondSquare {
+      width: 25%;
+      height: 25vw;
+
+      img {
+        width: 100%;
+        height: 100%;
+        background-color: #cbbfbf;
+      }
+    }
+
+    .thirdSquare {
+      width: 25%;
+      height: 25vw;
+
+      img {
+        width: 100%;
+        height: 100%;
+        background-color: #d9d9d9;
+      }
+    }
+
+    .fourthSquare {
+      width: 25%;
+      height: 25vw;
+
+      img {
+        width: 100%;
+        height: 100%;
+        background-color: #cbbfbf;
+      }
+    }
+  }
+
+  .tarifs {
+    background-color: black;
+    padding: 60px 71px;
+
+    h2 {
+      font-size: 36px;
+      color: white;
+    }
+
+    .flexContainer {
+      display: flex;
+      gap: 38px;
+      margin-top: 50px;
+      width: 100%;
+      box-sizing: border-box;
+      flex-wrap: wrap;
+
+      .package {
+        background-color: white;
+        border-radius: 12px;
+        padding: 24px 24px 17px 24px;
+        height: 200px;
+        flex: 1 1 30%;
+        position: relative;
+        box-sizing: border-box;
+        max-width: calc(33% - 6.5px);
+        transition: transform 0.2s;
+
+        &:hover {
+          transform: scale(1.05);
+        }
+
+        .title {
+          font-size: 32px;
+        }
+
+        hr {
+          position: absolute;
+          bottom: 78px;
+          stroke: #d8d8d8;
+          width: calc(100% - 48px);
+          box-sizing: border-box;
+        }
+
+        .price {
+          font-size: 48px;
+          position: absolute;
+          bottom: 17px;
+          left: 24px;
+        }
+      }
+    }
+  }
+
+  .bandeau {
+    padding: 39px 71px;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+
+    h3 {
+      font-size: 36px;
+      font-weight: 300;
+      line-height: 48px;
+    }
+
+    span {
+      font-size: 28px;
+      font-weight: 300;
+      line-height: 48px;
+    }
+    .onQuotation {
+      transition: all 1.5s ease;
+      span {
+        text-decoration: none;
+      }
+    }
+    .contactButton {
+      width: 28px;
+      transform: rotate(315deg);
+      margin-left: 15px;
+      margin-right: 7px;
+      position: relative;
+      top: 2px;
+    }
+
+    .contactForm {
+      text-decoration: none;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.5s;
+      font-weight: 900;
+    }
+
+    .contactForm:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      height: 3px;
+      background-color: #000;
+      width: 0;
+      transition: all 0.5s;
+    }
+
+    .contactForm:hover:before {
+      width: 100%;
+    }
+  }
+}

@@ -1,0 +1,242 @@
+@import '../Assets/scss/styles.scss';
+
+@font-face {
+    font-family: 'ABCFavorit-Regular';
+    src: url('../Assets/fonts/ABCFavorit-Regular.woff2') format('woff2'),
+         url('../Assets/fonts/ABCFavorit-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ABCFavorit-Light';
+    src: url('../Assets/fonts/ABCFavorit-Light.woff2') format('woff2'),
+         url('../Assets/fonts/ABCFavorit-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@media screen and (min-width: 1024px){
+    .pageBlog{
+        padding-top:222px;
+        padding-bottom:100px;
+        text-align: center;
+
+        h1{
+            font-size: 40px;
+            font-weight: 300;
+            font-family: "ABCFavorit-Regular";
+            margin-left: 144px;
+            text-align: left;
+        }
+        
+        .articles {
+            margin-top: 42px;
+            margin-left: 106px;
+            margin-right: 106px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-content: flex-start;
+            gap: 17px;
+            position: relative;
+            text-align: left;
+
+            > a{
+                height: 360px;
+                overflow: hidden;
+                flex: 1 1 30%;
+                max-width: calc(33% - 6.5px);
+
+                .article{
+                    height: 360px;
+                    overflow: hidden;
+                    border: solid 1px rgba(151, 151, 151, 0.28);
+                    background-color: white;
+                    box-sizing: border-box;
+                    //transition: 0.5s ease-in;
+                    padding: 36px;
+                    position: relative;
+        
+                    .category{
+                        font-size: 14px;
+                        font-weight: 300;
+                        line-height: 17px;
+                        margin-bottom: 27px;
+                    }
+        
+                    .title{
+                        font-size: 35px;
+                        height: 151px;
+                        overflow: hidden;
+                        font-size: 2.2vw;
+                    }
+                    
+                    .authorPicture{
+                        background-color: rgb(196, 196, 196);
+                        height: 72px;
+                        width: 72px;
+                        border-radius: 50px;
+                        position: absolute;
+                        bottom: 36px;
+                        left: 36px;
+                    }
+
+                    .imgBox{
+                        height: 72px;
+                        width: 72px;
+                        border-radius: 50px;
+                        background-color: rgb(196, 196, 196);
+                        position: absolute;
+                        bottom: 36px;
+                        left: 36px;
+
+                        .perso{
+                            position: absolute;
+                            height: 40px;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%,-50%);
+                        }
+                    }
+        
+                    .open{
+                        font-size: 14px;
+                        position: absolute;
+                        bottom: 63px;
+                        right: 36px;
+        
+                        svg{
+                            margin-bottom: -1px;
+                            margin-left: 20px;
+                        }
+                    }
+        
+                    &:hover{
+                        background-color: black;
+                        //transform: scale(1.025);
+                        cursor: pointer;
+        
+                        .category{
+                            color: white;
+                        }
+        
+                        .title{
+                            color: white;
+                        }
+        
+                        .open{
+                            color: white;
+        
+                            svg{
+                                stroke: white;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            &::after{
+                content: "";
+                width: calc(33% - 6.5px);
+            }
+        }
+
+        .boutonPlus{
+            border: 1px solid black;
+            font-size: 14px;
+            font-weight: 300;
+            padding: 15px 30px;
+            margin-top: 30px;
+
+            &:hover{
+                background-color: black;
+                color: white;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1023px){
+    .pageBlog{
+        padding: 121px 31px 60px 31px;
+        width: 100%;
+        box-sizing: border-box;
+
+        h1{
+            font-size: 25px;
+            font-weight: 300;
+            font-family: 'ABCFavorit-Light';
+        }
+
+        .articles{
+            width: 100%;
+            margin-top: 37px;
+
+            .article{
+                padding: 31px;
+                border: solid 1px rgba(151, 151, 151, 0.28);
+                margin-bottom: 17px;
+                position: relative;
+                min-height: 282px;
+
+                .category{
+                    font-size: 14px;
+                    font-family: "ABCFavorit-Light";
+                    font-weight: 300;
+                    margin-bottom: 17px;
+                }
+
+                .title{
+                    font-family: "ABCFavorit-Light";
+                    font-weight: 300;
+                    margin-bottom: 16px;
+                    height: 118px;
+                    overflow: hidden;
+                    font-size: 6.5vw;
+                }
+
+                .authorPicture{
+                    height: 56px;
+                    width: 56px;
+                    border-radius: 50px;
+                    position: absolute;
+                    bottom: 31px;
+                    left: 31px;
+                }
+
+                .imgBox{
+                    height: 56px;
+                    width: 56px;
+                    border-radius: 50px;
+                    background-color: rgb(196, 196, 196);
+                    position: absolute;
+                    bottom: 31px;
+                    left: 31px;
+
+                    .perso{
+                        position: absolute;
+                        height: 35px;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%,-50%);
+                    }
+                }
+
+                .open{
+                    font-size: 14px;
+                    position: absolute;
+                    bottom: 46px;
+                    right: 31px;
+
+                    svg{
+                        margin-bottom: -1px;
+                        margin-left: 20px;
+                    }
+                }
+            }
+        }
+    }
+}

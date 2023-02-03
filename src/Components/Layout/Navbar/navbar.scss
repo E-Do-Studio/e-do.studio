@@ -1,0 +1,402 @@
+@import "../../../Assets/scss/styles.scss";
+
+#navbar {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  background: white;
+  // background:rgb(102, 37, 37);
+
+  #navbarWrapper {
+    margin-left: auto;
+    margin-right: auto;
+    box-sizing: border-box;
+    padding: 0 32px;
+    // max-width: $maxWidth;
+    height: 70px;
+
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-stretch: normal;
+    font-size: 14px;
+    letter-spacing: -0.34px;
+    font-weight: 300;
+    // background:orange;
+
+    @include xl {
+      height: 76px;
+      padding: 0 51px;
+    }
+
+    .logoMobile {
+      //flex:1;
+      // background:green;
+      margin-right: 30px;
+
+      svg {
+        height: 33px;
+        shape-rendering: geometricPrecision;
+
+        @include xl {
+          height: 30px;
+        }
+      }
+    }
+
+    .boutonSwitchAgence {
+      // background:blue;
+      .animBoutonSwitchAgenceRef {
+        display: none;
+      }
+
+      .boutonAgence {
+        display: inline-block;
+        height: 50px;
+        width: 120px;
+        // background:rgb(197, 156, 156);
+      }
+
+      .boutonSwitch {
+        // display:none;
+        display: inline-block;
+        height: 36px;
+        // width:120px;
+      }
+    }
+
+    .navbarMenu {
+      text-align: right;
+      flex: 1;
+      // background:red;
+      height: auto;
+
+      .boutonsMobiles {
+        display: flex;
+        justify-content: flex-end;
+        @include xl {
+          display: none;
+        }
+
+        .telephoneIcon {
+          cursor: pointer;
+          // background:green;
+          width: 22px;
+          height: 22px;
+          margin-top: 4px;
+
+          .boutonTel {
+            width: 22px;
+            height: 22px;
+            display: inline;
+          }
+        }
+
+        .changeLang {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 21px;
+          margin-right: 21px;
+          position: relative;
+          bottom: -1px;
+          font-weight: 700;
+        }
+
+        .boutonMobile {
+          width: 30px;
+          height: 30px;
+          // display:inline;
+          margin-left: 10px;
+
+          @include rwd(340) {
+            margin-left: 16px;
+          }
+
+          @include rwd(360) {
+            margin-left: 21px;
+          }
+
+          @include xl {
+            display: none;
+          }
+        }
+      }
+
+      .menuDesktop {
+        display: none;
+
+        @include xl {
+          display: block;
+        }
+
+        ul {
+          list-style-type: none;
+          display: flex;
+          justify-content: right;
+
+          li:not(:last-child) {
+            display: inline;
+            margin-left: 28px;
+            padding-top: 5px;
+
+            @include rwd(1200) {
+              margin-left: 20px;
+            }
+            @include rwd(1300) {
+              margin-left: 35px;
+            }
+            @include rwd(1400) {
+              margin-left: 40px;
+            }
+            @include rwd(1500) {
+              margin-left: 48px;
+            }
+
+            &:first-child {
+              margin-left: 0;
+            }
+
+            &:last-child {
+              // border-bottom: 1px solid;
+              padding-bottom: 3px;
+            }
+
+            .lienDeco {
+              position: absolute;
+              width: 0;
+              height: 1px;
+              bottom: 0;
+              left: 0;
+              top: 20px;
+              width: 100%;
+              // top:0px;
+              background-color: rgb(0, 0, 0);
+
+              // transition: all 0.3s ease-in-out;
+            }
+
+            .Link {
+              // margin-bottom:8px !important;
+              // padding-top:10px;
+              //padding-bottom:10px;
+              position: relative;
+              // color:red !important;
+              // background:orange;
+              height: 25px;
+              cursor: pointer;
+              transition: all 1.5s ease;
+
+              &:before {
+                content: "";
+                position: absolute;
+                width: 0;
+                height: 1px;
+                bottom: 0;
+                left: 0;
+                top: 20px;
+                // top:0px;
+                background-color: rgb(0, 0, 0);
+                visibility: hidden;
+                transition: all 0.3s ease-in-out;
+              }
+
+              &:hover:before {
+                visibility: visible;
+                width: 100%;
+              }
+            }
+            .boutonLangue {
+              font-weight: 900;
+            }
+            .noActive {
+              opacity: 0.1;
+            }
+          }
+
+          li:last-child {
+            display: inline;
+            height: 25px;
+            margin-left: 45px;
+
+            .bookButton {
+              background-color: white;
+              border-radius: 7px;
+              border: none;
+              color: black;
+              border: 1px solid black;
+              padding: 3px 10px;
+              transition: all 0.2s ease;
+
+              &:hover {
+                background-color: black;
+                color: white;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .horloge {
+      display: none;
+      margin-right: 30px;
+      text-align: center;
+
+      .horlogeMotion {
+        display: flex;
+        flex-direction: row;
+      }
+
+      @include xl {
+        display: block;
+      }
+    }
+  }
+}
+
+.menuMobile {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  right: -120vw;
+  bottom: 0;
+  background: black;
+  z-index: 30;
+
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+
+  a {
+    color: white;
+  }
+
+  .menuMobile_PartieHaute {
+    flex: 1;
+    width: calc(100vw - 62px);
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .menuMobile_Menu {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+
+      @media screen and (min-height: 700px) {
+        margin-top: 30px;
+      }
+
+      .menuMobile_Logo {
+        width: 30px;
+        height: 30px;
+      }
+
+      .menuMobile_ButtonClose {
+        cursor: pointer;
+        background: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 100000px;
+        overflow: hidden;
+        height: 36px;
+        width: 36px;
+      }
+    }
+
+    .menuMobile_Titre {
+      border-bottom: 1px solid white;
+      margin-top: 30px;
+
+      @media screen and (min-height: 700px) {
+        margin-top: 45px;
+      }
+      h4 {
+        font-size: 16px;
+        font-weight: 300;
+        letter-spacing: -0.38px;
+        padding-bottom: 5px;
+      }
+    }
+
+    .menuMobile_Liens {
+      padding-top: 20px;
+      @media screen and (min-height: 700px) {
+        padding-top: 40px;
+      }
+      .menuMobile_LiensWrapper {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        margin-top: 20px;
+
+        @media screen and (min-height: 700px) {
+          margin-top: 25px;
+        }
+        .menuMobile_LiensWrapperLien {
+          font-size: 35px;
+          font-weight: 300;
+          letter-spacing: -0.84px;
+          .Link {
+            transition: all 1.5s ease;
+          }
+          .noActive {
+            opacity: 0.1;
+          }
+          a {
+            // color:red;
+            margin-bottom: 8px;
+            position: relative;
+            &:before {
+              content: "";
+              position: absolute;
+              width: 0;
+              height: 1px;
+              bottom: 0;
+              left: 0;
+              top: 50px;
+              // top:0px;
+              background-color: rgb(255, 255, 255);
+              visibility: hidden;
+              transition: all 0.3s ease-in-out;
+            }
+
+            &:hover:before {
+              visibility: visible;
+              width: 100%;
+            }
+          }
+        }
+        .menuMobile_LiensWrapperInfos {
+          margin-left: 6px;
+          font-size: 10px;
+          letter-spacing: -0.24px;
+        }
+      }
+    }
+  }
+
+  .menuMobile_PartieBasse {
+    background: white;
+
+    padding: 14px 20px 13px 20px;
+
+    .menuMobile_PartieBasseWrapper {
+      width: calc(100vw - 62px);
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+      a {
+        color: black;
+        font-size: 35px;
+        letter-spacing: -0.84px;
+      }
+    }
+  }
+}

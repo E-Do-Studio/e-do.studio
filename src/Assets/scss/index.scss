@@ -1,0 +1,125 @@
+@import 'styles.scss';
+@import '_fonts.scss';
+
+html{
+    margin:0 !important;
+    margin-top:0 !important;
+    font-size:100%;
+    background:rgb(255, 255, 255);
+    -webkit-text-size-adjust:none;
+
+    
+  
+    font-family:favoritLight, sans-serif;
+
+    font-weight: 300;
+    font-style: normal;
+    // font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: subpixel-antialiased;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    // transform: translateZ(0);
+    // backface-visibility: hidden;
+    // -webkit-filter: blur(0);
+    // -webkit-font-smoothing: subpixel-antialiased;
+  
+    @include no-touch-select;
+
+    @include qhd{
+      font-size:120%;
+    }
+  
+    // @include sm{font-size:70%;}
+    // @include md{font-size:77%;}
+    // @include lg{font-size:87%;}
+    // @include xl{font-size:100%;}
+    // @include xxl{font-size:120%;}
+    // @include xxxl{font-size:150%;}
+  }
+
+  *:focus {
+    outline: none;
+  }
+
+  body{
+    padding:0;
+    margin:0;
+    max-width:100%;
+    overflow-x: hidden;
+  }
+  
+  a{
+    text-decoration: none;
+    color:black;
+  }
+  
+  h1,h2,h3,h4,h5,h6,p{
+    margin:0;
+    padding:0;
+  }
+  
+  button{
+    border: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+    overflow: visible;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+    vertical-align: middle;
+    text-decoration: none;
+    font-size: inherit;
+  
+    background: transparent;
+  
+    /* inherit font & color from ancestor */
+    color: inherit;
+    font: inherit;
+  
+    /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+    line-height: normal;
+  
+    /* Corrects font smoothing for webkit */
+    -webkit-font-smoothing: inherit;
+    -moz-osx-font-smoothing: inherit;
+  
+    /* Corrects inability to style clickable `input` types in iOS */
+    -webkit-appearance: none; 
+  }
+  
+  
+  button:focus {
+    outline:0 !important;
+    // border: 0 !important;
+    // padding: 0 !important;
+  }
+  
+  
+  .disabled-link {
+    pointer-events: none;
+    pointer:cursor;
+  }
+  
+  
+  .noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Old versions of Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome, Edge, Opera and Firefox */
+  }
+
+
+

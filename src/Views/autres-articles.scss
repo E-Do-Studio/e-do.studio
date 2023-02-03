@@ -1,0 +1,210 @@
+@import '../Assets/scss/styles.scss';
+
+@font-face {
+    font-family: 'ABCFavorit-Regular';
+    src: url('../Assets/fonts/ABCFavorit-Regular.woff2') format('woff2'),
+         url('../Assets/fonts/ABCFavorit-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'ABCFavorit-Light';
+    src: url('../Assets/fonts/ABCFavorit-Light.woff2') format('woff2'),
+         url('../Assets/fonts/ABCFavorit-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@media screen and (min-width: 1024px){
+    .autresArticles{
+        padding: 63.5px 7.36% 119px 7.36%;
+
+        h4{
+            font-size: 40px;
+            font-weight: 300;
+            font-family: "ABCFavorit-Light";
+        }
+
+        .flexContainer{
+            margin-top: 44px;
+            display: flex;
+            justify-content: space-between;
+            align-content: flex-start;
+            gap: 17px;
+            flex-wrap: wrap;
+
+            a{
+                flex: 1 1 30%;
+                max-width: calc(33% - 6.5px);
+
+                .article{
+                    position: relative;
+                    padding: 36px;
+                    border: solid 1px rgba(151, 151, 151, 0.28);
+                    overflow: hidden;
+                    height: 360px;
+                    box-sizing: border-box;
+
+                    .category{
+                        font-size: 14px;
+                        font-family: "ABCFavorit-Light";
+                        font-weight: 300;
+                        margin-bottom: 27px;
+                    }
+    
+                    .title{
+                        font-family: "ABCFavorit-Regular";
+                        font-weight: 300;
+                        margin-bottom: 20px;
+                        height: 151px;
+                        overflow: hidden;
+                        font-size: 2vw;
+                    }
+    
+                    .authorPicture{
+                        height: 72px;
+                        width: 72px;
+                        border-radius: 50px;
+                        background-color: grey;
+                        position: relative;
+                    }
+
+                    .imgBox{
+                        height: 72px;
+                        width: 72px;
+                        border-radius: 50px;
+                        background-color: rgb(196, 196, 196);
+                        position: relative;
+
+                        .perso{
+                            position: absolute;
+                            height: 40px;
+                            top: 50%;
+                            left: 50%;
+                            transform: translate(-50%,-50%);
+                        }
+                    }
+    
+                    .open{
+                        font-size: 14px;
+                        position: absolute;
+                        bottom: 63px;
+                        right: 36px;
+
+                        svg{
+                            margin-bottom: -1px;
+                            margin-left: 20px;
+                        }
+                    }
+
+                    &:hover{
+                        background-color: black;
+                        border: none;
+                        cursor: pointer;
+        
+                        .category{
+                            color: white;
+                        }
+        
+                        .title{
+                            color: white;
+                        }
+        
+                        .open{
+                            color: white;
+        
+                            svg{
+                                stroke: white;
+                            }
+                        }
+                    }
+                }
+            }
+
+            &::after{
+                content: "";
+                width: calc(33% - 6.5px);
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 1023px){
+    .autresArticles{
+        padding: 20px 8.26% 42px 8.26%;
+
+        h4{
+            font-size: 25px;
+            font-family: "ABCFavorit-Light";
+            font-weight: 300;
+            line-height: 1.4;
+            margin-bottom: 40px;
+        }
+
+        .article{
+            padding: 31px;
+            border: solid 1px rgba(151, 151, 151, 0.28);
+            margin-bottom: 17px;
+            position: relative;
+            min-height: 282px;
+
+            .category{
+                font-size: 14px;
+                font-family: "ABCFavorit-Light";
+                font-weight: 300;
+                margin-bottom: 17px;
+            }
+
+            .title{
+                font-family: "ABCFavorit-Light";
+                font-weight: 300;
+                margin-bottom: 16px;
+                height: 118px;
+                overflow: hidden;
+                font-size: 6.5vw;
+            }
+
+            .authorPicture{
+                height: 56px;
+                width: 56px;
+                border-radius: 50px;
+                position: absolute;
+                left: 31px;
+                bottom: 31px;
+            }
+
+            .imgBox{
+                height: 56px;
+                width: 56px;
+                border-radius: 50px;
+                background-color: rgb(196, 196, 196);
+                position: absolute;
+                left: 31px;
+                bottom: 31px;
+
+                .perso{
+                    position: absolute;
+                    height: 35px;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%,-50%);
+                }
+            }
+
+            .open{
+                font-size: 14px;
+                position: absolute;
+                bottom: 46px;
+                right: 31px;
+
+                svg{
+                    margin-bottom: -1px;
+                    margin-left: 20px;
+                }
+            }
+        }
+    }
+}

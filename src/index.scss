@@ -1,0 +1,135 @@
+@import './Assets/scss/styles.scss';
+
+.CookieBanner{
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    right:0px;
+
+
+
+    background:black;
+    color:white;
+    z-index:10000;
+
+    padding:30px 30px;
+
+    @include lg{
+        padding:15px 30px;
+    }
+
+    .CookieBannerWrapper{
+        max-width:380px;
+        margin-left:auto;
+        margin-right:auto;
+        display:flex;
+        flex-direction: column;
+
+        @include lg{
+            flex-direction: row;
+            max-width:unset;
+            align-items: center;
+            justify-content: space-between;
+        }
+    }
+
+    .CookieBanner_text1{
+        color:rgba(255, 255, 255, 0.5);
+        font-size: 14px;
+        line-height: 1.71;
+        letter-spacing: 0.25px;
+    }
+
+    .CookieBanner_text2{
+        margin-top:10px;
+        font-size: 14px;
+        line-height: 1.71;
+        letter-spacing: 0.25px;
+
+        @include lg{
+            margin-top:unset;
+            margin-left:20px;
+        }
+    }
+
+    .CookieBanner_Buttons{
+        margin-top:20px;
+
+        @include lg{
+            display: flex;
+            margin-left:50px;
+            margin-top:unset;
+        }
+        .CookieBanner_ButtonsCommun{
+            width:100%;
+            display:block;
+            padding:14px;
+
+            @include lg{
+                height:30px;
+                padding:24px 30px;
+                width:unset;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            
+            &:active{
+                border:2px solid white;
+            }
+
+            &:focus{
+                border:2px solid white;
+            }
+
+            &:hover{
+                border:2px solid white;
+            }
+
+            &:visited{
+                border:2px solid white;
+            }
+
+        }
+        .CookieBanner_ButtonsNo{
+            border:2px solid white;
+            &:active{
+                border:2px solid white;
+            }
+            &:focus{
+                border:2px solid white;
+            }
+        }
+
+        .CookieBanner_ButtonsYes{
+            background:white;
+            border:2px solid white;
+            color:black;
+            margin-top:20px;
+
+            &:active{
+                border:2px solid white;
+            }
+
+            &:focus{
+                border:2px solid white;
+            }
+
+            &:hover{
+                border:2px solid white;
+            }
+
+            &:visited{
+                border:2px solid white;
+            }
+
+            @include lg{
+                margin-top:unset;
+                margin-left:20px;
+            }
+            
+        }
+    }
+
+}
