@@ -17,8 +17,6 @@ import circleArrowRightBlack from "../Assets/img/landing/circle-arrow-right-blac
 
 import boutonSliderBlanc from "../Assets/animations/boutonMenuServices.json";
 
-import { useTranslation } from "react-i18next";
-
 const IMGMobile = ({ src, lar, haut, left, right, ajustHauteur, linkUrl }) => {
   const image = useRef();
   const [animETAT, setAnimETAT] = useState(false);
@@ -978,28 +976,14 @@ const IMGPC = ({
   ajustHauteurBottom,
   anim,
   linkUrl,
-  marque,
 }) => {
   const image = useRef();
   const IMGPCDessus = useRef();
   const [animETAT, setAnimETAT] = useState(false);
-  const [imgHover, setImgHover] = useState("");
 
   // useEffect(() => {
   //     // console.log(image.clientLeft)
   // }, [scrollX])
-
-  const handleHover = (event) => {
-    setImgHover(marque);
-    image.current.style.opacity = 0.8;
-    image.current.style.filter = "grayscale(1)";
-  };
-
-  const handleMouseOut = (event) => {
-    setImgHover(false);
-    image.current.style.opacity = 1;
-    image.current.style.filter = "grayscale(0)";
-  };
 
   const animIMG = () => {
     //Lance l'animation
@@ -1045,32 +1029,13 @@ const IMGPC = ({
               to={linkUrl}
               style={{ cursor: "url(cursor/cursor.svg), auto" }}
             >
-              <div
-                className="img-container"
-                onMouseOver={handleHover}
-                onMouseOut={handleMouseOut}
-              >
-                <img
-                  src={process.env.PUBLIC_URL + "/img/galerie/" + src}
-                  alt=""
-                  ref={image}
-                  style={{
-                    opacity: imgHover ? 0.8 : 1,
-                    transition: "all 300ms ease-out",
-                  }}
-                  className={anim == 1 ? "imgAnim1" : ""}
-                  marque={marque}
-                />
-                <p
-                  style={{
-                    display: imgHover ? "block" : "none",
-                    transition: "all 300ms ease-out",
-                  }}
-                  className="brand-display"
-                >
-                  {imgHover}
-                </p>
-              </div>
+              <img
+                src={process.env.PUBLIC_URL + "/img/galerie/" + src}
+                alt=""
+                ref={image}
+                style={{}}
+                className={anim == 1 ? "imgAnim1" : ""}
+              />
             </Link>
           ) : (
             ""
@@ -1078,20 +1043,16 @@ const IMGPC = ({
         </div>
 
         {anim == 2 ? (
-          <>
-            <div
-              ref={IMGPCDessus}
-              className="IMGPCDessus"
-              style={{
-                width: lar + "vw",
-                height: haut + "vw",
-                top: ajustHauteurTop ? ajustHauteurTop + "vh" : "unset",
-                bottom: ajustHauteurBottom
-                  ? ajustHauteurBottom + "vh"
-                  : "unset",
-              }}
-            ></div>
-          </>
+          <div
+            ref={IMGPCDessus}
+            className="IMGPCDessus"
+            style={{
+              width: lar + "vw",
+              height: haut + "vw",
+              top: ajustHauteurTop ? ajustHauteurTop + "vh" : "unset",
+              bottom: ajustHauteurBottom ? ajustHauteurBottom + "vh" : "unset",
+            }}
+          ></div>
         ) : (
           <div></div>
         )}
@@ -1198,7 +1159,6 @@ const GalerieDesktop = () => {
       className="galeriePC"
       style={{ cursor: "url(cursor/cursor.svg), auto" }}
     >
-      {/* <div className="brand">{imgHover}</div> */}
       <ScrollContainer
         className="galeriePCWrapper"
         onScroll={handleScroll}
@@ -1213,7 +1173,6 @@ const GalerieDesktop = () => {
           ajustHauteurBottom=""
           anim={2}
           scrollX={scrollX}
-          marque="La marque 1"
         />
         <IMGPC
           linkUrl="/service-packshot-horizontal"
@@ -1224,7 +1183,6 @@ const GalerieDesktop = () => {
           ajustHauteurBottom="5"
           anim={1}
           scrollX={scrollX}
-          marque="Lorem"
         />
         <IMGPC
           linkUrl="/service-mannequin-vertical"
@@ -1235,7 +1193,6 @@ const GalerieDesktop = () => {
           ajustHauteurBottom="7"
           anim={1}
           scrollX={scrollX}
-          marque="Ipsum"
         />
         <IMGPC
           linkUrl="/service-accessoires-eclipse"
@@ -1246,7 +1203,6 @@ const GalerieDesktop = () => {
           ajustHauteurBottom=""
           anim={1}
           scrollX={scrollX}
-          marque="WOUAAAAAAA"
         />
         <IMGPC
           linkUrl="/service-accessoires-eclipse"
@@ -2320,23 +2276,6 @@ const Galerie = ({ setPageLoad }) => {
     titrePageGalerie.current.style.transform = "translateY(0%)";
   }, []);
 
-  const [displayHorizontal, setDisplayHorizontal] = useState(false);
-  const [displayVertical, setDisplayVertical] = useState(false);
-
-  const handleClickHorizontal = (event) => {
-    event.preventDefault();
-    setDisplayHorizontal(!displayHorizontal);
-  };
-
-  const handleClickVertical = (event) => {
-    event.preventDefault();
-    setDisplayVertical(!displayVertical);
-  };
-
-  const [selectedLink, setSelectedLink] = useState("all");
-
-  const { t, i18n } = useTranslation("gallery");
-
   return (
     <>
       <Helmet defer={false}>
@@ -2352,75 +2291,29 @@ const Galerie = ({ setPageLoad }) => {
       <div className="pageGalerie">
         <div className="titreAnimationWrapper">
           <h1 className="titrePageGalerie" ref={titrePageGalerie}>
-            {t("GALLERY")}
+            GALERIE
           </h1>
           <ul>
-            <Link
-              to={{
-                pathname: "/galerie",
-                state: { selectedLink: "all" },
-              }}
-            >
+            <Link to="/galerie">
               <li className="active">all</li>
             </Link>
-            <Link
-              to={{
-                pathname: "/galerie-horizontal",
-                state: { selectedLink: "horizontal" },
-              }}
-              selectedLink={selectedLink}
-              setSelectedLink={setSelectedLink}
-              onClick={() => setSelectedLink("horizontal")}
-            >
+            <Link to="/galerie-horizontal">
               <li>Horizontal</li>
             </Link>
-            <Link
-              to={{
-                pathname: "/galerie-vertical",
-                state: { selectedLink: "vertical" },
-              }}
-              selectedLink={selectedLink}
-              setSelectedLink={setSelectedLink}
-              onClick={() => setSelectedLink("vertical")}
-            >
+            <Link to="/galerie-vertical">
               <li>Vertical</li>
             </Link>
-            <Link
-              to={{
-                pathname: "/galerie-live",
-                state: { selectedLink: "live" },
-              }}
-              selectedLink={selectedLink}
-              setSelectedLink={setSelectedLink}
-              onClick={() => setSelectedLink("live")}
-            >
+            <Link to="/galerie-live">
               <li>Live</li>
             </Link>
-            <Link
-              to={{
-                pathname: "/galerie-eclipse",
-                state: { selectedLink: "eclipse" },
-              }}
-              selectedLink={selectedLink}
-              setSelectedLink={setSelectedLink}
-              onClick={() => setSelectedLink("eclipse")}
-            >
+            <Link to="/galerie-eclipse">
               <li>Eclipse</li>
             </Link>
-            <Link
-              to={{
-                pathname: "/galerie360",
-                state: { selectedLink: "360" },
-              }}
-              selectedLink={selectedLink}
-              setSelectedLink={setSelectedLink}
-              onClick={() => setSelectedLink("360")}
-            >
-              <li>360 Interactive</li>
+            <Link to="/galerie360">
+              <li>360</li>
             </Link>
           </ul>
         </div>
-        );
         {!matches ? <GalerieMobile /> : <GalerieDesktop />}
       </div>
       <Footer AnimationBloc7={true} />

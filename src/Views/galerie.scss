@@ -12,7 +12,7 @@
     top: 88px;
 
     height: auto;
-    width: 200px;
+    width: 100px;
     position: absolute;
     overflow: hidden;
 
@@ -107,8 +107,6 @@
   -ms-overflow-style: none; /* IE and Edge */
   scrollbar-width: none; /* Firefox */
 
-  overflow-y: hidden;
-
   .galeriePCWrapper {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
@@ -121,8 +119,6 @@
     padding-right: 8vw;
 
     .IMGPCColonne {
-      display: flex;
-      flex-direction: column;
       flex-shrink: 0;
       // width:500px;
       // background:blue;
@@ -145,6 +141,8 @@
         .imgAnim1 {
           transform: translateX(-100%);
           transition: all 500ms linear;
+        }
+        .imgAnim2 {
         }
       }
 
@@ -229,34 +227,4 @@
       }
     }
   }
-}
-
-// Sous catégorie
-ul {
-  a {
-    width: 100%;
-  }
-}
-.sub-category {
-  width: 100%;
-  margin-top: 0px !important;
-  margin-left: 10px;
-  li {
-    width: 100%;
-  }
-}
-
-.brand {
-  margin-right: 51px;
-  font-size: 22px;
-}
-
-.brand-display {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 999;
-  text-transform: uppercase;
-  font-weight: 900;
 }
