@@ -921,7 +921,9 @@ const Galerie = ({ setPageLoad }) => {
               <li>all</li>
             </Link>
             <Link to="/galerie-horizontal">
-              <li className="active">Horizontal</li>
+              <li onClick={() => setSubCat("All")} className="active">
+                Horizontal
+              </li>
               {selectedLink === "horizontal" && (
                 <>
                   <ul className="sub-category">

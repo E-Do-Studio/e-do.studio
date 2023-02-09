@@ -1045,20 +1045,32 @@ const IMGPC = ({
               to={linkUrl}
               style={{ cursor: "url(cursor/cursor.svg), auto" }}
             >
-              <img
-                src={process.env.PUBLIC_URL + "/img/galerie/" + src}
-                alt=""
-                ref={image}
-                style={{
-                  opacity: imgHover ? 0.8 : 1,
-                  transition: "all 300ms ease-out",
-                }}
-                className={anim == 1 ? "imgAnim1" : ""}
-                marque={marque}
+              <div
+                className="img-container"
                 onMouseOver={handleHover}
                 onMouseOut={handleMouseOut}
-              />
-              {imgHover && <p className="brand-display">{imgHover}</p>}
+              >
+                <img
+                  src={process.env.PUBLIC_URL + "/img/galerie/" + src}
+                  alt=""
+                  ref={image}
+                  style={{
+                    opacity: imgHover ? 0.8 : 1,
+                    transition: "all 300ms ease-out",
+                  }}
+                  className={anim == 1 ? "imgAnim1" : ""}
+                  marque={marque}
+                />
+                <p
+                  style={{
+                    display: imgHover ? "block" : "none",
+                    transition: "all 300ms ease-out",
+                  }}
+                  className="brand-display"
+                >
+                  {imgHover}
+                </p>
+              </div>
             </Link>
           ) : (
             ""
@@ -2324,8 +2336,6 @@ const Galerie = ({ setPageLoad }) => {
   const [selectedLink, setSelectedLink] = useState("all");
 
   const { t, i18n } = useTranslation("gallery");
-
-  console.log(selectedLink);
 
   return (
     <>
