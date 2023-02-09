@@ -6,6 +6,8 @@ import ScrollContainer from "react-indiana-drag-scroll";
 import { Helmet } from "react-helmet";
 import Lottie from "lottie-react";
 
+import { useLocation } from "react-router-dom";
+
 import anime from "animejs/lib/anime.es.js";
 
 import "./galerie.scss";
@@ -701,6 +703,9 @@ const Galerie = ({ setPageLoad }) => {
     titrePageGalerie.current.style.transform = "translateY(0%)";
   }, []);
 
+  const location = useLocation();
+  const { selectedLink = "vertical" } = location.state || {};
+
   return (
     <>
       <Helmet defer={false}>
@@ -716,7 +721,7 @@ const Galerie = ({ setPageLoad }) => {
       <div className="pageGalerie">
         <div className="titreAnimationWrapper">
           <h1 className="titrePageGalerie" ref={titrePageGalerie}>
-            GALERIE
+            VERTICAL
           </h1>
           <ul>
             <Link to="/galerie">
@@ -724,18 +729,58 @@ const Galerie = ({ setPageLoad }) => {
             </Link>
             <Link to="/galerie-horizontal">
               <li>Horizontal</li>
+              {selectedLink === "horizontal" && (
+                <>
+                  <ul className="sub-category">
+                    <li>— Garments</li>
+                    <li>— Books</li>
+                  </ul>
+                </>
+              )}
             </Link>
             <Link to="/galerie-vertical">
               <li className="active">Vertical</li>
+              {selectedLink === "vertical" && (
+                <ul className="sub-category">
+                  <li>— Ghost packshots</li>
+                  <li>— Piqués</li>
+                </ul>
+              )}
             </Link>
             <Link to="/galerie-live">
               <li>Live</li>
+              {selectedLink === "live" && (
+                <ul className="sub-category">
+                  <li>- Garments</li>
+                  <li>- Furnitures</li>
+                </ul>
+              )}
             </Link>
             <Link to="/galerie-eclipse">
               <li>Eclipse</li>
+              {selectedLink === "eclipse" && (
+                <ul className="sub-category">
+                  <li>- Shoes</li>
+                  <li>- Bags</li>
+                  <li>- Glasses</li>
+                  <li>- Cosmetics</li>
+                  <li>- Books</li>
+                  <li>- Jewelry</li>
+                  <li>- Food</li>
+                </ul>
+              )}
             </Link>
             <Link to="/galerie360">
-              <li>360</li>
+              <li>360 Interactive</li>
+              {selectedLink === "360" && (
+                <ul className="sub-category">
+                  <li>- Garments</li>
+                  <li>- Shoes</li>
+                  <li>- Bags</li>
+                  <li>- Accessories</li>
+                  <li>- Food</li>
+                </ul>
+              )}
             </Link>
           </ul>
         </div>
