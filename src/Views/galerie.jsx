@@ -17,6 +17,8 @@ import circleArrowRightBlack from "../Assets/img/landing/circle-arrow-right-blac
 
 import boutonSliderBlanc from "../Assets/animations/boutonMenuServices.json";
 
+import { useTranslation } from "react-i18next";
+
 const IMGMobile = ({ src, lar, haut, left, right, ajustHauteur, linkUrl }) => {
   const image = useRef();
   const [animETAT, setAnimETAT] = useState(false);
@@ -2321,6 +2323,8 @@ const Galerie = ({ setPageLoad }) => {
 
   const [selectedLink, setSelectedLink] = useState("all");
 
+  const { t, i18n } = useTranslation("gallery");
+
   console.log(selectedLink);
 
   return (
@@ -2338,7 +2342,7 @@ const Galerie = ({ setPageLoad }) => {
       <div className="pageGalerie">
         <div className="titreAnimationWrapper">
           <h1 className="titrePageGalerie" ref={titrePageGalerie}>
-            GALERIE
+            {t("GALLERY")}
           </h1>
           <ul>
             <Link

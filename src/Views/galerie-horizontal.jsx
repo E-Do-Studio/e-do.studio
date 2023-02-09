@@ -19,6 +19,8 @@ import circleArrowRightBlack from "../Assets/img/landing/circle-arrow-right-blac
 
 import boutonSliderBlanc from "../Assets/animations/boutonMenuServices.json";
 
+import { useTranslation } from "react-i18next";
+
 const IMGMobile = ({ src, lar, haut, left, right, ajustHauteur, linkUrl }) => {
   const image = useRef();
   const [animETAT, setAnimETAT] = useState(false);
@@ -251,6 +253,7 @@ const IMGPC = ({
   ajustHauteurBottom,
   anim,
   linkUrl,
+  subCat,
 }) => {
   const image = useRef();
   const IMGPCDessus = useRef();
@@ -346,7 +349,7 @@ const IMGPC = ({
   );
 };
 
-const GalerieDesktop = () => {
+const GalerieDesktop = ({ subCat, setSubCat }) => {
   const [scrollX, setScrollX] = useState(0);
 
   const handleScroll = (event) => {
@@ -443,186 +446,233 @@ const GalerieDesktop = () => {
             onScroll={handleScroll}
             hideScrollbars={false}
           >
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="chemise-jaune-de-fursac.png"
-              lar="22"
-              haut="27"
-              ajustHauteurTop=""
-              ajustHauteurBottom="20"
-              anim={2}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="jupe-maille-cormio.jpg"
-              lar="18"
-              haut="27"
-              ajustHauteurTop=""
-              ajustHauteurBottom="7"
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="pantalon-paloma-wool.jpg"
-              lar="18"
-              haut="27"
-              ajustHauteurTop=""
-              ajustHauteurBottom="7"
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="carre-de-soie-semaine.jpg"
-              lar="18"
-              haut="27"
-              ajustHauteurTop="7"
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="carre-de-tissu-loverboy.jpg"
-              lar="24"
-              haut="33"
-              ajustHauteurTop=""
-              ajustHauteurBottom="14"
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="close-up-charles-jeffrey.jpg"
-              lar="15"
-              haut="24"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="coperni-colors-bag.jpg"
-              lar="15"
-              haut="20"
-              ajustHauteurTop="20"
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="echarpe-packshot-laine-e-com.jpg"
-              lar="24"
-              haut="33"
-              ajustHauteurTop=""
-              ajustHauteurBottom="7"
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="haut-paloma-wool.jpg"
-              lar="18"
-              haut="27"
-              ajustHauteurTop="7"
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="limoncello-maison-masarin.jpg"
-              lar="22"
-              haut="27"
-              ajustHauteurTop=""
-              ajustHauteurBottom="20"
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="mariniere-jean-paul-gaultier.jpg"
-              lar="15"
-              haut="20"
-              ajustHauteurTop="7"
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="pantalon-ottolinger.jpg"
-              lar="15"
-              haut="20"
-              ajustHauteurTop=""
-              ajustHauteurBottom="7"
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="pantalon-packshot-reflective.jpg"
-              lar="17"
-              haut="25"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="phipps-jacket-back.jpg"
-              lar="16"
-              haut="25"
-              ajustHauteurTop=""
-              ajustHauteurBottom="12"
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="pull-loverboy.jpg"
-              lar="18"
-              haut="27"
-              ajustHauteurTop="10"
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="situationist-top-fish-net.jpg"
-              lar="18"
-              haut="27"
-              ajustHauteurTop=""
-              ajustHauteurBottom="15"
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="trench-coat-close-up-front.jpg"
-              lar="13"
-              haut="22"
-              ajustHauteurTop=""
-              ajustHauteurBottom="5"
-              anim={1}
-              scrollX={scrollX}
-            />
-            <IMGPC
-              linkUrl="/service-packshot-horizontal"
-              src="veste-en-cuir-classic-legend-motors.jpg"
-              lar="16"
-              haut="25"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-            />
+            {/* ALLL IMAGES HORIZONTAL */}
+            {subCat === "All" && (
+              <>
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="chemise-jaune-de-fursac.png"
+                  lar="22"
+                  haut="27"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="20"
+                  anim={2}
+                  scrollX={scrollX}
+                  subCat={subCat}
+                  setSubCat={setSubCat}
+                  Category="Garments"
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="jupe-maille-cormio.jpg"
+                  lar="18"
+                  haut="27"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="7"
+                  anim={1}
+                  scrollX={scrollX}
+                  subCat={subCat}
+                  setSubCat={setSubCat}
+                  Category="Books"
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="pantalon-paloma-wool.jpg"
+                  lar="18"
+                  haut="27"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="7"
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="carre-de-soie-semaine.jpg"
+                  lar="18"
+                  haut="27"
+                  ajustHauteurTop="7"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="carre-de-tissu-loverboy.jpg"
+                  lar="24"
+                  haut="33"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="14"
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="close-up-charles-jeffrey.jpg"
+                  lar="15"
+                  haut="24"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="coperni-colors-bag.jpg"
+                  lar="15"
+                  haut="20"
+                  ajustHauteurTop="20"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="echarpe-packshot-laine-e-com.jpg"
+                  lar="24"
+                  haut="33"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="7"
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="haut-paloma-wool.jpg"
+                  lar="18"
+                  haut="27"
+                  ajustHauteurTop="7"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="limoncello-maison-masarin.jpg"
+                  lar="22"
+                  haut="27"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="20"
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="mariniere-jean-paul-gaultier.jpg"
+                  lar="15"
+                  haut="20"
+                  ajustHauteurTop="7"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="pantalon-ottolinger.jpg"
+                  lar="15"
+                  haut="20"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="7"
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="pantalon-packshot-reflective.jpg"
+                  lar="17"
+                  haut="25"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="phipps-jacket-back.jpg"
+                  lar="16"
+                  haut="25"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="12"
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="pull-loverboy.jpg"
+                  lar="18"
+                  haut="27"
+                  ajustHauteurTop="10"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="situationist-top-fish-net.jpg"
+                  lar="18"
+                  haut="27"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="15"
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="trench-coat-close-up-front.jpg"
+                  lar="13"
+                  haut="22"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={1}
+                  scrollX={scrollX}
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="veste-en-cuir-classic-legend-motors.jpg"
+                  lar="16"
+                  haut="25"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                />
+              </>
+            )}
+            {/* ONLY GARMENTS IMAGES */}
+            {subCat === "Garments" && (
+              <>
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="chemise-jaune-de-fursac.png"
+                  lar="22"
+                  haut="27"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="20"
+                  anim={2}
+                  scrollX={scrollX}
+                  subCat={subCat}
+                  setSubCat={setSubCat}
+                  Category="Garments"
+                />
+              </>
+            )}
+            {/* ONLY BOOKS IMAGES */}
+            {subCat === "Books" && (
+              <>
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="jupe-maille-cormio.jpg"
+                  lar="18"
+                  haut="27"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="7"
+                  anim={1}
+                  scrollX={scrollX}
+                  subCat={subCat}
+                  setSubCat={setSubCat}
+                  Category="Books"
+                />
+              </>
+            )}
           </ScrollContainer>
           <div className="buttonBox">
             <button
@@ -828,6 +878,8 @@ const GalerieDesktop = () => {
 };
 
 const Galerie = ({ setPageLoad }) => {
+  const [subCat, setSubCat] = useState("All");
+
   const titrePageGalerie = useRef();
 
   const matches = useMediaQuery("only screen and (min-width: 1200px)");
@@ -842,7 +894,10 @@ const Galerie = ({ setPageLoad }) => {
   const location = useLocation();
   const { selectedLink = "horizontal" } = location.state || {};
 
-  console.log(selectedLink);
+  // Active link
+  const [active, setActive] = useState("horizontal");
+
+  const { t, i18n } = useTranslation("gallery");
 
   return (
     <>
@@ -870,8 +925,18 @@ const Galerie = ({ setPageLoad }) => {
               {selectedLink === "horizontal" && (
                 <>
                   <ul className="sub-category">
-                    <li>— Garments</li>
-                    <li>— Books</li>
+                    <li
+                      className={subCat === "Garments" ? "active" : ""}
+                      onClick={() => setSubCat("Garments")}
+                    >
+                      — {t("Garments")}
+                    </li>
+                    <li
+                      className={subCat === "Books" ? "active" : ""}
+                      onClick={() => setSubCat("Books")}
+                    >
+                      — {t("Books")}
+                    </li>
                   </ul>
                 </>
               )}
@@ -922,7 +987,11 @@ const Galerie = ({ setPageLoad }) => {
             </Link>
           </ul>
         </div>
-        {!matches ? <GalerieMobile /> : <GalerieDesktop />}
+        {!matches ? (
+          <GalerieMobile subCat={subCat} setSubCat={setSubCat} />
+        ) : (
+          <GalerieDesktop subCat={subCat} setSubCat={setSubCat} />
+        )}
       </div>
       <Footer AnimationBloc7={true} />
     </>
