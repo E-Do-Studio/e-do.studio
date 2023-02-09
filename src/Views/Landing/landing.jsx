@@ -1141,7 +1141,7 @@ const LandingDesktop = ({
             </Link>
             <a
               href={selectedLanguage === "fr" ? plaquetteFr : plaquetteEn}
-              download="e-do-plaquette.pdf"
+              download="Deck_E-Do.pdf"
             >
               <button className="button2" /*onClick={openPopupPDF}*/>
                 {t("Get the brochure")}
@@ -2621,7 +2621,7 @@ const LandingMobile = ({
             </a>
             <a
               href={selectedLanguage === "fr" ? plaquetteFr : plaquetteEn}
-              download="e-do-plaquette.pdf"
+              download="Deck_E-Do.pdf"
             >
               <button className="button2" /*onClick={openPopupPDF}*/>
                 {t("Get the brochure")}
