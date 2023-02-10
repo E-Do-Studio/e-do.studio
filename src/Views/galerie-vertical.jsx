@@ -19,6 +19,8 @@ import circleArrowRightBlack from "../Assets/img/landing/circle-arrow-right-blac
 
 import boutonSliderBlanc from "../Assets/animations/boutonMenuServices.json";
 
+import { useTranslation } from "react-i18next";
+
 const IMGMobile = ({ src, lar, haut, left, right, ajustHauteur, linkUrl }) => {
   const image = useRef();
   const [animETAT, setAnimETAT] = useState(false);
@@ -706,6 +708,8 @@ const Galerie = ({ setPageLoad }) => {
   const location = useLocation();
   const { selectedLink = "vertical" } = location.state || {};
 
+  const { t, i18n } = useTranslation("gallery");
+
   return (
     <>
       <Helmet defer={false}>
@@ -742,7 +746,7 @@ const Galerie = ({ setPageLoad }) => {
               <li className="active">Vertical</li>
               {selectedLink === "vertical" && (
                 <ul className="sub-category">
-                  <li>— Ghost packshots</li>
+                  <li>— {t("Ghost packshots")}</li>
                   <li>— Piqués</li>
                 </ul>
               )}

@@ -2420,7 +2420,6 @@ const Galerie = ({ setPageLoad }) => {
             </Link>
           </ul>
         </div>
-        );
         {!matches ? <GalerieMobile /> : <GalerieDesktop />}
       </div>
       <Footer AnimationBloc7={true} />
