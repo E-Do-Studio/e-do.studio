@@ -19,7 +19,7 @@ import boutonSliderBlanc from "../Assets/animations/boutonMenuServices.json";
 
 import { useTranslation } from "react-i18next";
 
-const IMGMobile = ({ src, lar, haut, left, right, ajustHauteur, linkUrl }) => {
+const IMGMobile = ({ src, lar, haut, left, right, ajustHauteur, linkUrl, alt }) => {
   const image = useRef();
   const [animETAT, setAnimETAT] = useState(false);
 
@@ -63,7 +63,7 @@ const IMGMobile = ({ src, lar, haut, left, right, ajustHauteur, linkUrl }) => {
           <Link to={linkUrl}>
             <img
               src={process.env.PUBLIC_URL + "/img/galerie/" + src}
-              alt=""
+              alt={alt}
               ref={image}
               style={{}}
             />
@@ -85,6 +85,7 @@ const GalerieMobile = () => {
         left="90px"
         right=""
         ajustHauteur="-23"
+        alt="seo"
       />
       <IMGMobile
         linkUrl="/service-packshot-horizontal"
@@ -979,6 +980,7 @@ const IMGPC = ({
   anim,
   linkUrl,
   marque,
+  alt,
 }) => {
   const image = useRef();
   const IMGPCDessus = useRef();
@@ -1052,7 +1054,7 @@ const IMGPC = ({
               >
                 <img
                   src={process.env.PUBLIC_URL + "/img/galerie/" + src}
-                  alt=""
+                  alt={alt}
                   ref={image}
                   style={{
                     opacity: imgHover ? 0.8 : 1,
@@ -1193,6 +1195,20 @@ const GalerieDesktop = () => {
     //Animation du bouton
   }, []);
 
+  const videoRef = useRef(null);
+
+  const [imgHover, setImgHover] = useState(false);
+
+  const handleHover = (event) => {
+    videoRef.current.style.opacity = 0.8;
+    videoRef.current.style.filter = "grayscale(1)";
+  };
+
+  const handleMouseOut = (event) => {
+    videoRef.current.style.opacity = 1;
+    videoRef.current.style.filter = "grayscale(0)";
+  };
+
   return (
     <div
       className="galeriePC"
@@ -1214,6 +1230,7 @@ const GalerieDesktop = () => {
           anim={2}
           scrollX={scrollX}
           marque="La marque 1"
+          alt="seo"
         />
         <IMGPC
           linkUrl="/service-packshot-horizontal"
@@ -1225,6 +1242,7 @@ const GalerieDesktop = () => {
           anim={1}
           scrollX={scrollX}
           marque="Lorem"
+          alt="seo"
         />
         <IMGPC
           linkUrl="/service-mannequin-vertical"
@@ -1236,6 +1254,7 @@ const GalerieDesktop = () => {
           anim={1}
           scrollX={scrollX}
           marque="Ipsum"
+          alt="seo"
         />
         <IMGPC
           linkUrl="/service-accessoires-eclipse"
@@ -1247,6 +1266,7 @@ const GalerieDesktop = () => {
           anim={1}
           scrollX={scrollX}
           marque="WOUAAAAAAA"
+          alt="seo"
         />
         <IMGPC
           linkUrl="/service-accessoires-eclipse"
@@ -1268,7 +1288,13 @@ const GalerieDesktop = () => {
             muted
             height="600"
             width="300"
-            style={{ marginLeft: "50px" }}
+            style={{
+              transition: "all 300ms ease-out",
+              marginLeft: "50px",
+            }}
+            onMouseOver={handleHover}
+            onMouseOut={handleMouseOut}
+            ref={videoRef}
           >
             <source
               src="/img/galerie/video-close-up-panconesi.mp4"
