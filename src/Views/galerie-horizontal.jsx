@@ -27,12 +27,9 @@ const IMGMobile = ({ src, lar, haut, left, right, ajustHauteur, linkUrl }) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    // image.current.style.transform = 'translateX(-100%)'
   }, []);
 
   const animIMG = () => {
-    //Lance l'animation
-    // console.log('test')
     if (!animETAT) {
       setAnimETAT(true);
       image.current.style.transform = "translateX(0%) scale(0.9)";
@@ -76,20 +73,28 @@ const IMGMobile = ({ src, lar, haut, left, right, ajustHauteur, linkUrl }) => {
   );
 };
 
-const GalerieMobile = ({ subCat, setSubCat }) => {
+const GalerieMobile = ({ selectedLink }) => {
   return (
     <div className="galerieMobile">
-      {subCat === "All" && (
+      {selectedLink === "horizontal" && (
         <>
+          <IMGMobile
+            linkUrl="/service-packshot-horizontal"
+            src="chemise-jaune-de-fursac.png"
+            lar="43"
+            haut="63"
+            left="90px"
+            right=""
+            ajustHauteur="-23"
+          />
           <IMGMobile
             linkUrl="/service-packshot-horizontal"
             src="jupe-maille-cormio.jpg"
             lar="43"
             haut="63"
-            left="31px"
+            left="90px"
             right=""
             ajustHauteur="-23"
-            subCat="Garments"
           />
           <IMGMobile
             linkUrl="/service-packshot-horizontal"
@@ -237,7 +242,7 @@ const GalerieMobile = ({ subCat, setSubCat }) => {
           />
         </>
       )}
-      {subCat === "Garments" && (
+      {selectedLink === "Garments" && (
         <>
           <IMGMobile
             linkUrl="/service-packshot-horizontal"
@@ -251,7 +256,7 @@ const GalerieMobile = ({ subCat, setSubCat }) => {
           />
         </>
       )}
-      {subCat === "Books" && (
+      {selectedLink === "Books" && (
         <>
           <IMGMobile
             linkUrl="/service-packshot-horizontal"
@@ -283,13 +288,7 @@ const IMGPC = ({
   const IMGPCDessus = useRef();
   const [animETAT, setAnimETAT] = useState(false);
 
-  // useEffect(() => {
-  //     // console.log(image.clientLeft)
-  // }, [scrollX])
-
   const animIMG = () => {
-    //Lance l'animation
-    // console.log('test')
     if (!animETAT) {
       if (anim === 1) {
         setAnimETAT(true);
@@ -373,7 +372,7 @@ const IMGPC = ({
   );
 };
 
-const GalerieDesktop = ({ subCat, setSubCat }) => {
+const GalerieDesktop = ({ selectedLink }) => {
   const [scrollX, setScrollX] = useState(0);
 
   const handleScroll = (event) => {
@@ -471,7 +470,7 @@ const GalerieDesktop = ({ subCat, setSubCat }) => {
             hideScrollbars={false}
           >
             {/* ALLL IMAGES HORIZONTAL */}
-            {subCat === "All" && (
+            {selectedLink === "horizontal" && (
               <>
                 <IMGPC
                   linkUrl="/service-packshot-horizontal"
@@ -482,8 +481,7 @@ const GalerieDesktop = ({ subCat, setSubCat }) => {
                   ajustHauteurBottom="20"
                   anim={2}
                   scrollX={scrollX}
-                  subCat={subCat}
-                  setSubCat={setSubCat}
+                  selectedLink={selectedLink}
                   Category="Garments"
                 />
                 <IMGPC
@@ -495,8 +493,7 @@ const GalerieDesktop = ({ subCat, setSubCat }) => {
                   ajustHauteurBottom="7"
                   anim={1}
                   scrollX={scrollX}
-                  subCat={subCat}
-                  setSubCat={setSubCat}
+                  selectedLink={selectedLink}
                   Category="Books"
                 />
                 <IMGPC
@@ -662,7 +659,7 @@ const GalerieDesktop = ({ subCat, setSubCat }) => {
               </>
             )}
             {/* ONLY GARMENTS IMAGES */}
-            {subCat === "Garments" && (
+            {selectedLink === "Garments" && (
               <>
                 <IMGPC
                   linkUrl="/service-packshot-horizontal"
@@ -673,14 +670,13 @@ const GalerieDesktop = ({ subCat, setSubCat }) => {
                   ajustHauteurBottom="20"
                   anim={2}
                   scrollX={scrollX}
-                  subCat={subCat}
-                  setSubCat={setSubCat}
+                  selectedLink={selectedLink}
                   Category="Garments"
                 />
               </>
             )}
             {/* ONLY BOOKS IMAGES */}
-            {subCat === "Books" && (
+            {selectedLink === "Books" && (
               <>
                 <IMGPC
                   linkUrl="/service-packshot-horizontal"
@@ -691,8 +687,7 @@ const GalerieDesktop = ({ subCat, setSubCat }) => {
                   ajustHauteurBottom="7"
                   anim={1}
                   scrollX={scrollX}
-                  subCat={subCat}
-                  setSubCat={setSubCat}
+                  selectedLink={selectedLink}
                   Category="Books"
                 />
               </>
@@ -724,177 +719,180 @@ const GalerieDesktop = ({ subCat, setSubCat }) => {
                 animationData={boutonSliderBlanc}
                 loop={false}
                 autoplay={false}
-                onEnterFrame={(event) => {
-                  // console.log(event)
-                }}
+                onEnterFrame={(event) => {}}
               />
             </button>
           </div>
         </div>
       ) : (
         <div className="galerieMobile">
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="chemise-jaune-de-fursac.png"
-            lar="43"
-            haut="63"
-            left="90px"
-            right=""
-            ajustHauteur="-23"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="jupe-maille-cormio.jpg"
-            lar="43"
-            haut="63"
-            left="31px"
-            right=""
-            ajustHauteur="-23"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="pantalon-paloma-wool.jpg"
-            lar="43"
-            haut="63"
-            left="40px"
-            right=""
-            ajustHauteur="-23"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="carre-de-soie-semaine.jpg"
-            lar="37"
-            haut="40"
-            left=""
-            right="30px"
-            ajustHauteur="-23"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="carre-de-tissu-loverboy.jpg"
-            lar="35"
-            haut="54"
-            left=""
-            right="60px"
-            ajustHauteur="-10"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="close-up-charles-jeffrey.jpg"
-            lar="43"
-            haut="63"
-            left="50px"
-            right=""
-            ajustHauteur="7"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="coperni-colors-bag.jpg"
-            lar="43"
-            haut="63"
-            left="70px"
-            right=""
-            ajustHauteur="3"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="echarpe-packshot-laine-e-com.jpg"
-            lar="43"
-            haut="63"
-            left=""
-            right="31px"
-            ajustHauteur="-5"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="haut-paloma-wool.jpg"
-            lar="43"
-            haut="63"
-            left="31px"
-            right=""
-            ajustHauteur="-23"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="limoncello-maison-masarin.jpg"
-            lar="33"
-            haut="40"
-            left=""
-            right="15px"
-            ajustHauteur="-23"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="mariniere-jean-paul-gaultier.jpg"
-            lar="43"
-            haut="63"
-            left="90px"
-            right=""
-            ajustHauteur="7"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="pantalon-ottolinger.jpg"
-            lar="30"
-            haut="45"
-            left=""
-            right="31px"
-            ajustHauteur="5"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="pantalon-packshot-reflective.jpg"
-            lar="33"
-            haut="54"
-            left=""
-            right="10px"
-            ajustHauteur="-23"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="phipps-jacket-back.jpg"
-            lar="35"
-            haut="54"
-            left=""
-            right="60px"
-            ajustHauteur="-10"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="pull-loverboy.jpg"
-            lar="43"
-            haut="63"
-            left="31px"
-            right=""
-            ajustHauteur=""
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="situationist-top-fish-net.jpg"
-            lar="33"
-            haut="40"
-            left=""
-            right="15px"
-            ajustHauteur="-23"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="trench-coat-close-up-front.jpg"
-            lar="43"
-            haut="63"
-            left="90px"
-            right=""
-            ajustHauteur="-23"
-          />
-          <IMGMobile
-            linkUrl="/service-packshot-horizontal"
-            src="veste-en-cuir-classic-legend-motors.jpg"
-            lar="43"
-            haut="63"
-            left="20px"
-            right=""
-            ajustHauteur="7"
-          />
+          {/* ALLL IMAGES HORIZONTAL */}
+          {selectedLink === "horizontal" && (
+            <>
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="chemise-jaune-de-fursac.png"
+                lar="43"
+                haut="63"
+                left="90px"
+                right=""
+                ajustHauteur="-23"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="jupe-maille-cormio.jpg"
+                lar="43"
+                haut="63"
+                left="31px"
+                right=""
+                ajustHauteur="-23"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="pantalon-paloma-wool.jpg"
+                lar="43"
+                haut="63"
+                left="40px"
+                right=""
+                ajustHauteur="-23"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="carre-de-soie-semaine.jpg"
+                lar="37"
+                haut="40"
+                left=""
+                right="30px"
+                ajustHauteur="-23"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="carre-de-tissu-loverboy.jpg"
+                lar="35"
+                haut="54"
+                left=""
+                right="60px"
+                ajustHauteur="-10"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="close-up-charles-jeffrey.jpg"
+                lar="43"
+                haut="63"
+                left="50px"
+                right=""
+                ajustHauteur="7"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="coperni-colors-bag.jpg"
+                lar="43"
+                haut="63"
+                left="70px"
+                right=""
+                ajustHauteur="3"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="echarpe-packshot-laine-e-com.jpg"
+                lar="43"
+                haut="63"
+                left=""
+                right="31px"
+                ajustHauteur="-5"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="haut-paloma-wool.jpg"
+                lar="43"
+                haut="63"
+                left="31px"
+                right=""
+                ajustHauteur="-23"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="limoncello-maison-masarin.jpg"
+                lar="33"
+                haut="40"
+                left=""
+                right="15px"
+                ajustHauteur="-23"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="mariniere-jean-paul-gaultier.jpg"
+                lar="43"
+                haut="63"
+                left="90px"
+                right=""
+                ajustHauteur="7"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="pantalon-ottolinger.jpg"
+                lar="30"
+                haut="45"
+                left=""
+                right="31px"
+                ajustHauteur="5"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="pantalon-packshot-reflective.jpg"
+                lar="33"
+                haut="54"
+                left=""
+                right="10px"
+                ajustHauteur="-23"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="phipps-jacket-back.jpg"
+                lar="35"
+                haut="54"
+                left=""
+                right="60px"
+                ajustHauteur="-10"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="pull-loverboy.jpg"
+                lar="43"
+                haut="63"
+                left="31px"
+                right=""
+                ajustHauteur=""
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="situationist-top-fish-net.jpg"
+                lar="33"
+                haut="40"
+                left=""
+                right="15px"
+                ajustHauteur="-23"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="trench-coat-close-up-front.jpg"
+                lar="43"
+                haut="63"
+                left="90px"
+                right=""
+                ajustHauteur="-23"
+              />
+              <IMGMobile
+                linkUrl="/service-packshot-horizontal"
+                src="veste-en-cuir-classic-legend-motors.jpg"
+                lar="43"
+                haut="63"
+                left="20px"
+                right=""
+                ajustHauteur="7"
+              />
+            </>
+          )}
         </div>
       )}
     </>
@@ -902,8 +900,6 @@ const GalerieDesktop = ({ subCat, setSubCat }) => {
 };
 
 const Galerie = ({ setPageLoad }) => {
-  const [subCat, setSubCat] = useState("All");
-
   const titrePageGalerie = useRef();
 
   const matches = useMediaQuery("only screen and (min-width: 1200px)");
@@ -939,84 +935,85 @@ const Galerie = ({ setPageLoad }) => {
         <div className="titreAnimationWrapper">
           <h1 className="titrePageGalerie" ref={titrePageGalerie}>
             HORIZONTAL
+            {/* <span>
+              {selectedLink === "Garments" || selectedLink === "Books"
+                ? `HORIZONTAL / ${t(selectedLink)}`
+                : "HORIZONTAL"}
+            </span>{" "} */}
           </h1>
           <ul>
             <Link to="/galerie">
               <li>all</li>
             </Link>
             <Link to="/galerie-horizontal">
-              <li onClick={() => setSubCat("All")} className="active">
+              <li className={selectedLink === "horizontal" ? "active" : ""}>
                 Horizontal
               </li>
-              {selectedLink === "horizontal" && (
-                <>
-                  <ul className="sub-category">
-                    <li
-                      className={subCat === "Garments" ? "active" : ""}
-                      onClick={() => setSubCat("Garments")}
-                    >
-                      — {t("Garments")}
-                    </li>
-                    <li
-                      className={subCat === "Books" ? "active" : ""}
-                      onClick={() => setSubCat("Books")}
-                    >
-                      — {t("Books")}
-                    </li>
-                  </ul>
-                </>
-              )}
+              <ul className="sub-category">
+                <Link
+                  to={{
+                    pathname: "/galerie-horizontal",
+                    state: { selectedLink: "Garments" },
+                  }}
+                >
+                  <li className={selectedLink === "Garments" ? "active" : ""}>
+                    — {t("Garments")}
+                  </li>
+                </Link>
+                <Link
+                  to={{
+                    pathname: "/galerie-horizontal",
+                    state: { selectedLink: "Books" },
+                  }}
+                >
+                  <li className={selectedLink === "Books" ? "active" : ""}>
+                    — {t("Books")}
+                  </li>
+                </Link>
+              </ul>
             </Link>
             <Link to="/galerie-vertical">
               <li>Vertical</li>
-              {selectedLink === "vertical" && (
-                <ul className="sub-category">
-                  <li>— Ghost packshots</li>
-                  <li>— Piqués</li>
-                </ul>
-              )}
+              <ul className="sub-category">
+                <li>— {t("Ghost packshots")}</li>
+                <li>— Piqués</li>
+              </ul>
             </Link>
             <Link to="/galerie-live">
               <li>Live</li>
-              {selectedLink === "live" && (
-                <ul className="sub-category">
-                  <li>— Garments</li>
-                  <li>— Furnitures</li>
-                </ul>
-              )}
+              <ul className="sub-category">
+                <li>— {t("Garments")}</li>
+                <li>— {t("Furnitures")}</li>
+              </ul>
             </Link>
             <Link to="/galerie-eclipse">
               <li>Eclipse</li>
-              {selectedLink === "eclipse" && (
-                <ul className="sub-category">
-                  <li>— Shoes</li>
-                  <li>— Bags</li>
-                  <li>— Glasses</li>
-                  <li>— Cosmetics</li>
-                  <li>— Books</li>
-                  <li>— Jewelry</li>
-                  <li>— Food</li>
-                </ul>
-              )}
+              <ul className="sub-category">
+                <li>— {t("Shoes")}</li>
+                <li>— {t("Bags")}</li>
+                <li>— {t("Glasses")}</li>
+                <li>— {t("Cosmetics")}</li>
+                <li>— {t("Books")}</li>
+                <li>— {t("Jewelry")}</li>
+                <li>— {t("Food")}</li>
+              </ul>
             </Link>
             <Link to="/galerie360">
               <li>360 Interactive</li>
-              {selectedLink === "360" && (
-                <ul className="sub-category">
-                  <li>— Garments</li>
-                  <li>— Shoes</li>
-                  <li>— Bags</li>
-                  <li>— Accessories</li>
-                  <li>— Food</li>
-                </ul>
-              )}
+              <ul className="sub-category">
+                <li>— {t("Garments")}</li>
+                <li>— {t("Shoes")}</li>
+                <li>— {t("Bags")}</li>
+                <li>— {t("Accessories")}</li>
+                <li>— {t("Food")}</li>
+              </ul>
             </Link>
           </ul>
         </div>
         {!matches ? (
-          <GalerieMobile subCat={subCat} setSubCat={setSubCat} />
+          <GalerieMobile selectedLink={selectedLink} />
         ) : (
-          <GalerieDesktop subCat={subCat} setSubCat={setSubCat} />
+          <GalerieDesktop selectedLink={selectedLink} />
         )}
       </div>
       <Footer AnimationBloc7={true} />

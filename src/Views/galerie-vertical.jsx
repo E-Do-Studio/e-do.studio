@@ -744,47 +744,42 @@ const Galerie = ({ setPageLoad }) => {
             </Link>
             <Link to="/galerie-vertical">
               <li className="active">Vertical</li>
-              {selectedLink === "vertical" && (
-                <ul className="sub-category">
-                  <li>— {t("Ghost packshots")}</li>
-                  <li>— Piqués</li>
-                </ul>
-              )}
+              <ul className="sub-category">
+                <li>— {t("Ghost packshots")}</li>
+                <li>— Piqués</li>
+              </ul>
             </Link>
             <Link to="/galerie-live">
               <li>Live</li>
-              {selectedLink === "live" && (
-                <ul className="sub-category">
-                  <li>- Garments</li>
-                  <li>- Furnitures</li>
-                </ul>
-              )}
+
+              <ul className="sub-category">
+                <li>- Garments</li>
+                <li>- Furnitures</li>
+              </ul>
             </Link>
             <Link to="/galerie-eclipse">
               <li>Eclipse</li>
-              {selectedLink === "eclipse" && (
-                <ul className="sub-category">
-                  <li>- Shoes</li>
-                  <li>- Bags</li>
-                  <li>- Glasses</li>
-                  <li>- Cosmetics</li>
-                  <li>- Books</li>
-                  <li>- Jewelry</li>
-                  <li>- Food</li>
-                </ul>
-              )}
+
+              <ul className="sub-category">
+                <li>- Shoes</li>
+                <li>- Bags</li>
+                <li>- Glasses</li>
+                <li>- Cosmetics</li>
+                <li>- Books</li>
+                <li>- Jewelry</li>
+                <li>- Food</li>
+              </ul>
             </Link>
             <Link to="/galerie360">
               <li>360 Interactive</li>
-              {selectedLink === "360" && (
-                <ul className="sub-category">
-                  <li>- Garments</li>
-                  <li>- Shoes</li>
-                  <li>- Bags</li>
-                  <li>- Accessories</li>
-                  <li>- Food</li>
-                </ul>
-              )}
+
+              <ul className="sub-category">
+                <li>- Garments</li>
+                <li>- Shoes</li>
+                <li>- Bags</li>
+                <li>- Accessories</li>
+                <li>- Food</li>
+              </ul>
             </Link>
           </ul>
         </div>

@@ -19,7 +19,16 @@ import boutonSliderBlanc from "../Assets/animations/boutonMenuServices.json";
 
 import { useTranslation } from "react-i18next";
 
-const IMGMobile = ({ src, lar, haut, left, right, ajustHauteur, linkUrl, alt }) => {
+const IMGMobile = ({
+  src,
+  lar,
+  haut,
+  left,
+  right,
+  ajustHauteur,
+  linkUrl,
+  alt,
+}) => {
   const image = useRef();
   const [animETAT, setAnimETAT] = useState(false);
 
@@ -2394,55 +2403,93 @@ const Galerie = ({ setPageLoad }) => {
                 pathname: "/galerie-horizontal",
                 state: { selectedLink: "horizontal" },
               }}
-              selectedLink={selectedLink}
-              setSelectedLink={setSelectedLink}
-              onClick={() => setSelectedLink("horizontal")}
             >
               <li>Horizontal</li>
+              <ul className="sub-category">
+                <Link
+                  to={{
+                    pathname: "/galerie-horizontal",
+                    state: { selectedLink: "Garments" },
+                  }}
+                >
+                  <li className={selectedLink === "Garments" ? "active" : ""}>
+                    — {t("Garments")}
+                  </li>
+                </Link>
+                <Link
+                  to={{
+                    pathname: "/galerie-horizontal",
+                    state: { selectedLink: "Books" },
+                  }}
+                >
+                  <li className={selectedLink === "Books" ? "active" : ""}>
+                    — {t("Books")}
+                  </li>
+                </Link>
+              </ul>
             </Link>
             <Link
               to={{
                 pathname: "/galerie-vertical",
                 state: { selectedLink: "vertical" },
               }}
-              selectedLink={selectedLink}
-              setSelectedLink={setSelectedLink}
-              onClick={() => setSelectedLink("vertical")}
             >
               <li>Vertical</li>
+              <ul className="sub-category">
+                <Link
+                  to={{
+                    pathname: "/galerie-vertical",
+                    state: { selectedLink: "Ghost" },
+                  }}
+                >
+                  <li>— {t("Ghost packshots")}</li>
+                </Link>
+                <li>— Piqués</li>
+              </ul>
             </Link>
             <Link
               to={{
                 pathname: "/galerie-live",
                 state: { selectedLink: "live" },
               }}
-              selectedLink={selectedLink}
-              setSelectedLink={setSelectedLink}
-              onClick={() => setSelectedLink("live")}
             >
               <li>Live</li>
+              <ul className="sub-category">
+                <li>— {t("Garments")}</li>
+                <li>— {t("Furnitures")}</li>
+              </ul>
             </Link>
             <Link
               to={{
                 pathname: "/galerie-eclipse",
                 state: { selectedLink: "eclipse" },
               }}
-              selectedLink={selectedLink}
-              setSelectedLink={setSelectedLink}
-              onClick={() => setSelectedLink("eclipse")}
             >
               <li>Eclipse</li>
+              <ul className="sub-category">
+                <li>— {t("Garments")}</li>
+                <li>— {t("Bags")}</li>
+                <li>— {t("Glasses")}</li>
+                <li>— {t("Cosmetics")}</li>
+                <li>— {t("Books")}</li>
+                <li>— {t("Jewelry")}</li>
+                <li>— {t("Food")}</li>
+              </ul>
             </Link>
             <Link
               to={{
                 pathname: "/galerie360",
                 state: { selectedLink: "360" },
               }}
-              selectedLink={selectedLink}
-              setSelectedLink={setSelectedLink}
-              onClick={() => setSelectedLink("360")}
             >
               <li>360 Interactive</li>
+              <ul className="sub-category">
+                <li>— {t("Garments")}</li>
+                <li>— {t("Shoes")}</li>
+                <li>— {t("Bags")}</li>
+                <li>— {t("Accessories")}</li>
+                <li>— {t("Food")}</li>
+              </ul>
             </Link>
           </ul>
         </div>
