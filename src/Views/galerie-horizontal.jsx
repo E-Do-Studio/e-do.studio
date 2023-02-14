@@ -939,7 +939,7 @@ const Galerie = ({ setPageLoad }) => {
               {selectedLink === "Garments" || selectedLink === "Books"
                 ? `HORIZONTAL / ${t(selectedLink)}`
                 : "HORIZONTAL"}
-            </span>{" "} */}
+            </span> */}
           </h1>
           <ul>
             <Link to="/galerie">

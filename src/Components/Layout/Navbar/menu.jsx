@@ -4,6 +4,11 @@ import { motion } from "framer-motion";
 import anime from "animejs/lib/anime.es.js";
 import { useMediaQuery } from "@react-hook/media-query";
 
+// Import Icon
+
+import uk from "./../../../Assets/img/icon/uk.png";
+import fr from "./../../../Assets/img/icon/fr.png";
+
 // Import i8next
 
 import i18next from "i18next";
@@ -200,38 +205,27 @@ const Menu = ({ pageLoad }) => {
                 </Link>
               </li>
 
-              <li>
-                {/* <span
-                  className={`Link ${
-                    selectedLanguage === "fr" ? "noActive" : ""
-                  }`}
-                  onClick={() => i18next.changeLanguage("fr")}
-                >
-                  fr
-                </span>{" "}
-                /{" "}
-                <span
-                  className={`Link ${
-                    selectedLanguage === "en" ? "noActive" : ""
-                  }`}
-                  onClick={() => i18next.changeLanguage("en")}
-                >
-                  en
-                </span> */}
+              <li className="lang">
                 {i18next.language === "fr" ? (
-                  <span
-                    className="Link boutonLangue"
-                    onClick={() => i18next.changeLanguage("en")}
-                  >
-                    en
-                  </span>
+                  <>
+                    <span
+                      className="Link boutonLangue"
+                      onClick={() => i18next.changeLanguage("en")}
+                    >
+                      en
+                    </span>
+                    <img src={uk} alt="icon-uk" />
+                  </>
                 ) : (
-                  <span
-                    className="Link boutonLangue"
-                    onClick={() => i18next.changeLanguage("fr")}
-                  >
-                    fr
-                  </span>
+                  <>
+                    <span
+                      className="Link boutonLangue"
+                      onClick={() => i18next.changeLanguage("fr")}
+                    >
+                      fr
+                    </span>
+                    <img src={fr} alt="icon-fr" />
+                  </>
                 )}
               </li>
 
