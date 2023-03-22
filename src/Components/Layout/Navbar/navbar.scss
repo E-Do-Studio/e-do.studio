@@ -137,10 +137,6 @@
           display: flex;
           justify-content: right;
 
-          .lang {
-            display: flex !important;
-          }
-
           li:not(:last-child) {
             display: inline;
             margin-left: 28px;
@@ -214,11 +210,6 @@
             }
             .boutonLangue {
               font-weight: 900;
-              padding-right: 5px;
-            }
-            img {
-              width: 15px;
-              height: 15px;
             }
             .noActive {
               opacity: 0.1;

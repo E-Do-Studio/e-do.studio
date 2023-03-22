@@ -36,8 +36,6 @@ const Navbar = ({ pageLoad, backgroundBlack, cookieAccept }) => {
   }, [location]);
 
   useEffect(() => {
-    console.log("CookieOK");
-
     ReactGA.initialize("UA-188295266-1");
     ReactGA.pageview(window.location.pathname + window.location.search);
 

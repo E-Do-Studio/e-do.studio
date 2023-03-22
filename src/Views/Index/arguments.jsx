@@ -41,7 +41,7 @@ const ArgumentUnique1 = () => {
         </div>
         <p>
           {t(
-            "Compared to a traditional studio model, our machines allow you to multiply by 4 your image production on a shooting day. E-Do offers you the opportunity to efficiently feed your sales or communication platforms with your content created in the studio."
+            "Compared to a traditional studio model, our machines allow you to multiply by 4 your image production on a shooting day."
           )}
           <br />
           {t(

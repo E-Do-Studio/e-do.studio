@@ -16,6 +16,7 @@ import cycloramaEn from "./Translation/en/cyclorama.json";
 import postProdEn from "./Translation/en/postProd.json";
 import landingEn from "./Translation/en/landing.json";
 import galleryEn from "./Translation/en/gallery.json";
+import retouchesEn from "./Translation/en/retouches.json";
 
 // initialize the i18next library
 i18next.use(initReactI18next).init({
@@ -34,6 +35,7 @@ i18next.use(initReactI18next).init({
       postProd: postProdEn,
       landing: landingEn,
       gallery: galleryEn,
+      retouches: retouchesEn,
     },
   },
 

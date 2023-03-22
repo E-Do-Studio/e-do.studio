@@ -8,11 +8,6 @@ import { Helmet } from "react-helmet";
 //import {isMobile} from 'react-device-detect';
 import handleViewport from "react-in-viewport";
 
-// Lang icon
-
-import uk_white from "./../../Assets/img/icon/uk_white.png";
-import fr_white from "./../../Assets/img/icon/fr_white.png";
-
 // Analytics & pixels
 import ReactGA from "react-ga";
 import TagManager from "react-gtm-module";
@@ -1090,25 +1085,19 @@ const LandingDesktop = ({
               </a>
               <span className="menu-item change-lang">
                 {i18next.language === "fr" ? (
-                  <>
-                    <span
-                      className="Link boutonLangue"
-                      onClick={() => i18next.changeLanguage("en")}
-                    >
-                      en
-                    </span>
-                    <img src={uk_white} alt="icon-uk" />
-                  </>
+                  <span
+                    className="Link boutonLangue"
+                    onClick={() => i18next.changeLanguage("en")}
+                  >
+                    en
+                  </span>
                 ) : (
-                  <>
-                    <span
-                      className="Link boutonLangue"
-                      onClick={() => i18next.changeLanguage("fr")}
-                    >
-                      fr
-                    </span>
-                    <img src={fr_white} alt="icon-fr" />
-                  </>
+                  <span
+                    className="Link boutonLangue"
+                    onClick={() => i18next.changeLanguage("fr")}
+                  >
+                    fr
+                  </span>
                 )}
               </span>
             </div>

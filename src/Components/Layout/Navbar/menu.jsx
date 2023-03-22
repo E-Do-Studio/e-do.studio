@@ -4,11 +4,6 @@ import { motion } from "framer-motion";
 import anime from "animejs/lib/anime.es.js";
 import { useMediaQuery } from "@react-hook/media-query";
 
-// Import Icon
-
-import uk from "./../../../Assets/img/icon/uk.png";
-import fr from "./../../../Assets/img/icon/fr.png";
-
 // Import i8next
 
 import i18next from "i18next";
@@ -62,7 +57,6 @@ const Menu = ({ pageLoad }) => {
 
   useEffect(() => {
     if (matches) {
-      console.log("match");
       setMenuMobile(false);
     }
   }, [matches]);
@@ -205,27 +199,38 @@ const Menu = ({ pageLoad }) => {
                 </Link>
               </li>
 
-              <li className="lang">
+              <li>
+                {/* <span
+                  className={`Link ${
+                    selectedLanguage === "fr" ? "noActive" : ""
+                  }`}
+                  onClick={() => i18next.changeLanguage("fr")}
+                >
+                  fr
+                </span>{" "}
+                /{" "}
+                <span
+                  className={`Link ${
+                    selectedLanguage === "en" ? "noActive" : ""
+                  }`}
+                  onClick={() => i18next.changeLanguage("en")}
+                >
+                  en
+                </span> */}
                 {i18next.language === "fr" ? (
-                  <>
-                    <span
-                      className="Link boutonLangue"
-                      onClick={() => i18next.changeLanguage("en")}
-                    >
-                      en
-                    </span>
-                    <img src={uk} alt="icon-uk" />
-                  </>
+                  <span
+                    className="Link boutonLangue"
+                    onClick={() => i18next.changeLanguage("en")}
+                  >
+                    en
+                  </span>
                 ) : (
-                  <>
-                    <span
-                      className="Link boutonLangue"
-                      onClick={() => i18next.changeLanguage("fr")}
-                    >
-                      fr
-                    </span>
-                    <img src={fr} alt="icon-fr" />
-                  </>
+                  <span
+                    className="Link boutonLangue"
+                    onClick={() => i18next.changeLanguage("fr")}
+                  >
+                    fr
+                  </span>
                 )}
               </li>
 
@@ -245,7 +250,6 @@ const Menu = ({ pageLoad }) => {
           </nav>
         </motion.div>
       </div>
-
       <div className="menuMobile">
         <div className="menuMobile_PartieHaute">
           <div className="menuMobile_Menu">

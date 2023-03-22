@@ -113,17 +113,11 @@ html {
         position: absolute;
         top: 38px;
         right: 195px;
-        display: flex;
 
         .menu-item {
           font-size: 14px;
           margin-right: 46px;
           color: #fafafa;
-          display: flex;
-          img {
-            width: 15px;
-            height: 15px;
-          }
 
           &:hover {
             text-decoration: underline;
@@ -136,9 +130,6 @@ html {
           margin-right: 46px;
           color: #fafafa;
           font-weight: 900;
-          span {
-            padding-right: 5px;
-          }
 
           .item {
             &:hover {

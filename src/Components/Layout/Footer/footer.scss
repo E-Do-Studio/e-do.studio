@@ -1,611 +1,632 @@
-@import '../../../Assets/scss/styles.scss';
+@import "../../../Assets/scss/styles.scss";
 
+.footerPrincipale {
+  // height:100vh;
+  width: 100vw;
+  min-height: 550px;
+  background: black;
+  z-index: 15;
+  color: white;
+  overflow: hidden;
 
+  box-sizing: border-box;
+  padding: 0 30px;
+  padding-top: 25px;
+  padding-bottom: 75px;
 
-.footerPrincipale{
-    // height:100vh;
-    width:100vw;
-    min-height: 550px;
-    background:black;
-    z-index:5;
-    color:white;
-    overflow: hidden;
+  position: relative;
+  font-weight: 300;
 
-    box-sizing: border-box;
-    padding:0 30px;
-    padding-top:25px;
-    padding-bottom:75px;
-    
-    position:relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  @include lg {
+    padding: 0 50px;
+    padding-top: 25px;
+  }
+
+  .footerPrincipalWrapper {
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    opacity: 0;
+    // background:green;
+    // overflow-X: hidden;
+
+    @include lg {
+      max-width: 1000px;
+    }
+    @include qhd {
+      max-width: 1400px;
+    }
+  }
+
+  h1 {
     font-weight: 300;
+    font-size: 25px;
+    letter-spacing: -0.72px;
 
+    @include rwd(340) {
+      font-size: 27px;
+    }
+    @include rwd(360) {
+      font-size: 29px;
+    }
+    @include lg {
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -1.2px;
+    }
+    @include qhd {
+      font-size: 70px;
+    }
+  }
+  h3 {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.71;
+    display: none;
+    // position:absolute;
+    bottom: 0;
+    @include lg {
+      display: block;
+    }
+    @include qhd {
+      font-size: 16px;
+    }
+  }
+
+  p {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+
+    @include rwd(340) {
+      margin-top: 9px;
+      font-size: 15px;
+      line-height: 1.56;
+    }
+    @include rwd(360) {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 1.63;
+    }
+
+    @include lg {
+      font-size: 15px;
+      line-height: 1.67;
+      letter-spacing: -0.36px;
+      padding-left: 120px;
+    }
+    @include qhd {
+      font-size: 18px;
+      padding-left: 200px;
+    }
+  }
+
+  .FP_InfosHorairesP {
+    @include lg {
+      padding-left: 200px;
+    }
+    @include qhd {
+      padding-left: 315px;
+    }
+  }
+
+  .FP_Infos {
+    padding-top: 100px;
+    // background:red;
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
-    @include lg{
-        padding:0 50px;
-        padding-top:25px;
+    @include lg {
+      padding-top: unset;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-bottom: 100px;
     }
 
-    .footerPrincipalWrapper{
-        width:100%;
-        max-width:400px;
-        margin-left:auto;
-        margin-right:auto;
-        position:relative;
-        opacity:0;
-        // background:green;
-        // overflow-X: hidden;
+    .FP_InfosAdresse {
+      .FP_MetroDeco {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
 
-        @include lg{max-width: 1000px;}
-        @include qhd{max-width: 1400px;}
+        text-align: center;
+        border: 1px solid white;
+        border-radius: 10000px;
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+      }
+      @include lg {
+      }
     }
 
-    h1{
-        font-weight: 300;
-        font-size: 25px;
-        letter-spacing: -0.72px;
+    .FP_InfosHoraires {
+      margin-top: 15px;
 
-        @include rwd(340){font-size: 27px;}
-        @include rwd(360){font-size: 29px;}
-        @include lg{
-            font-size: 50px;
-            font-weight: 300;
-            line-height: 1.2;
-            letter-spacing: -1.2px;
+      @include rwd(340) {
+        margin-top: 20px;
+      }
+      @include rwd(360) {
+        margin-top: 24px;
+      }
+
+      @media screen and (min-height: 680px) {
+        margin-top: 65px;
+      }
+
+      @include lg {
+        margin-top: 190px;
+      }
+
+      @include qhd {
+        margin-top: 300px;
+      }
+    }
+
+    .FP_InfosBouton {
+      margin-top: 15px;
+      text-align: right;
+      transform: translateY(-130px);
+
+      @include rwd(340) {
+        margin-top: 22px;
+      }
+      @include rwd(360) {
+        margin-top: 30px;
+      }
+      @include lg {
+        transform: unset;
+      }
+      .FP_InfosButtonRound {
+        padding: 10px;
+        height: 80px;
+        width: 80px;
+        overflow: hidden;
+        background: white;
+        color: black;
+        border-radius: 100000px;
+        cursor: pointer;
+
+        font-size: 14px;
+        letter-spacing: -0.34px;
+        text-align: center;
+
+        transform: translateY(100px);
+
+        @include rwd(380) {
+          height: 100px;
+          width: 100px;
         }
-        @include qhd{
-            font-size: 70px;
+
+        @include lg {
+          height: 180px;
+          width: 180px;
+          font-size: 20px;
         }
+
+        @include qhd {
+          height: 220px;
+          width: 220px;
+          font-size: 22px;
+        }
+      }
     }
-    h3{
-        font-weight: 300;
+  }
+
+  .FP_Reseaux {
+    // margin-top:30px;
+    // background:red;
+    position: absolute;
+    left: 32px;
+    right: 32px;
+    bottom: 3.5vh;
+    padding-bottom: 40px;
+    // bottom:100px;
+    // height:50px;
+
+    @include lg {
+      display: flex;
+      flex-direction: row;
+
+      position: absolute;
+      bottom: 4.5vh;
+      // top:110%;
+      // left:0;
+      // width:100%;
+    }
+
+    @include xl {
+      left: 76px;
+      right: 76px;
+    }
+    opacity: 0;
+
+    .FP_ReseauxWrapper {
+      // background:red;
+    }
+
+    .FP_ReseauxListe {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 8px;
+      overflow: hidden;
+
+      // background:green;
+
+      @include lg {
+        width: 450px;
+        // margin-left:155px;
+        margin-top: unset;
+
+        // background:red;
+      }
+      h3 {
+        display: none;
+        @include lg {
+          display: inline;
+        }
+      }
+      a {
+        color: white;
         font-size: 14px;
         line-height: 1.71;
-        display:none;
-        // position:absolute;
-        bottom:0;
-        @include lg{display: block;}
-        @include qhd{font-size:16px;}
+        letter-spacing: -0.34px;
+
+        @include qhd {
+          font-size: 16px;
+        }
+      }
     }
 
-    p{
-        margin-top:8px;
+    .FP_Legals {
+      // background:red;
+      opacity: 0;
+      position: absolute;
+      // right:32px;
+      right: 0;
+      transform: translateY(10px);
+      overflow: hidden;
+
+      @include lg {
+        transform: unset;
+
+        bottom: 4.8vh;
+      }
+      a {
+        display: inline-block;
+        color: white;
         font-size: 14px;
-        line-height: 1.5;
-
-        @include rwd(340){
-            margin-top:9px;
-            font-size: 15px;
-            line-height: 1.56;
+        line-height: 1.71;
+        letter-spacing: -0.34px;
+        @include qhd {
+          font-size: 16px;
         }
-        @include rwd(360){
-            margin-top:10px;
-            font-size: 16px;
-            line-height: 1.63;
-        }
-
-        @include lg{
-            font-size: 15px;
-            line-height: 1.67;
-            letter-spacing: -0.36px;
-            padding-left:120px;
-        }
-        @include qhd{
-            font-size: 18px;
-            padding-left:200px;
-        }
+      }
     }
+  }
 
-    .FP_InfosHorairesP{
-        @include lg{
-            padding-left:200px;
-        }
-        @include qhd{padding-left:315px;}
-    }
-
-    .FP_Infos{
-        padding-top:100px;
-        // background:red;
-        display:flex;
-        flex-direction: column;
-
-        @include lg{
-            padding-top:unset;
-            flex-direction: row;
-            justify-content: space-between;
-            padding-bottom:100px;
-        }
-        
-        .FP_InfosAdresse{
-            .FP_MetroDeco{
-                display: inline-flex;
-                justify-content: center;
-                align-items: center;
-                
-                text-align: center;
-                border:1px solid white;
-                border-radius:10000px;
-                width:20px;
-                height:20px;
-                font-size:12px;
-            }
-            @include lg{
-
-            }
-        }
-
-        .FP_InfosHoraires{
-            margin-top:15px;
-
-            @include rwd(340){margin-top:20px;}
-            @include rwd(360){margin-top:24px;}
-
-            @media screen and (min-height:680px){
-                margin-top:65px;
-            }
-
-            @include lg{
-                margin-top:190px;
-            }
-
-            @include qhd{
-                margin-top:300px;
-            }
-        }
-
-        .FP_InfosBouton{
-            margin-top:15px;
-            text-align: right;
-            transform: translateY(-130px);
-
-            @include rwd(340){margin-top:22px;}
-            @include rwd(360){margin-top:30px;}
-            @include lg{transform: unset;}
-            .FP_InfosButtonRound{
-                padding:10px;
-                height:80px;
-                width:80px;
-                overflow:hidden;
-                background:white;
-                color:black;
-                border-radius:100000px;
-                cursor: pointer;
-
-                font-size: 14px;
-                letter-spacing: -0.34px;
-                text-align: center;
-
-                transform: translateY(100px);
-
-                @include rwd(380){
-                    height:100px;
-                    width:100px; 
-                }
-
-                @include lg{
-                    height:180px;
-                    width:180px; 
-                    font-size: 20px;
-                }
-
-                @include qhd{
-                    height:220px;
-                    width:220px; 
-                    font-size: 22px;
-                }
-            }
-        }
-    }
-
-
-        
-    .FP_Reseaux{
-        // margin-top:30px;
-        // background:red;
-        position:absolute;
-        left:32px;
-        right:32px;
-        bottom:3.5vh;
-        padding-bottom:40px;
-        // bottom:100px;
-        // height:50px;
-        
-        @include lg{
-            display:flex;
-            flex-direction: row;
-            
-            position:absolute;
-            bottom:4.5vh;
-            // top:110%;
-            // left:0;
-            // width:100%;
-        }
-
-        @include xl{
-            left:76px;
-            right:76px;
-        }
-        opacity:0;
-
-        .FP_ReseauxWrapper{
-            // background:red;
-        }
-        
-        .FP_ReseauxListe{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            margin-top:8px;
-            overflow: hidden;
-
-            // background:green;
-
-            @include lg{
-                width:450px;
-                // margin-left:155px;
-                margin-top:unset;
-
-                // background:red;
-            }
-            h3{
-                
-                display: none;
-                @include lg{display:inline;}
-            }
-            a{
-                color:white;
-                font-size: 14px;
-                line-height: 1.71;
-                letter-spacing: -0.34px;
-
-                @include qhd{font-size:16px;}
-            }
-        }
-
-        .FP_Legals{
-            // background:red;
-            opacity: 0;
-            position:absolute;
-            // right:32px;
-            right:0;
-            transform:translateY(10px);
-            overflow: hidden;
-
-            @include lg{
-                transform:unset;
-
-                bottom:4.8vh;
-            }
-            a{
-                display: inline-block;
-                color:white;
-                font-size: 14px;
-                line-height: 1.71;
-                letter-spacing: -0.34px;
-                @include qhd{font-size:16px;}
-                
-            }
-        }
-    }
-
-
-    .FP_AnimeWrapper{
-        display: block;
-        overflow: hidden;
-    }
-
-
-
+  .FP_AnimeWrapper {
+    display: block;
+    overflow: hidden;
+  }
 }
 
+.footerPrincipaleWhite {
+  // height:100vh;
+  width: 100vw;
+  min-height: 550px;
+  background: white;
+  z-index: 5;
+  color: black;
+  overflow: hidden;
 
+  box-sizing: border-box;
+  padding: 0 30px;
+  padding-top: 25px;
+  padding-bottom: 75px;
 
+  position: relative;
+  font-weight: 300;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
+  @include lg {
+    padding: 0 50px;
+    padding-top: 25px;
+  }
 
+  .footerPrincipalWrapper {
+    width: 100%;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    opacity: 0;
+    // background:green;
+    // overflow-X: hidden;
 
+    @include lg {
+      max-width: 1000px;
+    }
+    @include qhd {
+      max-width: 1400px;
+    }
+  }
 
-
-
-
-
-
-.footerPrincipaleWhite{
-    // height:100vh;
-    width:100vw;
-    min-height: 550px;
-    background:white;
-    z-index:5;
-    color:black;
-    overflow: hidden;
-
-    box-sizing: border-box;
-    padding:0 30px;
-    padding-top:25px;
-    padding-bottom:75px;
-    
-    position:relative;
+  h1 {
     font-weight: 300;
+    font-size: 25px;
+    letter-spacing: -0.72px;
 
+    @include rwd(340) {
+      font-size: 27px;
+    }
+    @include rwd(360) {
+      font-size: 29px;
+    }
+    @include lg {
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1.2;
+      letter-spacing: -1.2px;
+    }
+    @include qhd {
+      font-size: 70px;
+    }
+  }
+  h3 {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.71;
+    display: none;
+    // position:absolute;
+    bottom: 0;
+    @include lg {
+      display: block;
+    }
+    @include qhd {
+      font-size: 16px;
+    }
+  }
+
+  p {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 1.5;
+
+    @include rwd(340) {
+      margin-top: 9px;
+      font-size: 15px;
+      line-height: 1.56;
+    }
+    @include rwd(360) {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 1.63;
+    }
+
+    @include lg {
+      font-size: 15px;
+      line-height: 1.67;
+      letter-spacing: -0.36px;
+      padding-left: 120px;
+    }
+    @include qhd {
+      font-size: 18px;
+      padding-left: 200px;
+    }
+  }
+
+  .FP_InfosHorairesP {
+    @include lg {
+      padding-left: 200px;
+    }
+    @include qhd {
+      padding-left: 315px;
+    }
+  }
+
+  .FP_Infos {
     display: flex;
     flex-direction: column;
-    justify-content: center;
 
-    @include lg{
-        padding:0 50px;
-        padding-top:25px;
+    padding-top: 170px;
+
+    @include lg {
+      padding-top: unset;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-bottom: 100px;
     }
 
-    .footerPrincipalWrapper{
-        width:100%;
-        max-width:400px;
-        margin-left:auto;
-        margin-right:auto;
-        position:relative;
-        opacity:0;
-        // background:green;
-        // overflow-X: hidden;
+    .FP_InfosAdresse {
+      .FP_MetroDeco {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
 
-        @include lg{max-width: 1000px;}
-        @include qhd{max-width: 1400px;}
+        text-align: center;
+        border: 1px solid black;
+        border-radius: 10000px;
+        width: 20px;
+        height: 20px;
+        font-size: 12px;
+      }
+      @include lg {
+      }
     }
 
-    h1{
-        font-weight: 300;
-        font-size: 25px;
-        letter-spacing: -0.72px;
+    .FP_InfosHoraires {
+      margin-top: 15px;
 
-        @include rwd(340){font-size: 27px;}
-        @include rwd(360){font-size: 29px;}
-        @include lg{
-            font-size: 50px;
-            font-weight: 300;
-            line-height: 1.2;
-            letter-spacing: -1.2px;
+      @include rwd(340) {
+        margin-top: 20px;
+      }
+      @include rwd(360) {
+        margin-top: 24px;
+      }
+
+      @media screen and (min-height: 680px) {
+        margin-top: 65px;
+      }
+
+      @include lg {
+        margin-top: 190px;
+      }
+
+      @include qhd {
+        margin-top: 300px;
+      }
+    }
+
+    .FP_InfosBouton {
+      margin-top: 15px;
+      text-align: right;
+      transform: translateY(-130px);
+
+      @include rwd(340) {
+        margin-top: 22px;
+      }
+      @include rwd(360) {
+        margin-top: 30px;
+      }
+      @include lg {
+        transform: unset;
+      }
+      .FP_InfosButtonRound {
+        padding: 10px;
+        height: 80px;
+        width: 80px;
+        overflow: hidden;
+        background: black;
+        color: white;
+        border-radius: 100000px;
+        cursor: pointer;
+
+        font-size: 14px;
+        letter-spacing: -0.34px;
+        text-align: center;
+
+        transform: translateY(100px);
+
+        @include rwd(380) {
+          height: 100px;
+          width: 100px;
         }
-        @include qhd{
-            font-size: 70px;
+
+        @include lg {
+          height: 180px;
+          width: 180px;
+          font-size: 20px;
         }
+
+        @include qhd {
+          height: 220px;
+          width: 220px;
+          font-size: 22px;
+        }
+      }
     }
-    h3{
-        font-weight: 300;
+  }
+
+  .FP_Reseaux {
+    // margin-top:30px;
+    // background:red;
+    position: absolute;
+    left: 32px;
+    right: 32px;
+    bottom: 3.5vh;
+    padding-bottom: 40px;
+
+    // bottom:100px;
+    // height:50px;
+
+    @include lg {
+      display: flex;
+      flex-direction: row;
+
+      position: absolute;
+      bottom: 4.5vh;
+      // top:110%;
+      // left:0;
+      // width:100%;
+    }
+
+    @include xl {
+      left: 76px;
+      right: 76px;
+    }
+    opacity: 0;
+
+    .FP_ReseauxWrapper {
+    }
+
+    .FP_ReseauxListe {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      margin-top: 8px;
+      overflow: hidden;
+
+      // background:green;
+
+      @include lg {
+        width: 450px;
+        margin-left: 0px;
+        margin-top: unset;
+
+        // background:red;
+      }
+      a {
+        color: black;
         font-size: 14px;
         line-height: 1.71;
-        display:none;
-        // position:absolute;
-        bottom:0;
-        @include lg{display: block;}
-        @include qhd{font-size:16px;}
+        letter-spacing: -0.34px;
+
+        @include qhd {
+          font-size: 16px;
+        }
+      }
     }
 
-    p{
-        margin-top:8px;
+    .FP_Legals {
+      // background:red;
+      opacity: 0;
+      position: absolute;
+      // right:32px;
+      right: 0;
+      transform: translateY(10px);
+      overflow: hidden;
+
+      @include lg {
+        transform: unset;
+        bottom: 4.8vh;
+      }
+      a {
+        display: inline-block;
+        color: black;
         font-size: 14px;
-        line-height: 1.5;
-
-        @include rwd(340){
-            margin-top:9px;
-            font-size: 15px;
-            line-height: 1.56;
+        line-height: 1.71;
+        letter-spacing: -0.34px;
+        @include qhd {
+          font-size: 16px;
         }
-        @include rwd(360){
-            margin-top:10px;
-            font-size: 16px;
-            line-height: 1.63;
-        }
-
-        @include lg{
-            font-size: 15px;
-            line-height: 1.67;
-            letter-spacing: -0.36px;
-            padding-left:120px;
-        }
-        @include qhd{
-            font-size: 18px;
-            padding-left:200px;
-        }
+      }
     }
+  }
 
-    .FP_InfosHorairesP{
-
-        @include lg{
-            padding-left:200px;
-        }
-        @include qhd{padding-left:315px;}
-    }
-
-    .FP_Infos{
-        display:flex;
-        flex-direction: column;
-
-        padding-top:170px;
-
-        @include lg{
-            padding-top:unset;
-            flex-direction: row;
-            justify-content: space-between;
-            padding-bottom:100px;
-
-        }
-        
-
-        .FP_InfosAdresse{
-
-            .FP_MetroDeco{
-                display: inline-flex;
-                justify-content: center;
-                align-items: center;
-                
-                text-align: center;
-                border:1px solid black;
-                border-radius:10000px;
-                width:20px;
-                height:20px;
-                font-size:12px;
-            }
-            @include lg{
-
-            }
-        }
-
-        .FP_InfosHoraires{
-            
-            margin-top:15px;
-
-            @include rwd(340){margin-top:20px;}
-            @include rwd(360){margin-top:24px;}
-
-            @media screen and (min-height:680px){
-                margin-top:65px;
-            }
-
-            @include lg{
-                margin-top:190px;
-            }
-
-            @include qhd{
-                margin-top:300px;
-            }
-        }
-
-        .FP_InfosBouton{
-            margin-top:15px;
-            text-align: right;
-            transform: translateY(-130px);
-
-            @include rwd(340){margin-top:22px;}
-            @include rwd(360){margin-top:30px;}
-            @include lg{transform: unset;}
-            .FP_InfosButtonRound{
-                padding:10px;
-                height:80px;
-                width:80px;
-                overflow:hidden;
-                background:black;
-                color:white;
-                border-radius:100000px;
-                cursor: pointer;
-
-                font-size: 14px;
-                letter-spacing: -0.34px;
-                text-align: center;
-
-                transform: translateY(100px);
-
-                @include rwd(380){
-                    height:100px;
-                    width:100px; 
-                }
-
-                @include lg{
-                    height:180px;
-                    width:180px; 
-                    font-size: 20px;
-                }
-
-                @include qhd{
-                    height:220px;
-                    width:220px; 
-                    font-size: 22px;
-                }
-            }
-        }
-    }
-
-
-        
-    .FP_Reseaux{
-        // margin-top:30px;
-        // background:red;
-        position:absolute;
-        left:32px;
-        right:32px;
-        bottom:3.5vh;
-        padding-bottom:40px;
-        
-        // bottom:100px;
-        // height:50px;
-        
-        @include lg{
-            display:flex;
-            flex-direction: row;
-            
-            position:absolute;
-            bottom:4.5vh;
-            // top:110%;
-            // left:0;
-            // width:100%;
-        }
-
-        @include xl{
-            left:76px;
-            right:76px;
-        }
-        opacity:0;
-
-        .FP_ReseauxWrapper{
-
-        }
-        
-        .FP_ReseauxListe{
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            margin-top:8px;
-            overflow: hidden;
-
-            // background:green;
-
-            @include lg{
-                width:450px;
-                margin-left:0px;
-                margin-top:unset;
-
-                // background:red;
-            }
-            a{
-                color:black;
-                font-size: 14px;
-                line-height: 1.71;
-                letter-spacing: -0.34px;
-
-                @include qhd{font-size:16px;}
-            }
-        }
-
-        .FP_Legals{
-            // background:red;
-            opacity: 0;
-            position:absolute;
-            // right:32px;
-            right:0;
-            transform:translateY(10px);
-            overflow: hidden;
-
-            @include lg{
-                transform:unset;
-                bottom:4.8vh;
-            }
-            a{
-                display: inline-block;
-                color:black;
-                font-size: 14px;
-                line-height: 1.71;
-                letter-spacing: -0.34px;
-                @include qhd{font-size:16px;}
-                
-            }
-        }
-    }
-
-
-    .FP_AnimeWrapper{
-        display: block;
-        overflow: hidden;
-    }
-
-
-
+  .FP_AnimeWrapper {
+    display: block;
+    overflow: hidden;
+  }
 }

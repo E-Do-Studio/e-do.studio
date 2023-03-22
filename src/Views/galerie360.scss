@@ -12,12 +12,11 @@
     top: 88px;
 
     height: auto;
-    width: auto;
-    position: absolute;
+    width: 205px;
+    position: fixed;
     overflow: hidden;
-    padding: 20px;
 
-    z-index: 99;
+    z-index: 10;
 
     @include xl {
       // left:51px;
@@ -46,7 +45,7 @@
       margin-top: 40px;
 
       li {
-        margin-bottom: 1px;
+        margin-bottom: 0.6rem;
 
         &:hover {
           color: grey;
@@ -224,5 +223,14 @@
         transform: rotate(180deg);
       }
     }
+  }
+}
+
+// Ajouter la hauteur de l'écran moins la hauteur du footer pour obtenir la hauteur à laquelle le menu doit s'arrêter
+@media (max-width: 768px) {
+  .titreAnimationWrapper {
+    bottom: calc(
+      10vh + 100px
+    ); /* Changer 100px en fonction de la hauteur de votre footer */
   }
 }
