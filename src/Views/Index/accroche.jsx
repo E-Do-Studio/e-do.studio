@@ -312,20 +312,6 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
   );
 };
 
-{
-  /* <span className="copyright">®</span> */
-}
-// Une nouvelle
-// génération
-// de studio tout
-// équipé pour la
-// photo e-commerce et
-// la création de
-// contenu social media.
-// E-Do vous propose des
-// outils de shootings®
-// incomparables.
-
 const Accroche = ({
   pagePreload,
   fullpageApi,

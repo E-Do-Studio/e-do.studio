@@ -144,59 +144,42 @@
       }
     }
   }
-
-  .bandeau {
-    padding: 39px 39px 18px 39px;
-    margin-bottom: 10px;
-    .onQuotation {
-      transition: all 1.5s ease;
-      span {
-        text-decoration: none;
-      }
-    }
-    .contactButton {
-      width: 28px;
-      transform: rotate(315deg);
-      margin-right: 7px;
-      position: relative;
-      top: 2px;
-    }
-
-    .contactForm {
-      text-decoration: none;
-      position: relative;
-      overflow: hidden;
-      transition: all 0.5s;
-      font-weight: 900;
-    }
-
-    .contactForm:before {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: 0;
-      height: 3px;
-      background-color: #000;
-      width: 0;
-      transition: all 0.5s;
-    }
-
-    .contactForm:hover:before {
-      width: 100%;
-    }
-
-    h3 {
-      font-size: 36px;
-      font-weight: 300;
-      line-height: 48px;
-    }
-
-    span {
-      font-size: 28px;
-      line-height: 52px;
-      font-weight: 300;
-    }
+}
+.onQuotation {
+  transition: all 1.5s ease;
+  span {
+    text-decoration: none;
   }
+}
+.contactButtonRetouches {
+  width: 18px;
+  transform: rotate(315deg);
+  margin-right: 7px;
+  position: relative;
+  top: 2px;
+}
+
+.contactForm {
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s;
+  font-weight: 900;
+}
+
+.contactForm:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  background-color: #000;
+  width: 0;
+  transition: all 0.5s;
+}
+
+.contactForm:hover:before {
+  width: 100%;
 }
 
 .retouchesDesktop {
@@ -395,7 +378,7 @@
         text-decoration: none;
       }
     }
-    .contactButton {
+    .contactButtonRetouches {
       width: 28px;
       transform: rotate(315deg);
       margin-left: 15px;
@@ -428,3 +411,648 @@
     }
   }
 }
+
+// VERSION 2
+
+.retouches-pages {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+  user-select: none;
+  .info-paragraph {
+    width: 70%;
+    margin-top: 25px;
+  }
+  .retouches-menu {
+    position: relative;
+    top: 21%;
+  }
+  .carousel-container {
+    width: 40% !important;
+  }
+  .menu {
+    padding-left: 51px;
+    width: 30%;
+    position: relative;
+    top: 18%;
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        cursor: pointer;
+        list-style: none;
+        font-size: 22px;
+        padding-bottom: 5px;
+      }
+    }
+  }
+
+  .carousel {
+    height: 100%;
+  }
+
+  .info {
+    width: 30%;
+    position: relative;
+    top: 17%;
+    padding-left: 51px;
+    padding-right: 51px;
+
+    .prix {
+      .circle {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 0 auto;
+        margin-top: 65px;
+        margin-bottom: 20px;
+        border: solid black 2px;
+        .prix-ht {
+          font-size: 20px;
+          padding-bottom: 5px;
+          text-align: center;
+        }
+        .indication {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}
+
+.imageRetouche {
+  max-width: 80%;
+  min-width: 80%;
+  // min-height: 400px;
+  // max-height: 400px;
+  object-fit: contain;
+}
+
+.noActive {
+  display: none;
+}
+
+.hoverImage {
+  display: none;
+}
+
+.hoverActive {
+  display: block;
+  max-width: 100%;
+  min-width: 100%;
+  min-height: 400px;
+  max-height: 400px;
+  object-fit: contain;
+}
+
+.carousel {
+  position: relative;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  .active {
+    display: block;
+  }
+}
+
+.controllers {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  // top: 25%;
+  bottom: 0;
+  z-index: 10;
+}
+
+.control {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin: 10px;
+  cursor: pointer;
+}
+
+.leftControl {
+  top: 50%;
+  right: 100%;
+  // transform: translateY(-50%);
+}
+
+.rightControl {
+  top: 50%;
+  left: 100%;
+  // transform: translateY(-50%);
+}
+
+.imagesContainer {
+  display: none;
+}
+
+.fade {
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+}
+
+.fade-exit {
+  opacity: 1;
+}
+
+.fade-exit-active {
+  opacity: 0;
+}
+
+.imagesContainer {
+  position: absolute;
+  opacity: 0;
+}
+
+.active {
+  position: relative;
+  opacity: 1;
+}
+
+.imagesContainer.active {
+  transform: translateX(0);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imagesContainer.noActive {
+  transform: translateX(100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+// Menu retouches
+
+// Animation soulignement
+.underline {
+  position: relative;
+  display: inline-block;
+}
+
+.underline:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #000;
+  transition: width 0.3s ease-out;
+}
+
+.underline.active:before,
+.underline:hover:before {
+  width: 100%;
+}
+
+.cat {
+  margin-bottom: 5px;
+}
+
+// CAROUSEL
+
+.fade {
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+.fade:not(.active) {
+  opacity: 0;
+  transition: none;
+}
+
+// .imageRetouche {
+//   transition: opacity 0.5s ease-out;
+// }
+@media only screen and (min-width: 1024px) {
+  .imageRetouche {
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 400px;
+    max-height: 400px;
+    object-fit: contain;
+  }
+}
+
+.imageRetouche.fade-out {
+  opacity: 0;
+}
+
+.image-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.image-inactive {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+}
+
+.beauty-retouche {
+  position: relative;
+  top: 20%;
+  padding-right: 51px;
+}
+
+// Carousel
+
+// .image-transition {
+//   transition: transform 0.5s ease-in-out;
+// }
+
+.initialPosition {
+  transform: translateX(0%);
+}
+
+.image.active {
+  transform: translateX(0%);
+  transition: transform 1s ease-out;
+}
+
+// Retouches mobiles
+
+.retouches-pages-mobile {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  user-select: none;
+  font-size: 100%;
+  padding-top: 115px;
+  .menu {
+    .info-paragraph {
+      width: 80%;
+    }
+  }
+  .info {
+    padding-left: 32px;
+    padding-right: 32px;
+    // margin-top: 55px;
+    .info-paragraph {
+      width: 100%;
+      margin-top: 25px;
+    }
+  }
+  .beauty-retouche {
+    width: 100%;
+    top: 0;
+    padding-right: 51px;
+    margin-bottom: 50px;
+    h3 {
+      margin-top: 10px;
+      font-size: 100%;
+    }
+  }
+  .menu-post-prod-mobile {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    .prix {
+      padding-right: 32px;
+      .circle {
+        width: 125px;
+        height: 125px;
+        border-radius: 50%;
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        border: solid black 2px;
+        .prix-ht {
+          font-size: 18px;
+          padding-bottom: 5px;
+          text-align: center;
+        }
+        .indication {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+  .carousel-container {
+    width: 100% !important;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .info {
+      width: 100%;
+      padding-left: 32px;
+      .info-paragraph {
+        width: 100%;
+        margin-top: 25px;
+      }
+    }
+  }
+  .mobile-menu {
+    display: flex;
+  }
+  .menu {
+    padding-left: 32px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    // position: relative;
+    // top: 18%;
+    h1 {
+      font-size: 25px;
+      margin-bottom: 15px;
+    }
+    ul {
+      margin: 0;
+      padding: 0;
+      li {
+        cursor: pointer;
+        list-style: none;
+      }
+    }
+  }
+  .carousel {
+    height: 100%;
+  }
+}
+
+.carousel-mobile {
+  width: 100%;
+  display: flex;
+  flex-direction: column-reverse;
+  margin-top: 100px;
+  .imageRetouche {
+    max-width: 100%;
+    min-width: 100%;
+    // min-height: 400px;
+    // max-height: 400px;
+    object-fit: contain;
+  }
+  .images-mobile {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .img-container {
+    width: 300px;
+    height: 400px;
+    padding: 5px;
+    .imageRetouche {
+      width: 100%;
+      // height: 100%;
+      // object-fit: cover;
+      // padding: 20px;
+    }
+  }
+
+  .controllers {
+    .leftControl {
+      margin-left: 32px;
+    }
+    .rightControl {
+      margin-right: 32px;
+    }
+  }
+
+  .before-after {
+    display: flex;
+    padding-left: 32px;
+    padding-right: 32px;
+    .ba {
+      width: 50%;
+    }
+  }
+  .noActive {
+    display: none;
+  }
+
+  .hoverImage {
+    display: none;
+  }
+
+  .hoverActive {
+    display: block;
+    max-width: 100%;
+    min-width: 100%;
+    min-height: 400px;
+    max-height: 400px;
+    object-fit: contain;
+  }
+
+  .carousel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .active {
+      display: block;
+    }
+  }
+
+  .controllers {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    bottom: 50px;
+    z-index: 10;
+  }
+
+  .control {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  .leftControl {
+    top: 50%;
+    right: 100%;
+    transform: translateY(-50%);
+  }
+
+  .rightControl {
+    top: 50%;
+    left: 100%;
+    transform: translateY(-50%);
+  }
+
+  .imagesContainer {
+    display: none;
+  }
+
+  .fade {
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .fade-enter {
+    opacity: 0;
+  }
+
+  .fade-enter-active {
+    opacity: 1;
+  }
+
+  .fade-exit {
+    opacity: 1;
+  }
+
+  .fade-exit-active {
+    opacity: 0;
+  }
+
+  .imagesContainer {
+    position: absolute;
+    opacity: 0;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .active {
+    position: relative;
+    opacity: 1;
+    // padding-left: 32px;
+    // padding-right: 32px;
+    padding-left: 31px;
+    padding-right: 31px;
+  }
+
+  .imagesContainer.active {
+    transform: translateX(0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .imagesContainer.noActive {
+    transform: translateX(100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  // Menu retouches
+
+  // Animation soulignement
+  .underline {
+    position: relative;
+    display: inline-block;
+  }
+
+  .underline:before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    transition: width 0.3s ease-out;
+  }
+
+  .underline.active:before,
+  .underline:hover:before {
+    width: 100%;
+  }
+
+  .cat {
+    margin-bottom: 5px;
+  }
+
+  // CAROUSEL
+
+  .fade {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .fade:not(.active) {
+    opacity: 0;
+    transition: none;
+  }
+
+  .imageRetouche {
+    transition: opacity 0.5s ease-out;
+  }
+
+  .imageRetouche.fade-out {
+    opacity: 0;
+  }
+
+  .image-active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+  }
+
+  .image-inactive {
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-out, visibility 0.5s ease-out;
+  }
+
+  .beauty-retouche {
+    position: relative;
+    top: 20%;
+    padding-right: 51px;
+  }
+
+  // Carousel
+
+  .image-transition {
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .initialPosition {
+    transform: translateX(0%);
+  }
+
+  .image.active {
+    transform: translateX(0%);
+    transition: transform 1s ease-out;
+  }
+}
+
+.retouches-pages-mobile {
+  justify-content: center;
+  .retouches-menu {
+    padding-top: 10px;
+    position: relative;
+  }
+}
+// Reouches menu mobile

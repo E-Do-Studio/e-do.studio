@@ -1,170 +1,269 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react'
-import {Link} from 'react-router-dom'
-import {useMediaQuery} from '@react-hook/media-query'
-import { Waypoint } from 'react-waypoint';
-import ScrollContainer from 'react-indiana-drag-scroll'
-import {Helmet} from 'react-helmet';
-import Lottie from 'lottie-react';
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { useMediaQuery } from "@react-hook/media-query";
+import { Waypoint } from "react-waypoint";
+import ScrollContainer from "react-indiana-drag-scroll";
+import { Helmet } from "react-helmet";
+import Lottie from "lottie-react";
 
-import anime from 'animejs/lib/anime.es.js';
+import { useLocation } from "react-router-dom";
 
-import './galerie360.scss'
+import anime from "animejs/lib/anime.es.js";
 
-import Footer from '../Components/Layout/Footer/footer';
+import "./galerie.scss";
 
-import circleArrowLeftBlack from '../Assets/img/landing/circle-arrow-left-black.svg';
-import circleArrowRightBlack from '../Assets/img/landing/circle-arrow-right-black.svg';
+import Footer from "../Components/Layout/Footer/footer";
 
-import boutonSliderBlanc from '../Assets/animations/boutonMenuServices.json';
+import boutonSliderBlanc from "../Assets/animations/boutonMenuServices.json";
 
-const GalerieMobile = () => {
-    return(
-        <div className="galerieMobile">
-            <iframe width="100vw" height="400px" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" style={{border:0}} src="https://api.cappasity.com/api/player/0e20a8ac-e3b4-4762-9022-8dafd774e22f/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1" />
-            <iframe width="100vw" height="400px" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" style={{border:0}} src="https://api.cappasity.com/api/player/7c8f155a-4944-481e-974b-a2735553a68f/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1" />
-            <iframe width="100vw" height="400px" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" style={{border:0}} src="https://api.cappasity.com/api/player/5e09c628-8f54-4f02-bfd1-d2c6ab0baf12/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1" />
-            <iframe width="100vw" height="400px" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" style={{border:0}} src="https://api.cappasity.com/api/player/b565d6d6-3153-40b7-9391-e334d7b71129/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1" />
-        </div>
-    )
-}
+import { useTranslation } from "react-i18next";
 
-const GalerieDesktop = () => {
-    const [scrollX, setScrollX] = useState(0)
+// Composants
 
-    const handleScroll = (event) => {
-        setScrollX(event)
-    }
+import GalerieMenu from "./GalerieMenu";
+import IMGPC from "./IMGPC";
+import IMGMobile from "./IMGMobile";
 
+const Galerie360 = ({ setPageLoad, setSelectedLink }) => {
+  const matches = useMediaQuery("only screen and (min-width: 1200px)");
+
+  const [scrollX, setScrollX] = useState(0);
+
+  const handleScroll = (event) => {
+    setScrollX(event);
+  };
+
+  const PMS_BoutonPCNextButton = useRef();
+  const PMS_BoutonPCPrecButton = useRef();
+
+  const sliderNavSuiv = () => {
+    PMS_BoutonPCNextButton.current.play();
+    setTimeout(() => {
+      PMS_BoutonPCNextButton.current.stop();
+    }, 600);
+  };
+
+  const sliderNavPrec = () => {
+    PMS_BoutonPCPrecButton.current.play();
+    setTimeout(() => {
+      PMS_BoutonPCPrecButton.current.stop();
+    }, 600);
+  };
+
+  function scrollLeft() {
+    const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    sliderNavPrec();
+    scrollBox.scrollBy({
+      left: -500,
+      behavior: "smooth",
+    });
+  }
+
+  function scrollRight() {
+    const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    sliderNavSuiv();
+    scrollBox.scrollBy({
+      left: 500,
+      behavior: "smooth",
+    });
+  }
+
+  useEffect(() => {
     const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
 
-    const PMS_BoutonPCNextButton = useRef();
-    const PMS_BoutonPCPrecButton = useRef();
-
-    const sliderNavSuiv = () => {
-        PMS_BoutonPCNextButton.current.play()
-        setTimeout(() => {
-            PMS_BoutonPCNextButton.current.stop()
-        },600)
-    }
-
-    const sliderNavPrec = () => {
-        PMS_BoutonPCPrecButton.current.play()
-        setTimeout(() => {
-            PMS_BoutonPCPrecButton.current.stop()
-        },600)
-    }
-
-    function scrollLeft(){
-        sliderNavPrec();
+    const keyScroll = (e) => {
+      const key = e.keyCode;
+      if (key == "39") {
         scrollBox.scrollBy({
-            left: -500,
-            behavior: 'smooth'
+          left: 500,
+          behavior: "smooth",
         });
-    }
-
-    function scrollRight(){
-        sliderNavSuiv();
+      } else if (key == "37") {
         scrollBox.scrollBy({
-            left: 500,
-            behavior: 'smooth'
+          left: -500,
+          behavior: "smooth",
         });
-    }
+      }
+    };
 
-    useEffect(() => {
-        const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    document.addEventListener("keydown", keyScroll);
+  }, []);
 
-        const keyScroll = (e) => {
-            const key = e.keyCode;
-            if(key == '39'){
-                scrollBox.scrollBy({
-                    left: 500,
-                    behavior: 'smooth'
-                });
-            } else if (key == '37'){
-                scrollBox.scrollBy({
-                    left: -500,
-                    behavior: 'smooth'
-                });
-            }
-        }
+  useEffect(() => {
+    anime({
+      targets: ".PMS_BoutonPCNextButton",
+      opacity: [0, 1],
+      easing: "easeInOutSine",
+      duration: 500,
+      delay: 300,
+    });
 
-        document.addEventListener("keydown", keyScroll);
-    }, []);
+    anime({
+      targets: ".PMS_BoutonPCPrecButton",
+      opacity: [0, 1],
+      easing: "easeInOutSine",
+      duration: 500,
+      delay: 300,
+    });
 
-    useEffect(() => {
-        anime({
-            targets: '.PMS_BoutonPCNextButton',
-            opacity: [0,1],
-            easing: 'easeInOutSine',
-            duration: 500,
-            delay: 300,
-        })
+    //Animation du bouton
+  }, []);
 
-        anime({
-            targets: '.PMS_BoutonPCPrecButton',
-            opacity: [0,1],
-            easing: 'easeInOutSine',
-            duration: 500,
-            delay: 300,
-        })
+  const videoRef = useRef(null);
 
-        //Animation du bouton
-    }, []);
+  const [imgHover, setImgHover] = useState(false);
 
-    return(
-        <div className="galeriePC">
-            <iframe width="500px" height="400px" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" style={{border:0}} src="https://api.cappasity.com/api/player/0e20a8ac-e3b4-4762-9022-8dafd774e22f/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1" />
-            <iframe width="500px" height="400px" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" style={{border:0}} src="https://api.cappasity.com/api/player/7c8f155a-4944-481e-974b-a2735553a68f/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1" />
-            <iframe width="500px" height="400px" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" style={{border:0}} src="https://api.cappasity.com/api/player/5e09c628-8f54-4f02-bfd1-d2c6ab0baf12/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1" />
-            <iframe width="500px" height="400px" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" style={{border:0}} src="https://api.cappasity.com/api/player/b565d6d6-3153-40b7-9391-e334d7b71129/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1" />
-        </div>
-    )
-}
+  const handleHover = (event) => {
+    videoRef.current.style.opacity = 0.8;
+    videoRef.current.style.filter = "grayscale(1)";
+  };
 
-const Galerie = ({setPageLoad}) => {
-    const titrePageGalerie = useRef()
+  const handleMouseOut = (event) => {
+    videoRef.current.style.opacity = 1;
+    videoRef.current.style.filter = "grayscale(0)";
+  };
 
-    const matches = useMediaQuery('only screen and (min-width: 1200px)');
+  const location = useLocation();
+  const { selectedLink = "360" } = location.state || {};
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-        setPageLoad(true)
-
-        titrePageGalerie.current.style.transform = 'translateY(0%)'
-    }, []);
-
-    return (
+  return (
+    <>
+      <GalerieMenu
+        setPageLoad={setPageLoad}
+        selectedLink={selectedLink}
+        setSelectedLink={setSelectedLink}
+      />
+      {!matches ? (
         <>
-            <Helmet defer={false}>
-                <meta charSet="utf-8" />
-                <title>E-Do Studio - Galerie shooting 360</title>
-                <meta name="description" content="Explorez les possibilités de productions de contenus 360. Intégrez le visualisateur sur votre propre site." />
-                <script async src="https://api.cappasity.com/api/player/cappasity-ai"></script>
-                {/* <link rel="canonical" href="http://mysite.com/example" /> */}
-            </Helmet>
-            <div className="pageGalerie">
-
-                <div className='titreAnimationWrapper'>
-                    <h1 className="titrePageGalerie" ref={titrePageGalerie}>GALERIE</h1>
-                    <ul>
-                        <Link to="/galerie"><li>all</li></Link>
-                        <Link to="/galerie-horizontal"><li>Horizontal</li></Link>
-                        <Link to="/galerie-vertical"><li>Vertical</li></Link>
-                        <Link to="/galerie-live"><li>Live</li></Link>
-                        <Link to="/galerie-eclipse"><li>Eclipse</li></Link>
-                        <Link to="/galerie360"><li className="active">360</li></Link>
-                    </ul>
-                </div>
-                {
-                    !matches ?
-                        <GalerieMobile />
-                    :
-                        <GalerieDesktop />
-                }
-            </div>
-            <Footer AnimationBloc7={true}  />
+          <div className="galerieMobile" style={{ paddingLeft: "50px" }}>
+            <iframe
+              width="100vw"
+              height="400px"
+              frameborder="0"
+              allowfullscreen
+              mozallowfullscreen="true"
+              webkitallowfullscreen="true"
+              style={{ border: 0 }}
+              src="https://api.cappasity.com/api/player/0e20a8ac-e3b4-4762-9022-8dafd774e22f/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1"
+            />
+            <iframe
+              width="100vw"
+              height="400px"
+              frameborder="0"
+              allowfullscreen
+              mozallowfullscreen="true"
+              webkitallowfullscreen="true"
+              style={{ border: 0 }}
+              src="https://api.cappasity.com/api/player/7c8f155a-4944-481e-974b-a2735553a68f/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1"
+            />
+            <iframe
+              width="100vw"
+              height="400px"
+              frameborder="0"
+              allowfullscreen
+              mozallowfullscreen="true"
+              webkitallowfullscreen="true"
+              style={{ border: 0 }}
+              src="https://api.cappasity.com/api/player/5e09c628-8f54-4f02-bfd1-d2c6ab0baf12/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1"
+            />
+            <iframe
+              width="100vw"
+              height="400px"
+              frameborder="0"
+              allowfullscreen
+              mozallowfullscreen="true"
+              webkitallowfullscreen="true"
+              style={{ border: 0 }}
+              src="https://api.cappasity.com/api/player/b565d6d6-3153-40b7-9391-e334d7b71129/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1"
+            />
+            <iframe
+              width="100vw"
+              height="400px"
+              frameborder="0"
+              allowfullscreen
+              mozallowfullscreen="true"
+              webkitallowfullscreen="true"
+              style={{ border: 0 }}
+              src="https://api.cappasity.com/api/player/b3cc1fd4-2e65-4650-ac1f-d4b1403ac276/embedded?arbutton=0&autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=0&enableimagezoom=1&zoomquality=1&hidezoomopt=1"
+            />
+            <iframe
+              width="100vw"
+              height="400px"
+              frameborder="0"
+              allowfullscreen
+              mozallowfullscreen="true"
+              webkitallowfullscreen="true"
+              style={{ border: 0 }}
+              src="https://api.cappasity.com/api/player/3d0f648b-1cc2-45ab-a3b2-ea38f11f2675/embedded?arbutton=0&autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=0&enableimagezoom=1&zoomquality=1&hidezoomopt=1"
+            />
+          </div>
         </>
-    )
-}
+      ) : (
+        <div className="galeriePC">
+          <iframe
+            width="500px"
+            height="400px"
+            frameborder="0"
+            allowfullscreen
+            mozallowfullscreen="true"
+            webkitallowfullscreen="true"
+            style={{ border: 0 }}
+            src="https://api.cappasity.com/api/player/0e20a8ac-e3b4-4762-9022-8dafd774e22f/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1"
+          />
+          <iframe
+            width="500px"
+            height="400px"
+            frameborder="0"
+            allowfullscreen
+            mozallowfullscreen="true"
+            webkitallowfullscreen="true"
+            style={{ border: 0 }}
+            src="https://api.cappasity.com/api/player/7c8f155a-4944-481e-974b-a2735553a68f/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1"
+          />
+          <iframe
+            width="500px"
+            height="400px"
+            frameborder="0"
+            allowfullscreen
+            mozallowfullscreen="true"
+            webkitallowfullscreen="true"
+            style={{ border: 0 }}
+            src="https://api.cappasity.com/api/player/5e09c628-8f54-4f02-bfd1-d2c6ab0baf12/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1"
+          />
+          <iframe
+            width="500px"
+            height="400px"
+            frameborder="0"
+            allowfullscreen
+            mozallowfullscreen="true"
+            webkitallowfullscreen="true"
+            style={{ border: 0 }}
+            src="https://api.cappasity.com/api/player/b565d6d6-3153-40b7-9391-e334d7b71129/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1"
+          />
+          <iframe
+            width="500px"
+            height="400px"
+            frameborder="0"
+            allowfullscreen
+            mozallowfullscreen="true"
+            webkitallowfullscreen="true"
+            style={{ border: 0 }}
+            src="https://api.cappasity.com/api/player/b3cc1fd4-2e65-4650-ac1f-d4b1403ac276/embedded?arbutton=0&autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=0&enableimagezoom=1&zoomquality=1&hidezoomopt=1"
+          />
+          <iframe
+            width="500px"
+            height="400px"
+            frameborder="0"
+            allowfullscreen
+            mozallowfullscreen="true"
+            webkitallowfullscreen="true"
+            style={{ border: 0 }}
+            src="https://api.cappasity.com/api/player/3d0f648b-1cc2-45ab-a3b2-ea38f11f2675/embedded?arbutton=0&autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=0&enableimagezoom=1&zoomquality=1&hidezoomopt=1"
+          />
+        </div>
+      )}
+    </>
+  );
+};
 
-export default Galerie
+export default Galerie360;

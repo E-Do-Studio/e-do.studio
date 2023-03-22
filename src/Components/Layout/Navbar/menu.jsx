@@ -57,7 +57,6 @@ const Menu = ({ pageLoad }) => {
 
   useEffect(() => {
     if (matches) {
-      console.log("match");
       setMenuMobile(false);
     }
   }, [matches]);
@@ -251,7 +250,6 @@ const Menu = ({ pageLoad }) => {
           </nav>
         </motion.div>
       </div>
-
       <div className="menuMobile">
         <div className="menuMobile_PartieHaute">
           <div className="menuMobile_Menu">

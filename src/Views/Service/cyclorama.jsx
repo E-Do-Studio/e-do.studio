@@ -392,7 +392,7 @@ const CycloramaDesktop = () => {
               href={
                 selectedLanguage === "fr" ? plaquetteCycloFr : plaquetteCycloEn
               }
-              download="e-do-plaquette-cyclo.pdf"
+              download="Deck_E-Do.pdf"
             >
               <div className="lienPlaquette">
                 {t("Get the Cyclorama brochure")}
@@ -617,7 +617,7 @@ const CycloramaMobile = () => {
             href={
               selectedLanguage === "fr" ? plaquetteCycloFr : plaquetteCycloEn
             }
-            download="e-do-plaquette-cyclo.pdf"
+            download="Deck_E-Do.pdf"
           >
             <div className="lienPlaquette">
               {t("Get the Cyclorama brochure")}

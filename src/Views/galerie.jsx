@@ -1,640 +1,1473 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react'
-import {Link} from 'react-router-dom'
-import {useMediaQuery} from '@react-hook/media-query'
-import { Waypoint } from 'react-waypoint';
-import ScrollContainer from 'react-indiana-drag-scroll'
-import {Helmet} from 'react-helmet';
-import Lottie from 'lottie-react';
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { useMediaQuery } from "@react-hook/media-query";
+import { Waypoint } from "react-waypoint";
+import ScrollContainer from "react-indiana-drag-scroll";
+import { Helmet } from "react-helmet";
+import Lottie from "lottie-react";
 
-import anime from 'animejs/lib/anime.es.js';
+import { useLocation } from "react-router-dom";
 
-import './galerie.scss'
+import anime from "animejs/lib/anime.es.js";
 
-import Footer from '../Components/Layout/Footer/footer';
+import "./galerie.scss";
 
-import circleArrowLeftBlack from '../Assets/img/landing/circle-arrow-left-black.svg';
-import circleArrowRightBlack from '../Assets/img/landing/circle-arrow-right-black.svg';
+import Footer from "../Components/Layout/Footer/footer";
 
-import boutonSliderBlanc from '../Assets/animations/boutonMenuServices.json';
+import boutonSliderBlanc from "../Assets/animations/boutonMenuServices.json";
 
-const IMGMobile = ({src, lar, haut, left, right, ajustHauteur, linkUrl}) => {
-    const image = useRef()
-    const [animETAT, setAnimETAT] = useState(false)
+import { useTranslation } from "react-i18next";
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-        // image.current.style.transform = 'translateX(-100%)'
-    }, [])
+import GalerieMenu from "./GalerieMenu";
+import IMGPC from "./IMGPC";
+import IMGMobile from "./IMGMobile";
+import VIDEOGalerie from "./VIDEOGalerie";
 
-    const animIMG = () => {
-        //Lance l'animation
-        // console.log('test')
-        if(!animETAT){
-            setAnimETAT(true)
-            image.current.style.transform = 'translateX(0%) scale(0.9)'
-            setTimeout(() => {
-                image.current.style.transition = 'all 600ms ease-out'
-                image.current.style.transform = 'translateX(0%) scale(1)'
-            },280)
-        }
+import GalerieEclipse from "./galerie-eclipse";
+import GalerieLive from "./galerie-live";
+import GalerieVertical from "./galerie-live";
+import GalerieHorizontal from "./galerie-live";
+
+const Galerie = ({ setPageLoad, setSelectedLink }) => {
+  const matches = useMediaQuery("only screen and (min-width: 1200px)");
+  const location = useLocation();
+  const { selectedLink = "all" } = location.state || {};
+  const [scrollX, setScrollX] = useState(0);
+
+  const handleScroll = (event) => {
+    setScrollX(event);
+  };
+
+  const PMS_BoutonPCNextButton = useRef();
+  const PMS_BoutonPCPrecButton = useRef();
+
+  const sliderNavSuiv = () => {
+    PMS_BoutonPCNextButton.current.play();
+    setTimeout(() => {
+      PMS_BoutonPCNextButton.current.stop();
+    }, 600);
+  };
+
+  const sliderNavPrec = () => {
+    PMS_BoutonPCPrecButton.current.play();
+    setTimeout(() => {
+      PMS_BoutonPCPrecButton.current.stop();
+    }, 600);
+  };
+
+  function scrollLeft() {
+    const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    sliderNavPrec();
+    scrollBox.scrollBy({
+      left: -500,
+      behavior: "smooth",
+    });
+  }
+
+  function scrollRight() {
+    const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    sliderNavSuiv();
+    scrollBox.scrollBy({
+      left: 500,
+      behavior: "smooth",
+    });
+  }
+
+  useEffect(() => {
+    const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+
+    const keyScroll = (e) => {
+      const key = e.keyCode;
+      if (key == "39") {
+        scrollBox.scrollBy({
+          left: 500,
+          behavior: "smooth",
+        });
+      } else if (key == "37") {
+        scrollBox.scrollBy({
+          left: -500,
+          behavior: "smooth",
+        });
+      }
+    };
+
+    document.addEventListener("keydown", keyScroll);
+  }, []);
+
+  useEffect(() => {
+    anime({
+      targets: ".PMS_BoutonPCNextButton",
+      opacity: [0, 1],
+      easing: "easeInOutSine",
+      duration: 500,
+      delay: 300,
+    });
+
+    anime({
+      targets: ".PMS_BoutonPCPrecButton",
+      opacity: [0, 1],
+      easing: "easeInOutSine",
+      duration: 500,
+      delay: 300,
+    });
+
+    //Animation du bouton
+  }, []);
+
+  const videoRefs = useRef([]);
+  const generateRef = () => {
+    const ref = React.createRef();
+    videoRefs.current.push(ref);
+    return ref;
+  };
+
+  const handleHover = (event, index) => {
+    setImgHover(true);
+    setMarque(index);
+    if (videoRefs.current[index] && videoRefs.current[index].current) {
+      videoRefs.current[index].current.style.opacity = 0.8;
+      videoRefs.current[index].current.style.filter = "grayscale(1)";
     }
+  };
 
-    return(
-        <>
-        <Waypoint onEnter={animIMG} />
-        <div 
-            className="IMGMobileLigne"
-            style={{
-                height:haut + 'vw',
-                marginTop: ajustHauteur ? ajustHauteur + 'vw' : 'unset'
-            }}
+  const handleMouseOut = (event, index) => {
+    setImgHover(false);
+    setMarque("");
+    if (videoRefs.current[index] && videoRefs.current[index].current) {
+      videoRefs.current[index].current.style.opacity = 1;
+      videoRefs.current[index].current.style.filter = "grayscale(0)";
+    }
+  };
+
+  const [imgHover, setImgHover] = useState(false);
+  const [marque, setMarque] = useState("");
+
+  return (
+    <>
+      <GalerieMenu
+        setPageLoad={setPageLoad}
+        selectedLink={selectedLink}
+        setSelectedLink={setSelectedLink}
+      />
+      {matches ? (
+        <div
+          className="galeriePC"
+          style={{
+            cursor: "url(cursor/cursor.svg), auto",
+          }}
         >
-            <div 
-                className="IMGMobile"
-                style={{
-                    width: lar + 'vw',
-                    height: haut + 'vw',
-                    left: left ? left : 'unset',
-                    right: right ? right : 'unset'
-                }}
-            >
-                <Link to={linkUrl}>
-                <img 
-                    src={process.env.PUBLIC_URL + '/img/galerie/' + src} 
-                    alt="" 
-                    ref={image} 
-                    style={{}}
+          {/* <div className="brand">{imgHover}</div> */}
+          <ScrollContainer
+            className="galeriePCWrapper"
+            onScroll={handleScroll}
+            hideScrollbars={false}
+            vertical={false}
+            style={{ overflowY: "hidden" }}
+          >
+            {selectedLink === "all" && (
+              <>
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="black_tee_staff.webp"
+                  lar="28"
+                  haut="25"
+                  ajustHauteurTop="6"
+                  ajustHauteurBottom=""
+                  anim={2}
+                  scrollX={scrollX}
+                  marque="Staff"
+                  alt="black tee staff"
                 />
-                </Link>
-            </div>
-        </div>
-        </>
-    )
-}
-
-const GalerieMobile = () => {
-    return(
-        <div className="galerieMobile">
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="chemise-jaune-de-fursac.png" lar='43' haut='63' left='90px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="jupe-maille-cormio.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="pantalon-le-kasha.jpg" lar='43' haut='63' left='20px' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="a-magazine.jpg" lar='33' haut='54' left='' right='10px' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="boucles-d-oreilles-jean-paul-gaultier.png" lar='43' haut='63' left='40px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="carre-de-soie-semaine.jpg" lar='37' haut='40' left='' right='30px' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="carre-de-tissu-loverboy.jpg" lar='35' haut='54' left='' right='60px' ajustHauteur='-10' />
-            <Link to="/service-mise-en-scene-live">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/video-close-up-panconesi.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="casquette-velour-fursac.jpg" lar='43' haut='63' left='90px' right='' ajustHauteur='-5' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="cbd-aquerone.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="chapeau-ninamounah.jpg" lar='33' haut='45' left='' right='0' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="chaussure-ninamounah.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="chaussure-nodaleto.jpg" lar='48' haut='70' left='22vw' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="chaussures-a-talons-rose-nodaleto.jpg" lar='42' haut='55' left='15vw' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="chaussures-abra.jpg" lar='43' haut='63' left='' right='0' ajustHauteur='-23' />
-            <Link to="/service-mise-en-scene-live">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/studio-maison-ciero-video-crea.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="chaussures-marni.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="chaussures-ninamounah.jpg" lar='33' haut='40' left='' right='15px' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="chaussures-nodaleto.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='5' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="chaussures-packshot-paloma-wool.jpg" lar='43' haut='63' left='' right='30px' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="chaussures-situationist.jpg" lar='33' haut='45' left='31px' right='' ajustHauteur='5' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="chaussures-valentino.jpg" lar='30' haut='45' left='' right='0' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="close-up-charles-jeffrey.jpg" lar='43' haut='63' left='50px' right='' ajustHauteur='7' />
-            <Link to="/service-mise-en-scene-live">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/semaine.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="close-up-ludovic-de-saint-sernin.jpg" lar='43' haut='63' left='' right='60px' ajustHauteur='-5' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="col-roule-vuarnet-boramy.png" lar='43' haut='63' left='90px' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="collier-altea.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="converse-trois-vues.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="coperni-colors-bag.jpg" lar='43' haut='63' left='70px' right='' ajustHauteur='3' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="dessous-converse.jpg" lar='43' haut='63' left='20px' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="echarpe-packshot-laine-e-com.jpg" lar='43' haut='63' left='' right='31px' ajustHauteur='-5' />
-            <Link to="/service-mise-en-scene-live">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/look-cochady-fond-papier-rose.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="echarpe-vuarnet.png" lar='30' haut='45' left='' right='31px' ajustHauteur='5' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="food-dumbo-glace.jpg" lar='33' haut='54' left='' right='10px' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="full-look-ludovic-de-saint-sernin.jpg" lar='43' haut='63' left='40px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="gilet-hit-air.jpg" lar='37' haut='40' left='' right='30px' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="gilet-vuarnet-boramy.jpg" lar='35' haut='54' left='' right='60px' ajustHauteur='-10' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="glaces-dumbo.jpg" lar='43' haut='63' left='90px' right='' ajustHauteur='-5' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="haut-loverboy.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='' />
-            <Link to="/service-mise-en-scene-live">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/ensemble-survetement-vert-mouty.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="haut-ludovic-de-saint-sernin.jpg" lar='33' haut='45' left='' right='0' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="haut-paloma-wool.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="haut-under-armour-velo.jpg" lar='48' haut='70' left='22vw' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="jean-paul-gaultier-corset-jean.jpg" lar='42' haut='55' left='15vw' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="limoncello-maison-masarin.jpg" lar='33' haut='40' left='' right='15px' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="look-champ-paris.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='5' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="look-ensemble-survetement-marron-mouty.jpg" lar='43' haut='63' left='' right='30px' ajustHauteur='-23' />
-            <Link to="/service-accessoires-eclipse">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/collier-givenchy.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="look-set-design-live.jpg" lar='33' haut='45' left='31px' right='' ajustHauteur='5' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="look-weinsanto.jpg" lar='30' haut='45' left='' right='0' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="ludovic-de-saint-sernin.jpg" lar='43' haut='63' left='90px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="lunettes-packshot.jpg" lar='43' haut='63' left='50px' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="manteau-ninamounah.jpg" lar='43' haut='63' left='' right='60px' ajustHauteur='-5' />
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="mariniere-jean-paul-gaultier.jpg" lar='43' haut='63' left='90px' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="mesh-top-ottolinger.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='-23' />
-            <Link to="/service-mise-en-scene-live">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/chaussures-talons-nodaleto.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="mina-storm-panties-patch-work.png" lar='43' haut='63' left='31px' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="nike-basket-flyboots.jpg" lar='43' haut='63' left='70px' right='' ajustHauteur='3' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="pantalon-ninamounah.jpg" lar='43' haut='63' left='' right='31px' ajustHauteur='-5' />
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="pantalon-ottolinger.jpg" lar='30' haut='45' left='' right='31px' ajustHauteur='5' />
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="pantalon-packshot-reflective.jpg" lar='33' haut='54' left='' right='10px' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="pantalon-paloma-wool.jpg" lar='43' haut='63' left='40px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="parka-de-fursac.jpg" lar='37' haut='40' left='' right='30px' ajustHauteur='-23' />
-            <Link to="/service-accessoires-eclipse">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/chaussures-jordan-luca.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="phipps-jacket-back.jpg" lar='35' haut='54' left='' right='60px' ajustHauteur='-10' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="produits-de-beaute.jpg" lar='43' haut='63' left='90px' right='' ajustHauteur='-5' />
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="pull-loverboy.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="pull-paloma-wool.jpg" lar='33' haut='45' left='' right='0' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="robe-ninamounah.png" lar='43' haut='63' left='31px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="sac-a-main-jacquemus.jpg" lar='48' haut='70' left='22vw' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="sac-a-main-noir-weinsanto.jpg" lar='42' haut='55' left='15vw' right='' ajustHauteur='7' />
-            <Link to="/service-accessoires-eclipse">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/chaussures-cuir-jordan-luca.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="sister-morphine-boucles-d-oreilles-glitch.jpg" lar='43' haut='63' left='' right='0' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="sister-morphine-boucles-d-oreilles.png" lar='43' haut='63' left='31px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="situationist-top-fish-net.jpg" lar='33' haut='40' left='' right='15px' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-accessoires-eclipse" src="sneaker-close-up-nike.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='5' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="sweat-a-capuche-tommy-hilfiger.jpg" lar='43' haut='63' left='' right='30px' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="tenue-under-armour.jpg" lar='33' haut='45' left='31px' right='' ajustHauteur='5' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="top-mesh-weinsanto.jpg" lar='30' haut='45' left='' right='0' ajustHauteur='7' />
-            <Link to="/service-accessoires-eclipse">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/chaussure-jordan-luca.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="trench-coat-close-up-front.jpg" lar='43' haut='63' left='90px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="veste-a-capuche-loverboy.jpg" lar='43' haut='63' left='50px' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="veste-blazer-back-view-vintage-operandi.jpg" lar='43' haut='63' left='' right='60px' ajustHauteur='-5' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="top-misbhv.jpg" lar='43' haut='63' left='90px' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="top-paco-rabane.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="veste-costume-de-fursac.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="veste-de-fursac.png" lar='43' haut='63' left='70px' right='' ajustHauteur='3' />
-            <Link to="/service-mise-en-scene-live">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/be-collection.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-packshot-horizontal" src="veste-en-cuir-classic-legend-motors.jpg" lar='43' haut='63' left='20px' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-mannequin-vertical" src="veste-ninamounah.jpg" lar='43' haut='63' left='' right='31px' ajustHauteur='-5' />
-        </div>
-    )
-}
-
-const IMGPC = ({src, lar, haut, ajustHauteurTop, ajustHauteurBottom, anim, linkUrl}) => {
-    const image = useRef()
-    const IMGPCDessus = useRef()
-    const [animETAT, setAnimETAT] = useState(false)
-
-    // useEffect(() => {
-    //     // console.log(image.clientLeft)
-    // }, [scrollX])
-
-    const animIMG = () => {
-        //Lance l'animation
-        // console.log('test')
-        if(!animETAT){
-            if(anim === 1){
-                setAnimETAT(true)
-                image.current.style.transform = 'translateX(0%) scale(0.9)'
-                setTimeout(() => {
-                    image.current.style.transition = 'all 600ms ease-out'
-                    image.current.style.transform = 'translateX(0%) scale(1)'
-                },280)
-            }
-
-            if(anim === 2){
-                setAnimETAT(true)
-                image.current.style.transform = 'translateX(0%)'
-                // image.current.style.marginLeft = '100%'
-                IMGPCDessus.current.style.width = 0
-            }   
-
-        }
-
-    }
-
-    return(
-        <>
-        
-        <div 
-            className="IMGPCColonne"
-            style={{
-                width: lar + 'vw',
-            }}
-        >
-            
-            <div 
-                className="IMGPC"
-                style={{
-                    width: lar + 'vw',
-                    height: haut + 'vw',
-                    top: ajustHauteurTop ? ajustHauteurTop + 'vh' : 'unset',
-                    bottom: ajustHauteurBottom ? ajustHauteurBottom + 'vh' : 'unset',
-                }}
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="video-close-up-panconesi.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Panconesi"
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="inoui_accesoires.webp"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Inoui"
+                  alt="inoui accesoires"
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="Dentro_bag_1.webp"
+                  lar="22"
+                  haut="32"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={2}
+                  scrollX={scrollX}
+                  marque="Dentro"
+                  alt="Dentro bag"
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="chemise_kid_super.webp"
+                  lar="32"
+                  haut="28"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Kid Super"
+                  alt="chemise kid super"
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="hast_gants.webp"
+                  lar="28"
+                  haut="27"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Hast"
+                  alt="hast gants"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="video-accessoires-ludovic-de-saint-sernin.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Ludovic de Saint Sernin"
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="classic_motors_leather_red_jacket.webp"
+                  lar="32"
+                  haut="29"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="3"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Classic motors"
+                  alt="classic motors leather red jacket"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="chaussure-jordan-luca.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan Luca"
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="inoui_editions_scarf.webp"
+                  lar="28"
+                  haut="18"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Inoui"
+                  alt="inoui editions scarf"
+                />
+                {/* <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="hast_chemise_bleu.webp"
+                  lar="32"
+                  haut="35"
+                  ajustHauteurTop="7"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Hast"
+                  alt="hast chemise bleu"
+                /> */}
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="cargo_mouty_green.webp"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="8"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mouty"
+                  alt="cargo mouty green"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="studio-maison-ciero-video-crea.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Studio Maison Ciero"
+                />
+                <IMGPC
+                  linkUrl="/service-mannequin-vertical"
+                  src="adela_amel_orchid_hush.webp"
+                  lar="42"
+                  haut="41"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Adela"
+                  alt="adela_amel_orchid_hush.webp"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="chaussures-jordan-luca.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan Luca"
+                />
+                {/* <IMGPC
+                  linkUrl="/service-mannequin-vertical"
+                  src="chamade_bandeau.webp"
+                  lar="32"
+                  haut="31"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Chamade"
+                  alt="chamade bandeau"
+                /> */}
+                <IMGPC
+                  linkUrl="/service-mannequin-vertical"
+                  src="shangxia_robe_jaune_fluo.webp"
+                  lar="25"
+                  haut="25"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="shangxia"
+                  alt="shangxia robe jaune fluo"
+                />
+                <IMGPC
+                  linkUrl="/service-mannequin-vertical"
+                  src="robe_de_soirée_noire_attire_the_studio.webp"
+                  lar="34"
+                  haut="45"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Attire the studio"
+                  alt="robe de soirée noire attire the studio"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="chaussures-talons-nodaleto.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Nodaleto"
+                />
+                <IMGPC
+                  linkUrl="/service-mannequin-vertical"
+                  src="jacket_the_north_face_supreme_Front.webp"
+                  lar="25"
+                  haut="25"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="The North Face"
+                  alt="jacket the north face supreme Front"
+                />
+                <IMGPC
+                  linkUrl="/service-mise-en-scene-live"
+                  src="giambatista_valli_yellow_skirt.webp"
+                  lar="22"
+                  haut="23"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Giambatista"
+                  alt="giambatista valli yellow skirt"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="be-collection.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Be Collection"
+                />
+                <IMGPC
+                  linkUrl="/service-mise-en-scene-live"
+                  src="13_09_accessoires.webp"
+                  lar="22"
+                  haut="32"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="10"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="13/09"
+                  alt="13/09 accessoires"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="semaine.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Semaine"
+                />
+                <IMGPC
+                  linkUrl="/service-mise-en-scene-live"
+                  src="lookbook_giambatista_valli.webp"
+                  lar="32"
+                  haut="31"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Giambatista"
+                  alt="lookbook giambatista valli"
+                />
+                <IMGPC
+                  linkUrl="/service-mise-en-scene-live"
+                  src="mouty_on_model.webp"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="8"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mouty"
+                  alt="mouty on model"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="collier-givenchy.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Givenchy"
+                />
+                <IMGPC
+                  linkUrl="/service-mise-en-scene-live"
+                  src="valise_fragment.webp"
+                  lar="28"
+                  haut="27"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Fragment"
+                  alt="valise fragment"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="baume-stevie.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Stevie"
+                />
+                <IMGPC
+                  linkUrl="/service-mise-en-scene-live"
+                  src="pantalons_blanc_ludovic_de_saint_sernin.webp"
+                  lar="32"
+                  haut="38"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="20"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="ludovic de saint sernin"
+                  alt="pantalons blanc ludovic de saint sernin"
+                />
+                <IMGPC
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ludovic_de_saint_sernin_dress.webp"
+                  lar="32"
+                  haut="43"
+                  ajustHauteurTop="7"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="ludovic de saint sernin"
+                  alt="ludovic de saint sernin dress"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="lunettes-soleil-vuarnet.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Vuarnet"
+                />
+                <IMGPC
+                  linkUrl="/service-mise-en-scene-live"
+                  src="louis_vuitton_holographic_bag.webp"
+                  lar="28"
+                  haut="30"
+                  ajustHauteurTop="9"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Louis Vuitton"
+                  alt="louis vuitton holographic bag"
+                />
+                <IMGPC
+                  linkUrl="/service-accessoires-eclipse"
+                  src="mini_swipe_coperni.webp"
+                  lar="22"
+                  haut="30"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="2"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Coperni"
+                  alt="mini swipe coperni"
+                />
+                <IMGPC
+                  linkUrl="/service-accessoires-eclipse"
+                  src="giambatista_valli_talons_verts.webp"
+                  lar="28"
+                  haut="30"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="20"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Gaibatista Valli"
+                  alt="giambatista valli talons verts"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="chaussure-givenchy.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Givenchy"
+                />
+                <IMGPC
+                  linkUrl="/service-accessoires-eclipse"
+                  src="la_manso_x_jpg_bague_rose_face.webp"
+                  lar="25"
+                  haut="27"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="10"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="La manso"
+                  alt="la manso x jean paul gaultier bague rose face"
+                />
+                {/* <IMGPC
+                  linkUrl="/service-accessoires-eclipse"
+                  src="nodaleto_angel_lucia_fuschia.webp"
+                  lar="22"
+                  haut="27"
+                  ajustHauteurTop="7"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Nodaleto"
+                  alt="nodaleto angel lucia fuschia"
+                /> */}
+                <IMGPC
+                  linkUrl="/service-accessoires-eclipse"
+                  src="jordan_travis_collab.webp"
+                  lar="25"
+                  haut="26"
+                  ajustHauteurTop="7"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan"
+                  alt="ordan travis collab"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ensemble-survetement-vert-mouty.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mouty"
+                />
+                <IMGPC
+                  linkUrl="/service-accessoires-eclipse"
+                  src="jacques_genin_oeuf_de_paques_peint.webp"
+                  lar="30"
+                  haut="33"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="10"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jacques Genin"
+                  alt="jacques genin oeuf de paques peint"
+                />
+                {/* <IMGPC
+                  linkUrl="/service-accessoires-eclipse"
+                  src="iindaco_bottes_rose.webp"
+                  lar="32"
+                  haut="23"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Iindaco"
+                  alt="iindaco bottes rose"
+                /> */}
+                <IMGPC
+                  linkUrl="/service-accessoires-eclipse"
+                  src="nike_airmax_sean_wotherspoon_sole.webp"
+                  lar="25"
+                  haut="27"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Nike"
+                  alt="nike air max sean wotherspoon sole"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="look-cochady-fond-papier-rose.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Cochady"
+                />
+                <IMGPC
+                  linkUrl="/service-accessoires-eclipse"
+                  src="bruno_frisoni_talons_ultramarine.webp"
+                  lar="22"
+                  haut="30"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Bruno Frisoni"
+                  alt="bruno frisoni talons ultramarine"
+                />
+                {/* <IMGPC
+                  linkUrl="/service-accessoires-eclipse"
+                  src="iindaco_mules_flammes.webp"
+                  lar="32"
+                  haut="23"
+                  ajustHauteurTop="20"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Iindaco"
+                  alt="iindaco mules flammes"
+                /> */}
+                <IMGPC
+                  linkUrl="/service-accessoires-eclipse"
+                  src="iindaco_talons_flammes_strass.webp"
+                  lar="32"
+                  haut="23"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Iindaco"
+                  alt="iindaco talons flammes strass"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="brassiere-calvin-klein-nylon-magazine.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Nylon"
+                />
+              </>
+            )}
+          </ScrollContainer>
+          <div className="buttonBox">
+            <button
+              className="PMS_BoutonPCPrev PMS_BoutonNav"
+              onClick={scrollLeft}
             >
-                { 
-                    src ?
-                    <Link to={linkUrl} style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                        <img 
-                            src={process.env.PUBLIC_URL + '/img/galerie/' + src} 
-                            alt="" 
-                            ref={image} 
-                            style={{}}
-                            className={ anim == 1 ? 'imgAnim1' : ''}
-                        />
-                    </Link>
-                    : ''
-                }
-            </div>
-            
-
-            {
-                anim == 2 ?
-                <div 
-                    ref={IMGPCDessus}
-                    className="IMGPCDessus"
-                    style={{
-                        width: lar + 'vw',
-                        height: haut + 'vw',
-                        top: ajustHauteurTop ? ajustHauteurTop + 'vh' : 'unset',
-                        bottom: ajustHauteurBottom ? ajustHauteurBottom + 'vh' : 'unset',
-                    }}
-                >
-
-                </div>
-                :
-                <div></div>
-            }
-
-
-            <div
-            style={{
-                position:'absolute',
-                left:'50%',
-                background:'blue'
-            }}>
-                <Waypoint onEnter={animIMG} horizontal={true}  />
-            </div>
-
+              <Lottie
+                className="PMS_BoutonPCPrecButton"
+                lottieRef={PMS_BoutonPCPrecButton}
+                animationData={boutonSliderBlanc}
+                loop={false}
+                autoplay={false}
+                onEnterFrame={(event) => {
+                  // console.log(event)
+                }}
+              />
+            </button>
+            <button
+              className="PMS_BoutonPCNext PMS_BoutonNav"
+              onClick={scrollRight}
+            >
+              <Lottie
+                className="PMS_BoutonPCNextButton"
+                lottieRef={PMS_BoutonPCNextButton}
+                animationData={boutonSliderBlanc}
+                loop={false}
+                autoplay={false}
+                onEnterFrame={(event) => {
+                  // console.log(event)
+                }}
+              />
+            </button>
+          </div>
         </div>
-       
-        </>
-    )
-}
-
-const GalerieDesktop = () => {
-    const [scrollX, setScrollX] = useState(0)
-
-    const handleScroll = (event) => {
-        setScrollX(event)
-    }
-
-    const PMS_BoutonPCNextButton = useRef();
-    const PMS_BoutonPCPrecButton = useRef();
-
-    const sliderNavSuiv = () => {
-        PMS_BoutonPCNextButton.current.play()
-        setTimeout(() => {
-            PMS_BoutonPCNextButton.current.stop()
-        },600)
-    }
-
-    const sliderNavPrec = () => {
-        PMS_BoutonPCPrecButton.current.play()
-        setTimeout(() => {
-            PMS_BoutonPCPrecButton.current.stop()
-        },600)
-    }
-
-    function scrollLeft(){
-        const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
-        sliderNavPrec();
-        scrollBox.scrollBy({
-            left: -500,
-            behavior: 'smooth'
-        });
-    }
-
-    function scrollRight(){
-        const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
-        sliderNavSuiv();
-        scrollBox.scrollBy({
-            left: 500,
-            behavior: 'smooth'
-        });
-    }
-
-    useEffect(() => {
-        const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
-
-        const keyScroll = (e) => {
-            const key = e.keyCode;
-            if(key == '39'){
-                scrollBox.scrollBy({
-                    left: 500,
-                    behavior: 'smooth'
-                });
-            } else if (key == '37'){
-                scrollBox.scrollBy({
-                    left: -500,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        document.addEventListener("keydown", keyScroll);
-    }, []);
-
-    useEffect(() => {
-        anime({
-            targets: '.PMS_BoutonPCNextButton',
-            opacity: [0,1],
-            easing: 'easeInOutSine',
-            duration: 500,
-            delay: 300,
-        })
-
-        anime({
-            targets: '.PMS_BoutonPCPrecButton',
-            opacity: [0,1],
-            easing: 'easeInOutSine',
-            duration: 500,
-            delay: 300,
-        })
-
-        //Animation du bouton
-    }, []);
-
-    return(
-        <div className="galeriePC" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-            <ScrollContainer className="galeriePCWrapper" onScroll={handleScroll} hideScrollbars={false}>
-                <IMGPC linkUrl="/service-packshot-horizontal" src="chemise-jaune-de-fursac.png" lar="22" haut="27" ajustHauteurTop="" ajustHauteurBottom="" anim={2} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-packshot-horizontal" src="jupe-maille-cormio.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="5" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="pantalon-le-kasha.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="a-magazine.jpg" lar="16" haut="22" ajustHauteurTop="7" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="boucles-d-oreilles-jean-paul-gaultier.png" lar="15" haut="20" ajustHauteurTop="" ajustHauteurBottom="14" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/video-close-up-panconesi.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-packshot-horizontal" src="carre-de-soie-semaine.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="20" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-packshot-horizontal" src="carre-de-tissu-loverboy.jpg" lar="24" haut="33" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="casquette-velour-fursac.jpg" lar="13" haut="22" ajustHauteurTop="20" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <Link to="/service-accessoires-eclipse" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/video-accessoires-ludovic-de-saint-sernin.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="cbd-aquerone.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="chapeau-ninamounah.jpg" lar="18" haut="26" ajustHauteurTop="7" ajustHauteurBottom="" anim={2} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="chaussure-ninamounah.jpg" lar="15" haut="20" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/studio-maison-ciero-video-crea.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="chaussure-nodaleto.jpg" lar="17" haut="25" ajustHauteurTop="" ajustHauteurBottom="20" anim={2} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="chaussures-a-talons-rose-nodaleto.jpg" lar="18" haut="27" ajustHauteurTop="7" ajustHauteurBottom="" anim={2} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="chaussures-abra.jpg" lar="13" haut="20" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="chaussures-marni.jpg" lar="16" haut="25" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/semaine.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="chaussures-ninamounah.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="chaussures-nodaleto.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="12" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="chaussures-packshot-paloma-wool.jpg" lar="13" haut="22" ajustHauteurTop="10" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <Link to="/service-accessoires-eclipse" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/lunettes-soleil-vuarnet.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="chaussures-situationist.jpg" lar="15" haut="24" ajustHauteurTop="" ajustHauteurBottom="15" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="chaussures-valentino.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="5" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-packshot-horizontal" src="close-up-charles-jeffrey.jpg" lar="15" haut="24" ajustHauteurTop="15" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="close-up-ludovic-de-saint-sernin.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/look-cochady-fond-papier-rose.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-mannequin-vertical" src="col-roule-vuarnet-boramy.png" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="collier-altea.jpg" lar="13" haut="18" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="converse-trois-vues.jpg" lar="16" haut="22" ajustHauteurTop="7" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/ensemble-survetement-vert-mouty.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-packshot-horizontal" src="coperni-colors-bag.jpg" lar="15" haut="20" ajustHauteurTop="" ajustHauteurBottom="14" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="dessous-converse.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="20" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-packshot-horizontal" src="echarpe-packshot-laine-e-com.jpg" lar="24" haut="33" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <Link to="/service-accessoires-eclipse" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/collier-givenchy.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-mannequin-vertical" src="echarpe-vuarnet.png" lar="13" haut="22" ajustHauteurTop="20" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="food-dumbo-glace.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="full-look-ludovic-de-saint-sernin.jpg" lar="18" haut="26" ajustHauteurTop="7" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="gilet-hit-air.jpg" lar="15" haut="20" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/chaussures-talons-nodaleto.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-mannequin-vertical" src="gilet-vuarnet-boramy.jpg" lar="17" haut="25" ajustHauteurTop="" ajustHauteurBottom="20" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="glaces-dumbo.jpg" lar="18" haut="27" ajustHauteurTop="7" ajustHauteurBottom="0" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="haut-loverboy.jpg" lar="13" haut="20" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <Link to="/service-accessoires-eclipse" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/chaussures-jordan-luca.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="haut-ludovic-de-saint-sernin.jpg" lar="16" haut="25" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-packshot-horizontal" src="haut-paloma-wool.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="haut-under-armour-velo.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="12" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="jean-paul-gaultier-corset-jean.jpg" lar="13" haut="22" ajustHauteurTop="10" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <Link to="/service-accessoires-eclipse" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/chaussures-cuir-jordan-luca.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-packshot-horizontal" src="limoncello-maison-masarin.jpg" lar="22" haut="27" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="look-champ-paris.jpg" lar="15" haut="24" ajustHauteurTop="15" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <Link to="/service-accessoires-eclipse" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/chaussure-jordan-luca.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="look-ensemble-survetement-marron-mouty.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="look-set-design-live.jpg" lar="22" haut="27" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="look-weinsanto.jpg" lar="15" haut="24" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <Link to="/service-accessoires-eclipse" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/chaussure-givenchy.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="ludovic-de-saint-sernin.jpg" lar="18" haut="27" ajustHauteurTop="7" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="lunettes-packshot.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="14" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="manteau-ninamounah.jpg" lar="16" haut="22" ajustHauteurTop="" ajustHauteurBottom="20" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/brassiere-calvin-klein-nylon-magazine.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-packshot-horizontal" src="mariniere-jean-paul-gaultier.jpg" lar="15" haut="20" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="mesh-top-ottolinger.jpg" lar="18" haut="27" ajustHauteurTop="20" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="mina-storm-panties-patch-work.png" lar="24" haut="33" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="nike-basket-flyboots.jpg" lar="13" haut="22" ajustHauteurTop="7" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/be-collection.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-mannequin-vertical" src="pantalon-ninamounah.jpg" lar="18" haut="26" ajustHauteurTop="" ajustHauteurBottom="20" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-packshot-horizontal" src="pantalon-ottolinger.jpg" lar="15" haut="20" ajustHauteurTop="7" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-packshot-horizontal" src="pantalon-packshot-reflective.jpg" lar="17" haut="25" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-packshot-horizontal" src="pantalon-paloma-wool.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="parka-de-fursac.jpg" lar="13" haut="20" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <Link to="/service-accessoires-eclipse" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/baume-stevie.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-packshot-horizontal" src="phipps-jacket-back.jpg" lar="16" haut="25" ajustHauteurTop="" ajustHauteurBottom="12" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="produits-de-beaute.jpg" lar="18" haut="27" ajustHauteurTop="10" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-packshot-horizontal" src="pull-loverboy.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="15" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="pull-paloma-wool.jpg" lar="13" haut="22" ajustHauteurTop="" ajustHauteurBottom="5" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="robe-ninamounah.png" lar="15" haut="24" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="sac-a-main-jacquemus.jpg" lar="18" haut="27" ajustHauteurTop="15" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="sac-a-main-noir-weinsanto.jpg" lar="22" haut="27" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="sister-morphine-boucles-d-oreilles-glitch.jpg" lar="15" haut="24" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="sister-morphine-boucles-d-oreilles.png" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-packshot-horizontal" src="situationist-top-fish-net.jpg" lar="18" haut="27" ajustHauteurTop="7" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-accessoires-eclipse" src="sneaker-close-up-nike.jpg" lar="16" haut="22" ajustHauteurTop="" ajustHauteurBottom="14" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="sweat-a-capuche-tommy-hilfiger.jpg" lar="15" haut="20" ajustHauteurTop="" ajustHauteurBottom="20" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="tenue-under-armour.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="top-mesh-weinsanto.jpg" lar="24" haut="33" ajustHauteurTop="20" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-packshot-horizontal" src="trench-coat-close-up-front.jpg" lar="13" haut="22" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="veste-a-capuche-loverboy.jpg" lar="18" haut="27" ajustHauteurTop="7" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="veste-blazer-back-view-vintage-operandi.jpg" lar="18" haut="26" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="top-misbhv.jpg" lar="15" haut="20" ajustHauteurTop="" ajustHauteurBottom="20" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="top-paco-rabane.jpg" lar="17" haut="25" ajustHauteurTop="7" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="veste-costume-de-fursac.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="veste-de-fursac.png" lar="13" haut="20" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-packshot-horizontal" src="veste-en-cuir-classic-legend-motors.jpg" lar="16" haut="25" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mannequin-vertical" src="veste-ninamounah.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-            </ScrollContainer>
-            <div className="buttonBox">
-                <button className="PMS_BoutonPCPrev PMS_BoutonNav" onClick={scrollLeft}>
-                    <Lottie 
-                        className="PMS_BoutonPCPrecButton"
-                        lottieRef={PMS_BoutonPCPrecButton} 
-                        animationData={boutonSliderBlanc}
-                        loop={false}
-                        autoplay={false}
-                        onEnterFrame={(event) => {
-                            // console.log(event)
-                        }}
-                    />
-                </button>
-                <button className="PMS_BoutonPCNext PMS_BoutonNav" onClick={scrollRight}>
-                    <Lottie 
-                        className="PMS_BoutonPCNextButton"
-                        lottieRef={PMS_BoutonPCNextButton} 
-                        animationData={boutonSliderBlanc}
-                        loop={false}
-                        autoplay={false}
-                        onEnterFrame={(event) => {
-                            // console.log(event)
-                        }}
-                    />
-                </button>
-            </div>
-        </div>
-    )
-}
-
-const Galerie = ({setPageLoad}) => {
-    const titrePageGalerie = useRef()
-
-    const matches = useMediaQuery('only screen and (min-width: 1200px)');
-
-    useEffect(() => {
-        window.scrollTo(0, 0)
-        setPageLoad(true)
-
-        titrePageGalerie.current.style.transform = 'translateY(0%)'
-    }, []);
-
-    return (
+      ) : (
         <>
-            <Helmet defer={false}>
-                <meta charSet="utf-8" />
-                <title>E-Do Studio - Galerie shooting produits</title>
-                <meta name="description" content="Explorez les possibilités de productions de contenus photos et vidéos offertes par nos services." />
-
-                {/* <link rel="canonical" href="http://mysite.com/example" /> */}
-            </Helmet>
-            <div className="pageGalerie">
-
-                <div className='titreAnimationWrapper'>
-                    <h1 className="titrePageGalerie" ref={titrePageGalerie}>GALERIE</h1>
-                    <ul>
-                        <Link to="/galerie"><li className="active">all</li></Link>
-                        <Link to="/galerie-horizontal"><li>Horizontal</li></Link>
-                        <Link to="/galerie-vertical"><li>Vertical</li></Link>
-                        <Link to="/galerie-live"><li>Live</li></Link>
-                        <Link to="/galerie-eclipse"><li>Eclipse</li></Link>
-                        <Link to="/galerie360"><li>360</li></Link>
-                    </ul>
-                </div>
-                {
-                    !matches ?
-                        <GalerieMobile />
-                    :
-                        <GalerieDesktop />
-                }
-            </div>
-            <Footer AnimationBloc7={true}  />
+          <div className="galerieMobile">
+            <IMGMobile
+              linkUrl="/service-packshot-horizontal"
+              src="black_tee_staff.webp"
+              lar="63"
+              haut="56"
+              left=""
+              right="40px"
+              ajustHauteur="-23"
+              marque="Staff"
+              alt="black tee staff"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="video-close-up-panconesi.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              right=""
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Panconesi"
+            />
+            <IMGMobile
+              linkUrl="/service-packshot-horizontal"
+              src="hast_gants.webp"
+              lar="52"
+              haut="51"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="Hast"
+              alt="hast gants"
+            />
+            <IMGMobile
+              linkUrl="/service-packshot-horizontal"
+              src="kid_super_blazer.webp"
+              lar="78"
+              haut="51"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Kid Super"
+              alt="kid super blazer"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-accessoires-eclipse"
+              src="video-accessoires-ludovic-de-saint-sernin.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Ludovic de Saint Sernin"
+            />
+            <IMGMobile
+              linkUrl="/service-packshot-horizontal"
+              src="kid_super_foulards.webp"
+              lar="60"
+              haut="45"
+              left="40px"
+              right=""
+              ajustHauteur="-2"
+              marque="Kid Super"
+              alt="kid super foulards"
+            />
+            {/* <IMGMobile
+              linkUrl="/service-packshot-horizontal"
+              src="inoui_editions_scarves.webp"
+              lar="60"
+              haut="45"
+              left=""
+              right="40px"
+              ajustHauteur="-2"
+              marque="Inoui"
+              alt="inoui editions scarves"
+            /> */}
+            <IMGMobile
+              linkUrl="/service-packshot-horizontal"
+              src="cargo_mouty_details.webp"
+              lar="47"
+              haut="78"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="Mouty"
+              alt="cargo mouty details"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="jacket_supreme_gore_tex_Front.webp"
+              lar="43"
+              haut="63"
+              left=""
+              right="30px"
+              ajustHauteur="-25"
+              marque="Supreme"
+              alt="jacket supreme gore tex Front"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-accessoires-eclipse"
+              src="chaussure-jordan-luca.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Jordan Luca"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="belmadi_orange_jacket.webp"
+              lar="43"
+              haut="63"
+              left=""
+              right="100px"
+              ajustHauteur="5"
+              marque="Belmadi"
+              alt="belmadi_orange_jacket.webp"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="adela_top_light.webp"
+              lar="43"
+              haut="63"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="Adela"
+              alt="adela top light"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="studio-maison-ciero-video-crea.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Studio Maison Ciero"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="vaillant_white.webp"
+              lar="51"
+              haut="51"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Vaillant"
+              alt="vaillant white"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="adela_akiko.webp"
+              lar="63"
+              haut="73"
+              left="90px"
+              right=""
+              ajustHauteur="5"
+              marque="Adela"
+              alt="adela akiko"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="jacket_the_north_face_supreme_Front.webp"
+              lar="50"
+              haut="67"
+              left="190px"
+              right=""
+              ajustHauteur="5"
+              marque="The North Face"
+              alt="jacket the north face supreme Front"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="attire_the_studio_trench.webp"
+              lar="50"
+              haut="68"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Attire the studio"
+              alt="attire the studio trench."
+            />
+            <VIDEOGalerie
+              linkUrl="/service-accessoires-eclipse"
+              src="chaussures-jordan-luca.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Jordan Luca"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="shangxia_manteau.webp"
+              lar="60"
+              haut="62"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="shangxia"
+              alt="shangxia manteau"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="adela_amel_orchid_hush.webp"
+              lar="63"
+              haut="56"
+              left=""
+              right="40px"
+              ajustHauteur="-23"
+              marque="Adela"
+              alt="adela_amel_orchid_hush.webp"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="moonview_doudoune_black_Front.webp"
+              lar="43"
+              haut="63"
+              left=""
+              right="30px"
+              ajustHauteur="5"
+              marque="Moonview"
+              alt="moonview doudoune black Front"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="chaussures-talons-nodaleto.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Nodaleto"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="hast_chemise_rouge.webp"
+              lar="43"
+              haut="63"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Hast"
+              alt="hast chemise rouge"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="shangxia_robe_jaune_fluo.webp"
+              lar="53"
+              haut="42"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="shangxia"
+              alt="shangxia robe jaune fluo"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="robe_de_soirée_noire_attire_the_studio.webp"
+              lar="52"
+              haut="51"
+              left=""
+              right="100px"
+              ajustHauteur="5"
+              marque="Attire the studio"
+              alt="robe de soirée noire attire the studio"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="be-collection.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Be Collection"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="tracksuit_pants_rainbow_palm_angels_Front.webp"
+              lar="50"
+              haut="63"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="Palm Angels"
+              alt="tracksuit pants rainbow palm angels Front"
+            />
+            <IMGMobile
+              linkUrl="/service-mise-en-scene-live"
+              src="black_nuage_top_ldss.webp"
+              lar="50"
+              haut="75"
+              left=""
+              right="40px"
+              ajustHauteur="-23"
+              marque="Black Nuage"
+              alt="black nuage top"
+            />
+            <IMGMobile
+              linkUrl="/service-mise-en-scene-live"
+              src="13_09_glasses_on_model.webp"
+              lar="52"
+              haut="75"
+              left=""
+              right="100px"
+              ajustHauteur="5"
+              marque="13/09"
+              alt="13/09 glasses on model"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="semaine.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Semaine"
+            />
+            <IMGMobile
+              linkUrl="/service-mise-en-scene-live"
+              src="giambatista_valli_dress.webp"
+              lar="50"
+              haut="75"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Giambatista"
+              alt="giambatista valli dress"
+            />
+            <IMGMobile
+              linkUrl="/service-mise-en-scene-live"
+              src="ludovic_de_saint_sernin_dress.webp"
+              lar="47"
+              haut="78"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="ludovic de saint sernin"
+              alt="ludovic de saint sernin dress"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-accessoires-eclipse"
+              src="collier-givenchy.mp4"
+              lar="25"
+              haut="35"
+              left="100px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Givenchy"
+            />
+            <IMGMobile
+              linkUrl="/service-mise-en-scene-live"
+              src="rudy_maillot_de_bain_2_pieces.webp"
+              lar="50"
+              haut="63"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="Rudy"
+              alt="rudy maillot de bain 2 piece"
+            />
+            <IMGMobile
+              linkUrl="/service-mise-en-scene-live"
+              src="port_tanger_red_glasses_on_model.webp"
+              lar="40"
+              haut="45"
+              left="150px"
+              right=""
+              ajustHauteur="5"
+              marque="Port Tanger"
+              alt="port tanger red glasses on model"
+            />
+            <IMGMobile
+              linkUrl="/service-mise-en-scene-live"
+              src="mouty_on_model.webp"
+              lar="40"
+              haut="60"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Mouty"
+              alt="mouty on model"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-accessoires-eclipse"
+              src="lunettes-soleil-vuarnet.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Vuarnet"
+            />
+            <IMGMobile
+              linkUrl="/service-mise-en-scene-live"
+              src="rudy_maillot_de_bain_1_piece.webp"
+              lar="43"
+              haut="63"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="Rudy"
+              alt="rudy maillot de bain 1 piece"
+            />
+            <IMGMobile
+              linkUrl="/service-mise-en-scene-live"
+              src="ludovic_de_saint_sernin_black_cargo.webp"
+              lar="50"
+              haut="67"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="ludovic de saint sernin"
+              alt="ludovic de saint sernin black cargo"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-accessoires-eclipse"
+              src="chaussure-givenchy.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Givenchy"
+            />
+            <IMGMobile
+              linkUrl="/service-packshot-horizontal"
+              src="louis_vuitton_holographic_bag.webp"
+              lar="60"
+              haut="45"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="Louis Vuitton"
+              alt="louis vuitton holographic bag"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="a-magazine.webp"
+              lar="43"
+              haut="63"
+              left=""
+              right="50px"
+              ajustHauteur="5"
+              marque="a magazine"
+              alt="a magazine book"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="ensemble-survetement-vert-mouty.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Mouty"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="jacques_genin_oeuf_de_paques.webp"
+              lar="50"
+              haut="63"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="Jacques Genin"
+              alt="jacques genin oeuf de paques"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="la_manso_x_jpg_bague_rose_dos.webp"
+              lar="47"
+              haut="50"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="La manso"
+              alt="la manso x jean paul gaultier bague rose dos"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="look-cochady-fond-papier-rose.mp4"
+              lar="25"
+              haut="35"
+              left="100px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Cochady"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="etat_pur_vitamine_c_10.webp"
+              lar="50"
+              haut="63"
+              left=""
+              right="130px"
+              ajustHauteur="5"
+              marque="Etat Pur"
+              alt="etat pur vitamine c 10%"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="jordan_travis_collab.webp"
+              lar="43"
+              haut="63"
+              left=""
+              right="40px"
+              ajustHauteur="-2"
+              marque="Jordan"
+              alt="ordan travis collab"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="iindaco_talons_flammes_strass.webp"
+              lar="40"
+              haut="50"
+              left="90px"
+              right=""
+              ajustHauteur="5"
+              marque="Iindaco"
+              alt="iindaco talons flammes strass"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="nodaleto_angel_lucia_fuschia.webp"
+              lar="43"
+              haut="63"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Nodaleto"
+              alt="nodaleto angel lucia fuschia"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="sowvital_plant_elixir.webp"
+              lar="50"
+              haut="52"
+              left="100px"
+              right=""
+              ajustHauteur="5"
+              marque="Sowvital"
+              alt="sowvital plant elixir"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="jacques_genin_oeuf_de_paques_peinture.webp"
+              lar="43"
+              haut="63"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Jacques Genin"
+              alt="jacques genin oeuf de paques peinture"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="lcd_bracelet_argent_rouge2.webp"
+              lar="40"
+              haut="45"
+              left="40px"
+              right=""
+              ajustHauteur="-2"
+              marque="lcd"
+              alt="lcd bracelet argent rouge"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="mocassins_fursac_noirs.webp"
+              lar="43"
+              haut="63"
+              left=""
+              right="40px"
+              ajustHauteur="-2"
+              marque="Fursac"
+              alt="mocassins fursac noirs"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="lcd_bracelet_argent_rouge.webp"
+              lar="50"
+              haut="63"
+              left=""
+              right="30px"
+              ajustHauteur="5"
+              marque="lcd"
+              alt="lcd bracelet argent rouge"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="la_manso_x_jpg_bague_rose_face.webp"
+              lar="43"
+              haut="63"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="La manso"
+              alt="la manso x jean paul gaultier bague rose face"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="jordan_5_offwhite_black.webp"
+              lar="40"
+              haut="35"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Jordan"
+              alt="jordan 5 offwhite black"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="port_tanger_summa_purple_orange.webp"
+              lar="40"
+              haut="35"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Port Tanger"
+              alt="port tanger summer purple orange"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="iindaco_bottes_rose.webp"
+              lar="43"
+              haut="63"
+              left=""
+              right="150px"
+              ajustHauteur="-2"
+              marque="Iindaco"
+              alt="iindaco bottes rose"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="sister_morphine_boucle_d_oreille_noir_rouge_jaune.webp"
+              lar="50"
+              haut="52"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="sister morphine"
+              alt="sister morphine boucle d'oreille noir rouge jaune"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="dumbo_ice_cream_sandwiche4.webp"
+              lar="43"
+              haut="63"
+              left="40px"
+              right=""
+              ajustHauteur="-23"
+              marque="Dumbo"
+              alt="dumbo ice cream sandwiche"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="nike_air_max_sean_wotherspoon.webp"
+              lar="50"
+              haut="63"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="Nike"
+              alt="nike air max sean wotherspoon"
+            />
+          </div>
         </>
-    )
-}
+      )}
+      <Footer AnimationBloc7={true} />
+    </>
+  );
+};
 
-export default Galerie
+export default Galerie;

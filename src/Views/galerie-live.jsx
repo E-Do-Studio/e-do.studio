@@ -1,450 +1,1722 @@
-import React, {useCallback, useEffect, useRef, useState} from 'react'
-import {Link} from 'react-router-dom'
-import {useMediaQuery} from '@react-hook/media-query'
-import { Waypoint } from 'react-waypoint';
-import ScrollContainer from 'react-indiana-drag-scroll'
-import {Helmet} from 'react-helmet';
-import Lottie from 'lottie-react';
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { useMediaQuery } from "@react-hook/media-query";
+import { Waypoint } from "react-waypoint";
+import ScrollContainer from "react-indiana-drag-scroll";
+import { Helmet } from "react-helmet";
+import Lottie from "lottie-react";
 
-import anime from 'animejs/lib/anime.es.js';
+import { useLocation } from "react-router-dom";
 
-import './galerie.scss'
+import anime from "animejs/lib/anime.es.js";
 
-import Footer from '../Components/Layout/Footer/footer';
+import "./galerie.scss";
 
-import circleArrowLeftBlack from '../Assets/img/landing/circle-arrow-left-black.svg';
-import circleArrowRightBlack from '../Assets/img/landing/circle-arrow-right-black.svg';
+import Footer from "../Components/Layout/Footer/footer";
 
-import boutonSliderBlanc from '../Assets/animations/boutonMenuServices.json';
+import boutonSliderBlanc from "../Assets/animations/boutonMenuServices.json";
 
-const IMGMobile = ({src, lar, haut, left, right, ajustHauteur, linkUrl}) => {
-    const image = useRef()
-    const [animETAT, setAnimETAT] = useState(false)
+import { useTranslation } from "react-i18next";
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-        // image.current.style.transform = 'translateX(-100%)'
-    }, [])
+// Composants
 
-    const animIMG = () => {
-        //Lance l'animation
-        // console.log('test')
-        if(!animETAT){
-            setAnimETAT(true)
-            image.current.style.transform = 'translateX(0%) scale(0.9)'
-            setTimeout(() => {
-                image.current.style.transition = 'all 600ms ease-out'
-                image.current.style.transform = 'translateX(0%) scale(1)'
-            },280)
-        }
-    }
+import GalerieMenu from "./GalerieMenu";
+import IMGPC from "./IMGPC";
+import IMGMobile from "./IMGMobile";
+import VIDEOGalerie from "./VIDEOGalerie";
 
-    return(
-        <>
-        <Waypoint onEnter={animIMG} />
-        <div 
-            className="IMGMobileLigne"
-            style={{
-                height:haut + 'vw',
-                marginTop: ajustHauteur ? ajustHauteur + 'vw' : 'unset'
-            }}
-        >
-            <div 
-                className="IMGMobile"
-                style={{
-                    width: lar + 'vw',
-                    height: haut + 'vw',
-                    left: left ? left : 'unset',
-                    right: right ? right : 'unset'
-                }}
-            >
-                <Link to={linkUrl}>
-                <img 
-                    src={process.env.PUBLIC_URL + '/img/galerie/' + src} 
-                    alt="" 
-                    ref={image} 
-                    style={{}}
-                />
-                </Link>
-            </div>
-        </div>
-        </>
-    )
-}
+const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
+  const matches = useMediaQuery("only screen and (min-width: 1200px)");
 
-const GalerieMobile = () => {
-    return(
-        <div className="galerieMobile">
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="full-look-ludovic-de-saint-sernin.jpg" lar='43' haut='63' left='40px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="look-set-design-live.jpg" lar='33' haut='45' left='31px' right='' ajustHauteur='5' />
-            <Link to="/service-mise-en-scene-live">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/chaussures-talons-nodaleto.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="top-mesh-weinsanto.jpg" lar='30' haut='45' left='' right='0' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="chaussures-nodaleto.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='5' />
-            <Link to="/service-mise-en-scene-live">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/video-close-up-panconesi.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="close-up-ludovic-de-saint-sernin.jpg" lar='43' haut='63' left='' right='60px' ajustHauteur='-5' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="collier-altea.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='-23' />
-            <Link to="/service-mise-en-scene-live">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/studio-maison-ciero-video-crea.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="haut-under-armour-velo.jpg" lar='48' haut='70' left='22vw' right='' ajustHauteur='7' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="look-champ-paris.jpg" lar='43' haut='63' left='31px' right='' ajustHauteur='5' />
-            <Link to="/service-mise-en-scene-live">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/semaine.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="look-ensemble-survetement-marron-mouty.jpg" lar='43' haut='63' left='' right='30px' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="look-weinsanto.jpg" lar='30' haut='45' left='' right='0' ajustHauteur='7' />
-            <Link to="/service-mise-en-scene-live">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/look-cochady-fond-papier-rose.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="ludovic-de-saint-sernin.jpg" lar='43' haut='63' left='90px' right='' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="sister-morphine-boucles-d-oreilles-glitch.jpg" lar='43' haut='63' left='' right='0' ajustHauteur='-23' />
-            <Link to="/service-mise-en-scene-live">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/ensemble-survetement-vert-mouty.mp4" type="video/mp4" />
-                </video>
-            </Link>
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="sweat-a-capuche-tommy-hilfiger.jpg" lar='43' haut='63' left='' right='30px' ajustHauteur='-23' />
-            <IMGMobile linkUrl="/service-mise-en-scene-live" src="tenue-under-armour.jpg" lar='33' haut='45' left='31px' right='' ajustHauteur='5' />
-            <Link to="/service-mise-en-scene-live">
-                <video autoPlay loop muted webkit-playsInline playsInline height="600" width="300" style={{marginLeft: "50px"}}>
-                    <source src="/img/galerie/be-collection.mp4" type="video/mp4" />
-                </video>
-            </Link>
-        </div>
-    )
-}
+  const [scrollX, setScrollX] = useState(0);
 
-const IMGPC = ({src, lar, haut, ajustHauteurTop, ajustHauteurBottom, anim, linkUrl}) => {
-    const image = useRef()
-    const IMGPCDessus = useRef()
-    const [animETAT, setAnimETAT] = useState(false)
+  const handleScroll = (event) => {
+    setScrollX(event);
+  };
 
-    // useEffect(() => {
-    //     // console.log(image.clientLeft)
-    // }, [scrollX])
+  const PMS_BoutonPCNextButton = useRef();
+  const PMS_BoutonPCPrecButton = useRef();
 
-    const animIMG = () => {
-        //Lance l'animation
-        // console.log('test')
-        if(!animETAT){
-            if(anim === 1){
-                setAnimETAT(true)
-                image.current.style.transform = 'translateX(0%) scale(0.9)'
-                setTimeout(() => {
-                    image.current.style.transition = 'all 600ms ease-out'
-                    image.current.style.transform = 'translateX(0%) scale(1)'
-                },280)
-            }
+  const sliderNavSuiv = () => {
+    PMS_BoutonPCNextButton.current.play();
+    setTimeout(() => {
+      PMS_BoutonPCNextButton.current.stop();
+    }, 600);
+  };
 
-            if(anim === 2){
-                setAnimETAT(true)
-                image.current.style.transform = 'translateX(0%)'
-                // image.current.style.marginLeft = '100%'
-                IMGPCDessus.current.style.width = 0
-            }   
+  const sliderNavPrec = () => {
+    PMS_BoutonPCPrecButton.current.play();
+    setTimeout(() => {
+      PMS_BoutonPCPrecButton.current.stop();
+    }, 600);
+  };
 
-        }
+  function scrollLeft() {
+    const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    sliderNavPrec();
+    scrollBox.scrollBy({
+      left: -500,
+      behavior: "smooth",
+    });
+  }
 
-    }
+  function scrollRight() {
+    const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    sliderNavSuiv();
+    scrollBox.scrollBy({
+      left: 500,
+      behavior: "smooth",
+    });
+  }
 
-    return(
-        <>
-        
-        <div 
-            className="IMGPCColonne"
-            style={{
-                width: lar + 'vw',
-            }}
-        >
-            
-            <div 
-                className="IMGPC"
-                style={{
-                    width: lar + 'vw',
-                    height: haut + 'vw',
-                    top: ajustHauteurTop ? ajustHauteurTop + 'vh' : 'unset',
-                    bottom: ajustHauteurBottom ? ajustHauteurBottom + 'vh' : 'unset',
-                }}
-            >
-                { 
-                    src ?
-                    <Link to={linkUrl} style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                        <img 
-                            src={process.env.PUBLIC_URL + '/img/galerie/' + src} 
-                            alt="" 
-                            ref={image} 
-                            style={{}}
-                            className={ anim == 1 ? 'imgAnim1' : ''}
-                        />
-                    </Link>
-                    : ''
-                }
-            </div>
-            
+  useEffect(() => {
+    const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
 
-            {
-                anim == 2 ?
-                <div 
-                    ref={IMGPCDessus}
-                    className="IMGPCDessus"
-                    style={{
-                        width: lar + 'vw',
-                        height: haut + 'vw',
-                        top: ajustHauteurTop ? ajustHauteurTop + 'vh' : 'unset',
-                        bottom: ajustHauteurBottom ? ajustHauteurBottom + 'vh' : 'unset',
-                    }}
-                >
-
-                </div>
-                :
-                <div></div>
-            }
-
-
-            <div
-            style={{
-                position:'absolute',
-                left:'50%',
-                background:'blue'
-            }}>
-                <Waypoint onEnter={animIMG} horizontal={true}  />
-            </div>
-
-        </div>
-       
-        </>
-    )
-}
-
-const GalerieDesktop = () => {
-    const [scrollX, setScrollX] = useState(0)
-
-    const handleScroll = (event) => {
-        setScrollX(event)
-    }
-
-    const PMS_BoutonPCNextButton = useRef();
-    const PMS_BoutonPCPrecButton = useRef();
-
-    const sliderNavSuiv = () => {
-        PMS_BoutonPCNextButton.current.play()
-        setTimeout(() => {
-            PMS_BoutonPCNextButton.current.stop()
-        },600)
-    }
-
-    const sliderNavPrec = () => {
-        PMS_BoutonPCPrecButton.current.play()
-        setTimeout(() => {
-            PMS_BoutonPCPrecButton.current.stop()
-        },600)
-    }
-
-    function scrollLeft(){
-        const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
-        sliderNavPrec();
+    const keyScroll = (e) => {
+      const key = e.keyCode;
+      if (key == "39") {
         scrollBox.scrollBy({
-            left: -500,
-            behavior: 'smooth'
+          left: 500,
+          behavior: "smooth",
         });
-    }
-
-    function scrollRight(){
-        const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
-        sliderNavSuiv();
+      } else if (key == "37") {
         scrollBox.scrollBy({
-            left: 500,
-            behavior: 'smooth'
+          left: -500,
+          behavior: "smooth",
         });
-    }
+      }
+    };
 
-    useEffect(() => {
-        const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    document.addEventListener("keydown", keyScroll);
+  }, []);
 
-        const keyScroll = (e) => {
-            const key = e.keyCode;
-            if(key == '39'){
-                scrollBox.scrollBy({
-                    left: 500,
-                    behavior: 'smooth'
-                });
-            } else if (key == '37'){
-                scrollBox.scrollBy({
-                    left: -500,
-                    behavior: 'smooth'
-                });
-            }
-        }
+  useEffect(() => {
+    anime({
+      targets: ".PMS_BoutonPCNextButton",
+      opacity: [0, 1],
+      easing: "easeInOutSine",
+      duration: 500,
+      delay: 300,
+    });
 
-        document.addEventListener("keydown", keyScroll);
-    }, []);
+    anime({
+      targets: ".PMS_BoutonPCPrecButton",
+      opacity: [0, 1],
+      easing: "easeInOutSine",
+      duration: 500,
+      delay: 300,
+    });
 
-    useEffect(() => {
-        anime({
-            targets: '.PMS_BoutonPCNextButton',
-            opacity: [0,1],
-            easing: 'easeInOutSine',
-            duration: 500,
-            delay: 300,
-        })
+    //Animation du bouton
+  }, []);
 
-        anime({
-            targets: '.PMS_BoutonPCPrecButton',
-            opacity: [0,1],
-            easing: 'easeInOutSine',
-            duration: 500,
-            delay: 300,
-        })
+  const videoRef = useRef(null);
 
-        //Animation du bouton
-    }, []);
+  const [imgHover, setImgHover] = useState(false);
 
-    return(
-        <div className="galeriePC" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-            <ScrollContainer className="galeriePCWrapper" onScroll={handleScroll} hideScrollbars={false}>
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="full-look-ludovic-de-saint-sernin.jpg" lar="18" haut="26" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/chaussures-talons-nodaleto.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="look-set-design-live.jpg" lar="22" haut="27" ajustHauteurTop="" ajustHauteurBottom="20" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="top-mesh-weinsanto.jpg" lar="24" haut="33" ajustHauteurTop="10" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="chaussures-nodaleto.jpg" lar="18" haut="27" ajustHauteurTop="7" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/video-close-up-panconesi.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="close-up-ludovic-de-saint-sernin.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="14" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/studio-maison-ciero-video-crea.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="collier-altea.jpg" lar="13" haut="18" ajustHauteurTop="" ajustHauteurBottom="20" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/semaine.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/look-cochady-fond-papier-rose.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="haut-under-armour-velo.jpg" lar="18" haut="27" ajustHauteurTop="20" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/ensemble-survetement-vert-mouty.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="look-champ-paris.jpg" lar="15" haut="24" ajustHauteurTop="7" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="look-ensemble-survetement-marron-mouty.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/brassiere-calvin-klein-nylon-magazine.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="look-weinsanto.jpg" lar="15" haut="24" ajustHauteurTop="7" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="ludovic-de-saint-sernin.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <Link to="/service-mise-en-scene-live" style={{cursor:'url(cursor/cursor.svg), auto'}}>
-                    <video autoPlay loop muted height="600" width="300" style={{marginLeft: "50px"}}>
-                        <source src="/img/galerie/be-collection.mp4" type="video/mp4" />
-                    </video>
-                </Link>
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="sister-morphine-boucles-d-oreilles-glitch.jpg" lar="15" haut="24" ajustHauteurTop="" ajustHauteurBottom="" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="sweat-a-capuche-tommy-hilfiger.jpg" lar="15" haut="20" ajustHauteurTop="" ajustHauteurBottom="7" anim={1} scrollX={scrollX} />
-                <IMGPC linkUrl="/service-mise-en-scene-live" src="tenue-under-armour.jpg" lar="18" haut="27" ajustHauteurTop="" ajustHauteurBottom="12" anim={1} scrollX={scrollX} />
+  const handleHover = (event) => {
+    videoRef.current.style.opacity = 0.8;
+    videoRef.current.style.filter = "grayscale(1)";
+  };
+
+  const handleMouseOut = (event) => {
+    videoRef.current.style.opacity = 1;
+    videoRef.current.style.filter = "grayscale(0)";
+  };
+  const location = useLocation();
+  const { selectedLink = "horizontal" } = location.state || {};
+
+  return (
+    <>
+      <GalerieMenu
+        setPageLoad={setPageLoad}
+        selectedLink={selectedLink}
+        setSelectedLink={setSelectedLink}
+      />
+      {matches ? (
+        <>
+          <div
+            className="galeriePC"
+            style={{ cursor: "url(cursor/cursor.svg), auto" }}
+          >
+            {/* <div className="brand">{imgHover}</div> */}
+            <ScrollContainer
+              className="galeriePCWrapper"
+              onScroll={handleScroll}
+              hideScrollbars={false}
+              vertical={false}
+              style={{ overflowY: "hidden" }}
+            >
+              {selectedLink === "live" && (
+                <>
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="black_nuage_top_ldss.webp"
+                    lar="28"
+                    haut="35"
+                    ajustHauteurTop="6"
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="ludovic de saint sernin"
+                    alt="black nuage top"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="video-close-up-panconesi.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Panconesi"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="comme_des_garcons_bag_gucci.webp"
+                    lar="28"
+                    haut="27"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Comme des Garçons x Gucci"
+                    alt="Comme des Garçons x Gucci sac"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="giambatista_valli_yellow_skirt.webp"
+                    lar="22"
+                    haut="23"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambatista"
+                    alt="giambatista valli yellow skirt"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="13_09_accessoires.webp"
+                    lar="22"
+                    haut="32"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="10"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="13/09"
+                    alt="13/09 accessoires"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="chaussures-talons-nodaleto.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Nodaleto"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="lookbook_giambatista_valli.webp"
+                    lar="32"
+                    haut="31"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambatista"
+                    alt="lookbook giambatista valli"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="ludovic_de_saint_sernin_black_cargo.webp"
+                    lar="32"
+                    haut="41"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="3"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="ludovic de saint sernin"
+                    alt="ludovic de saint sernin black cargo"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="mouty_on_model.webp"
+                    lar="25"
+                    haut="39"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="8"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mouty"
+                    alt="mouty on model"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="valise_fragment.webp"
+                    lar="28"
+                    haut="27"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Fragment"
+                    alt="valise fragment"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="be-collection.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Be Collection"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="pantalons_blanc_ludovic_de_saint_sernin.webp"
+                    lar="32"
+                    haut="40"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="20"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="ludovic de saint sernin"
+                    alt="pantalons blanc ludovic de saint sernin"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="ludovic_de_saint_sernin_dress.webp"
+                    lar="32"
+                    haut="43"
+                    ajustHauteurTop="7"
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="ludovic de saint sernin"
+                    alt="ludovic de saint sernin dress"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="louis_vuitton_holographic_bag.webp"
+                    lar="28"
+                    haut="30"
+                    ajustHauteurTop="9"
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Louis Vuitton"
+                    alt="louis vuitton holographic bag"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="rudy_maillot_de_bain_1_piece.webp"
+                    lar="32"
+                    haut="43"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Rudy"
+                    alt="rudy maillot de bain 1 piece"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="semaine.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Semaine"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="staff_tee_on_model.webp"
+                    lar="32"
+                    haut="43"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Staff"
+                    alt="staff tee on model"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="13_09_glasses.webp"
+                    lar="28"
+                    haut="43"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="13/09"
+                    alt="13/09 glasses"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="baguette_bag_dentro.webp"
+                    lar="28"
+                    haut="45"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Dentro"
+                    alt="baguette bag dentro"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="ensemble-survetement-vert-mouty.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mouty"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="giambatista_valli_dress.webp"
+                    lar="42"
+                    haut="41"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambatista"
+                    alt="giambatista valli dress"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="13_09_glasses_on_model.webp"
+                    lar="22"
+                    haut="32"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="13/09"
+                    alt="13/09 glasses on model"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="port_tanger_on_model_glasses.webp"
+                    lar="28"
+                    haut="27"
+                    ajustHauteurTop="5"
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Port Tanger"
+                    alt="port tanger on model glasses"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="look-cochady-fond-papier-rose.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Cochady"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="valise_fragment_top.webp"
+                    lar="32"
+                    haut="30"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="3"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Fragment"
+                    alt="valise fragment top"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="giambatista_valli_on_model.webp"
+                    lar="32"
+                    haut="31"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="2"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambatista"
+                    alt="giambatista valli on model"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="port_tanger_red_glasses_on_model.webp"
+                    lar="28"
+                    haut="27"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Port Tanger"
+                    alt="port tanger red glasses on model"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="brassiere-calvin-klein-nylon-magazine.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Nylon"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="rudy_maillot_de_bain_2_pieces.webp"
+                    lar="32"
+                    haut="43"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Rudy"
+                    alt="rudy maillot de bain 2 piece"
+                  />
+                </>
+              )}
+              {selectedLink === "liveGarments" && (
+                <>
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="black_nuage_top_ldss.webp"
+                    lar="28"
+                    haut="35"
+                    ajustHauteurTop="6"
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="ludovic de saint sernin"
+                    alt="black nuage top"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="giambatista_valli_dress.webp"
+                    lar="42"
+                    haut="41"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambatista"
+                    alt="giambatista valli dress"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="brassiere-calvin-klein-nylon-magazine.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Nylon"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="ludovic_de_saint_sernin_dress.webp"
+                    lar="32"
+                    haut="43"
+                    ajustHauteurTop="7"
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="ludovic de saint sernin"
+                    alt="ludovic de saint sernin dress"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="giambatista_valli_yellow_skirt.webp"
+                    lar="22"
+                    haut="23"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambatista"
+                    alt="giambatista valli yellow skirt"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="look-cochady-fond-papier-rose.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Cochady"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="rudy_maillot_de_bain_2_pieces.webp"
+                    lar="32"
+                    haut="43"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Rudy"
+                    alt="rudy maillot de bain 2 piece"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="lookbook_giambatista_valli.webp"
+                    lar="32"
+                    haut="31"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambatista"
+                    alt="lookbook giambatista valli"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="ludovic_de_saint_sernin_black_cargo.webp"
+                    lar="32"
+                    haut="41"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="3"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="ludovic de saint sernin"
+                    alt="ludovic de saint sernin black cargo"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="mouty_on_model.webp"
+                    lar="25"
+                    haut="39"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="8"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mouty"
+                    alt="mouty on model"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="pantalons_blanc_ludovic_de_saint_sernin.webp"
+                    lar="32"
+                    haut="40"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="20"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="ludovic de saint sernin"
+                    alt="pantalons blanc ludovic de saint sernin"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="rudy_maillot_de_bain_1_piece.webp"
+                    lar="32"
+                    haut="43"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Rudy"
+                    alt="rudy maillot de bain 1 piece"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="be-collection.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Be Collection"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="giambatista_valli_on_model.webp"
+                    lar="32"
+                    haut="31"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="2"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambatista"
+                    alt="giambatista valli on model"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="staff_tee_on_model.webp"
+                    lar="32"
+                    haut="43"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Staff"
+                    alt="staff tee on model"
+                  />
+                </>
+              )}
+              {selectedLink === "liveFurnitures" && (
+                <>
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="inoui_editions_access.webp"
+                    lar="22"
+                    haut="32"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="10"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Inoui"
+                    alt="inoui editions access"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="Dentro_bag_1.webp"
+                    lar="22"
+                    haut="32"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Dentro"
+                    alt="Dentro bag"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="inoui_editions_scarf.webp"
+                    lar="28"
+                    haut="18"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Inoui"
+                    alt="inoui editions scarf"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="hast_gants.webp"
+                    lar="28"
+                    haut="27"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Hast"
+                    alt="hast gants"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="inoui_accesoires.webp"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Inoui"
+                    alt="inoui accesoires"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="Drentro_bag_close.webp"
+                    lar="21"
+                    haut="32"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="9"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Dentro"
+                    alt="Dentro bag close"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="inoui_editions_1_foulards.webp"
+                    lar="32"
+                    haut="33"
+                    ajustHauteurTop="2"
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Inoui"
+                    alt="inoui editions foulards"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="kid_super_foulards.webp"
+                    lar="34"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Kid Super"
+                    alt="kid super foulards"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="inoui_editions_scarves.webp"
+                    lar="35"
+                    haut="22"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Inoui"
+                    alt="inoui editions scarves"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="inoui_editions_tote_bag.webp"
+                    lar="25"
+                    haut="34"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Inoui"
+                    alt="inoui editions tote bag"
+                  />
+                </>
+              )}
+              {selectedLink === "liveAccess" && (
+                <>
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="13_09_glasses.webp"
+                    lar="28"
+                    haut="43"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="13/09"
+                    alt="13/09 glasses"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="valise_fragment.webp"
+                    lar="28"
+                    haut="27"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Fragment"
+                    alt="valise fragment"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="video-close-up-panconesi.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Panconesi"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="baguette_bag_dentro.webp"
+                    lar="28"
+                    haut="45"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Dentro"
+                    alt="baguette bag dentro"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="13_09_glasses_on_model.webp"
+                    lar="22"
+                    haut="32"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="13/09"
+                    alt="13/09 glasses on model"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="comme_des_garcons_bag_gucci.webp"
+                    lar="28"
+                    haut="27"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Comme des Garçons x Gucci"
+                    alt="Comme des Garçons x Gucci sac"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="port_tanger_on_model_glasses.webp"
+                    lar="28"
+                    haut="27"
+                    ajustHauteurTop="5"
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Port Tanger"
+                    alt="port tanger on model glasses"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="valise_fragment_top.webp"
+                    lar="32"
+                    haut="30"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="3"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Fragment"
+                    alt="valise fragment top"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="louis_vuitton_holographic_bag.webp"
+                    lar="28"
+                    haut="30"
+                    ajustHauteurTop="9"
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Louis Vuitton"
+                    alt="louis vuitton holographic bag"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="13_09_accessoires.webp"
+                    lar="22"
+                    haut="32"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="10"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="13/09"
+                    alt="13/09 accessoires"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="port_tanger_red_glasses_on_model.webp"
+                    lar="28"
+                    haut="27"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Port Tanger"
+                    alt="port tanger red glasses on model"
+                  />
+                </>
+              )}
             </ScrollContainer>
             <div className="buttonBox">
-                <button className="PMS_BoutonPCPrev PMS_BoutonNav" onClick={scrollLeft}>
-                    <Lottie 
-                        className="PMS_BoutonPCPrecButton"
-                        lottieRef={PMS_BoutonPCPrecButton} 
-                        animationData={boutonSliderBlanc}
-                        loop={false}
-                        autoplay={false}
-                        onEnterFrame={(event) => {
-                            // console.log(event)
-                        }}
-                    />
-                </button>
-                <button className="PMS_BoutonPCNext PMS_BoutonNav" onClick={scrollRight}>
-                    <Lottie 
-                        className="PMS_BoutonPCNextButton"
-                        lottieRef={PMS_BoutonPCNextButton} 
-                        animationData={boutonSliderBlanc}
-                        loop={false}
-                        autoplay={false}
-                        onEnterFrame={(event) => {
-                            // console.log(event)
-                        }}
-                    />
-                </button>
+              <button
+                className="PMS_BoutonPCPrev PMS_BoutonNav"
+                onClick={scrollLeft}
+              >
+                <Lottie
+                  className="PMS_BoutonPCPrecButton"
+                  lottieRef={PMS_BoutonPCPrecButton}
+                  animationData={boutonSliderBlanc}
+                  loop={false}
+                  autoplay={false}
+                  onEnterFrame={(event) => {
+                    // console.log(event)
+                  }}
+                />
+              </button>
+              <button
+                className="PMS_BoutonPCNext PMS_BoutonNav"
+                onClick={scrollRight}
+              >
+                <Lottie
+                  className="PMS_BoutonPCNextButton"
+                  lottieRef={PMS_BoutonPCNextButton}
+                  animationData={boutonSliderBlanc}
+                  loop={false}
+                  autoplay={false}
+                  onEnterFrame={(event) => {
+                    // console.log(event)
+                  }}
+                />
+              </button>
             </div>
-        </div>
-    )
-}
-
-const Galerie = ({setPageLoad}) => {
-    const titrePageGalerie = useRef()
-
-    const matches = useMediaQuery('only screen and (min-width: 1200px)');
-
-    useEffect(() => {
-        window.scrollTo(0, 0)
-        setPageLoad(true)
-
-        titrePageGalerie.current.style.transform = 'translateY(0%)'
-    }, []);
-
-    return (
-        <>
-            <Helmet defer={false}>
-                <meta charSet="utf-8" />
-                <title>E-Do Studio - Galerie shooting Live</title>
-                <meta name="description" content="Explorez les possibilités de productions de contenus photos et vidéos offertes par notre machine Live." />
-
-                {/* <link rel="canonical" href="http://mysite.com/example" /> */}
-            </Helmet>
-            <div className="pageGalerie">
-
-                <div className='titreAnimationWrapper'>
-                    <h1 className="titrePageGalerie" ref={titrePageGalerie}>GALERIE</h1>
-                    <ul>
-                        <Link to="/galerie"><li>all</li></Link>
-                        <Link to="/galerie-horizontal"><li>Horizontal</li></Link>
-                        <Link to="/galerie-vertical"><li>Vertical</li></Link>
-                        <Link to="/galerie-live"><li className="active">Live</li></Link>
-                        <Link to="/galerie-eclipse"><li>Eclipse</li></Link>
-                        <Link to="/galerie360"><li>360</li></Link>
-                    </ul>
-                </div>
-                {
-                    !matches ?
-                        <GalerieMobile />
-                    :
-                        <GalerieDesktop />
-                }
-            </div>
-            <Footer AnimationBloc7={true}  />
+          </div>
         </>
-    )
-}
+      ) : (
+        <div className="galerieMobile">
+          <>
+            {selectedLink === "live" && (
+              <>
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="black_nuage_top_ldss.webp"
+                  lar="50"
+                  haut="75"
+                  left=""
+                  right="40px"
+                  ajustHauteur="-23"
+                  marque="Black Nuage"
+                  alt="black nuage top"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="video-close-up-panconesi.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Panconesi"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="13_09_glasses_on_model.webp"
+                  lar="52"
+                  haut="75"
+                  left=""
+                  right="100px"
+                  ajustHauteur="5"
+                  marque="13/09"
+                  alt="13/09 glasses on model"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="chaussures-talons-nodaleto.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Nodaleto"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="giambatista_valli_dress.webp"
+                  lar="50"
+                  haut="75"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="Giambatista"
+                  alt="giambatista valli dress"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ludovic_de_saint_sernin_dress.webp"
+                  lar="47"
+                  haut="78"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="ludovic de saint sernin"
+                  alt="ludovic de saint sernin dress"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="rudy_maillot_de_bain_2_pieces.webp"
+                  lar="50"
+                  haut="63"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Rudy"
+                  alt="rudy maillot de bain 2 piece"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="port_tanger_red_glasses_on_model.webp"
+                  lar="40"
+                  haut="45"
+                  left="150px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Port Tanger"
+                  alt="port tanger red glasses on model"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="be-collection.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Be Collection"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="mouty_on_model.webp"
+                  lar="40"
+                  haut="60"
+                  left="100px"
+                  ajustHauteur="5"
+                  marque="Mouty"
+                  alt="mouty on model"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="rudy_maillot_de_bain_1_piece.webp"
+                  lar="43"
+                  haut="63"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Rudy"
+                  alt="rudy maillot de bain 1 piece"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ludovic_de_saint_sernin_black_cargo.webp"
+                  lar="50"
+                  haut="67"
+                  left="190px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="ludovic de saint sernin"
+                  alt="ludovic de saint sernin black cargo"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="semaine.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Semaine"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="louis_vuitton_holographic_bag.webp"
+                  lar="60"
+                  haut="45"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Louis Vuitton"
+                  alt="louis vuitton holographic bag"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="giambatista_valli_on_model.webp"
+                  lar="43"
+                  haut="63"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Giambatista"
+                  alt="giambatista valli on model"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ensemble-survetement-vert-mouty.mp4"
+                  lar="25"
+                  haut="35"
+                  left="100px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mouty"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="staff_tee_on_model.webp"
+                  lar="43"
+                  haut="63"
+                  left=""
+                  right="30px"
+                  ajustHauteur="5"
+                  marque="Staff"
+                  alt="staff tee on model"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="13_09_glasses.webp"
+                  lar="43"
+                  haut="63"
+                  left="90px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="13/09"
+                  alt="13/09 glasses"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="pantalons_blanc_ludovic_de_saint_sernin.webp"
+                  lar="63"
+                  haut="73"
+                  left="90px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="ludovic de saint sernin"
+                  alt="pantalons blanc ludovic de saint sernin"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="look-cochady-fond-papier-rose.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Cochady"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="valise_fragment.webp"
+                  lar="43"
+                  haut="63"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="Fragment"
+                  alt="valise fragment"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="lookbook_giambatista_valli.webp"
+                  lar="43"
+                  haut="63"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Giambatista"
+                  alt="lookbook giambatista valli"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="comme_des_garcons_bag_gucci.webp"
+                  lar="53"
+                  haut="71"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Comme des Garçons x Gucci"
+                  alt="Comme des Garçons x Gucci sac"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="port_tanger_on_model_glasses.webp"
+                  lar="43"
+                  haut="63"
+                  left=""
+                  right="90px"
+                  ajustHauteur="5"
+                  marque="Port Tanger"
+                  alt="port tanger on model glasses"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="valise_fragment_top.webp"
+                  lar="54"
+                  haut="52"
+                  left="190px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Fragment"
+                  alt="valise fragment top"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="baguette_bag_dentro.webp"
+                  lar="53"
+                  haut="66"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Dentro"
+                  alt="baguette bag dentro"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="brassiere-calvin-klein-nylon-magazine.mp4"
+                  lar="25"
+                  haut="35"
+                  left="100px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Nylon"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="giambatista_valli_yellow_skirt.webp"
+                  lar="43"
+                  haut="63"
+                  left=""
+                  right="100px"
+                  ajustHauteur="5"
+                  marque="Giambatista"
+                  alt="giambatista valli yellow skirt"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="13_09_accessoires.webp"
+                  lar="60"
+                  haut="52"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="13/09"
+                  alt="13/09 accessoires"
+                />
+              </>
+            )}
+            {selectedLink === "liveGarments" && (
+              <>
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="black_nuage_top_ldss.webp"
+                  lar="50"
+                  haut="75"
+                  left=""
+                  right="40px"
+                  ajustHauteur="-23"
+                  marque="Black Nuage"
+                  alt="black nuage top"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="giambatista_valli_dress.webp"
+                  lar="50"
+                  haut="75"
+                  left="60px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Giambatista"
+                  alt="giambatista valli dress"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="brassiere-calvin-klein-nylon-magazine.mp4"
+                  lar="25"
+                  haut="35"
+                  left="100px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Nylon"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ludovic_de_saint_sernin_dress.webp"
+                  lar="47"
+                  haut="78"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="ludovic de saint sernin"
+                  alt="ludovic de saint sernin dress"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="giambatista_valli_yellow_skirt.webp"
+                  lar="43"
+                  haut="63"
+                  left=""
+                  right="100px"
+                  ajustHauteur="5"
+                  marque="Giambatista"
+                  alt="giambatista valli yellow skirt"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="look-cochady-fond-papier-rose.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Cochady"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="rudy_maillot_de_bain_2_pieces.webp"
+                  lar="50"
+                  haut="63"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Rudy"
+                  alt="rudy maillot de bain 2 piece"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="lookbook_giambatista_valli.webp"
+                  lar="43"
+                  haut="63"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Giambatista"
+                  alt="lookbook giambatista valli"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ludovic_de_saint_sernin_black_cargo.webp"
+                  lar="50"
+                  haut="67"
+                  left="190px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="ludovic de saint sernin"
+                  alt="ludovic de saint sernin black cargo"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="mouty_on_model.webp"
+                  lar="40"
+                  haut="60"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="Mouty"
+                  alt="mouty on model"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="be-collection.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Be Collection"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="pantalons_blanc_ludovic_de_saint_sernin.webp"
+                  lar="63"
+                  haut="73"
+                  left="90px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="ludovic de saint sernin"
+                  alt="pantalons blanc ludovic de saint sernin"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="rudy_maillot_de_bain_1_piece.webp"
+                  lar="43"
+                  haut="63"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="Rudy"
+                  alt="rudy maillot de bain 1 piece"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="giambatista_valli_on_model.webp"
+                  lar="43"
+                  haut="63"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Giambatista"
+                  alt="giambatista valli on model"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="staff_tee_on_model.webp"
+                  lar="43"
+                  haut="63"
+                  left=""
+                  right="30px"
+                  ajustHauteur="5"
+                  marque="Staff"
+                  alt="staff tee on model"
+                />
+              </>
+            )}
+            {selectedLink === "liveFurnitures" && (
+              <>
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="inoui_editions_access.webp"
+                  lar="43"
+                  haut="63"
+                  left="90px"
+                  right=""
+                  ajustHauteur="-23"
+                  marque="Inoui"
+                  alt="inoui editions access"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="Dentro_bag_1.webp"
+                  lar="43"
+                  haut="63"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="Dentro"
+                  alt="Dentro bag"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="inoui_editions_scarf.webp"
+                  lar="53"
+                  haut="42"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Inoui"
+                  alt="inoui editions scarf"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="hast_gants.webp"
+                  lar="52"
+                  haut="51"
+                  left=""
+                  right="100px"
+                  ajustHauteur="5"
+                  marque="Hast"
+                  alt="hast gants"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="inoui_accesoires.webp"
+                  lar="53"
+                  haut="71"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="Inoui"
+                  alt="inoui accesoires"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="Drentro_bag_close.webp"
+                  lar="43"
+                  haut="63"
+                  left=""
+                  right="90px"
+                  ajustHauteur="5"
+                  marque="Dentro"
+                  alt="Dentro bag close"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="inoui_editions_1_foulards.webp"
+                  lar="50"
+                  haut="52"
+                  left="190px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Inoui"
+                  alt="inoui editions foulards"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="kid_super_foulards.webp"
+                  lar="60"
+                  haut="45"
+                  left="40px"
+                  right=""
+                  ajustHauteur="-2"
+                  marque="Kid Super"
+                  alt="kid super foulards"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="inoui_editions_scarves.webp"
+                  lar="60"
+                  haut="45"
+                  left=""
+                  right="40px"
+                  ajustHauteur="-2"
+                  marque="Inoui"
+                  alt="inoui editions scarves"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="inoui_editions_tote_bag.webp"
+                  lar="40"
+                  haut="45"
+                  left="150px"
+                  right=""
+                  ajustHauteur="-2"
+                  marque="Inoui"
+                  alt="inoui editions tote bag"
+                />
+              </>
+            )}
+            {selectedLink === "liveAccess" && (
+              <>
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="13_09_glasses.webp"
+                  lar="43"
+                  haut="63"
+                  left="90px"
+                  right=""
+                  ajustHauteur="-23"
+                  marque="13/09"
+                  alt="13/09 glasses"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="valise_fragment.webp"
+                  lar="43"
+                  haut="63"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="Fragment"
+                  alt="valise fragment"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="baguette_bag_dentro.webp"
+                  lar="53"
+                  haut="66"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Dentro"
+                  alt="baguette bag dentro"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="video-close-up-panconesi.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Panconesi"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="13_09_glasses_on_model.webp"
+                  lar="52"
+                  haut="75"
+                  left=""
+                  right="100px"
+                  ajustHauteur="5"
+                  marque="13/09"
+                  alt="13/09 glasses on model"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="comme_des_garcons_bag_gucci.webp"
+                  lar="53"
+                  haut="71"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Comme des Garçons x Gucci"
+                  alt="Comme des Garçons x Gucci sac"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="port_tanger_on_model_glasses.webp"
+                  lar="43"
+                  haut="63"
+                  left=""
+                  right="90px"
+                  ajustHauteur="5"
+                  marque="Port Tanger"
+                  alt="port tanger on model glasses"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="valise_fragment_top.webp"
+                  lar="54"
+                  haut="52"
+                  left="190px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Fragment"
+                  alt="valise fragment top"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="louis_vuitton_holographic_bag.webp"
+                  lar="60"
+                  haut="45"
+                  left="40px"
+                  right=""
+                  ajustHauteur="-2"
+                  marque="Louis Vuitton"
+                  alt="louis vuitton holographic bag"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="13_09_accessoires.webp"
+                  lar="60"
+                  haut="52"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="13/09"
+                  alt="13/09 accessoires"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="port_tanger_red_glasses_on_model.webp"
+                  lar="40"
+                  haut="45"
+                  left="150px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Port Tanger"
+                  alt="port tanger red glasses on model"
+                />
+              </>
+            )}
+          </>
+        </div>
+      )}
+      <Footer AnimationBloc7={true} />
+    </>
+  );
+};
 
-export default Galerie
+export default GalerieLive;
