@@ -49,103 +49,97 @@
         }
         @include rwd(1700) {
           margin-left: 300px;
-<<<<<<< HEAD
         }
         @include rwd(2000) {
           margin-left: 320px;
         }
-=======
-        }
-        @include rwd(2000) {
-          margin-left: 320px;
-        }
->>>>>>> gallery
-        @include rwd(2400) {
-          margin-left: 410px;
-        }
+      }
+      @include rwd(2000) {
+        margin-left: 320px;
       }
 
-      h1 {
-        font-weight: 300;
-        font-size: 27px;
-        line-height: 1.29;
-        letter-spacing: -0.84px;
-        max-width: 280px;
+      @include rwd(2400) {
+        margin-left: 410px;
+      }
+    }
 
-        @include lg {
-          font-size: 45px;
-          line-height: 1.17;
-          max-width: 400px;
-          // width:800px;
-          // background:green;
-        }
+    h1 {
+      font-weight: 300;
+      font-size: 27px;
+      line-height: 1.29;
+      letter-spacing: -0.84px;
+      max-width: 280px;
 
-        @include rwd(1140) {
-          font-size: 52px;
-          max-width: 600px;
-        }
-
-        @include xxl {
-          font-size: 60px;
-          line-height: 1.17;
-          max-width: 700px;
-        }
-
-        @include qhd {
-          font-size: 70px;
-          line-height: 1.17;
-          max-width: 900px;
-        }
+      @include lg {
+        font-size: 45px;
+        line-height: 1.17;
+        max-width: 400px;
+        // width:800px;
+        // background:green;
       }
 
-      h2 {
-        font-size: 14px;
-        font-weight: 300;
-        letter-spacing: -0.38px;
-        margin-left: 10px;
-        padding-top: 7px;
-
-        @include lg {
-          width: 50px;
-          // background:blue;
-          margin-left: 15px;
-        }
-
-        @include qhd {
-          font-size: 18px;
-          padding-top: 10px;
-        }
+      @include rwd(1140) {
+        font-size: 52px;
+        max-width: 600px;
       }
 
-      .sliderTitrePrincipal {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        max-width: 280px;
-        @include lg {
-          max-width: 400px;
-        }
-        @include rwd(1140) {
-          max-width: 600px;
-        }
-
-        @include xxl {
-          max-width: 700px;
-        }
+      @include xxl {
+        font-size: 60px;
+        line-height: 1.17;
+        max-width: 700px;
       }
-<<<<<<< HEAD
+
+      @include qhd {
+        font-size: 70px;
+        line-height: 1.17;
+        max-width: 900px;
+      }
+    }
+
+    h2 {
+      font-size: 14px;
+      font-weight: 300;
+      letter-spacing: -0.38px;
+      margin-left: 10px;
+      padding-top: 7px;
+
+      @include lg {
+        width: 50px;
+        // background:blue;
+        margin-left: 15px;
+      }
+
+      @include qhd {
+        font-size: 18px;
+        padding-top: 10px;
+      }
+    }
+
+    .sliderTitrePrincipal {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      max-width: 280px;
+      @include lg {
+        max-width: 400px;
+      }
+      @include rwd(1140) {
+        max-width: 600px;
+      }
+
+      @include xxl {
+        max-width: 700px;
+      }
+    }
+
+    .sliderTitrePrincipalSuiv,
+    .sliderSousTitrePrincipalSuiv {
+      transform: translateX(-85px);
 
       .sliderTitrePrincipalSuiv,
       .sliderSousTitrePrincipalSuiv {
         transform: translateX(-85px);
 
-=======
-
-      .sliderTitrePrincipalSuiv,
-      .sliderSousTitrePrincipalSuiv {
-        transform: translateX(-85px);
-
->>>>>>> gallery
         @include lg {
           transform: translateX(-250px);
         }
@@ -163,15 +157,11 @@
         font-weight: 300;
         line-height: 1.63;
         margin-top: 10px;
-<<<<<<< HEAD
 
         max-width: 260px;
 
-=======
-
         max-width: 260px;
 
->>>>>>> gallery
         @include lg {
           max-width: 400px;
           margin-top: 40px;
@@ -192,7 +182,6 @@
           margin-top: 55px;
         }
       }
-<<<<<<< HEAD
 
       .autreServiceButton {
         margin-top: 30px;
@@ -200,54 +189,57 @@
         line-height: 1.88;
         letter-spacing: -0.38px;
 
-=======
+        .autreServiceButton {
+          margin-top: 30px;
+          font-size: 16px;
+          line-height: 1.88;
+          letter-spacing: -0.38px;
 
-      .autreServiceButton {
-        margin-top: 30px;
-        font-size: 16px;
-        line-height: 1.88;
-        letter-spacing: -0.38px;
+          // border-bottom:1px solid white;
+          padding-bottom: 5px;
+          width: 120px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          color: white;
+          position: relative;
 
->>>>>>> gallery
-        // border-bottom:1px solid white;
-        padding-bottom: 5px;
-        width: 120px;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        color: white;
-        position: relative;
+          &:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            top: 35px;
+            // top:0px;
+            background-color: rgb(255, 255, 255);
+            visibility: hidden;
+            transition: all 0.3s ease-in-out;
+          }
 
-        &:before {
-          content: "";
-          position: absolute;
-          width: 0;
-          height: 1px;
-          bottom: 0;
-          left: 0;
-          top: 35px;
-          // top:0px;
-          background-color: rgb(255, 255, 255);
-          visibility: hidden;
-          transition: all 0.3s ease-in-out;
-        }
+          &:hover:before {
+            visibility: visible;
+            width: 100%;
+          }
 
-        &:hover:before {
-          visibility: visible;
-          width: 100%;
-        }
+          @include lg {
+            margin-top: 40px;
+          }
 
-        @include lg {
-          margin-top: 40px;
-        }
+          @include qhd {
+            margin-top: 55px;
+          }
 
-        @include qhd {
-          margin-top: 55px;
-        }
-
-        span {
-          display: block;
-<<<<<<< HEAD
+          span {
+            display: block;
+          }
+          svg {
+            display: block;
+            height: 14px;
+            margin-left: 15px;
+            padding-bottom: 3px;
+          }
         }
         svg {
           display: block;
@@ -255,15 +247,6 @@
           margin-left: 15px;
           padding-bottom: 3px;
         }
-=======
-        }
-        svg {
-          display: block;
-          height: 14px;
-          margin-left: 15px;
-          padding-bottom: 3px;
-        }
->>>>>>> gallery
       }
     }
 
@@ -350,11 +333,10 @@
     .sliderIMG_IMG {
       width: 100%;
       height: 100%;
-<<<<<<< HEAD
+
       object-fit: cover;
-=======
+
       object-fit: contain;
->>>>>>> gallery
     }
 
     .sliderIMG_IMGActu {
@@ -373,12 +355,10 @@
       left: 95vw;
       z-index: 5;
     }
-<<<<<<< HEAD
+
     img {
       object-fit: contain !important;
     }
-=======
->>>>>>> gallery
   }
 
   .sliderNavPC {
