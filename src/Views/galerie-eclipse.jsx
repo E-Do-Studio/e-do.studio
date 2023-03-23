@@ -190,7 +190,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="22"
                     haut="30"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Coperni"
@@ -403,7 +403,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="22"
                     haut="30"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Port Tanger"
@@ -1011,7 +1011,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="22"
                     haut="30"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Hermes"
@@ -1047,7 +1047,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="30"
                     haut="30"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Giambatista Valli"
@@ -1105,9 +1105,9 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     linkUrl="/service-accessoires-eclipse"
                     src="vaillant_bague_bag_noir.webp"
                     lar="22"
-                    haut="30"
+                    haut="25"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="1"
                     anim={1}
                     scrollX={scrollX}
                     marque="Vaillant"
@@ -1131,7 +1131,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="22"
                     haut="35"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Coperni"
@@ -1155,7 +1155,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="22"
                     haut="30"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Vaillant"
@@ -1203,11 +1203,11 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="22"
                     haut="30"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
-                    marque="Coperni"
-                    alt="coperni baguette swipe face bas"
+                    marque="Dentro"
+                    alt="Dentro bag"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -2091,7 +2091,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="22"
                     haut="30"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Hermes"
@@ -2126,7 +2126,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="22"
                     haut="30"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Port Tanger"
@@ -2150,7 +2150,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="30"
                     haut="30"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Giambatista Valli"
@@ -2212,9 +2212,9 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     linkUrl="/service-accessoires-eclipse"
                     src="vaillant_bague_bag_noir.webp"
                     lar="22"
-                    haut="30"
+                    haut="29"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Vaillant"
@@ -2226,7 +2226,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="22"
                     haut="35"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Coperni"
@@ -2236,13 +2236,13 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     linkUrl="/service-accessoires-eclipse"
                     src="dentro_bag.webp"
                     lar="22"
-                    haut="30"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    haut="34"
+                    ajustHauteurTop="5"
+                    ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
-                    marque="Coperni"
-                    alt="coperni baguette swipe face bas"
+                    marque="Dentro"
+                    alt="dentro bag"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -2262,7 +2262,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="22"
                     haut="30"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Vaillant"
@@ -2286,7 +2286,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="22"
                     haut="30"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Dentro"
@@ -2322,7 +2322,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="22"
                     haut="30"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Coperni"
@@ -3256,8 +3256,8 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   left=""
                   right="100px"
                   ajustHauteur="5"
-                  marque="Coperni"
-                  alt="coperni baguette swipe face bas"
+                  marque="Dentro"
+                  alt="dentro bag"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -4309,8 +4309,8 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   left=""
                   right="100px"
                   ajustHauteur="5"
-                  marque="Coperni"
-                  alt="coperni baguette swipe face bas"
+                  marque="Dentro"
+                  alt="dentro bag"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"

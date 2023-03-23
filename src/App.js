@@ -213,7 +213,27 @@ const App = () => {
                   render={() => <GalerieHorizontal setPageLoad={setPageLoad} />}
                 />
                 <Route
+                  path="/galerie-horizontal-vetements"
+                  exact
+                  render={() => <GalerieHorizontal setPageLoad={setPageLoad} />}
+                />
+                <Route
+                  path="/galerie-horizontal-accessoires"
+                  exact
+                  render={() => <GalerieHorizontal setPageLoad={setPageLoad} />}
+                />
+                <Route
                   path="/galerie-vertical"
+                  exact
+                  render={() => <GalerieVertical setPageLoad={setPageLoad} />}
+                />
+                <Route
+                  path="/galerie-vertical-ghost"
+                  exact
+                  render={() => <GalerieVertical setPageLoad={setPageLoad} />}
+                />
+                <Route
+                  path="/galerie-vertical-pique"
                   exact
                   render={() => <GalerieVertical setPageLoad={setPageLoad} />}
                 />
@@ -223,7 +243,57 @@ const App = () => {
                   render={() => <GalerieLive setPageLoad={setPageLoad} />}
                 />
                 <Route
+                  path="/galerie-live-vetements"
+                  exact
+                  render={() => <GalerieLive setPageLoad={setPageLoad} />}
+                />
+                <Route
+                  path="/galerie-live-accessoires"
+                  exact
+                  render={() => <GalerieLive setPageLoad={setPageLoad} />}
+                />
+                <Route
                   path="/galerie-eclipse"
+                  exact
+                  render={() => <GalerieEclipse setPageLoad={setPageLoad} />}
+                />
+                <Route
+                  path="/galerie-eclipse-accessoires"
+                  exact
+                  render={() => <GalerieEclipse setPageLoad={setPageLoad} />}
+                />
+                <Route
+                  path="/galerie-eclipse-chaussures"
+                  exact
+                  render={() => <GalerieEclipse setPageLoad={setPageLoad} />}
+                />
+                <Route
+                  path="/galerie-eclipse-sacs"
+                  exact
+                  render={() => <GalerieEclipse setPageLoad={setPageLoad} />}
+                />
+                <Route
+                  path="/galerie-eclipse-lunettes"
+                  exact
+                  render={() => <GalerieEclipse setPageLoad={setPageLoad} />}
+                />
+                <Route
+                  path="/galerie-eclipse-cosmetiques"
+                  exact
+                  render={() => <GalerieEclipse setPageLoad={setPageLoad} />}
+                />
+                <Route
+                  path="/galerie-eclipse-livres"
+                  exact
+                  render={() => <GalerieEclipse setPageLoad={setPageLoad} />}
+                />
+                <Route
+                  path="/galerie-eclipse-bijoux"
+                  exact
+                  render={() => <GalerieEclipse setPageLoad={setPageLoad} />}
+                />
+                <Route
+                  path="/galerie-eclipse-alimentation"
                   exact
                   render={() => <GalerieEclipse setPageLoad={setPageLoad} />}
                 />

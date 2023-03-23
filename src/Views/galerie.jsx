@@ -213,6 +213,17 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   marque="Dentro"
                   alt="Dentro bag"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ensemble-survetement-vert-mouty.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mouty"
+                />
                 <IMGPC
                   linkUrl="/service-packshot-horizontal"
                   src="chemise_kid_super.webp"
@@ -275,7 +286,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   linkUrl="/service-packshot-horizontal"
                   src="inoui_editions_scarf.webp"
                   lar="28"
-                  haut="18"
+                  haut="50"
                   ajustHauteurTop=""
                   ajustHauteurBottom=""
                   anim={1}
@@ -391,8 +402,8 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                 <IMGPC
                   linkUrl="/service-mannequin-vertical"
                   src="jacket_the_north_face_supreme_Front.webp"
-                  lar="25"
-                  haut="25"
+                  lar="35"
+                  haut="35"
                   ajustHauteurTop=""
                   ajustHauteurBottom=""
                   anim={1}
@@ -462,7 +473,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   linkUrl="/service-mise-en-scene-live"
                   src="mouty_on_model.webp"
                   lar="25"
-                  haut="35"
+                  haut="39"
                   ajustHauteurTop=""
                   ajustHauteurBottom="8"
                   anim={1}
@@ -555,9 +566,9 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   linkUrl="/service-accessoires-eclipse"
                   src="mini_swipe_coperni.webp"
                   lar="22"
-                  haut="30"
+                  haut="40"
                   ajustHauteurTop=""
-                  ajustHauteurBottom="2"
+                  ajustHauteurBottom="5"
                   anim={1}
                   scrollX={scrollX}
                   marque="Coperni"
@@ -621,17 +632,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="Jordan"
                   alt="ordan travis collab"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="ensemble-survetement-vert-mouty.mp4"
-                  lar="25"
-                  haut="35"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Mouty"
                 />
                 <IMGPC
                   linkUrl="/service-accessoires-eclipse"
@@ -715,17 +715,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="Iindaco"
                   alt="iindaco talons flammes strass"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="brassiere-calvin-klein-nylon-magazine.mp4"
-                  lar="25"
-                  haut="35"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Nylon"
                 />
               </>
             )}

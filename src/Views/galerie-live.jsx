@@ -184,6 +184,17 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Comme des Garçons x Gucci"
                     alt="Comme des Garçons x Gucci sac"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="ensemble-survetement-vert-mouty.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mouty"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="giambatista_valli_yellow_skirt.webp"
@@ -373,22 +384,11 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Dentro"
                     alt="baguette bag dentro"
                   />
-                  <VIDEOGalerie
-                    linkUrl="/service-mise-en-scene-live"
-                    src="ensemble-survetement-vert-mouty.mp4"
-                    lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Mouty"
-                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="giambatista_valli_dress.webp"
-                    lar="42"
-                    haut="41"
+                    lar="33"
+                    haut="35"
                     ajustHauteurTop=""
                     ajustHauteurBottom="5"
                     anim={1}
@@ -396,18 +396,7 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Giambatista"
                     alt="giambatista valli dress"
                   />
-                  <IMGPC
-                    linkUrl="/service-mise-en-scene-live"
-                    src="13_09_glasses_on_model.webp"
-                    lar="22"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={2}
-                    scrollX={scrollX}
-                    marque="13/09"
-                    alt="13/09 glasses on model"
-                  />
+
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="port_tanger_on_model_glasses.webp"
@@ -447,9 +436,9 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     linkUrl="/service-mise-en-scene-live"
                     src="giambatista_valli_on_model.webp"
                     lar="32"
-                    haut="31"
+                    haut="33"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Giambatista"
@@ -466,17 +455,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Port Tanger"
                     alt="port tanger red glasses on model"
-                  />
-                  <VIDEOGalerie
-                    linkUrl="/service-mise-en-scene-live"
-                    src="brassiere-calvin-klein-nylon-magazine.mp4"
-                    lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Nylon"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -517,17 +495,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Giambatista"
                     alt="giambatista valli dress"
-                  />
-                  <VIDEOGalerie
-                    linkUrl="/service-mise-en-scene-live"
-                    src="brassiere-calvin-klein-nylon-magazine.mp4"
-                    lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Nylon"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -1040,6 +1007,18 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   marque="ludovic de saint sernin"
                   alt="ludovic de saint sernin dress"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ensemble-survetement-vert-mouty.mp4"
+                  lar="25"
+                  haut="35"
+                  left="100px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mouty"
+                />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="rudy_maillot_de_bain_2_pieces.webp"
@@ -1139,18 +1118,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Giambatista"
                   alt="giambatista valli on model"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="ensemble-survetement-vert-mouty.mp4"
-                  lar="25"
-                  haut="35"
-                  left="100px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Mouty"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
@@ -1263,18 +1230,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   marque="Dentro"
                   alt="baguette bag dentro"
                 />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="brassiere-calvin-klein-nylon-magazine.mp4"
-                  lar="25"
-                  haut="35"
-                  left="100px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Nylon"
-                />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="giambatista_valli_yellow_skirt.webp"
@@ -1322,18 +1277,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Giambatista"
                   alt="giambatista valli dress"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="brassiere-calvin-klein-nylon-magazine.mp4"
-                  lar="25"
-                  haut="35"
-                  left="100px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Nylon"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
