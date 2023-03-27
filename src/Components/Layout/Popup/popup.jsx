@@ -53,7 +53,6 @@ const PopupDesktop = () => {
 
   return (
     <div className="popup" ref={NewsletterBanner}>
-      <div className="bandeauNoir"></div>
       <div className="contentSection">
         <div className="left noConfirm">
           <span>

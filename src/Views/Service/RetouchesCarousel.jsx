@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { useMediaQuery } from "@react-hook/media-query";
 
+import anime from "animejs/lib/anime.es.js";
+
 // Traduction
 import i18next, { t } from "i18next";
 import { useTranslation } from "react-i18next";
@@ -62,10 +64,16 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
   const { t, i18n } = useTranslation("retouches");
   const [hover, setIsHover] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0); // nouvel état pour suivre l'indice de l'élément actif
+  const [intervalId, setIntervalId] = useState(null);
 
   const matches = useMediaQuery("only screen and (min-width: 1024px)");
 
   let images = [];
+  const imageRefs = useRef(
+    Array(images.length)
+      .fill(null)
+      .map(() => React.createRef())
+  );
 
   if (selectedCat === "ghost") {
     images = [
@@ -119,64 +127,93 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
     const lastIndex = images.length - 1;
     const index = activeIndex === 0 ? lastIndex : activeIndex - 1;
     setActiveIndex(index);
+    setPrevIndex(activeIndex);
 
-    const currentImage = containerRef.current.children[index];
-    const previousIndex = index === lastIndex ? 0 : index + 1;
-    const previousImage = containerRef.current.children[previousIndex];
+    const currentImageRef = imageRefs[index];
+    const previousIndex = index === 0 ? lastIndex : index - 1;
+    const previousImageRef = imageRefs[previousIndex];
 
-    // Animation between images
-    // previousImage.style.transform = "translateX(0%) scale(1)"; // initial state of previous image
-    // currentImage.style.transform = "translateX(-100%) scale(1.2)"; // animate current image
+    if (currentImageRef && previousImageRef) {
+      // ajout de la vérification
+      console.log(currentImageRef);
+      console.log(previousImageRef);
 
-    // setTimeout(() => {
-    //   previousImage.style.transition = "transform 1s"; // add transition to previous image
-    //   previousImage.style.transform = "translateX(100%) scale(0.8)"; // animate previous image
-    //   currentImage.style.transition = "transform 1s"; // add transition to current image
-    //   currentImage.style.transform = "translateX(0%) scale(1)"; // animate current image back to initial state
-    // }, 0);
+      anime({
+        targets: previousImageRef?.current,
+        translateX: "-100%",
+        duration: 800,
+        easing: "cubicBezier(0.65, 0.05, 0.36, 1)",
+        complete: () => {
+          console.log("previousImageRef complete");
+          if (previousImageRef?.current) {
+            previousImageRef.current.style.transform =
+              "translateX(0%) rotateY(0deg)";
+          }
+        },
+      });
 
-    // // reset the position of the non-hovered image after a brief delay
-    // setTimeout(() => {
-    //   const hoverImage = containerRef.current.querySelector(":hover");
-    //   if (hoverImage && hoverImage !== previousImage) {
-    //     hoverImage.addEventListener(
-    //       "transitionend",
-    //       () => {
-    //         hoverImage.style.transition = "";
-    //         hoverImage.style.transform = "translateX(0%) scale(1)";
-    //       },
-    //       { once: true }
-    //     );
-    //   }
-    // }, 1000);
+      anime({
+        targets: currentImageRef?.current,
+        translateX: "100%",
+        easing: "cubicBezier(0.65, 0.05, 0.36, 1)",
+        duration: 800,
+        complete: () => {
+          console.log("currentImageRef complete");
+          if (currentImageRef?.current) {
+            currentImageRef.current.style.transform =
+              "translateX(0%) rotateY(0deg)";
+          }
+        },
+      });
+    }
   };
 
-  const [intervalId, setIntervalId] = useState(null);
-
   const handleRightClick = () => {
-    if (!containerRef.current) return;
-
-    // Image suivante
     const lastIndex = images.length - 1;
     const index = activeIndex === lastIndex ? 0 : activeIndex + 1;
     setActiveIndex(index);
+    setPrevIndex(activeIndex);
 
-    const currentImage = containerRef.current.children[index];
+    const currentImageRef = imageRefs[index];
     const previousIndex = index === 0 ? lastIndex : index - 1;
-    const previousImage = containerRef.current.children[previousIndex];
+    const previousImageRef = imageRefs[previousIndex];
+
+    anime({
+      targets: previousImageRef?.current,
+      translateX: "100%",
+      duration: 800,
+      complete: () => {
+        if (previousImageRef?.current) {
+          previousImageRef.current.style.transform =
+            "translateX(0%) rotateY(0deg)";
+        }
+      },
+    });
+
+    anime({
+      targets: currentImageRef?.current,
+      translateX: "-100%", // Modifier la valeur à -100%
+      duration: 800,
+      complete: () => {
+        if (currentImageRef?.current) {
+          currentImageRef.current.style.transform =
+            "translateX(0%) rotateY(0deg)";
+        }
+      },
+    });
   };
 
-  useEffect(() => {
-    const newIntervalId = setInterval(() => {
-      handleRightClick();
-    }, 4000);
-    setIntervalId(newIntervalId);
+  // useEffect(() => {
+  //   const newIntervalId = setInterval(() => {
+  //     handleRightClick();
+  //   }, 4000);
+  //   setIntervalId(newIntervalId);
 
-    // Nettoyer l'intervalle lorsqu'il n'est plus nécessaire
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [activeIndex]);
+  //   // Nettoyer l'intervalle lorsqu'il n'est plus nécessaire
+  //   return () => {
+  //     clearInterval(intervalId);
+  //   };
+  // }, [activeIndex]);
   // ...
 
   const containerRef = useRef(null);
@@ -193,6 +230,8 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
     setActiveIndex(0);
     containerRef.current.focus();
   }, [selectedCat]);
+
+  const [prevIndex, setPrevIndex] = useState(images.length - 1);
 
   return (
     <>
@@ -225,6 +264,7 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                       alt="test"
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
+                      ref={imageRefs[index]}
                     />
                     <img
                       className={`hoverImage ${
@@ -234,6 +274,7 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                       alt="test"
                       onMouseEnter={handleMouseEnter}
                       onMouseLeave={handleMouseLeave}
+                      ref={imageRefs[index]}
                     />
                     <div>
                       {hover === true ? (

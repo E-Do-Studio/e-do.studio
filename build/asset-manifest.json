@@ -1,31 +1,17 @@
 {
   "files": {
-<<<<<<< HEAD
-    "main.css": "./static/css/main.c3cb5f80.chunk.css",
-    "main.js": "./static/js/main.0bec94de.chunk.js",
-    "main.js.map": "./static/js/main.0bec94de.chunk.js.map",
+    "main.css": "./static/css/main.e14efc5e.chunk.css",
+    "main.js": "./static/js/main.b385ef66.chunk.js",
+    "main.js.map": "./static/js/main.b385ef66.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.8b620b2f.js",
     "runtime-main.js.map": "./static/js/runtime-main.8b620b2f.js.map",
-    "static/js/2.92d079b1.chunk.js": "./static/js/2.92d079b1.chunk.js",
-    "static/js/2.92d079b1.chunk.js.map": "./static/js/2.92d079b1.chunk.js.map",
+    "static/js/2.9224aab8.chunk.js": "./static/js/2.9224aab8.chunk.js",
+    "static/js/2.9224aab8.chunk.js.map": "./static/js/2.9224aab8.chunk.js.map",
     "index.html": "./index.html",
-    "static/css/main.c3cb5f80.chunk.css.map": "./static/css/main.c3cb5f80.chunk.css.map",
-    "static/js/2.92d079b1.chunk.js.LICENSE.txt": "./static/js/2.92d079b1.chunk.js.LICENSE.txt",
-    "static/media/retouches.scss": "./static/media/ABCFavorit-Regular.75f0e1fc.woff2",
-=======
-    "main.css": "./static/css/main.e2200ff5.chunk.css",
-    "main.js": "./static/js/main.7c254020.chunk.js",
-    "main.js.map": "./static/js/main.7c254020.chunk.js.map",
-    "runtime-main.js": "./static/js/runtime-main.8b620b2f.js",
-    "runtime-main.js.map": "./static/js/runtime-main.8b620b2f.js.map",
-    "static/js/2.540b4976.chunk.js": "./static/js/2.540b4976.chunk.js",
-    "static/js/2.540b4976.chunk.js.map": "./static/js/2.540b4976.chunk.js.map",
-    "index.html": "./index.html",
-    "static/css/main.e2200ff5.chunk.css.map": "./static/css/main.e2200ff5.chunk.css.map",
-    "static/js/2.540b4976.chunk.js.LICENSE.txt": "./static/js/2.540b4976.chunk.js.LICENSE.txt",
+    "static/css/main.e14efc5e.chunk.css.map": "./static/css/main.e14efc5e.chunk.css.map",
+    "static/js/2.9224aab8.chunk.js.LICENSE.txt": "./static/js/2.9224aab8.chunk.js.LICENSE.txt",
     "static/media/autres-articles.scss": "./static/media/ABCFavorit-Light.da5d1f6a.woff2",
     "static/media/popup.scss": "./static/media/ABCFavorit-Regular.75f0e1fc.woff2",
->>>>>>> gallery
     "static/media/CYCLO_E-DO ENG_ELECTRICITY_UPDATE.22dc8bd1.pdf": "./static/media/CYCLO_E-DO ENG_ELECTRICITY_UPDATE.22dc8bd1.pdf",
     "static/media/CYCLO_E-DO_FR_UPDATE_ELECTRICITÉ.c524899d.pdf": "./static/media/CYCLO_E-DO_FR_UPDATE_ELECTRICITÉ.c524899d.pdf",
     "static/media/Logo-mobile.c989759c.svg": "./static/media/Logo-mobile.c989759c.svg",
@@ -182,14 +168,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.8b620b2f.js",
-<<<<<<< HEAD
-    "static/js/2.92d079b1.chunk.js",
-    "static/css/main.c3cb5f80.chunk.css",
-    "static/js/main.0bec94de.chunk.js"
-=======
-    "static/js/2.540b4976.chunk.js",
-    "static/css/main.e2200ff5.chunk.css",
-    "static/js/main.7c254020.chunk.js"
->>>>>>> gallery
+    "static/js/2.9224aab8.chunk.js",
+    "static/css/main.e14efc5e.chunk.css",
+    "static/js/main.b385ef66.chunk.js"
   ]
 }
