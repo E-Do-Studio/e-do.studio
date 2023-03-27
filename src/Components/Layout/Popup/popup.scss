@@ -26,10 +26,13 @@
     }
 
     .contentSection {
-      padding: 15px 71px 15px 71px;
+      padding: 15px 50px 15px 50px;
       background-color: white;
       display: flex;
       justify-content: space-between;
+      height: 11vh;
+      border-top: solid;
+      align-items: center;
 
       .left {
         width: 30%;
