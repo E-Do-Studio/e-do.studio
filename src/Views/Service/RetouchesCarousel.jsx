@@ -134,36 +134,19 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
     const previousImageRef = imageRefs[previousIndex];
 
     if (currentImageRef && previousImageRef) {
-      // ajout de la vérification
-      console.log(currentImageRef);
-      console.log(previousImageRef);
-
       anime({
-        targets: previousImageRef?.current,
-        translateX: "-100%",
-        duration: 800,
-        easing: "cubicBezier(0.65, 0.05, 0.36, 1)",
-        complete: () => {
-          console.log("previousImageRef complete");
-          if (previousImageRef?.current) {
-            previousImageRef.current.style.transform =
-              "translateX(0%) rotateY(0deg)";
-          }
-        },
+        targets: previousImageRef.current,
+        opacity: 0,
+        duration: 500,
+        easing: "linear",
       });
 
+      // Fade in the current image
       anime({
-        targets: currentImageRef?.current,
-        translateX: "100%",
-        easing: "cubicBezier(0.65, 0.05, 0.36, 1)",
-        duration: 800,
-        complete: () => {
-          console.log("currentImageRef complete");
-          if (currentImageRef?.current) {
-            currentImageRef.current.style.transform =
-              "translateX(0%) rotateY(0deg)";
-          }
-        },
+        targets: currentImageRef.current,
+        opacity: 1,
+        duration: 500,
+        easing: "linear",
       });
     }
   };
@@ -178,29 +161,22 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
     const previousIndex = index === 0 ? lastIndex : index - 1;
     const previousImageRef = imageRefs[previousIndex];
 
-    anime({
-      targets: previousImageRef?.current,
-      translateX: "100%",
-      duration: 800,
-      complete: () => {
-        if (previousImageRef?.current) {
-          previousImageRef.current.style.transform =
-            "translateX(0%) rotateY(0deg)";
-        }
-      },
-    });
+    if (currentImageRef && previousImageRef) {
+      anime({
+        targets: previousImageRef.current,
+        opacity: 0,
+        duration: 500,
+        easing: "linear",
+      });
 
-    anime({
-      targets: currentImageRef?.current,
-      translateX: "-100%", // Modifier la valeur à -100%
-      duration: 800,
-      complete: () => {
-        if (currentImageRef?.current) {
-          currentImageRef.current.style.transform =
-            "translateX(0%) rotateY(0deg)";
-        }
-      },
-    });
+      // Fade in the current image
+      anime({
+        targets: currentImageRef.current,
+        opacity: 1,
+        duration: 500,
+        easing: "linear",
+      });
+    }
   };
 
   // useEffect(() => {
@@ -246,7 +222,7 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                 <BsChevronRight />
               </div>
             </div>
-            {selectedCat === "ghost" && (
+            {selectedCat === "onModel" && (
               <>
                 {images.map((imageSet, index) => (
                   <div
@@ -270,6 +246,45 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                       className={`hoverImage ${
                         hover === true ? "hoverActive" : ""
                       } image-transition`}
+                      src={imageSet[1]}
+                      alt="test"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                      ref={imageRefs[index]}
+                    />
+                    {hover === true ? (
+                      <p style={{ paddingTop: "10px" }}>{t("After")}</p>
+                    ) : (
+                      <p style={{ paddingTop: "10px" }}>{t("Before")}</p>
+                    )}
+                  </div>
+                ))}
+              </>
+            )}
+            {selectedCat === "ghost" && (
+              <>
+                {images.map((imageSet, index) => (
+                  <div
+                    className={`imagesContainer ${
+                      index === activeIndex ? "active" : "noActive"
+                    }`}
+                    key={index}
+                    ref={containerRef}
+                  >
+                    <img
+                      className={`imageRetouche ${
+                        hover === true ? "noActive" : ""
+                      }`}
+                      src={imageSet[0]}
+                      alt="test"
+                      onMouseEnter={handleMouseEnter}
+                      onMouseLeave={handleMouseLeave}
+                      ref={imageRefs[index]}
+                    />
+                    <img
+                      className={`hoverImage ${
+                        hover === true ? "hoverActive" : ""
+                      }`}
                       src={imageSet[1]}
                       alt="test"
                       onMouseEnter={handleMouseEnter}
@@ -325,43 +340,6 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
               </>
             )}
             {selectedCat === "bijoux" && (
-              <>
-                {images.map((imageSet, index) => (
-                  <div
-                    className={`imagesContainer ${
-                      index === activeIndex ? "active" : "noActive"
-                    }`}
-                    key={index}
-                    ref={containerRef}
-                  >
-                    <img
-                      className={`imageRetouche ${
-                        hover === true ? "noActive" : ""
-                      } image-transition`}
-                      src={imageSet[0]}
-                      alt="test"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                    <img
-                      className={`hoverImage ${
-                        hover === true ? "hoverActive" : ""
-                      } image-transition`}
-                      src={imageSet[1]}
-                      alt="test"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                    {hover === true ? (
-                      <p style={{ paddingTop: "10px" }}>{t("After")}</p>
-                    ) : (
-                      <p style={{ paddingTop: "10px" }}>{t("Before")}</p>
-                    )}
-                  </div>
-                ))}
-              </>
-            )}
-            {selectedCat === "onModel" && (
               <>
                 {images.map((imageSet, index) => (
                   <div

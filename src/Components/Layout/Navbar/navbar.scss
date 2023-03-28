@@ -1,10 +1,17 @@
 @import "../../../Assets/scss/styles.scss";
 
 #navbar {
+  z-index: 100;
   position: fixed;
   z-index: 100;
   width: 100%;
-  background: white;
+  background-image: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.5) 0%,
+    rgba(255, 255, 255, 0.5) 70%
+  );
+  backdrop-filter: blur(3px);
+
   // background:rgb(102, 37, 37);
 
   #navbarWrapper {
@@ -14,7 +21,6 @@
     padding: 0 32px;
     // max-width: $maxWidth;
     height: 70px;
-
     position: relative;
     display: flex;
     flex-direction: row;
