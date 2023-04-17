@@ -25,6 +25,10 @@ import RetouchesCarousel from "./RetouchesCarousel";
 import i18next, { t } from "i18next";
 import { useTranslation } from "react-i18next";
 
+//Animation
+
+import anime from "animejs/lib/anime.es.js";
+
 const RetouchesMobile = () => {
   const [selectedCat, setSelectedCat] = useState("onModel");
   const { t, i18n } = useTranslation("retouches");
@@ -107,6 +111,26 @@ const RetouchesDesktop = () => {
 
   let price = "";
 
+  const animBoutonRond = () => {
+    anime({
+      targets: ".circle",
+      // translateY: [550,0],
+      scale: [1, 1.2],
+      easing: "easeOutExpo",
+      duration: 600,
+    });
+  };
+
+  const animBoutonRondLeave = () => {
+    anime({
+      targets: ".circle",
+      // translateY: [550,0],
+      scale: 1,
+      easing: "easeOutExpo",
+      duration: 600,
+    });
+  };
+
   if (selectedCat === "onModel") {
     price = "7,50€";
   } else if (selectedCat === "plat") {
@@ -132,7 +156,11 @@ const RetouchesDesktop = () => {
       </div>
       <div className="col info">
         <div className="prix">
-          <div className="circle">
+          <div
+            className="circle"
+            onMouseEnter={animBoutonRond}
+            onMouseLeave={animBoutonRondLeave}
+          >
             <h2 className="prix-ht">
               {t(price)} {t("excl. tax")}
             </h2>

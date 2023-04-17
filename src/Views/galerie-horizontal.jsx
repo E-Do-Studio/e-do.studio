@@ -1,12 +1,10 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import { useMediaQuery } from "@react-hook/media-query";
 import { Waypoint } from "react-waypoint";
 import ScrollContainer from "react-indiana-drag-scroll";
 import { Helmet } from "react-helmet";
 import Lottie from "lottie-react";
-
-import { useLocation } from "react-router-dom";
 
 import anime from "animejs/lib/anime.es.js";
 
@@ -23,6 +21,8 @@ import { useTranslation } from "react-i18next";
 import GalerieMenu from "./GalerieMenu";
 import IMGPC from "./IMGPC";
 import IMGMobile from "./IMGMobile";
+
+import { useLocation } from "react-router-dom";
 
 const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
   const matches = useMediaQuery("only screen and (min-width: 1200px)");
@@ -123,7 +123,9 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
     videoRef.current.style.filter = "grayscale(0)";
   };
   const location = useLocation();
-  const { selectedLink = "horizontal" } = location.state || {};
+  const { selectedLink = "" } = location.state || {};
+
+  console.log(location);
 
   return (
     <>
@@ -176,9 +178,9 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                     linkUrl="/service-packshot-horizontal"
                     src="cargo_mouty_details.webp"
                     lar="22"
-                    haut="27"
+                    haut="39"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Mouty"
@@ -248,7 +250,7 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                     linkUrl="/service-packshot-horizontal"
                     src="inoui_editions_scarf.webp"
                     lar="28"
-                    haut="18"
+                    haut="50"
                     ajustHauteurTop=""
                     ajustHauteurBottom=""
                     anim={1}
@@ -421,9 +423,9 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                     linkUrl="/service-packshot-horizontal"
                     src="cargo_mouty_details.webp"
                     lar="22"
-                    haut="27"
+                    haut="39"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Mouty"
@@ -545,7 +547,7 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                     linkUrl="/service-packshot-horizontal"
                     src="inoui_editions_scarf.webp"
                     lar="28"
-                    haut="18"
+                    haut="50"
                     ajustHauteurTop=""
                     ajustHauteurBottom=""
                     anim={1}
@@ -803,9 +805,9 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
                   src="inoui_editions_scarf.webp"
-                  lar="53"
-                  haut="42"
-                  left="40px"
+                  lar="34"
+                  haut="53"
+                  left="100px"
                   right=""
                   ajustHauteur="5"
                   marque="Inoui"
@@ -1031,9 +1033,9 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
                   src="inoui_editions_scarf.webp"
-                  lar="53"
-                  haut="42"
-                  left="40px"
+                  lar="34"
+                  haut="53"
+                  left="100px"
                   right=""
                   ajustHauteur="5"
                   marque="Inoui"

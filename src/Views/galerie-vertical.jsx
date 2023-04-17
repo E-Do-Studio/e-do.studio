@@ -176,9 +176,9 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                     linkUrl="/service-mannequin-vertical"
                     src="shangxia_robe_jaune_fluo.webp"
                     lar="25"
-                    haut="25"
+                    haut="24"
                     ajustHauteurTop=""
-                    ajustHauteurBottom=""
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="shangxia"
@@ -199,8 +199,8 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                   <IMGPC
                     linkUrl="/service-mannequin-vertical"
                     src="jacket_the_north_face_supreme_Front.webp"
-                    lar="25"
-                    haut="25"
+                    lar="35"
+                    haut="35"
                     ajustHauteurTop=""
                     ajustHauteurBottom=""
                     anim={1}
@@ -320,9 +320,9 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                     linkUrl="/service-mannequin-vertical"
                     src="rudy_maillot_une_pièce.webp"
                     lar="32"
-                    haut="38"
+                    haut="43"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Rudy"
@@ -344,13 +344,13 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                     linkUrl="/service-mannequin-vertical"
                     src="antidote_magazine_bra.webp"
                     lar="22"
-                    haut="23"
+                    haut="32"
                     ajustHauteurTop=""
                     ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Antidote"
-                    alt="antidote_magazine_bra.webp"
+                    alt="antidote magazine bra"
                   />
                   <IMGPC
                     linkUrl="/service-mannequin-vertical"
@@ -468,13 +468,13 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                     linkUrl="/service-mannequin-vertical"
                     src="antidote_magazine_bra.webp"
                     lar="22"
-                    haut="23"
+                    haut="32"
                     ajustHauteurTop=""
                     ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Antidote"
-                    alt="antidote_magazine_bra.webp"
+                    alt="antidote magazine bra"
                   />
                   <IMGPC
                     linkUrl="/service-mannequin-vertical"
@@ -515,8 +515,8 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                   <IMGPC
                     linkUrl="/service-mannequin-vertical"
                     src="jacket_the_north_face_supreme_Front.webp"
-                    lar="25"
-                    haut="25"
+                    lar="35"
+                    haut="35"
                     ajustHauteurTop=""
                     ajustHauteurBottom=""
                     anim={1}
@@ -590,7 +590,7 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                     lar="32"
                     haut="38"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="Rudy"
@@ -652,9 +652,9 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                     linkUrl="/service-mannequin-vertical"
                     src="shangxia_robe_jaune_fluo.webp"
                     lar="25"
-                    haut="25"
+                    haut="24"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="shangxia"
@@ -870,7 +870,7 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                   right=""
                   ajustHauteur="5"
                   marque="Antidote"
-                  alt="antidote_magazine_bra.webp"
+                  alt="antidote magazine bra"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"

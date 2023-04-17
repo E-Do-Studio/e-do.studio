@@ -26,10 +26,13 @@
     }
 
     .contentSection {
-      padding: 37px 71px 34px 71px;
+      padding: 15px 50px 15px 50px;
       background-color: white;
       display: flex;
       justify-content: space-between;
+      height: 11vh;
+      border-top: solid;
+      align-items: center;
 
       .left {
         width: 30%;
@@ -75,7 +78,7 @@
 
         .closeIcon {
           position: absolute;
-          top: 0;
+          top: 25%;
           right: 0;
         }
       }

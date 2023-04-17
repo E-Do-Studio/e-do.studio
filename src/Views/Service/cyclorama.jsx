@@ -385,8 +385,14 @@ const CycloramaDesktop = () => {
                 "Our cyclorama allows you to mobilize a production team and take your photos and videos on an infinite white background. With a height of 4.70m and a depth of 10m, you have free rein for any type of design set."
               )}
             </div>
-            <Link to="/contact">
-              <div className="button">{t("Book")}</div>
+            <Link
+              to="/contact"
+              style={{ display: "flex", alignItems: "baseline" }}
+            >
+              <div className="button" style={{ marginRight: "10px" }}>
+                {t("Book")}
+              </div>
+              <p>* {t("Starting at 800€ excl. tax")}</p>
             </Link>
             <a
               href={
@@ -610,8 +616,18 @@ const CycloramaMobile = () => {
               "Our cyclorama allows you to mobilize a production team and take your photos and videos on an infinite white background. With a height of 4.70m and a depth of 10m, you have free rein for any type of design set."
             )}
           </div>
-          <Link to="/contact">
-            <div className="button">{t("Book")}</div>
+          <Link
+            to="/contact"
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+            }}
+          >
+            <div className="button" style={{ marginBottom: "15px" }}>
+              {t("Book")}
+            </div>
+            <p>* {t("Starting at 800€ excl. tax")}</p>
           </Link>
           <a
             href={

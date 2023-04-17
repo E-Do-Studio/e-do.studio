@@ -31,8 +31,6 @@ const GalerieMenu = ({ setPageLoad }) => {
 
   const { t, i18n } = useTranslation("gallery");
 
-  console.log(selectedLink);
-
   return (
     <>
       <Helmet defer={false}>
@@ -110,17 +108,24 @@ const GalerieMenu = ({ setPageLoad }) => {
                       state: { selectedLink: "horizontalGarments" },
                     }}
                   >
-                    <li
-                      className={
-                        selectedLink === "horizontalGarments" ? "active" : ""
-                      }
+                    <Link
+                      to={{
+                        pathname: "/galerie-horizontal-vetements",
+                        state: { selectedLink: "horizontalGarments" },
+                      }}
                     >
-                      — {t("Garments")}
-                    </li>
+                      <li
+                        className={
+                          selectedLink === "horizontalGarments" ? "active" : ""
+                        }
+                      >
+                        — {t("Garments")}
+                      </li>
+                    </Link>
                   </Link>
                   <Link
                     to={{
-                      pathname: "/galerie-horizontal",
+                      pathname: "/galerie-horizontal-accessoires",
                       state: { selectedLink: "horizontalAccess" },
                     }}
                   >
@@ -161,7 +166,7 @@ const GalerieMenu = ({ setPageLoad }) => {
                 <ul className="sub-category">
                   <Link
                     to={{
-                      pathname: "/galerie-vertical",
+                      pathname: "/galerie-vertical-ghost",
                       state: { selectedLink: "verticalGhost" },
                     }}
                   >
@@ -170,12 +175,12 @@ const GalerieMenu = ({ setPageLoad }) => {
                         selectedLink === "verticalGhost" ? "active" : ""
                       }
                     >
-                      — {t("Ghost packshots")}
+                      — {t("Ghost packshots")} (Ghost)
                     </li>
                   </Link>
                   <Link
                     to={{
-                      pathname: "/galerie-vertical",
+                      pathname: "/galerie-vertical-pique",
                       state: { selectedLink: "verticalPique" },
                     }}
                   >
@@ -216,7 +221,7 @@ const GalerieMenu = ({ setPageLoad }) => {
                 <ul className="sub-category">
                   <Link
                     to={{
-                      pathname: "/galerie-live",
+                      pathname: "/galerie-live-vetements",
                       state: { selectedLink: "liveGarments" },
                     }}
                   >
@@ -237,7 +242,7 @@ const GalerieMenu = ({ setPageLoad }) => {
                   <li>— {t("Furnitures")}</li> */}
                   <Link
                     to={{
-                      pathname: "/galerie-live",
+                      pathname: "/galerie-live-accessoires",
                       state: { selectedLink: "liveAccess" },
                     }}
                   >
@@ -288,7 +293,7 @@ const GalerieMenu = ({ setPageLoad }) => {
                 <ul className="sub-category">
                   <Link
                     to={{
-                      pathname: "/galerie-eclipse",
+                      pathname: "/galerie-eclipse-accessoires",
                       state: { selectedLink: "eclipseAccess" },
                     }}
                   >
@@ -296,7 +301,7 @@ const GalerieMenu = ({ setPageLoad }) => {
                   </Link>
                   <Link
                     to={{
-                      pathname: "/galerie-eclipse",
+                      pathname: "/galerie-eclipse-chaussures",
                       state: { selectedLink: "eclipseShoes" },
                     }}
                   >
@@ -310,7 +315,7 @@ const GalerieMenu = ({ setPageLoad }) => {
                   </Link>
                   <Link
                     to={{
-                      pathname: "/galerie-eclipse",
+                      pathname: "/galerie-eclipse-sacs",
                       state: { selectedLink: "eclipseBags" },
                     }}
                   >
@@ -322,7 +327,7 @@ const GalerieMenu = ({ setPageLoad }) => {
                   </Link>
                   <Link
                     to={{
-                      pathname: "/galerie-eclipse",
+                      pathname: "/galerie-eclipse-lunettes",
                       state: { selectedLink: "eclipseGlasses" },
                     }}
                   >
@@ -336,7 +341,7 @@ const GalerieMenu = ({ setPageLoad }) => {
                   </Link>
                   <Link
                     to={{
-                      pathname: "/galerie-eclipse",
+                      pathname: "/galerie-eclipse-cosmetiques",
                       state: { selectedLink: "eclipseCosmetics" },
                     }}
                   >
@@ -350,7 +355,7 @@ const GalerieMenu = ({ setPageLoad }) => {
                   </Link>
                   <Link
                     to={{
-                      pathname: "/galerie-eclipse",
+                      pathname: "/galerie-eclipse-livres",
                       state: { selectedLink: "eclipseBooks" },
                     }}
                   >
@@ -364,7 +369,7 @@ const GalerieMenu = ({ setPageLoad }) => {
                   </Link>
                   <Link
                     to={{
-                      pathname: "/galerie-eclipse",
+                      pathname: "/galerie-eclipse-bijoux",
                       state: { selectedLink: "eclipseJewelry" },
                     }}
                   >
@@ -378,7 +383,7 @@ const GalerieMenu = ({ setPageLoad }) => {
                   </Link>
                   <Link
                     to={{
-                      pathname: "/galerie-eclipse",
+                      pathname: "/galerie-eclipse-alimentation",
                       state: { selectedLink: "eclipseFood" },
                     }}
                   >

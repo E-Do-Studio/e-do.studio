@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState, lazy } from "react";
 import { useLocation, Link } from "react-router-dom";
+import anime from "animejs/lib/anime.es.js";
 //import {Redirect} from 'react-router-dom';
 import { useMediaQuery } from "@react-hook/media-query";
 import { Helmet } from "react-helmet";
 //import Lottie from "lottie-react";
-//import anime from 'animejs/lib/anime.es.js';
 //import {isMobile} from 'react-device-detect';
 import handleViewport from "react-in-viewport";
 
@@ -422,10 +422,10 @@ const TitleSection5 = (props) => {
     return (
       <div ref={forwardedRef} className="titleBoxSection5">
         <div className="line1">
-          <h2 className="visible">{t("They trust")}</h2>
+          <h2 className="visible">{t("Our most loyal customers")}</h2>
         </div>
         <div className="line2">
-          <h2 className="visible">{t("us")}</h2>
+          <h2 className="visible">{t("customers")}</h2>
         </div>
       </div>
     );
@@ -433,10 +433,10 @@ const TitleSection5 = (props) => {
   return (
     <div ref={forwardedRef} className="titleBoxSection5">
       <div className="line1">
-        <h2 className="notVisible">{t("They trust")}</h2>
+        <h2 className="notVisible">{t("Our most loyal customers")}</h2>
       </div>
       <div className="line2">
-        <h2 className="notVisible">{t("us")}</h2>
+        <h2 className="notVisible">{t("customer")}</h2>
       </div>
     </div>
   );
@@ -1038,6 +1038,26 @@ const LandingDesktop = ({
   const selectedLanguage = i18next.language;
   const { t, i18n } = useTranslation("landing");
 
+  const animBoutonRond = () => {
+    anime({
+      targets: ".change-lang",
+      // translateY: [550,0],
+      scale: [1, 1.2],
+      easing: "easeOutExpo",
+      duration: 600,
+    });
+  };
+
+  const animBoutonRondLeave = () => {
+    anime({
+      targets: ".change-lang",
+      // translateY: [550,0],
+      scale: 1,
+      easing: "easeOutExpo",
+      duration: 600,
+    });
+  };
+
   return (
     <>
       <Helmet defer={false}>
@@ -1083,7 +1103,11 @@ const LandingDesktop = ({
               <a href="#contact" className="menu-item">
                 contact
               </a>
-              <span className="menu-item change-lang">
+              <span
+                className="menu-item change-lang"
+                onMouseEnter={animBoutonRond}
+                onMouseLeave={animBoutonRondLeave}
+              >
                 {i18next.language === "fr" ? (
                   <span
                     className="Link boutonLangue"
@@ -2498,22 +2522,23 @@ const LandingMobile = ({
             <a href="/">
               <img src={logoMobile} className="logoMobile" alt="Logo E-Do" />
             </a>
-
-            {i18next.language === "fr" ? (
-              <span
-                className="boutonMobile changeLang"
-                onClick={() => i18next.changeLanguage("en")}
-              >
-                en
-              </span>
-            ) : (
-              <span
-                className="boutonMobile changeLang"
-                onClick={() => i18next.changeLanguage("fr")}
-              >
-                fr
-              </span>
-            )}
+            <span className="menu-item change-lang">
+              {i18next.language === "fr" ? (
+                <span
+                  className="boutonMobile changeLang"
+                  onClick={() => i18next.changeLanguage("en")}
+                >
+                  en
+                </span>
+              ) : (
+                <span
+                  className="boutonMobile changeLang"
+                  onClick={() => i18next.changeLanguage("fr")}
+                >
+                  fr
+                </span>
+              )}
+            </span>
             {/*<button onClick={openMenu} className="buttonMenu"><img src={buttonMenu} alt="Bouton de déroulement du menu" /></button>*/}
             <a href="tel:+33144041149">
               <div className="telephoneIcon">
@@ -3176,8 +3201,7 @@ const LandingMobile = ({
         </div>
 
         <div className="sectionMobile5">
-          <h2>{t("They in trust us")}</h2>
-          <hr />
+          <h2 className="visible">{t("Our most loyal customers")}</h2>
           <div className="carrousel1" ref={carrouselClient1}>
             <div className="item item1">
               <picture>

@@ -2,6 +2,10 @@ import { useState, useRef, useEffect } from "react";
 import { BsChevronLeft, BsChevronRight } from "react-icons/bs";
 import { useMediaQuery } from "@react-hook/media-query";
 
+import Slider from "react-slick";
+
+import anime from "animejs/lib/anime.es.js";
+
 // Traduction
 import i18next, { t } from "i18next";
 import { useTranslation } from "react-i18next";
@@ -62,10 +66,19 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
   const { t, i18n } = useTranslation("retouches");
   const [hover, setIsHover] = useState(false);
   const [activeIndex, setActiveIndex] = useState(0); // nouvel état pour suivre l'indice de l'élément actif
+  const [intervalId, setIntervalId] = useState(null);
+
+  const sliderTop = useRef();
+  const sliderBot = useRef();
 
   const matches = useMediaQuery("only screen and (min-width: 1024px)");
 
   let images = [];
+  const imageRefs = useRef(
+    Array(images.length)
+      .fill(null)
+      .map(() => React.createRef())
+  );
 
   if (selectedCat === "ghost") {
     images = [
@@ -115,605 +128,602 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
     setIsHover(null);
   };
 
-  const handleLeftClick = () => {
-    const lastIndex = images.length - 1;
-    const index = activeIndex === 0 ? lastIndex : activeIndex - 1;
-    setActiveIndex(index);
-
-    const currentImage = containerRef.current.children[index];
-    const previousIndex = index === lastIndex ? 0 : index + 1;
-    const previousImage = containerRef.current.children[previousIndex];
-
-    // Animation between images
-    // previousImage.style.transform = "translateX(0%) scale(1)"; // initial state of previous image
-    // currentImage.style.transform = "translateX(-100%) scale(1.2)"; // animate current image
-
-    // setTimeout(() => {
-    //   previousImage.style.transition = "transform 1s"; // add transition to previous image
-    //   previousImage.style.transform = "translateX(100%) scale(0.8)"; // animate previous image
-    //   currentImage.style.transition = "transform 1s"; // add transition to current image
-    //   currentImage.style.transform = "translateX(0%) scale(1)"; // animate current image back to initial state
-    // }, 0);
-
-    // // reset the position of the non-hovered image after a brief delay
-    // setTimeout(() => {
-    //   const hoverImage = containerRef.current.querySelector(":hover");
-    //   if (hoverImage && hoverImage !== previousImage) {
-    //     hoverImage.addEventListener(
-    //       "transitionend",
-    //       () => {
-    //         hoverImage.style.transition = "";
-    //         hoverImage.style.transform = "translateX(0%) scale(1)";
-    //       },
-    //       { once: true }
-    //     );
-    //   }
-    // }, 1000);
+  const sliderTopSettings = {
+    dots: false,
+    arrows: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 2000,
   };
 
-  const [intervalId, setIntervalId] = useState(null);
-
-  const handleRightClick = () => {
-    if (!containerRef.current) return;
-
-    // Image suivante
-    const lastIndex = images.length - 1;
-    const index = activeIndex === lastIndex ? 0 : activeIndex + 1;
-    setActiveIndex(index);
-
-    const currentImage = containerRef.current.children[index];
-    const previousIndex = index === 0 ? lastIndex : index - 1;
-    const previousImage = containerRef.current.children[previousIndex];
-  };
-
-  useEffect(() => {
-    const newIntervalId = setInterval(() => {
-      handleRightClick();
-    }, 4000);
-    setIntervalId(newIntervalId);
-
-    // Nettoyer l'intervalle lorsqu'il n'est plus nécessaire
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [activeIndex]);
-  // ...
-
-  const containerRef = useRef(null);
-
-  const handleKeyDown = (event) => {
-    if (event.key === "ArrowLeft") {
-      handleLeftClick();
-    } else if (event.key === "ArrowRight") {
-      handleRightClick();
+  const sliderTopNav = (direction) => {
+    if (sliderTop && sliderTop.current) {
+      if (direction === "prec") {
+        sliderTop.current.slickPrev();
+      }
+      if (direction === "suiv") {
+        sliderTop.current.slickNext();
+      }
     }
   };
-
-  useEffect(() => {
-    setActiveIndex(0);
-    containerRef.current.focus();
-  }, [selectedCat]);
 
   return (
     <>
       {matches ? (
         <>
-          <div className="carousel" onKeyDown={handleKeyDown} tabIndex={0}>
+          <div className="carousel" tabIndex={0}>
             <div className="controllers">
-              <div className="control leftControl" onClick={handleLeftClick}>
+              <div
+                className="control leftControl"
+                onClick={() => {
+                  sliderTopNav("prec");
+                }}
+              >
                 <BsChevronLeft />
               </div>
-              <div className="control rightControl" onClick={handleRightClick}>
+              <div
+                className="control rightControl"
+                onClick={() => {
+                  sliderTopNav("suiv");
+                }}
+              >
                 <BsChevronRight />
               </div>
             </div>
-            {selectedCat === "ghost" && (
+            {selectedCat === "onModel" && (
               <>
-                {images.map((imageSet, index) => (
-                  <div
-                    className={`imagesContainer ${
-                      index === activeIndex ? "active" : "noActive"
-                    }`}
-                    key={index}
-                    ref={containerRef}
-                  >
-                    <img
-                      className={`imageRetouche ${
-                        hover === true ? "noActive" : ""
-                      } image-transition`}
-                      src={imageSet[0]}
-                      alt="test"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                    <img
-                      className={`hoverImage ${
-                        hover === true ? "hoverActive" : ""
-                      } image-transition`}
-                      src={imageSet[1]}
-                      alt="test"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                    <div>
+                <Slider
+                  {...sliderTopSettings}
+                  ref={sliderTop}
+                  className="SliderTop"
+                >
+                  {images.map((imageSet, index) => (
+                    <div
+                      className="sliderTopUnique retouche-carousel"
+                      key={index}
+                    >
+                      <img
+                        className="sliderTopUnique_IMG"
+                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        alt="retouche image on model ghost"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                          width: "80%",
+                          height: "450px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          margin: "0 auto",
+                          objectFit: "contain",
+                        }}
+                      />
                       {hover === true ? (
-                        <p style={{ paddingTop: "10px" }}>{t("After")}</p>
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("After")}
+                        </p>
                       ) : (
-                        <p style={{ paddingTop: "10px" }}>{t("Before")}</p>
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("Before")}
+                        </p>
                       )}
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </Slider>
+              </>
+            )}
+            {selectedCat === "ghost" && (
+              <>
+                <Slider
+                  {...sliderTopSettings}
+                  ref={sliderTop}
+                  className="SliderTop"
+                >
+                  {images.map((imageSet, index) => (
+                    <div
+                      className="sliderTopUnique retouche-carousel"
+                      key={index}
+                    >
+                      <img
+                        className="sliderTopUnique_IMG"
+                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        alt="retouche image on model ghost"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                          width: "80%",
+                          height: "450px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          margin: "0 auto",
+                          objectFit: "contain",
+                        }}
+                      />
+                      {hover === true ? (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("After")}
+                        </p>
+                      ) : (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("Before")}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </Slider>
               </>
             )}
             {selectedCat === "access" && (
               <>
-                {images.map((imageSet, index) => (
-                  <div
-                    className={`imagesContainer ${
-                      index === activeIndex ? "active" : "noActive"
-                    }`}
-                    key={index}
-                    ref={containerRef}
-                  >
-                    <img
-                      className={`imageRetouche ${
-                        hover === true ? "noActive" : ""
-                      } image-transition`}
-                      src={imageSet[0]}
-                      alt="test"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                    <img
-                      className={`hoverImage ${
-                        hover === true ? "hoverActive" : ""
-                      } image-transition`}
-                      src={imageSet[1]}
-                      alt="test"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                    {hover === true ? (
-                      <p style={{ paddingTop: "10px" }}>{t("After")}</p>
-                    ) : (
-                      <p style={{ paddingTop: "10px" }}>{t("Before")}</p>
-                    )}
-                  </div>
-                ))}
+                <Slider
+                  {...sliderTopSettings}
+                  ref={sliderTop}
+                  className="SliderTop"
+                >
+                  {images.map((imageSet, index) => (
+                    <div
+                      className="sliderTopUnique retouche-carousel"
+                      key={index}
+                    >
+                      <img
+                        className="sliderTopUnique_IMG"
+                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        alt="retouche image on model ghost"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                          width: "80%",
+                          height: "450px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          margin: "0 auto",
+                          objectFit: "contain",
+                        }}
+                      />
+                      {hover === true ? (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("After")}
+                        </p>
+                      ) : (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("Before")}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </Slider>
               </>
             )}
             {selectedCat === "bijoux" && (
               <>
-                {images.map((imageSet, index) => (
-                  <div
-                    className={`imagesContainer ${
-                      index === activeIndex ? "active" : "noActive"
-                    }`}
-                    key={index}
-                    ref={containerRef}
-                  >
-                    <img
-                      className={`imageRetouche ${
-                        hover === true ? "noActive" : ""
-                      } image-transition`}
-                      src={imageSet[0]}
-                      alt="test"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                    <img
-                      className={`hoverImage ${
-                        hover === true ? "hoverActive" : ""
-                      } image-transition`}
-                      src={imageSet[1]}
-                      alt="test"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                    {hover === true ? (
-                      <p style={{ paddingTop: "10px" }}>{t("After")}</p>
-                    ) : (
-                      <p style={{ paddingTop: "10px" }}>{t("Before")}</p>
-                    )}
-                  </div>
-                ))}
-              </>
-            )}
-            {selectedCat === "onModel" && (
-              <>
-                {images.map((imageSet, index) => (
-                  <div
-                    className={`imagesContainer ${
-                      index === activeIndex ? "active" : "noActive"
-                    }`}
-                    key={index}
-                    ref={containerRef}
-                  >
-                    <img
-                      className={`imageRetouche ${
-                        hover === true ? "noActive" : ""
-                      } image-transition`}
-                      src={imageSet[0]}
-                      alt="test"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                    <img
-                      className={`hoverImage ${
-                        hover === true ? "hoverActive" : ""
-                      } image-transition`}
-                      src={imageSet[1]}
-                      alt="test"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                    {hover === true ? (
-                      <p style={{ paddingTop: "10px" }}>{t("After")}</p>
-                    ) : (
-                      <p style={{ paddingTop: "10px" }}>{t("Before")}</p>
-                    )}
-                  </div>
-                ))}
+                <Slider
+                  {...sliderTopSettings}
+                  ref={sliderTop}
+                  className="SliderTop"
+                >
+                  {images.map((imageSet, index) => (
+                    <div
+                      className="sliderTopUnique retouche-carousel"
+                      key={index}
+                    >
+                      <img
+                        className="sliderTopUnique_IMG"
+                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        alt="retouche image on model ghost"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                          width: "80%",
+                          height: "450px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          margin: "0 auto",
+                          objectFit: "contain",
+                        }}
+                      />
+                      {hover === true ? (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("After")}
+                        </p>
+                      ) : (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("Before")}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </Slider>
               </>
             )}
             {selectedCat === "lunettes" && (
               <>
-                {images.map((imageSet, index) => (
-                  <div
-                    className={`imagesContainer ${
-                      index === activeIndex ? "active" : "noActive"
-                    }`}
-                    key={index}
-                    ref={containerRef}
-                  >
-                    <img
-                      className={`imageRetouche ${
-                        hover === true ? "noActive" : ""
-                      } image-transition`}
-                      src={imageSet[0]}
-                      alt="test"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                    <img
-                      className={`hoverImage ${
-                        hover === true ? "hoverActive" : ""
-                      } image-transition`}
-                      src={imageSet[1]}
-                      alt="test"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                    {hover === true ? (
-                      <p style={{ paddingTop: "10px" }}>{t("After")}</p>
-                    ) : (
-                      <p style={{ paddingTop: "10px" }}>{t("Before")}</p>
-                    )}
-                  </div>
-                ))}
+                <Slider
+                  {...sliderTopSettings}
+                  ref={sliderTop}
+                  className="SliderTop"
+                >
+                  {images.map((imageSet, index) => (
+                    <div
+                      className="sliderTopUnique retouche-carousel"
+                      key={index}
+                    >
+                      <img
+                        className="sliderTopUnique_IMG"
+                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        alt="retouche image on model ghost"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                          width: "80%",
+                          height: "450px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          margin: "0 auto",
+                          objectFit: "contain",
+                        }}
+                      />
+                      {hover === true ? (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("After")}
+                        </p>
+                      ) : (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("Before")}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </Slider>
               </>
             )}
             {selectedCat === "plat" && (
               <>
-                {images.map((imageSet, index) => (
-                  <div
-                    className={`imagesContainer ${
-                      index === activeIndex ? "active" : "noActive"
-                    }`}
-                    key={index}
-                    ref={containerRef}
-                  >
-                    <img
-                      className={`imageRetouche ${
-                        hover === true ? "noActive" : ""
-                      } image-transition`}
-                      src={imageSet[0]}
-                      alt="test"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                    <img
-                      className={`hoverImage ${
-                        hover === true ? "hoverActive" : ""
-                      } image-transition`}
-                      src={imageSet[1]}
-                      alt="test"
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                    />
-                    {hover === true ? (
-                      <p style={{ paddingTop: "10px" }}>{t("After")}</p>
-                    ) : (
-                      <p style={{ paddingTop: "10px" }}>{t("Before")}</p>
-                    )}
-                  </div>
-                ))}
+                <Slider
+                  {...sliderTopSettings}
+                  ref={sliderTop}
+                  className="SliderTop"
+                >
+                  {images.map((imageSet, index) => (
+                    <div
+                      className="sliderTopUnique retouche-carousel"
+                      key={index}
+                    >
+                      <img
+                        className="sliderTopUnique_IMG"
+                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        alt="retouche image on model ghost"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                          width: "80%",
+                          height: "450px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          margin: "0 auto",
+                          objectFit: "contain",
+                        }}
+                      />
+                      {hover === true ? (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("After")}
+                        </p>
+                      ) : (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("Before")}
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </Slider>
               </>
             )}
           </div>
         </>
       ) : (
         <>
-          <div
-            className="carousel-mobile"
-            onKeyDown={handleKeyDown}
-            tabIndex={0}
-          >
-            <div
-              className="controllers"
-              onMouseEnter={handleMouseEnter}
-              onMouseLeave={handleMouseLeave}
-            >
-              <div className="control leftControl" onClick={handleLeftClick}>
+          <div className="carousel-mobile" tabIndex={0}>
+            <div className="controllers">
+              <div
+                className="control leftControl"
+                onClick={() => {
+                  sliderTopNav("prec");
+                }}
+              >
                 <BsChevronLeft />
               </div>
-              <div className="control rightControl" onClick={handleRightClick}>
+              <div
+                className="control rightControl"
+                onClick={() => {
+                  sliderTopNav("suiv");
+                }}
+              >
                 <BsChevronRight />
               </div>
             </div>
+            {selectedCat === "onModel" && (
+              <>
+                <Slider
+                  {...sliderTopSettings}
+                  ref={sliderTop}
+                  className="SliderTop"
+                >
+                  {images.map((imageSet, index) => (
+                    <div
+                      className="sliderTopUnique retouche-carousel"
+                      style={{ display: "flex !important" }}
+                      key={index}
+                    >
+                      <img
+                        className="sliderTopUnique_IMG"
+                        src={imageSet[0]}
+                        alt="retouche image on model ghost"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                          width: "50%",
+                          height: "300px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          margin: "0 auto",
+                          objectFit: "contain",
+                        }}
+                      />
+                      <p
+                        style={{
+                          paddingTop: "10px",
+                          paddingBottom: "10px",
+                          textAlign: "center",
+                        }}
+                      >
+                        {t("Before")}
+                      </p>
+                      <img
+                        className="sliderTopUnique_IMG"
+                        src={imageSet[1]}
+                        alt="retouche image on model ghost"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                          width: "50%",
+                          height: "300px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          margin: "0 auto",
+                          objectFit: "contain",
+                        }}
+                      />
+                      <p
+                        style={{
+                          paddingTop: "10px",
+                          paddingBottom: "10px",
+                          textAlign: "center",
+                        }}
+                      >
+                        {t("After")}
+                      </p>
+                    </div>
+                  ))}
+                </Slider>
+              </>
+            )}
             {selectedCat === "ghost" && (
               <>
-                {images.map((imageSet, index) => (
-                  <>
+                <Slider
+                  {...sliderTopSettings}
+                  ref={sliderTop}
+                  className="SliderTop"
+                >
+                  {images.map((imageSet, index) => (
                     <div
-                      className={`images-mobile ${
-                        index === activeIndex ? "active" : "noActive"
-                      }`}
+                      className="sliderTopUnique retouche-carousel"
                       key={index}
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                      ref={containerRef}
                     >
-                      <div className="img-container">
-                        <img
-                          className="imageRetouche"
-                          src={imageSet[0]}
-                          alt="test"
-                        />
-                        <p
-                          className="ba"
-                          style={{ paddingLeft: "15px", paddingTop: "10px" }}
-                        >
-                          {t("Before")}
-                        </p>
-                      </div>
-                      <div className="img-container">
-                        <img
-                          className="imageRetouche"
-                          src={imageSet[1]}
-                          alt="test"
-                        />
-                        <p
-                          className="ba"
-                          style={{ paddingLeft: "15px", paddingTop: "10px" }}
-                        >
+                      <img
+                        className="sliderTopUnique_IMG"
+                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        alt="retouche image on model ghost"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                          width: "80%",
+                          height: "450px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          margin: "0 auto",
+                          objectFit: "contain",
+                        }}
+                      />
+                      {hover === true ? (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
                           {t("After")}
                         </p>
-                      </div>
+                      ) : (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("Before")}
+                        </p>
+                      )}
                     </div>
-                  </>
-                ))}
+                  ))}
+                </Slider>
               </>
             )}
             {selectedCat === "access" && (
               <>
-                {images.map((imageSet, index) => (
-                  <>
+                <Slider
+                  {...sliderTopSettings}
+                  ref={sliderTop}
+                  className="SliderTop"
+                >
+                  {images.map((imageSet, index) => (
                     <div
-                      className={`images-mobile ${
-                        index === activeIndex ? "active" : "noActive"
-                      }`}
+                      className="sliderTopUnique retouche-carousel"
                       key={index}
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                      ref={containerRef}
                     >
-                      <div className="img-container">
-                        <img
-                          className="imageRetouche"
-                          src={imageSet[0]}
-                          alt="test"
-                        />
-                        <p
-                          className="ba"
-                          style={{ paddingLeft: "15px", paddingTop: "10px" }}
-                        >
-                          {t("Before")}
-                        </p>
-                      </div>
-                      <div className="img-container">
-                        <img
-                          className="imageRetouche"
-                          src={imageSet[1]}
-                          alt="test"
-                        />
-                        <p
-                          className="ba"
-                          style={{ paddingLeft: "15px", paddingTop: "10px" }}
-                        >
+                      <img
+                        className="sliderTopUnique_IMG"
+                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        alt="retouche image on model ghost"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                          width: "80%",
+                          height: "450px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          margin: "0 auto",
+                          objectFit: "contain",
+                        }}
+                      />
+                      {hover === true ? (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
                           {t("After")}
                         </p>
-                      </div>
+                      ) : (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("Before")}
+                        </p>
+                      )}
                     </div>
-                  </>
-                ))}
+                  ))}
+                </Slider>
               </>
             )}
             {selectedCat === "bijoux" && (
               <>
-                {images.map((imageSet, index) => (
-                  <>
+                <Slider
+                  {...sliderTopSettings}
+                  ref={sliderTop}
+                  className="SliderTop"
+                >
+                  {images.map((imageSet, index) => (
                     <div
-                      className={`images-mobile ${
-                        index === activeIndex ? "active" : "noActive"
-                      }`}
+                      className="sliderTopUnique retouche-carousel"
                       key={index}
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                      ref={containerRef}
                     >
-                      <div className="img-container">
-                        <img
-                          className="imageRetouche"
-                          src={imageSet[0]}
-                          alt="test"
-                        />
-                        <p
-                          className="ba"
-                          style={{ paddingLeft: "15px", paddingTop: "10px" }}
-                        >
-                          {t("Before")}
-                        </p>
-                      </div>
-                      <div className="img-container">
-                        <img
-                          className="imageRetouche"
-                          src={imageSet[1]}
-                          alt="test"
-                        />
-                        <p
-                          className="ba"
-                          style={{ paddingLeft: "15px", paddingTop: "10px" }}
-                        >
+                      <img
+                        className="sliderTopUnique_IMG"
+                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        alt="retouche image on model ghost"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                          width: "80%",
+                          height: "450px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          margin: "0 auto",
+                          objectFit: "contain",
+                        }}
+                      />
+                      {hover === true ? (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
                           {t("After")}
                         </p>
-                      </div>
-                    </div>
-                  </>
-                ))}
-              </>
-            )}
-            {selectedCat === "onModel" && (
-              <>
-                {images.map((imageSet, index) => (
-                  <>
-                    <div
-                      className={`images-mobile ${
-                        index === activeIndex ? "active" : "noActive"
-                      }`}
-                      key={index}
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                      ref={containerRef}
-                    >
-                      <div className="img-container">
-                        <img
-                          className="imageRetouche"
-                          src={imageSet[0]}
-                          alt="test"
-                        />
-                        <p
-                          className="ba"
-                          style={{ paddingLeft: "15px", paddingTop: "10px" }}
-                        >
+                      ) : (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
                           {t("Before")}
                         </p>
-                      </div>
-                      <div className="img-container">
-                        <img
-                          className="imageRetouche"
-                          src={imageSet[1]}
-                          alt="test"
-                        />
-                        <p
-                          className="ba"
-                          style={{ paddingLeft: "15px", paddingTop: "10px" }}
-                        >
-                          {t("After")}
-                        </p>
-                      </div>
+                      )}
                     </div>
-                  </>
-                ))}
+                  ))}
+                </Slider>
               </>
             )}
             {selectedCat === "lunettes" && (
               <>
-                {images.map((imageSet, index) => (
-                  <>
+                <Slider
+                  {...sliderTopSettings}
+                  ref={sliderTop}
+                  className="SliderTop"
+                >
+                  {images.map((imageSet, index) => (
                     <div
-                      className={`images-mobile ${
-                        index === activeIndex ? "active" : "noActive"
-                      }`}
+                      className="sliderTopUnique retouche-carousel"
                       key={index}
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                      ref={containerRef}
                     >
-                      <div className="img-container">
-                        <img
-                          className="imageRetouche"
-                          src={imageSet[0]}
-                          alt="test"
-                        />
-                        <p
-                          className="ba"
-                          style={{ paddingLeft: "15px", paddingTop: "10px" }}
-                        >
-                          {t("Before")}
-                        </p>
-                      </div>
-                      <div className="img-container">
-                        <img
-                          className="imageRetouche"
-                          src={imageSet[1]}
-                          alt="test"
-                        />
-                        <p
-                          className="ba"
-                          style={{ paddingLeft: "15px", paddingTop: "10px" }}
-                        >
+                      <img
+                        className="sliderTopUnique_IMG"
+                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        alt="retouche image on model ghost"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                          width: "80%",
+                          height: "450px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          margin: "0 auto",
+                          objectFit: "contain",
+                        }}
+                      />
+                      {hover === true ? (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
                           {t("After")}
                         </p>
-                      </div>
+                      ) : (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("Before")}
+                        </p>
+                      )}
                     </div>
-                  </>
-                ))}
+                  ))}
+                </Slider>
               </>
             )}
             {selectedCat === "plat" && (
               <>
-                {images.map((imageSet, index) => (
-                  <>
+                <Slider
+                  {...sliderTopSettings}
+                  ref={sliderTop}
+                  className="SliderTop"
+                >
+                  {images.map((imageSet, index) => (
                     <div
-                      className={`images-mobile ${
-                        index === activeIndex ? "active" : "noActive"
-                      }`}
+                      className="sliderTopUnique retouche-carousel"
                       key={index}
-                      onMouseEnter={handleMouseEnter}
-                      onMouseLeave={handleMouseLeave}
-                      ref={containerRef}
                     >
-                      <div className="img-container">
-                        <img
-                          className="imageRetouche"
-                          src={imageSet[0]}
-                          alt="test"
-                        />
-                        <p
-                          className="ba"
-                          style={{ paddingLeft: "15px", paddingTop: "10px" }}
-                        >
-                          {t("Before")}
-                        </p>
-                      </div>
-                      <div className="img-container">
-                        <img
-                          className="imageRetouche"
-                          src={imageSet[1]}
-                          alt="test"
-                        />
-                        <p
-                          className="ba"
-                          style={{ paddingLeft: "15px", paddingTop: "10px" }}
-                        >
+                      <img
+                        className="sliderTopUnique_IMG"
+                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        alt="retouche image on model ghost"
+                        onMouseEnter={handleMouseEnter}
+                        onMouseLeave={handleMouseLeave}
+                        style={{
+                          width: "80%",
+                          height: "450px",
+                          display: "flex",
+                          flexDirection: "column",
+                          alignItems: "center",
+                          margin: "0 auto",
+                          objectFit: "contain",
+                        }}
+                      />
+                      {hover === true ? (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
                           {t("After")}
                         </p>
-                      </div>
+                      ) : (
+                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
+                          {t("Before")}
+                        </p>
+                      )}
                     </div>
-                  </>
-                ))}
+                  ))}
+                </Slider>
               </>
             )}
           </div>
