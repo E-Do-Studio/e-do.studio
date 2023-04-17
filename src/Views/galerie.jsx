@@ -166,6 +166,17 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
           >
             {selectedLink === "all" && (
               <>
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ensemble-survetement-vert-mouty.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mouty"
+                />
                 <IMGPC
                   linkUrl="/service-packshot-horizontal"
                   src="black_tee_staff.webp"
@@ -189,17 +200,16 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="Panconesi"
                 />
-                <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="inoui_accesoires.webp"
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="jerome_malbrel.mp4"
                   lar="25"
                   haut="35"
                   ajustHauteurTop=""
                   ajustHauteurBottom=""
                   anim={1}
                   scrollX={scrollX}
-                  marque="Inoui"
-                  alt="inoui accesoires"
+                  marque="Jerome Malbrel"
                 />
                 <IMGPC
                   linkUrl="/service-packshot-horizontal"
@@ -215,14 +225,25 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                 />
                 <VIDEOGalerie
                   linkUrl="/service-mise-en-scene-live"
-                  src="ensemble-survetement-vert-mouty.mp4"
+                  src="3graces_3.mp4"
                   lar="25"
                   haut="35"
                   ajustHauteurTop=""
                   ajustHauteurBottom=""
                   anim={1}
                   scrollX={scrollX}
-                  marque="Mouty"
+                  marque="3graces"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="jordan_luca.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan Luca"
                 />
                 <IMGPC
                   linkUrl="/service-packshot-horizontal"
@@ -235,6 +256,17 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="Kid Super"
                   alt="chemise kid super"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="3graces.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="3graces"
                 />
                 <IMGPC
                   linkUrl="/service-packshot-horizontal"
@@ -259,6 +291,17 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="Ludovic de Saint Sernin"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="chaussures-jordan-luca.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan Luca"
+                />
                 <IMGPC
                   linkUrl="/service-packshot-horizontal"
                   src="classic_motors_leather_red_jacket.webp"
@@ -270,6 +313,17 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="Classic motors"
                   alt="classic motors leather red jacket"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="inoui_editions.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Inoui"
                 />
                 <VIDEOGalerie
                   linkUrl="/service-accessoires-eclipse"
@@ -329,6 +383,17 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="Studio Maison Ciero"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="chaussure-jordan-luca.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan Luca"
+                />
                 <IMGPC
                   linkUrl="/service-mannequin-vertical"
                   src="adela_amel_orchid_hush.webp"
@@ -376,6 +441,17 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   marque="shangxia"
                   alt="shangxia robe jaune fluo"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="giambattista_valli_bag.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Giambattista Valli"
+                />
                 <IMGPC
                   linkUrl="/service-mannequin-vertical"
                   src="robe_de_soirée_noire_attire_the_studio.webp"
@@ -410,6 +486,29 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="The North Face"
                   alt="jacket the north face supreme Front"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="destroy_hoodie.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Destroy"
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="inoui_accesoires.webp"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Inoui"
+                  alt="inoui accesoires"
                 />
                 <IMGPC
                   linkUrl="/service-mise-en-scene-live"
@@ -755,6 +854,18 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       ) : (
         <>
           <div className="galerieMobile">
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="ensemble-survetement-vert-mouty.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Mouty"
+            />
             <IMGMobile
               linkUrl="/service-packshot-horizontal"
               src="black_tee_staff.webp"
@@ -772,7 +883,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               lar="25"
               haut="35"
               left="40px"
-              right=""
               ajustHauteurTop=""
               ajustHauteurBottom=""
               anim={1}
@@ -780,15 +890,27 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               marque="Panconesi"
             />
             <IMGMobile
-              linkUrl="/service-packshot-horizontal"
-              src="hast_gants.webp"
-              lar="52"
-              haut="51"
-              left="40px"
-              right=""
+              linkUrl="/service-mannequin-vertical"
+              src="attire_the_studio_trench.webp"
+              lar="50"
+              haut="68"
+              left=""
+              right="40px"
               ajustHauteur="5"
-              marque="Hast"
-              alt="hast gants"
+              marque="Attire the studio"
+              alt="attire the studio trench."
+            />
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="3graces_3.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="3graces"
             />
             <IMGMobile
               linkUrl="/service-packshot-horizontal"
@@ -845,6 +967,18 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               ajustHauteur="5"
               marque="Mouty"
               alt="cargo mouty details"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="jordan_luca.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Jordan Luca"
             />
             <IMGMobile
               linkUrl="/service-mannequin-vertical"
@@ -937,15 +1071,15 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               alt="jacket the north face supreme Front"
             />
             <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="attire_the_studio_trench.webp"
-              lar="50"
-              haut="68"
-              left=""
-              right="40px"
+              linkUrl="/service-packshot-horizontal"
+              src="hast_gants.webp"
+              lar="52"
+              haut="51"
+              left="40px"
+              right=""
               ajustHauteur="5"
-              marque="Attire the studio"
-              alt="attire the studio trench."
+              marque="Hast"
+              alt="hast gants"
             />
             <VIDEOGalerie
               linkUrl="/service-accessoires-eclipse"

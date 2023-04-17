@@ -149,13 +149,36 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
             >
               {selectedLink === "live" && (
                 <>
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="nodaleto_babies_glitter.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Nodaleto"
+                  />
+
+                  {/* <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="vanille.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Vanille"
+                  /> */}
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="black_nuage_top_ldss.webp"
                     lar="28"
                     haut="35"
-                    ajustHauteurTop="6"
-                    ajustHauteurBottom=""
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
                     anim={2}
                     scrollX={scrollX}
                     marque="ludovic de saint sernin"
@@ -207,6 +230,17 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Giambatista"
                     alt="giambatista valli yellow skirt"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="jerome_malbrel.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Jerome Malbrel"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="13_09_accessoires.webp"
@@ -218,17 +252,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="13/09"
                     alt="13/09 accessoires"
-                  />
-                  <VIDEOGalerie
-                    linkUrl="/service-mise-en-scene-live"
-                    src="chaussures-talons-nodaleto.mp4"
-                    lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Nodaleto"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -260,11 +283,33 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     lar="25"
                     haut="39"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="8"
+                    ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
                     marque="Mouty"
                     alt="mouty on model"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="3graces.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="3graces"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="dentro_bag.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Dentro"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -313,6 +358,17 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="ludovic de saint sernin"
                     alt="ludovic de saint sernin dress"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="destroy_hoodie.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Destroy"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="louis_vuitton_holographic_bag.webp"
@@ -324,6 +380,17 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Louis Vuitton"
                     alt="louis vuitton holographic bag"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="champs_paris_bomber_empiecement_beige.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Champs Paris"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -372,6 +439,28 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="13/09"
                     alt="13/09 glasses"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="inoui_editions.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Inoui"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="mina_storm.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mina Storm"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="baguette_bag_dentro.webp"
@@ -396,7 +485,50 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Giambatista"
                     alt="giambatista valli dress"
                   />
-
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="3graces_3.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="3graces"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="jordan_luca.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Jordan Luca"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="mina_storm2.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mina Storm"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="prisca_violati.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="prisca violati"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="port_tanger_on_model_glasses.webp"
@@ -432,6 +564,17 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Fragment"
                     alt="valise fragment top"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="jordan_luca.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Jordan Luca"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="giambatista_valli_on_model.webp"
@@ -444,6 +587,28 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Giambatista"
                     alt="giambatista valli on model"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="chaussures-talons-nodaleto.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Nodaleto"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="mina_storm3.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mina Storm"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="port_tanger_red_glasses_on_model.webp"
@@ -455,6 +620,17 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Port Tanger"
                     alt="port tanger red glasses on model"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="giambattista_valli.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambattista Valli"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -472,17 +648,83 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
               )}
               {selectedLink === "liveGarments" && (
                 <>
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="champs_paris_bomber_empiecement_beige.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Champs Paris"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="jordan_luca.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Jordan Luca"
+                  />
+                  {/* <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="vanille.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Vanille"
+                  /> */}
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="black_nuage_top_ldss.webp"
                     lar="28"
                     haut="35"
-                    ajustHauteurTop="6"
+                    ajustHauteurTop=""
                     ajustHauteurBottom=""
                     anim={2}
                     scrollX={scrollX}
                     marque="ludovic de saint sernin"
                     alt="black nuage top"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="merrycourt_x_e_do.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Merrycourt"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="jean_b&r.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="jean b&r"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="3graces.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="3graces"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -496,6 +738,17 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Giambatista"
                     alt="giambatista valli dress"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="inoui_editions.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Inoui"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="ludovic_de_saint_sernin_dress.webp"
@@ -507,6 +760,28 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="ludovic de saint sernin"
                     alt="ludovic de saint sernin dress"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="botticelli.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="botticelli"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="3graces_2.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="3graces"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -543,6 +818,28 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Rudy"
                     alt="rudy maillot de bain 2 piece"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="jordan_luca.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Jordan Luca"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="mina_storm.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mina Storm"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="lookbook_giambatista_valli.webp"
@@ -555,6 +852,17 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Giambatista"
                     alt="lookbook giambatista valli"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="le_monde_beryl.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="le monde beryl"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="ludovic_de_saint_sernin_black_cargo.webp"
@@ -566,6 +874,28 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="ludovic de saint sernin"
                     alt="ludovic de saint sernin black cargo"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="mina_storm3.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mina Storm"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="prisca_violati.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="prisca violati"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -590,6 +920,28 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="ludovic de saint sernin"
                     alt="pantalons blanc ludovic de saint sernin"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="destroy_hoodie.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Destroy"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="mina_storm2.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mina Storm"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -620,11 +972,22 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     lar="32"
                     haut="31"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="2"
+                    ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
                     marque="Giambatista"
                     alt="giambatista valli on model"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="3graces_3.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="3graces"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -637,6 +1000,17 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Staff"
                     alt="staff tee on model"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="giambattista_valli.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambattista Valli"
                   />
                 </>
               )}
@@ -778,6 +1152,28 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="13/09"
                     alt="13/09 glasses"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="le_monde_beryl.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="le monde beryl"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="jean_b&r.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="jean b&r"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="valise_fragment.webp"
@@ -813,6 +1209,17 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Dentro"
                     alt="baguette bag dentro"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="botticelli.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="botticelli"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="13_09_glasses_on_model.webp"
@@ -825,6 +1232,17 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="13/09"
                     alt="13/09 glasses on model"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="merrycourt_x_e_do.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Merrycourt"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="comme_des_garcons_bag_gucci.webp"
@@ -836,6 +1254,17 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Comme des Garçons x Gucci"
                     alt="Comme des Garçons x Gucci sac"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="dentro_bag.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Dentro"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -860,6 +1289,17 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Fragment"
                     alt="valise fragment top"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="3graces_2.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="3graces"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -939,6 +1379,29 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
           <>
             {selectedLink === "live" && (
               <>
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="champs_paris_bomber_empiecement_beige.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Champs Paris"
+                />
+                {/* <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="vanille.mp4"
+                    lar="25"
+                    haut="35"                  left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Vanille"
+                  /> */}
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="black_nuage_top_ldss.webp"
@@ -946,7 +1409,7 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   haut="75"
                   left=""
                   right="40px"
-                  ajustHauteur="-23"
+                  ajustHauteur=""
                   marque="Black Nuage"
                   alt="black nuage top"
                 />
@@ -995,6 +1458,18 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Giambatista"
                   alt="giambatista valli dress"
+                />{" "}
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="botticelli.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="botticelli"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
@@ -1035,11 +1510,23 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   src="port_tanger_red_glasses_on_model.webp"
                   lar="40"
                   haut="45"
-                  left="150px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="Port Tanger"
                   alt="port tanger red glasses on model"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="le_monde_beryl.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="le monde beryl"
                 />
                 <VIDEOGalerie
                   linkUrl="/service-mise-en-scene-live"
@@ -1058,21 +1545,58 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   src="mouty_on_model.webp"
                   lar="40"
                   haut="60"
-                  left="100px"
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="Mouty"
                   alt="mouty on model"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="mina_storm.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mina Storm"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="prisca_violati.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="prisca violati"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="rudy_maillot_de_bain_1_piece.webp"
                   lar="43"
                   haut="63"
-                  left="40px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="Rudy"
                   alt="rudy maillot de bain 1 piece"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="dentro_bag.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Dentro"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
@@ -1084,6 +1608,18 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="ludovic de saint sernin"
                   alt="ludovic de saint sernin black cargo"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="3graces_3.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="3graces"
                 />
                 <VIDEOGalerie
                   linkUrl="/service-mise-en-scene-live"
@@ -1102,22 +1638,58 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   src="louis_vuitton_holographic_bag.webp"
                   lar="60"
                   haut="45"
-                  left="40px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="Louis Vuitton"
                   alt="louis vuitton holographic bag"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="destroy_hoodie.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Destroy"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="giambatista_valli_on_model.webp"
                   lar="43"
                   haut="63"
-                  left="40px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="Giambatista"
                   alt="giambatista valli on model"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="jordan_luca.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan Luca"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="nodaleto_babies_glitter.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Nodaleto"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
@@ -1125,7 +1697,7 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   lar="43"
                   haut="63"
                   left=""
-                  right="30px"
+                  right="40px"
                   ajustHauteur="5"
                   marque="Staff"
                   alt="staff tee on model"
@@ -1135,8 +1707,8 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   src="13_09_glasses.webp"
                   lar="43"
                   haut="63"
-                  left="90px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="13/09"
                   alt="13/09 glasses"
@@ -1146,8 +1718,8 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   src="pantalons_blanc_ludovic_de_saint_sernin.webp"
                   lar="63"
                   haut="73"
-                  left="90px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="ludovic de saint sernin"
                   alt="pantalons blanc ludovic de saint sernin"
@@ -1175,13 +1747,61 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   marque="Fragment"
                   alt="valise fragment"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="inoui_editions.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Inoui"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="3graces_2.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="3graces"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="mina_storm2.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mina Storm"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="jean_b&r.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="jean b&r"
+                />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="lookbook_giambatista_valli.webp"
                   lar="43"
                   haut="63"
-                  left="40px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="Giambatista"
                   alt="lookbook giambatista valli"
@@ -1191,11 +1811,23 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   src="comme_des_garcons_bag_gucci.webp"
                   lar="53"
                   haut="71"
-                  left="40px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="Comme des Garçons x Gucci"
                   alt="Comme des Garçons x Gucci sac"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="merrycourt_x_e_do.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Merrycourt"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
@@ -1203,18 +1835,42 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   lar="43"
                   haut="63"
                   left=""
-                  right="90px"
+                  right="40px"
                   ajustHauteur="5"
                   marque="Port Tanger"
                   alt="port tanger on model glasses"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="jerome_malbrel.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jerome Malbrel"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="giambattista_valli.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Giambattista Valli"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="valise_fragment_top.webp"
                   lar="54"
                   haut="52"
-                  left="190px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="Fragment"
                   alt="valise fragment top"
@@ -1224,8 +1880,8 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   src="baguette_bag_dentro.webp"
                   lar="53"
                   haut="66"
-                  left="40px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="Dentro"
                   alt="baguette bag dentro"
@@ -1241,6 +1897,18 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   marque="Giambatista"
                   alt="giambatista valli yellow skirt"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="mina_storm3.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mina Storm"
+                />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="13_09_accessoires.webp"
@@ -1252,10 +1920,57 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   marque="13/09"
                   alt="13/09 accessoires"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="3graces.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="3graces"
+                />
               </>
             )}
             {selectedLink === "liveGarments" && (
               <>
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="champs_paris_bomber_empiecement_beige.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Champs Paris"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="jordan_luca.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan Luca"
+                />
+                {/* <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="vanille.mp4"
+                    lar="25"
+                    haut="35"                  left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Vanille"
+                  /> */}
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="black_nuage_top_ldss.webp"
@@ -1263,31 +1978,79 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   haut="75"
                   left=""
                   right="40px"
-                  ajustHauteur="-23"
+                  ajustHauteur=""
                   marque="Black Nuage"
                   alt="black nuage top"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="botticelli.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="botticelli"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="le_monde_beryl.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="le monde beryl"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="giambatista_valli_dress.webp"
                   lar="50"
                   haut="75"
-                  left="60px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="Giambatista"
                   alt="giambatista valli dress"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="inoui_editions.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Inoui"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="ludovic_de_saint_sernin_dress.webp"
                   lar="47"
                   haut="78"
-                  left="40px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="ludovic de saint sernin"
                   alt="ludovic de saint sernin dress"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="3graces.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="3graces"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
@@ -1302,6 +2065,18 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                 />
                 <VIDEOGalerie
                   linkUrl="/service-mise-en-scene-live"
+                  src="destroy_hoodie.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Destroy"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
                   src="look-cochady-fond-papier-rose.mp4"
                   lar="25"
                   haut="35"
@@ -1312,38 +2087,99 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="Cochady"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="prisca_violati.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="prisca violati"
+                />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="rudy_maillot_de_bain_2_pieces.webp"
                   lar="50"
                   haut="63"
-                  left="40px"
-                  right=""
-                  ajustHauteur="5"
+                  left=""
+                  right="40px"
+                  ajustHauteur=""
                   marque="Rudy"
                   alt="rudy maillot de bain 2 piece"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="giambattista_valli.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Giambattista Valli"
+                />
+
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="lookbook_giambatista_valli.webp"
                   lar="43"
                   haut="63"
-                  left="40px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="Giambatista"
                   alt="lookbook giambatista valli"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="3graces_2.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="3graces"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="mina_storm2.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mina Storm"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="ludovic_de_saint_sernin_black_cargo.webp"
                   lar="50"
                   haut="67"
-                  left="190px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="ludovic de saint sernin"
                   alt="ludovic de saint sernin black cargo"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="merrycourt_x_e_do.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Merrycourt"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
@@ -1379,6 +2215,18 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   marque="ludovic de saint sernin"
                   alt="pantalons blanc ludovic de saint sernin"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="jean_b&r.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="jean b&r"
+                />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="rudy_maillot_de_bain_1_piece.webp"
@@ -1390,16 +2238,40 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   marque="Rudy"
                   alt="rudy maillot de bain 1 piece"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="3graces_3.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="3graces"
+                />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="giambatista_valli_on_model.webp"
                   lar="43"
                   haut="63"
-                  left="40px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="Giambatista"
                   alt="giambatista valli on model"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="mina_storm.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mina Storm"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
@@ -1448,6 +2320,18 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Inoui"
                   alt="inoui editions scarf"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="mina_storm3.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mina Storm"
                 />
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
@@ -1541,6 +2425,18 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   marque="13/09"
                   alt="13/09 glasses"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="video-close-up-panconesi.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Panconesi"
+                />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="valise_fragment.webp"
@@ -1563,18 +2459,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   marque="Dentro"
                   alt="baguette bag dentro"
                 />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="video-close-up-panconesi.mp4"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Panconesi"
-                />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="13_09_glasses_on_model.webp"
@@ -1596,6 +2480,18 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Comme des Garçons x Gucci"
                   alt="Comme des Garçons x Gucci sac"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="dentro_bag.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Dentro"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"

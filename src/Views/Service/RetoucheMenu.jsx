@@ -42,7 +42,7 @@ const RetoucheMenu = ({ selectedCat, setSelectedCat }) => {
             <span
               className={`underline ${selectedCat === "plat" ? "active" : ""}`}
             >
-              À PLAT
+              {t("FLAT")}
             </span>
           </li>
           <li
@@ -54,7 +54,7 @@ const RetoucheMenu = ({ selectedCat, setSelectedCat }) => {
                 selectedCat === "lunettes" ? "active" : ""
               }`}
             >
-              LUNETTES
+              {t("GLASSES")}
             </span>
           </li>
           <li
@@ -76,7 +76,7 @@ const RetoucheMenu = ({ selectedCat, setSelectedCat }) => {
                 selectedCat === "access" ? "active" : ""
               }`}
             >
-              ACCESS / SHOES
+              {t("ACCESS / SHOES")}
             </span>
           </li>
           <li
@@ -88,7 +88,7 @@ const RetoucheMenu = ({ selectedCat, setSelectedCat }) => {
                 selectedCat === "bijoux" ? "active" : ""
               }`}
             >
-              BIJOUX
+              {t("JEWELRY")}
             </span>
           </li>
         </ul>

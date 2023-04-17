@@ -149,17 +149,138 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
             >
               {selectedLink === "eclipse" && (
                 <>
-                  <IMGPC
+                  {/* <VIDEOGalerie
                     linkUrl="/service-accessoires-eclipse"
-                    src="iindaco_talons_flammes.webp"
-                    lar="32"
-                    haut="23"
+                    src="giambattista_bag_glasses.mp4"
+                    lar="25"
+                    haut="35"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="7"
+                    ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
-                    marque="Iindaco"
-                    alt="iindaco talons flammes"
+                    marque="Giambattista Valli"
+                  /> */}
+                  {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="13/03/SR_booblkaw23.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="13/03/SR"
+                  /> */}
+                  {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="genfrey_shoes.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="genfrey"
+                  /> */}
+                  {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="giambattista_gold.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambattista Valli"
+                  /> */}
+                  {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="lancome.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Lancome"
+                  /> */}
+                  {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="mugler_parfum.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mugler"
+                  /> */}
+                  {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="vanille_purple_heart.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Vanille"
+                  /> */}
+                  {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="giambatistta_green_glasses.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambattista Valli"
+                  /> */}
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="giambattista_valli_bag.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambattista Valli"
+                  />
+                  {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="vaillant_curly_fondant.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Vaillant"
+                  /> */}
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="video-accessoires-ludovic-de-saint-sernin.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Ludovic de Saint Sernin"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="les_belles_envies_chocolat_paques.webp"
+                    lar="23"
+                    haut="33"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Les Belles Envies"
+                    alt="les belles envies chocolat paques"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -175,14 +296,14 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   />
                   <VIDEOGalerie
                     linkUrl="/service-accessoires-eclipse"
-                    src="video-accessoires-ludovic-de-saint-sernin.mp4"
+                    src="NFL.mp4"
                     lar="25"
                     haut="35"
                     ajustHauteurTop=""
                     ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
-                    marque="Ludovic de Saint Sernin"
+                    marque="NFL"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -210,6 +331,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
+                    src="iindaco_talons_flammes.webp"
+                    lar="32"
+                    haut="23"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="7"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Iindaco"
+                    alt="iindaco talons flammes"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
                     src="la_manso_x_jpg_bague_rose_face.webp"
                     lar="25"
                     haut="27"
@@ -233,6 +366,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
+                    src="les_belles_envies_saint_valentin.webp"
+                    lar="23"
+                    haut="33"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Les Belles Envies"
+                    alt="les belles envies chocolat saint valentin"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
                     src="nodaleto_angel_lucia_fuschia.webp"
                     lar="22"
                     haut="27"
@@ -242,6 +387,29 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Nodaleto"
                     alt="nodaleto angel lucia fuschia"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="les_belles_envie_midi2.webp"
+                    lar="23"
+                    haut="33"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Les Belles Envies"
+                    alt="Les Belles Envies Midi"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="sister_morphine_pendentifs.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="sister morphine"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -279,6 +447,40 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Iindaco"
                     alt="iindaco bottes rose"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="eddy_ruinart_champagne_brut.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Eddy"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="les_belles_envies_flan.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Les Belles Envies"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="les_belles_envies_midi.webp"
+                    lar="23"
+                    haut="33"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Les Belles Envies"
+                    alt="les belles envies chocolat midi"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="nike_airmax_sean_wotherspoon_sole.webp"
@@ -314,6 +516,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Bruno Frisoni"
                     alt="bruno frisoni talons ultramarine"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="chez_nous_casquette.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Chez Nous"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="jacques_genin_oeuf_de_paques_peinture.webp"
@@ -325,6 +538,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Jacques Genin"
                     alt="jacques genin oeuf de paques peinture"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="Nodaleto_bulla_babies_ceramica.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Nodaleto"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -349,6 +573,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Iindaco"
                     alt="iindaco talons flammes strass"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="bruno_frisoni_talons_roses.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="bruno frisoni"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -409,6 +644,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Port Tanger"
                     alt="port tanger red glasses"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="ba&sh_stop_motion.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="ba&sh"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="13_09_SR_sandale_vert_jaune.webp"
@@ -420,6 +666,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="13 09 SR"
                     alt="13 09 SR sandale vert jaune"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="justine_clenquet_eddie_black.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Justine Clenquet"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -456,6 +713,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="La manso"
                     alt="la manso x jean paul gaultier bague transparente face"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="alf_glasses.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Alf"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="a_magazine_inside.webp"
@@ -480,6 +748,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="lcd"
                     alt="lcd bracelet argent rouge"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="sister_morphine_flamme.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="sister morphine"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="angel_lucia_shocking_pink-Top-tiff-1.webp"
@@ -491,6 +770,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Nodaleto"
                     alt="angel lucia shocking pink"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="ba&sh_image_animé.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="ba&sh"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -539,6 +829,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Jacques Genin"
                     alt="jacques genin oeuf de paques"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="veuve_clicquot_bouteille.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Veuve Clicquot"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="lcd_bracelet_argent_rouge.webp"
@@ -550,6 +851,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="lcd"
                     alt="lcd bracelet argent rouge"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="givenchy_bag.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Givenchy"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -599,6 +911,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Supreme"
                     alt="supreme casquette logo"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="inoui_bag_tiger.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Inoui"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="casquette_noire_carne_bollente.webp"
@@ -645,6 +968,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="La manso"
                     alt="la manso x jean paul gaultier bague rose dos"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="arseau_silver.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Arseau"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -1225,6 +1559,28 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
               )}
               {selectedLink === "eclipseShoes" && (
                 <>
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="ba&sh_image_animé.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="ba&sh"
+                  />
+                  {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="giambattista_gold.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambattista Valli"
+                  /> */}
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="talons_giambatista_valli_verts.webp"
@@ -1248,6 +1604,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Nodaleto"
                     alt="angel lucia shocking pink"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="justine_clenquet_eddie_black.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Justine Clenquet"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -1308,6 +1675,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Bruno Frisoni"
                     alt="sbruno frisoni talons transparents"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="Nodaleto_bulla_babies_ceramica.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Nodaleto"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="giambatista_valli_talons_verts.webp"
@@ -1319,6 +1697,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Gaibatista Valli"
                     alt="giambatista valli talons verts"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="ba&sh_stop_motion.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="ba&sh"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -1451,6 +1840,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Iindaco"
                     alt="iindaco talons flammes strass"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="bruno_frisoni_talons_roses.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="bruno frisoni"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="nodaleto_angel_lucia_fuschia.webp"
@@ -1490,6 +1890,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
               )}
               {selectedLink === "eclipseJewelry" && (
                 <>
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="sister_morphine_pendentifs.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="sister morphine"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="fursac_boutons_manchettes_dores.webp"
@@ -1536,6 +1947,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="La manso"
                     alt="la manso x jean paul gaultier bague rose dos"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="sister_morphine_flamme.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="sister morphine"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -1612,17 +2034,64 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
               )}
               {selectedLink === "eclipseFood" && (
                 <>
-                  <IMGPC
+                  <VIDEOGalerie
                     linkUrl="/service-accessoires-eclipse"
-                    src="dumbo_ice_cream_sandwiche4.webp"
-                    lar="22"
-                    haut="33"
-                    ajustHauteurTop="7"
+                    src="les_belles_envies_flan.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
                     ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
-                    marque="Dumbo"
-                    alt="dumbo ice cream sandwiche"
+                    marque="Les Belles Envies"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="les_belles_envie_midi2.webp"
+                    lar="23"
+                    haut="33"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Les Belles Envies"
+                    alt="Les Belles Envies Midi"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="les_belles_envies_chocolat_paques.webp"
+                    lar="23"
+                    haut="33"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Les Belles Envies"
+                    alt="les belles envies chocolat paques"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="les_belles_envies_midi.webp"
+                    lar="23"
+                    haut="33"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Les Belles Envies"
+                    alt="les belles envies chocolat midi"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="les_belles_envies_saint_valentin.webp"
+                    lar="23"
+                    haut="33"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Les Belles Envies"
+                    alt="les belles envies chocolat saint valentin"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -1635,6 +2104,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Jacques Genin"
                     alt="jacques genin oeuf de paques peinture"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="veuve_clicquot_bouteille.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Veuve Clicquot"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -1672,6 +2152,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Jacques Genin"
                     alt="jacques genin oeuf de paques"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="eddy_ruinart_champagne_brut.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Eddy"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="dumbo_ice_cream_sandwiches3.webp"
@@ -1700,29 +2191,39 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
               )}
               {selectedLink === "eclipseAccess" && (
                 <>
-                  <IMGPC
+                  {/* <VIDEOGalerie
                     linkUrl="/service-accessoires-eclipse"
-                    src="cable_connexion_RS1_top_riff_hit_air.webp"
-                    lar="30"
-                    haut="33"
-                    ajustHauteurTop="7"
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Hit air"
-                    alt="cable connexion RS1 top riff hit air"
-                  />
-                  <IMGPC
-                    linkUrl="/service-accessoires-eclipse"
-                    src="cartouches_top_riff_hit-air.webp"
+                    src="giambattista_bag_glasses.mp4"
                     lar="25"
-                    haut="22"
+                    haut="35"
                     ajustHauteurTop=""
                     ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
-                    marque="Hit air"
-                    alt="cartouches top riff hit-air"
+                    marque="Giambattista Valli"
+                  /> */}
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="off_white_porte_carte_noir.webp"
+                    lar="30"
+                    haut="30"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="off white"
+                    alt="off white porte carte noir"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="chez_nous_casquette.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Chez Nous"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -1735,6 +2236,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Bollente"
                     alt="casquette noire carne bollente"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="NFL.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="NFL"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -1771,6 +2283,30 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Supreme"
                     alt="supreme casquette logo"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="cartouches_top_riff_hit-air.webp"
+                    lar="25"
+                    haut="22"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Hit air"
+                    alt="cartouches top riff hit-air"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="cable_connexion_RS1_top_riff_hit_air.webp"
+                    lar="30"
+                    haut="33"
+                    ajustHauteurTop="7"
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Hit air"
+                    alt="cable connexion RS1 top riff hit air"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -1985,6 +2521,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="a magazine"
                     alt="a magazine curated inside"
                   />
+                  {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="genfrey_shoes.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="genfrey"
+                  /> */}
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="a_magazine_curated_by.webp"
@@ -2061,6 +2608,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
               )}
               {selectedLink === "eclipseGlasses" && (
                 <>
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="alf_glasses.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Alf"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="1309_champagne_lunettes.webp"
@@ -2144,6 +2702,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Hermes"
                     alt="hermes pontet clear glass"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="arseau_silver.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Arseau"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="giambatista_valli_big_silver_glass.webp"
@@ -2196,6 +2765,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
               )}
               {selectedLink === "eclipseBags" && (
                 <>
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="giambattista_valli_bag.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambattista Valli"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="coperni_baguette_swipe_face_bas.webp"
@@ -2255,6 +2835,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Coperni"
                     alt="dentro sac creme"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="givenchy_bag.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Givenchy"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -2328,6 +2919,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Coperni"
                     alt="mini swipe coperni"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="inoui_bag_tiger.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Inoui"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="vaillant_Bonnie_bag_black.webp"
@@ -2382,6 +2984,117 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
           <>
             {selectedLink === "eclipse" && (
               <>
+                {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="giambattista_bag_glasses.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambattista Valli"
+                  /> */}
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="veuve_clicquot_bouteille.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Veuve Clicquot"
+                />
+                {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="13/03/SR_booblkaw23.mp4"
+                    lar="25"
+                    haut="35"                  left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="13/03/SR"
+                  /> */}
+                {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="genfrey_shoes.mp4"
+                    lar="25"
+                    haut="35"                  left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="genfrey"
+                  /> */}
+                {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="giambattista_gold.mp4"
+                    lar="25"
+                    haut="35"                  left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambattista Valli"
+                  /> */}
+                {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="lancome.mp4"
+                    lar="25"
+                    haut="35"                  left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Lancome"
+                  /> */}
+                {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="mugler_parfum.mp4"
+                    lar="25"
+                    haut="35"                  left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mugler"
+                  /> */}
+                {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="vanille_purple_heart.mp4"
+                    lar="25"
+                    haut="35"                  left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Vanille"
+                  /> */}
+                {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="giambatistta_green_glasses.mp4"
+                    lar="25"
+                    haut="35"                  left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambattista Valli"
+                  /> */}
+                {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="vaillant_curly_fondant.mp4"
+                    lar="25"
+                    haut="35"                  left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Vaillant"
+                  /> */}
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="bruno_frisoni_talons_ultramarine.webp"
@@ -2389,7 +3102,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   haut="63"
                   left="40px"
                   right=""
-                  ajustHauteur="-25"
+                  ajustHauteur=""
                   marque="Bruno Frisoni"
                   alt="bruno frisoni talons ultramarine"
                 />
@@ -2472,6 +3185,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Jordan"
                   alt="ordan travis collab"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="Nodaleto_bulla_babies_ceramica.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Nodaleto"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="iindaco_talons_flammes_strass.webp"
@@ -2483,6 +3208,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Iindaco"
                   alt="iindaco talons flammes strass"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="arseau_silver.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Arseau"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="nodaleto_angel_lucia_fuschia.webp"
@@ -2493,6 +3230,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Nodaleto"
                   alt="nodaleto angel lucia fuschia"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="inoui_bag_tiger.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Inoui"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -2517,6 +3266,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="Jordan Luca"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="alf_glasses.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Alf"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="jacques_genin_oeuf_de_paques_peinture.webp"
@@ -2527,6 +3288,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Jacques Genin"
                   alt="jacques genin oeuf de paques peinture"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="justine_clenquet_eddie_black.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Justine Clenquet"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -2573,6 +3346,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="Nodaleto"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="givenchy_bag.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Givenchy"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="la_manso_x_jpg_bague_transparente_face.webp"
@@ -2594,6 +3379,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="lcd"
                   alt="lcd bracelet argent rouge"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="ba&sh_image_animé.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="ba&sh"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -2683,6 +3480,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Nike"
                   alt="nike air max sean wotherspoon"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="giambattista_valli_bag.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Giambattista Valli"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -2856,7 +3665,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   src="chaussure-givenchy.mp4"
                   lar="25"
                   haut="35"
-                  right="40px"
+                  left="40px"
                   ajustHauteurTop=""
                   ajustHauteurBottom=""
                   anim={1}
@@ -2874,6 +3683,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Bruno Frisoni"
                   alt="bruno frisoni talons noirs"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="sister_morphine_pendentifs.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="sister morphine"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="bruno_frisoni_talons_transparents.webp"
@@ -2884,6 +3705,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Bruno Frisoni"
                   alt="sbruno frisoni talons transparents"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="chez_nous_casquette.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Chez Nous"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -2896,6 +3729,30 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Velo"
                   alt="velo gilet noir"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="ba&sh_stop_motion.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="ba&sh"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="bruno_frisoni_talons_roses.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="bruno frisoni"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="mini_swipe_coperni.webp"
@@ -2906,6 +3763,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Coperni"
                   alt="mini swipe coperni"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="sister_morphine_flamme.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="sister morphine"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -2950,6 +3819,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Sowvital"
                   alt="sowvital elixir"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="les_belles_envies_flan.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Les Belles Envies"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -3039,6 +3920,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="a magazine"
                   alt="a magazine curated inside"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="NFL.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="NFL"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="la_manso_x_jpg_bague_transparente_dos.webp"
@@ -3082,6 +3975,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Purple"
                   alt="purple magazine"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="eddy_ruinart_champagne_brut.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Eddy"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -3373,16 +4278,52 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
             )}
             {selectedLink === "eclipseShoes" && (
               <>
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="justine_clenquet_eddie_black.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Justine Clenquet"
+                />
+                {/* <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="giambattista_gold.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Giambattista Valli"
+                /> */}
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="talons_giambatista_valli_verts.webp"
                   lar="43"
                   haut="63"
-                  left="40px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="Giambatisa Valli"
                   alt="talons giambatista valli verts"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="chaussures-jordan-luca.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan Luca"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -3397,7 +4338,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                 />
                 <VIDEOGalerie
                   linkUrl="/service-accessoires-eclipse"
-                  src="chaussure-jordan-luca.mp4"
+                  src="Nodaleto_bulla_babies_ceramica.mp4"
                   lar="25"
                   haut="35"
                   left="40px"
@@ -3405,7 +4346,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteurBottom=""
                   anim={1}
                   scrollX={scrollX}
-                  marque="Jordan Luca"
+                  marque="Nodaleto"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -3418,6 +4359,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Shangxia"
                   alt="shangxia sandales bleues"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="chaussure-givenchy.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Givenchy"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="bruno_frisoni_talons_noirs.webp"
@@ -3429,6 +4382,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Bruno Frisoni"
                   alt="bruno frisoni talons noirs"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="bruno_frisoni_talons_roses.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="bruno frisoni"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="nike_air_max_sean_wotherspoon.webp"
@@ -3439,18 +4404,6 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Nike"
                   alt="nike air max sean wotherspoon"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-accessoires-eclipse"
-                  src="chaussure-givenchy.mp4"
-                  lar="25"
-                  haut="35"
-                  left="100px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Givenchy"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -3485,6 +4438,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Jordan"
                   alt="jordan 5 offwhite black"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="chaussures-talons-nodaleto.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Nodaleto"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="13_09_SR_sandale_vert_jaune.webp"
@@ -3507,6 +4472,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Iindaco"
                   alt="iindaco bottes rose"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="ba&sh_image_animé.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="ba&sh"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="nike_airmax_sean_wotherspoon_sole.webp"
@@ -3517,18 +4494,6 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="-2"
                   marque="Nike"
                   alt="nike air max sean wotherspoon sole"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-accessoires-eclipse"
-                  src="chaussures-jordan-luca.mp4"
-                  lar="25"
-                  haut="35"
-                  left="100px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Jordan Luca"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -3585,18 +4550,6 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Iindaco"
                   alt="iindaco talons flammes strass"
                 />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="chaussures-talons-nodaleto.mp4"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Nodaleto"
-                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="nodaleto_angel_lucia_fuschia.webp"
@@ -3607,6 +4560,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Nodaleto"
                   alt="nodaleto angel lucia fuschia"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="ba&sh_stop_motion.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="ba&sh"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -3623,6 +4588,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
             )}
             {selectedLink === "eclipseJewelry" && (
               <>
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="sister_morphine_pendentifs.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="sister morphine"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="fursac_boutons_manchettes_dores.webp"
@@ -3690,6 +4667,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="lcd"
                   alt="lcd bracelet argent rouge"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="sister_morphine_flamme.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="sister morphine"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="la_manso_x_jpg_bague_rose_face.webp"
@@ -3739,6 +4728,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
             )}
             {selectedLink === "eclipseFood" && (
               <>
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="les_belles_envies_flan.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Les Belles Envies"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="jacques_genin_oeuf_de_paques_peinture.webp"
@@ -3750,6 +4751,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Jacques Genin"
                   alt="jacques genin oeuf de paques peinture"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="eddy_ruinart_champagne_brut.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Eddy"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="dumbo_ice_cream_sandwiches.webp"
@@ -3760,6 +4773,28 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Dumbo"
                   alt="dumbo ice cream sandwiche"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="les_belles_envies_chocolat_paques.webp"
+                  lar="47"
+                  haut="50"
+                  left="100px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Les Belles Envies"
+                  alt="les belles envies paques"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="les_belles_envies_saint_valentin.webp"
+                  lar="47"
+                  haut="50"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="Les Belles Envies"
+                  alt="les belles envies chocolat saint valentin"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -3794,6 +4829,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Dumbo"
                   alt="dumbo ice cream sandwiche"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="veuve_clicquot_bouteille.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Veuve Clicquot"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="jacques_genin_oeuf_de_paques_peint.webp"
@@ -3809,28 +4856,29 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
             )}
             {selectedLink === "eclipseAccess" && (
               <>
-                <IMGMobile
+                <VIDEOGalerie
                   linkUrl="/service-accessoires-eclipse"
-                  src="cable_connexion_RS1_top_riff_hit_air.webp"
-                  lar="43"
-                  haut="63"
+                  src="chez_nous_casquette.mp4"
+                  lar="25"
+                  haut="35"
                   left="40px"
-                  right=""
-                  ajustHauteur="-23"
-                  marque="Hit air"
-                  alt="cable connexion RS1 top riff hit air"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Chez Nous"
                 />
-                <IMGMobile
-                  linkUrl="/service-accessoires-eclipse"
-                  src="cartouches_top_riff_hit-air.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Hit air"
-                  alt="cartouches top riff hit-air"
-                />
+                {/* <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="giambattista_bag_glasses.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambattista Valli"
+                  /> */}
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="casquette_noire_carne_bollente.webp"
@@ -3864,6 +4912,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="palm angels"
                   alt="palm angels casquette noir et rouge"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="NFL.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="NFL"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="supreme_casquette_logo.webp"
@@ -3874,6 +4934,28 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Supreme"
                   alt="supreme casquette logo"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="cartouches_top_riff_hit-air.webp"
+                  lar="43"
+                  haut="63"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="Hit air"
+                  alt="cartouches top riff hit-air"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="cable_connexion_RS1_top_riff_hit_air.webp"
+                  lar="43"
+                  haut="63"
+                  left="40px"
+                  right=""
+                  ajustHauteur="-23"
+                  marque="Hit air"
+                  alt="cable connexion RS1 top riff hit air"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -4142,14 +5224,26 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
             )}
             {selectedLink === "eclipseGlasses" && (
               <>
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="alf_glasses.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Alf"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="1309_champagne_lunettes.webp"
-                  lar="43"
+                  lar="46"
                   haut="63"
                   left="40px"
                   right=""
-                  ajustHauteur="-23"
+                  ajustHauteur=""
                   marque="13/09"
                   alt="13/09 champagne lunettes"
                 />
@@ -4242,6 +5336,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Port Tanger"
                   alt="port tanger summer purple orange"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="arseau_silver.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Arseau"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="giambatista_valli_black.webp"
@@ -4268,6 +5374,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
             )}
             {selectedLink === "eclipseBags" && (
               <>
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="giambattista_valli_bag.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Giambattista Valli"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="coperni_baguette_swipe_face_bas.webp"
@@ -4275,7 +5393,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   haut="63"
                   left="40px"
                   right=""
-                  ajustHauteur="-23"
+                  ajustHauteur=""
                   marque="Coperni"
                   alt="coperni baguette swipe face bas"
                 />
@@ -4289,6 +5407,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Vaillant"
                   alt="Vaillant bague bag noir"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="inoui_bag_tiger.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Inoui"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -4322,6 +5452,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Coperni"
                   alt="dentro sac creme"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="givenchy_bag.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Givenchy"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"

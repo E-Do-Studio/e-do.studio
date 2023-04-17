@@ -63,6 +63,26 @@ const Menu = ({ pageLoad }) => {
 
   const selectedLanguage = i18next.language;
 
+  const animBoutonRond = () => {
+    anime({
+      targets: ".circleBtn",
+      // translateY: [550,0],
+      scale: [1, 1.2],
+      easing: "easeOutExpo",
+      duration: 600,
+    });
+  };
+
+  const animBoutonRondLeave = () => {
+    anime({
+      targets: ".circleBtn",
+      // translateY: [550,0],
+      scale: 1,
+      easing: "easeOutExpo",
+      duration: 600,
+    });
+  };
+
   return (
     <>
       <div className="navbarMenu" style={{ overflow: "hidden" }}>
@@ -217,21 +237,27 @@ const Menu = ({ pageLoad }) => {
                 >
                   en
                 </span> */}
-                {i18next.language === "fr" ? (
-                  <span
-                    className="Link boutonLangue"
-                    onClick={() => i18next.changeLanguage("en")}
-                  >
-                    en
-                  </span>
-                ) : (
-                  <span
-                    className="Link boutonLangue"
-                    onClick={() => i18next.changeLanguage("fr")}
-                  >
-                    fr
-                  </span>
-                )}
+                <div
+                  className="circleBtn"
+                  onMouseEnter={animBoutonRond}
+                  onMouseLeave={animBoutonRondLeave}
+                >
+                  {i18next.language === "fr" ? (
+                    <span
+                      className="Link boutonLangue"
+                      onClick={() => i18next.changeLanguage("en")}
+                    >
+                      en
+                    </span>
+                  ) : (
+                    <span
+                      className="Link boutonLangue"
+                      onClick={() => i18next.changeLanguage("fr")}
+                    >
+                      fr
+                    </span>
+                  )}
+                </div>
               </li>
 
               <li>
