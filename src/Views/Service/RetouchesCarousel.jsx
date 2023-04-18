@@ -11,56 +11,66 @@ import i18next, { t } from "i18next";
 import { useTranslation } from "react-i18next";
 
 // Ghost
-import image1 from "./img/brown_34_Front.png";
-import image2 from "./img/brown_34_inside.jpg";
-import image3 from "./img/Lola_Front.png";
-import image4 from "./img/Lola_Front2.jpg";
-import image5 from "./img/suitcomplete_Front.png";
-import image6 from "./img/suit_jacket_Inside.jpg";
+import image1 from "./img/brown_34_Front.webp";
+import image2 from "./img/brown_34_inside.webp";
+import image3 from "./img/Lola_Front.webp";
+import image4 from "./img/Lola_Front2.webp";
+import image5 from "./img/suitcomplete_Front.webp";
+import image6 from "./img/suit_jacket_Inside.webp";
 
 // Accessoires / Chaussures
-import image7 from "./img/bottes_rose_before.jpg";
-import image8 from "./img/bottes_rose_after.png";
-import image9 from "./img/alison_semah_casquette.jpg";
-import image10 from "./img/alison_semah_casquette_retouche.jpg";
-import image11 from "./img/moon_view_cagoule_noire.jpg";
-import image12 from "./img/moon_view_cagoule_noire_retouche.png";
-import image13 from "./img/nfl_casque_blanc.jpg";
-import image14 from "./img/nfl_casque_retouche.jpg";
-import image15 from "./img/gianbatista_shoes.jpg";
-import image16 from "./img/alison_SEMAH_chaussures_retouche.jpg";
+import image7 from "./img/bottes_rose_before.webp";
+import image8 from "./img/bottes_rose_after.webp";
+import image9 from "./img/alison_semah_casquette.webp";
+import image10 from "./img/alison_semah_casquette_retouche.webp";
+import image11 from "./img/moon_view_cagoule_noire.webp";
+import image12 from "./img/moon_view_cagoule_noire_retouche.webp";
+import image13 from "./img/nfl_casque_blanc.webp";
+import image14 from "./img/nfl_casque_retouche.webp";
+import image15 from "./img/gianbatista_shoes.webp";
+import image16 from "./img/alison_SEMAH_chaussures_retouche.webp";
 
 //Bijoux
-import image17 from "./img/alison_semah_boucle.jpg";
-import image18 from "./img/alison_semah_boucle_retouche.jpg";
-import image19 from "./img/millefiora-isola-bella-ring-pink-gold.jpg";
-import image20 from "./img/millefiora-isola-bella-ring-pink-gold_retouche.jpg";
-import image21 from "./img/millefiora-isola.jpg";
-import image22 from "./img/millefiora-isola_retouche.jpg";
-import image23 from "./img/vaillant_gold_ring.jpg";
-import image24 from "./img/vaillant_gold_ring_retouche.jpg";
+import image17 from "./img/alison_semah_boucle.webp";
+import image18 from "./img/alison_semah_boucle_retouche.webp";
+import image19 from "./img/millefiora-isola-bella-ring-pink-gold.webp";
+import image20 from "./img/millefiora-isola-bella-ring-pink-gold_retouche.webp";
+import image21 from "./img/millefiora-isola.webp";
+import image22 from "./img/millefiora-isola_retouche.webp";
+import image23 from "./img/vaillant_gold_ring.webp";
+import image24 from "./img/vaillant_gold_ring_retouche.webp";
 
 // On model
-import image25 from "./img/alison_semah.jpg";
-import image26 from "./img/alison_semah_retouche.jpg";
-import image27 from "./img/moka_jacket.jpg";
-import image28 from "./img/moka_retouche.jpg";
+import image25 from "./img/alison_semah.webp";
+import image26 from "./img/alison_semah_retouche.webp";
+import image27 from "./img/moka_jacket.webp";
+import image28 from "./img/moka_retouche.webp";
+import image42 from "./img/iindaco_shoes.webp";
+import image43 from "./img/iindaco_shoes_retouche.webp";
+import image44 from "./img/mouty_full_body.webp";
+import image45 from "./img/mouty_full_body_retouche.webp";
+import image46 from "./img/mouty_pants.webp";
+import image47 from "./img/mouty_pants_retouche.webp";
+import image48 from "./img/mouty_tee.webp";
+import image49 from "./img/mouty_tee_retouche.webp";
+import image50 from "./img/port_tanger.webp";
+import image51 from "./img/port_tanger_retouche.webp";
 
 // Lunettes
-import image29 from "./img/alison_semah_lunettes.jpg";
-import image30 from "./img/alison_semah_lunettes_retouche.jpg";
-import image37 from "./img/port_tanger_lunettes_noires.jpg";
-import image38 from "./img/port_tanger_lunettes_noires_retouche.jpg";
-import image39 from "./img/port_tanger_lunettes_marron.jpg";
-import image40 from "./img/port_tanger_lunettes_marron_retouche.jpg";
+import image29 from "./img/alison_semah_lunettes.webp";
+import image30 from "./img/alison_semah_lunettes_retouche.webp";
+import image37 from "./img/port_tanger_lunettes_noires.webp";
+import image38 from "./img/port_tanger_lunettes_noires_retouche.webp";
+import image39 from "./img/port_tanger_lunettes_marron.webp";
+import image40 from "./img/port_tanger_lunettes_marron_retouche.webp";
 
 // À plat
-import image31 from "./img/attire_the_studio_cropped_blazer_white.jpg";
-import image32 from "./img/attire_the_studio_cropped_blazer_white_retouche.jpg";
-import image33 from "./img/inoui.png";
-import image34 from "./img/inoui_retouche.png";
-import image35 from "./img/t-shirt_creme_hast.jpg";
-import image36 from "./img/t-shirt_creme_hast_retouche.jpg";
+import image31 from "./img/attire_the_studio_cropped_blazer_white.webp";
+import image32 from "./img/attire_the_studio_cropped_blazer_white_retouche.webp";
+import image33 from "./img/inoui.webp";
+import image34 from "./img/inoui_retouche.webp";
+import image35 from "./img/t-shirt_creme_hast.webp";
+import image36 from "./img/t-shirt_creme_hast_retouche.webp";
 
 const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
   const { t, i18n } = useTranslation("retouches");
@@ -105,6 +115,11 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
     images = [
       [image25, image26],
       [image27, image28],
+      [image42, image43],
+      [image44, image45],
+      [image46, image47],
+      [image48, image49],
+      [image50, image51],
     ];
   } else if (selectedCat === "lunettes") {
     images = [

@@ -1458,7 +1458,7 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Giambatista"
                   alt="giambatista valli dress"
-                />{" "}
+                />
                 <VIDEOGalerie
                   linkUrl="/service-mise-en-scene-live"
                   src="botticelli.mp4"
@@ -1621,18 +1621,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="3graces"
                 />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="semaine.mp4"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Semaine"
-                />
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
                   src="louis_vuitton_holographic_bag.webp"
@@ -1726,29 +1714,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                 />
                 <VIDEOGalerie
                   linkUrl="/service-mise-en-scene-live"
-                  src="look-cochady-fond-papier-rose.mp4"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Cochady"
-                />
-                <IMGMobile
-                  linkUrl="/service-mise-en-scene-live"
-                  src="valise_fragment.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Fragment"
-                  alt="valise fragment"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
                   src="inoui_editions.mp4"
                   lar="25"
                   haut="35"
@@ -1770,52 +1735,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   anim={1}
                   scrollX={scrollX}
                   marque="3graces"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="mina_storm2.mp4"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Mina Storm"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="jean_b&r.mp4"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="jean b&r"
-                />
-                <IMGMobile
-                  linkUrl="/service-mise-en-scene-live"
-                  src="lookbook_giambatista_valli.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Giambatista"
-                  alt="lookbook giambatista valli"
-                />
-                <IMGMobile
-                  linkUrl="/service-mise-en-scene-live"
-                  src="comme_des_garcons_bag_gucci.webp"
-                  lar="53"
-                  haut="71"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Comme des Garçons x Gucci"
-                  alt="Comme des Garçons x Gucci sac"
                 />
                 <VIDEOGalerie
                   linkUrl="/service-mise-en-scene-live"
@@ -1854,51 +1773,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                 />
                 <VIDEOGalerie
                   linkUrl="/service-mise-en-scene-live"
-                  src="giambattista_valli.mp4"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Giambattista Valli"
-                />
-                <IMGMobile
-                  linkUrl="/service-mise-en-scene-live"
-                  src="valise_fragment_top.webp"
-                  lar="54"
-                  haut="52"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Fragment"
-                  alt="valise fragment top"
-                />
-                <IMGMobile
-                  linkUrl="/service-mise-en-scene-live"
-                  src="baguette_bag_dentro.webp"
-                  lar="53"
-                  haut="66"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Dentro"
-                  alt="baguette bag dentro"
-                />
-                <IMGMobile
-                  linkUrl="/service-mise-en-scene-live"
-                  src="giambatista_valli_yellow_skirt.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="100px"
-                  ajustHauteur="5"
-                  marque="Giambatista"
-                  alt="giambatista valli yellow skirt"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
                   src="mina_storm3.mp4"
                   lar="25"
                   haut="35"
@@ -1908,29 +1782,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   anim={1}
                   scrollX={scrollX}
                   marque="Mina Storm"
-                />
-                <IMGMobile
-                  linkUrl="/service-mise-en-scene-live"
-                  src="13_09_accessoires.webp"
-                  lar="60"
-                  haut="52"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="13/09"
-                  alt="13/09 accessoires"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="3graces.mp4"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="3graces"
                 />
               </>
             )}
