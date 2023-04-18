@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import { useMediaQuery } from "@react-hook/media-query";
 import { Link } from "react-router-dom";
 import { Canvas } from "@react-three/fiber";
+import anime from "animejs/lib/anime.es.js";
 import { Environment, OrbitControls } from "@react-three/drei";
 import throttle from "lodash/throttle";
 
@@ -349,6 +350,26 @@ const CycloramaDesktop = () => {
   const { t, i18n } = useTranslation("cyclorama");
   const selectedLanguage = i18next.language;
 
+  const animBoutonReserver = () => {
+    anime({
+      targets: ".button",
+      // translateY: [550,0],
+      scale: [1, 1.1],
+      easing: "easeOutExpo",
+      duration: 600,
+    });
+  };
+
+  const animBoutonReserverLeave = () => {
+    anime({
+      targets: ".button",
+      // translateY: [550,0],
+      scale: 1,
+      easing: "easeOutExpo",
+      duration: 600,
+    });
+  };
+
   return (
     <>
       <div className="slider" ref={slider}>
@@ -389,7 +410,12 @@ const CycloramaDesktop = () => {
               to="/contact"
               style={{ display: "flex", alignItems: "baseline" }}
             >
-              <div className="button" style={{ marginRight: "10px" }}>
+              <div
+                className="button"
+                style={{ marginRight: "10px" }}
+                onMouseEnter={animBoutonReserver}
+                onMouseLeave={animBoutonReserverLeave}
+              >
                 {t("Book")}
               </div>
               <p>* {t("Starting at 800€ excl. tax")}</p>

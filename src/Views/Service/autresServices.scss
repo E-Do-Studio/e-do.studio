@@ -33,6 +33,10 @@
       padding: 0 31px;
       box-sizing: border-box;
 
+      p {
+        width: 60%;
+      }
+
       @include lg {
         height: 88vh;
         display: flex;
