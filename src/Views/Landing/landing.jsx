@@ -436,7 +436,7 @@ const TitleSection5 = (props) => {
         <h2 className="notVisible">{t("Our most loyal customers")}</h2>
       </div>
       <div className="line2">
-        <h2 className="notVisible">{t("customer")}</h2>
+        <h2 className="notVisible">{t("customers")}</h2>
       </div>
     </div>
   );
