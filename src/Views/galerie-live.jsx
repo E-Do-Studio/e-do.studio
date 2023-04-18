@@ -381,17 +381,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Louis Vuitton"
                     alt="louis vuitton holographic bag"
                   />
-                  <VIDEOGalerie
-                    linkUrl="/service-mise-en-scene-live"
-                    src="champs_paris_bomber_empiecement_beige.mp4"
-                    lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Champs Paris"
-                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="rudy_maillot_de_bain_1_piece.webp"
@@ -648,17 +637,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
               )}
               {selectedLink === "liveGarments" && (
                 <>
-                  <VIDEOGalerie
-                    linkUrl="/service-mise-en-scene-live"
-                    src="champs_paris_bomber_empiecement_beige.mp4"
-                    lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Champs Paris"
-                  />
                   <VIDEOGalerie
                     linkUrl="/service-mise-en-scene-live"
                     src="jordan_luca.mp4"
@@ -1379,18 +1357,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
           <>
             {selectedLink === "live" && (
               <>
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="champs_paris_bomber_empiecement_beige.mp4"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Champs Paris"
-                />
                 {/* <VIDEOGalerie
                     linkUrl="/service-mise-en-scene-live"
                     src="vanille.mp4"
@@ -1787,18 +1753,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
             )}
             {selectedLink === "liveGarments" && (
               <>
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="champs_paris_bomber_empiecement_beige.mp4"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Champs Paris"
-                />
                 <VIDEOGalerie
                   linkUrl="/service-mise-en-scene-live"
                   src="jordan_luca.mp4"
