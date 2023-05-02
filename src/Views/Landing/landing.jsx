@@ -4,6 +4,8 @@ import anime from "animejs/lib/anime.es.js";
 //import {Redirect} from 'react-router-dom';
 import { useMediaQuery } from "@react-hook/media-query";
 import { Helmet } from "react-helmet";
+import axios from "axios";
+import { Redirect } from "react-router-dom";
 //import Lottie from "lottie-react";
 //import {isMobile} from 'react-device-detect';
 import handleViewport from "react-in-viewport";
@@ -1055,6 +1057,100 @@ const LandingDesktop = ({
       scale: 1,
       easing: "easeOutExpo",
       duration: 600,
+    });
+  };
+
+  const [formData, setFormData] = useState({});
+  const [formSend, setFormSend] = useState(false);
+  const [redirect, setRedirect] = useState(false);
+
+  const [formSendOn, setFormSendOn] = useState(false);
+
+  const matches = useMediaQuery("only screen and (min-width: 992px)");
+
+  console.log(redirect);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    if (!formData.nom || formData.nom.length === 0) {
+      document.querySelector(".PC_FormGlobalNom").style.borderBottom =
+        "1px solid red";
+    } else {
+      document.querySelector(".PC_FormGlobalNom").style.borderBottom =
+        "1px solid black";
+    }
+
+    if (!formData.prenom || formData.prenom.length === 0) {
+      document.querySelector(".PC_FormGlobalPrenom").style.borderBottom =
+        "1px solid red";
+    } else {
+      document.querySelector(".PC_FormGlobalPrenom").style.borderBottom =
+        "1px solid black";
+    }
+
+    if (!formData.email || formData.email.length === 0) {
+      document.querySelector(".PC_FormGlobalMail").style.borderBottom =
+        "1px solid red";
+    } else {
+      document.querySelector(".PC_FormGlobalMail").style.borderBottom =
+        "1px solid black";
+    }
+
+    if (!formData.message || formData.message.length === 0) {
+      document.querySelector(".PC_FormGlobalMessage").style.borderBottom =
+        "1px solid red";
+    } else {
+      document.querySelector(".PC_FormGlobalMessage").style.borderBottom =
+        "1px solid black";
+    }
+
+    if ((formData.nom, formData.prenom, formData.email, formData.message)) {
+      if (
+        formData.nom &&
+        formData.nom.length >= 2 &&
+        formData.prenom &&
+        formData.prenom.length >= 2 &&
+        formData.email &&
+        formData.email.length >= 2 &&
+        formData.message &&
+        formData.message.length >= 2
+      ) {
+        if (!formSendOn) {
+          setRedirect(true);
+          setFormSendOn(true);
+          axios({
+            method: "post",
+            url: "https://www.e-do.studio/apiPHP/phpmailer.php",
+            headers: { "content-type": "application/json" },
+            data: formData,
+          })
+            .then((result) => {
+              if (result.data.sent) {
+                window.scrollTo(0, 0);
+                setFormSendOn(false);
+                setRedirect(true);
+                console.log(result.data.sent);
+              } else {
+                setFormSendOn(false);
+              }
+            })
+            .catch();
+        }
+      }
+    }
+  };
+
+  const handleChange = (e, field) => {
+    let value = e.target.value;
+
+    setFormData({
+      ...formData,
+      [field]: value,
     });
   };
 
@@ -2164,22 +2260,58 @@ const LandingDesktop = ({
               "Do not hesitate to contact us by filling in the form on the right and we will answer you as soon as possible."
             )}
           </p>
-          <form action="../apiPHP/landing-mail.php" method="post">
+          <form>
             <div className="form-left">
-              <input type="text" name="nom" placeholder={t("Name*")} required />
+              <input
+                className="PC_FormGlobal PC_FormGlobalNom"
+                type="text"
+                name="nom"
+                placeholder={t("Name*")}
+                required
+                onChange={(e) => handleChange(e, "nom")}
+              />
               <br />
               <input
+                className="PC_FormGlobal PC_FormGlobalPrenom"
                 type="text"
                 name="prenom"
                 placeholder={t("First name*")}
                 required
+                onChange={(e) => handleChange(e, "prenom")}
               />
               <br />
-              <input type="text" name="societe" placeholder={t("Company")} />
+              {/* <input
+                className="PC_FormGlobal PC_FormGlobalTelephone"
+                type="text"
+                placeholder="Téléphone"
+                className="PC_FormGlobal PC_FormGlobalTelephone"
+                onChange={(e) => handleChange(e, "tel")}
+                required
+              /> */}
+              <input
+                className="PC_FormGlobal"
+                type="text"
+                name="societe"
+                placeholder={t("Company")}
+                onChange={(e) => handleChange(e, "societe")}
+              />
               <br />
-              <input type="email" name="mail" placeholder="E-mail*" required />
+              <input
+                className="PC_FormGlobal PC_FormGlobalMail"
+                type="email"
+                name="mail"
+                placeholder="E-mail*"
+                required
+                onChange={(e) => handleChange(e, "email")}
+              />
               <br />
-              <input type="url" name="site" placeholder={t("Website")} />
+              <input
+                className="PC_FormGlobal"
+                type="url"
+                name="site"
+                placeholder={t("Website")}
+                onChange={(e) => handleChange(e, "site")}
+              />
               <br />
             </div>
             <textarea
@@ -2190,13 +2322,16 @@ const LandingDesktop = ({
               placeholder={t(
                 "You have an idea for a project, need a quote, make an appointment? Write us your message."
               )}
+              className="PC_FormGlobal PC_FormGlobalMessage"
+              onChange={(e) => handleChange(e, "message")}
             ></textarea>
             <br />
-            <button type="submit">
+            <button onClick={(e) => handleFormSubmit(e)}>
               {t("Send")}{" "}
               <img src={rightWhiteArrow} alt="Flèche vers la droite" />
             </button>
           </form>
+          {redirect ? <Redirect to="/merci" /> : ""}
           <span className="coords">
             {i18next.language === "fr" ? (
               <>
@@ -2513,6 +2648,102 @@ const LandingMobile = ({
 
   const { t, i18n } = useTranslation("landing");
   const selectedLanguage = i18next.language;
+
+  // Formulaire
+
+  const [formData, setFormData] = useState({});
+  const [formSend, setFormSend] = useState(false);
+  const [redirect, setRedirect] = useState(false);
+
+  const [formSendOn, setFormSendOn] = useState(false);
+
+  const matches = useMediaQuery("only screen and (min-width: 992px)");
+
+  console.log(redirect);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    if (!formData.nom || formData.nom.length === 0) {
+      document.querySelector(".PC_FormGlobalNom").style.borderBottom =
+        "1px solid red";
+    } else {
+      document.querySelector(".PC_FormGlobalNom").style.borderBottom =
+        "1px solid black";
+    }
+
+    if (!formData.prenom || formData.prenom.length === 0) {
+      document.querySelector(".PC_FormGlobalPrenom").style.borderBottom =
+        "1px solid red";
+    } else {
+      document.querySelector(".PC_FormGlobalPrenom").style.borderBottom =
+        "1px solid black";
+    }
+
+    if (!formData.email || formData.email.length === 0) {
+      document.querySelector(".PC_FormGlobalMail").style.borderBottom =
+        "1px solid red";
+    } else {
+      document.querySelector(".PC_FormGlobalMail").style.borderBottom =
+        "1px solid black";
+    }
+
+    if (!formData.message || formData.message.length === 0) {
+      document.querySelector(".PC_FormGlobalMessage").style.borderBottom =
+        "1px solid red";
+    } else {
+      document.querySelector(".PC_FormGlobalMessage").style.borderBottom =
+        "1px solid black";
+    }
+
+    if ((formData.nom, formData.prenom, formData.email, formData.message)) {
+      if (
+        formData.nom &&
+        formData.nom.length >= 2 &&
+        formData.prenom &&
+        formData.prenom.length >= 2 &&
+        formData.email &&
+        formData.email.length >= 2 &&
+        formData.message &&
+        formData.message.length >= 2
+      ) {
+        if (!formSendOn) {
+          setRedirect(true);
+          setFormSendOn(true);
+          axios({
+            method: "post",
+            url: "https://www.e-do.studio/apiPHP/phpmailer.php",
+            headers: { "content-type": "application/json" },
+            data: formData,
+          })
+            .then((result) => {
+              if (result.data.sent) {
+                window.scrollTo(0, 0);
+                setFormSendOn(false);
+                setRedirect(true);
+                console.log(result.data.sent);
+              } else {
+                setFormSendOn(false);
+              }
+            })
+            .catch();
+        }
+      }
+    }
+  };
+
+  const handleChange = (e, field) => {
+    let value = e.target.value;
+
+    setFormData({
+      ...formData,
+      [field]: value,
+    });
+  };
 
   return (
     <>
@@ -3411,33 +3642,54 @@ const LandingMobile = ({
               "Do not hesitate to contact us by filling in the form on the right and we will answer you as soon as possible."
             )}
           </p>
-          <form action="../apiPHP/landing-mail.php" method="post">
-            <input type="text" name="nom" id="name" placeholder={t("Name*")} />
+          <form>
+            <input
+              className="PC_FormGlobal PC_FormGlobalNom"
+              type="text"
+              name="nom"
+              id="name"
+              placeholder={t("Name*")}
+              onChange={(e) => handleChange(e, "nom")}
+            />
             <br />
             <input
+              className="PC_FormGlobal PC_FormGlobalPrenom"
               type="text"
               name="prenom"
               id="firstname"
               placeholder={t("First name*")}
+              onChange={(e) => handleChange(e, "prenom")}
             />
             <br />
             <input
+              className="PC_FormGlobal"
               type="text"
               name="societe"
               id="enterprise"
               placeholder={t("Company")}
+              onChange={(e) => handleChange(e, "societe")}
             />
             <br />
-            <input type="email" name="email" id="mail" placeholder="E-mail*" />
+            <input
+              className="PC_FormGlobal PC_FormGlobalMail"
+              type="email"
+              name="email"
+              id="mail"
+              placeholder="E-mail*"
+              onChange={(e) => handleChange(e, "email")}
+            />
             <br />
             <input
+              className="PC_FormGlobal"
               type="url"
               name="site"
               id="website"
               placeholder={t("Website")}
+              onChange={(e) => handleChange(e, "site")}
             />
             <br />
             <textarea
+              className="PC_FormGlobal PC_FormGlobalMessage"
               name="message"
               id=""
               cols="30"
@@ -3445,14 +3697,16 @@ const LandingMobile = ({
               placeholder={t(
                 "You have an idea for a project, need a quote, make an appointment? Write us your message."
               )}
+              onChange={(e) => handleChange(e, "message")}
             ></textarea>
             <div className="buttonBox">
-              <button type="submit">
+              <button onClick={(e) => handleFormSubmit(e)}>
                 {t("Send")}
                 <img src={rightWhiteArrow} alt="" />
               </button>
             </div>
           </form>
+          {redirect ? <Redirect to="/merci" /> : ""}
           <p className="visit">{t("Visit us")}</p>
           <img className="arrowDown" src={arrowDown} alt="Flèche vers le bas" />
           <p className="address">

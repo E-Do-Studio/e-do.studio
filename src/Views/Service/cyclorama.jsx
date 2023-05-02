@@ -521,7 +521,7 @@ const CycloramaDesktop = () => {
             <div className="separation"></div>
             <div className="rightColumn">
               <div className="text">
-                26m²<br></br>
+                30m²<br></br>
                 {t("Cyclo 2 sides")}
                 <br></br>
                 {t("6m L x 5m W x 4,7m H")}
@@ -756,7 +756,7 @@ const CycloramaMobile = () => {
           </div>
           <hr />
           <div className="cycloSpec">
-            26m²<br></br> {t("Cyclo 2 sides")}
+            30m²<br></br> {t("Cyclo 2 sides")}
             <br></br>
             {t("6m L x 5m W x 4,7m H")}
           </div>

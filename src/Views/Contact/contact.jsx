@@ -7,17 +7,13 @@ import { Helmet } from "react-helmet";
 
 import Footer from "../../Components/Layout/Footer/footer";
 
-import i18next from "i18next";
-import { useTranslation } from "react-i18next";
-
 import "./contact.scss";
 
 const NosCoordonnees = () => {
-  const { t, i18n } = useTranslation("contact");
   return (
     <div className="PC_NosCoordonnees">
       <div className="PC_NosCoordonneesText">
-        <span>{t("Our contact details")}</span>
+        <span>Nos coordonnées</span>
       </div>
       <div className="PC_NosCoordonneesFleche">
         <svg width="14" height="31" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +29,6 @@ const NosCoordonnees = () => {
 };
 
 const Contact = ({ setPageLoad }) => {
-  const { t, i18n } = useTranslation("contact");
   const [formData, setFormData] = useState({});
   const [formSend, setFormSend] = useState(false);
   const [redirect, setRedirect] = useState(false);
@@ -41,6 +36,8 @@ const Contact = ({ setPageLoad }) => {
   const [formSendOn, setFormSendOn] = useState(false);
 
   const matches = useMediaQuery("only screen and (min-width: 992px)");
+
+  console.log(redirect);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -83,19 +80,21 @@ const Contact = ({ setPageLoad }) => {
 
     if ((formData.nom, formData.prenom, formData.email, formData.message)) {
       if (
+        formData.nom &&
         formData.nom.length >= 2 &&
+        formData.prenom &&
         formData.prenom.length >= 2 &&
+        formData.email &&
         formData.email.length >= 2 &&
+        formData.message &&
         formData.message.length >= 2
       ) {
         if (!formSendOn) {
+          setRedirect(true);
           setFormSendOn(true);
-
-          formData.clePrive =
-            "gerg5e4gt64!gte$gerg&f6zef5bFnuefIFUEZAIFuhjIHIFGi$fzefzgGRf6ze5f4ifElseELZ";
           axios({
             method: "post",
-            url: "https://www.e-do.studio/apiPHP/index.php",
+            url: "https://www.e-do.studio/apiPHP/phpmailer.php",
             headers: { "content-type": "application/json" },
             data: formData,
           })
@@ -104,6 +103,7 @@ const Contact = ({ setPageLoad }) => {
                 window.scrollTo(0, 0);
                 setFormSendOn(false);
                 setRedirect(true);
+                console.log(result.data.sent);
               } else {
                 setFormSendOn(false);
               }
@@ -144,12 +144,11 @@ const Contact = ({ setPageLoad }) => {
         <div className="PC_Global">
           <div className="PC_GlobalText">
             <div className="PC_GlobalTextHaut">
-              <h1>{t("Do you have any questions?")}</h1>
-              <h2>{t("Any specific needs?")}</h2>
+              <h1>Vous avez des questions ?</h1>
+              <h2>Des besoins spécifiques ?</h2>
               <p>
-                {t(
-                  "Do not hesitate to contact us by filling out the form and we will answer you as soon as possible."
-                )}
+                N’hésitez pas à nous contacter en remplissant le formulaire
+                ci-contre et nous vous répondrons dans les meilleurs délais.
               </p>
             </div>
 
@@ -165,38 +164,33 @@ const Contact = ({ setPageLoad }) => {
               <div className="PC_GlobalForm_Infos">
                 <input
                   type="text"
-                  id="LastName"
-                  placeholder={t("Last Name*")}
+                  placeholder="Nom*"
                   className="PC_FormGlobal PC_FormGlobalNom"
                   onChange={(e) => handleChange(e, "nom")}
                   required
                 />
                 <input
                   type="text"
-                  id="FirstName"
-                  placeholder={t("First name*")}
+                  placeholder="Prénom*"
                   className="PC_FormGlobal PC_FormGlobalPrenom"
                   onChange={(e) => handleChange(e, "prenom")}
                   required
                 />
                 <input
                   type="text"
-                  id="Phone"
-                  placeholder={t("Phone")}
+                  placeholder="Téléphone"
                   className="PC_FormGlobal PC_FormGlobalTelephone"
                   onChange={(e) => handleChange(e, "tel")}
                   required
                 />
                 <input
                   type="text"
-                  id="Company"
-                  placeholder={t("Company")}
+                  placeholder="Société"
                   className="PC_FormGlobal"
                   onChange={(e) => handleChange(e, "societe")}
                 />
                 <input
                   type="text"
-                  id="Email"
                   placeholder="E-mail*"
                   className="PC_FormGlobal PC_FormGlobalMail"
                   onChange={(e) => handleChange(e, "email")}
@@ -204,8 +198,7 @@ const Contact = ({ setPageLoad }) => {
                 />
                 <input
                   type="text"
-                  id="Website"
-                  placeholder={t("Website")}
+                  placeholder="Site web"
                   className="PC_FormGlobal"
                   onChange={(e) => handleChange(e, "site")}
                 />
@@ -219,10 +212,7 @@ const Contact = ({ setPageLoad }) => {
               <div className="PC_GlobalForm_Message">
                 <textarea
                   name=""
-                  id="Message"
-                  placeholder={t(
-                    "You have an idea for a project, need a quote, or want to make an appointment? Send us your message."
-                  )}
+                  placeholder="Vous avez une idée de projet, besoin d’un devis, d’une prise de rendez-vous ? Envoyez-nous votre message."
                   className="PC_FormGlobal PC_FormGlobalMessage"
                   onChange={(e) => handleChange(e, "message")}
                   required
@@ -230,7 +220,7 @@ const Contact = ({ setPageLoad }) => {
 
                 <div className="PC_FormButtonWrapper">
                   <button onClick={(e) => handleFormSubmit(e)}>
-                    <div>{t("Send")}</div>
+                    <div>Envoyer</div>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 17.63 12.64"
