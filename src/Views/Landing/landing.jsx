@@ -1077,6 +1077,9 @@ const LandingDesktop = ({
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
+    const emailRegex =
+      /^(?=.{1,256})(?=.{1,64}@.{1,255}$)(?=.{1,64}@.{1,63}\.[a-zA-Z]{2,}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
     if (!formData.nom || formData.nom.length === 0) {
       document.querySelector(".PC_FormGlobalNom").style.borderBottom =
         "1px solid red";
@@ -1093,14 +1096,17 @@ const LandingDesktop = ({
         "1px solid black";
     }
 
-    if (!formData.email || formData.email.length === 0) {
+    if (
+      !formData.email ||
+      formData.email.length === 0 ||
+      !emailRegex.test(formData.email)
+    ) {
       document.querySelector(".PC_FormGlobalMail").style.borderBottom =
         "1px solid red";
     } else {
       document.querySelector(".PC_FormGlobalMail").style.borderBottom =
         "1px solid black";
     }
-
     if (!formData.message || formData.message.length === 0) {
       document.querySelector(".PC_FormGlobalMessage").style.borderBottom =
         "1px solid red";
@@ -1117,6 +1123,7 @@ const LandingDesktop = ({
         formData.prenom.length >= 2 &&
         formData.email &&
         formData.email.length >= 2 &&
+        emailRegex.test(formData.email) &&
         formData.message &&
         formData.message.length >= 2
       ) {

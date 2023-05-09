@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "./static/css/main.b96a4bc3.chunk.css",
-    "main.js": "./static/js/main.d0a3fcc6.chunk.js",
-    "main.js.map": "./static/js/main.d0a3fcc6.chunk.js.map",
+    "main.js": "./static/js/main.c2064ae2.chunk.js",
+    "main.js.map": "./static/js/main.c2064ae2.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.8b620b2f.js",
     "runtime-main.js.map": "./static/js/runtime-main.8b620b2f.js.map",
-    "static/js/2.c6284e7c.chunk.js": "./static/js/2.c6284e7c.chunk.js",
-    "static/js/2.c6284e7c.chunk.js.map": "./static/js/2.c6284e7c.chunk.js.map",
+    "static/js/2.e520f039.chunk.js": "./static/js/2.e520f039.chunk.js",
+    "static/js/2.e520f039.chunk.js.map": "./static/js/2.e520f039.chunk.js.map",
     "index.html": "./index.html",
     "static/css/main.b96a4bc3.chunk.css.map": "./static/css/main.b96a4bc3.chunk.css.map",
-    "static/js/2.c6284e7c.chunk.js.LICENSE.txt": "./static/js/2.c6284e7c.chunk.js.LICENSE.txt",
+    "static/js/2.e520f039.chunk.js.LICENSE.txt": "./static/js/2.e520f039.chunk.js.LICENSE.txt",
     "static/media/autres-articles.scss": "./static/media/ABCFavorit-Light.da5d1f6a.woff2",
     "static/media/popup.scss": "./static/media/ABCFavorit-Regular.75f0e1fc.woff2",
     "static/media/CYCLO_E-DO ENG_ELECTRICITY_UPDATE.22dc8bd1.pdf": "./static/media/CYCLO_E-DO ENG_ELECTRICITY_UPDATE.22dc8bd1.pdf",
@@ -178,8 +178,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.8b620b2f.js",
-    "static/js/2.c6284e7c.chunk.js",
+    "static/js/2.e520f039.chunk.js",
     "static/css/main.b96a4bc3.chunk.css",
-    "static/js/main.d0a3fcc6.chunk.js"
+    "static/js/main.c2064ae2.chunk.js"
   ]
 }

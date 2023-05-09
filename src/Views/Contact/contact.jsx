@@ -46,6 +46,9 @@ const Contact = ({ setPageLoad }) => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
 
+    const emailRegex =
+      /^(?=.{1,256})(?=.{1,64}@.{1,255}$)(?=.{1,64}@.{1,63}\.[a-zA-Z]{2,}$)[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
     if (!formData.nom || formData.nom.length === 0) {
       document.querySelector(".PC_FormGlobalNom").style.borderBottom =
         "1px solid red";
@@ -62,7 +65,11 @@ const Contact = ({ setPageLoad }) => {
         "1px solid black";
     }
 
-    if (!formData.email || formData.email.length === 0) {
+    if (
+      !formData.email ||
+      formData.email.length === 0 ||
+      !emailRegex.test(formData.email)
+    ) {
       document.querySelector(".PC_FormGlobalMail").style.borderBottom =
         "1px solid red";
     } else {
@@ -86,6 +93,7 @@ const Contact = ({ setPageLoad }) => {
         formData.prenom.length >= 2 &&
         formData.email &&
         formData.email.length >= 2 &&
+        emailRegex.test(formData.email) &&
         formData.message &&
         formData.message.length >= 2
       ) {
@@ -190,7 +198,7 @@ const Contact = ({ setPageLoad }) => {
                   onChange={(e) => handleChange(e, "societe")}
                 />
                 <input
-                  type="text"
+                  type="email"
                   placeholder="E-mail*"
                   className="PC_FormGlobal PC_FormGlobalMail"
                   onChange={(e) => handleChange(e, "email")}
