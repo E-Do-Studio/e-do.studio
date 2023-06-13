@@ -5,15 +5,19 @@ import PropTypes from "prop-types";
 import axios from "axios";
 import { Helmet } from "react-helmet";
 
+import i18next from "i18next";
+import { useTranslation } from "react-i18next";
+
 import Footer from "../../Components/Layout/Footer/footer";
 
 import "./contact.scss";
 
 const NosCoordonnees = () => {
+  const { t, i18n } = useTranslation("contact");
   return (
     <div className="PC_NosCoordonnees">
       <div className="PC_NosCoordonneesText">
-        <span>Nos coordonnées</span>
+        <span>{t("Our contact details")}</span>
       </div>
       <div className="PC_NosCoordonneesFleche">
         <svg width="14" height="31" xmlns="http://www.w3.org/2000/svg">
@@ -135,6 +139,8 @@ const Contact = ({ setPageLoad }) => {
     setPageLoad(true);
   }, []);
 
+  const { t, i18n } = useTranslation("contact");
+
   return (
     <>
       <Helmet defer={false}>
@@ -152,11 +158,12 @@ const Contact = ({ setPageLoad }) => {
         <div className="PC_Global">
           <div className="PC_GlobalText">
             <div className="PC_GlobalTextHaut">
-              <h1>Vous avez des questions ?</h1>
-              <h2>Des besoins spécifiques ?</h2>
+              <h1>{t("Do you have any questions?")}</h1>
+              <h2>{t("Any specific needs?")}</h2>
               <p>
-                N’hésitez pas à nous contacter en remplissant le formulaire
-                ci-contre et nous vous répondrons dans les meilleurs délais.
+                {t(
+                  "Do not hesitate to contact us by filling out the form and we will answer you as soon as possible."
+                )}
               </p>
             </div>
 
@@ -172,28 +179,28 @@ const Contact = ({ setPageLoad }) => {
               <div className="PC_GlobalForm_Infos">
                 <input
                   type="text"
-                  placeholder="Nom*"
+                  placeholder={t("Last Name*")}
                   className="PC_FormGlobal PC_FormGlobalNom"
                   onChange={(e) => handleChange(e, "nom")}
                   required
                 />
                 <input
                   type="text"
-                  placeholder="Prénom*"
+                  placeholder={t("First Name*")}
                   className="PC_FormGlobal PC_FormGlobalPrenom"
                   onChange={(e) => handleChange(e, "prenom")}
                   required
                 />
                 <input
                   type="text"
-                  placeholder="Téléphone"
+                  placeholder={t("Phone")}
                   className="PC_FormGlobal PC_FormGlobalTelephone"
                   onChange={(e) => handleChange(e, "tel")}
                   required
                 />
                 <input
                   type="text"
-                  placeholder="Société"
+                  placeholder={t("Company")}
                   className="PC_FormGlobal"
                   onChange={(e) => handleChange(e, "societe")}
                 />
@@ -206,7 +213,7 @@ const Contact = ({ setPageLoad }) => {
                 />
                 <input
                   type="text"
-                  placeholder="Site web"
+                  placeholder={t("Website")}
                   className="PC_FormGlobal"
                   onChange={(e) => handleChange(e, "site")}
                 />
@@ -220,7 +227,9 @@ const Contact = ({ setPageLoad }) => {
               <div className="PC_GlobalForm_Message">
                 <textarea
                   name=""
-                  placeholder="Vous avez une idée de projet, besoin d’un devis, d’une prise de rendez-vous ? Envoyez-nous votre message."
+                  placeholder={t(
+                    "You have an idea for a project, need a quote, or want to make an appointment? Send us your message."
+                  )}
                   className="PC_FormGlobal PC_FormGlobalMessage"
                   onChange={(e) => handleChange(e, "message")}
                   required
@@ -228,7 +237,7 @@ const Contact = ({ setPageLoad }) => {
 
                 <div className="PC_FormButtonWrapper">
                   <button onClick={(e) => handleFormSubmit(e)}>
-                    <div>Envoyer</div>
+                    <div>{t("Send")}</div>
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       viewBox="0 0 17.63 12.64"

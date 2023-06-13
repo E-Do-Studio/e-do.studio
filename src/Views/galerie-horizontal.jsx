@@ -152,368 +152,127 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                 <>
                   <IMGPC
                     linkUrl="/service-packshot-horizontal"
-                    src="black_tee_staff.webp"
-                    lar="28"
+                    src="ATTIRE_A2OROL-MA03-30.webp"
+                    lar="23"
+                    haut="28"
+                    ajustHauteurTop="5"
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Attire The Studio"
+                    alt="Attire The Studio black"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="HAST_polo_burgundy_Front.webp"
+                    lar="25"
                     haut="25"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Hast"
+                    alt="Hast polo burgundy"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="GIAMBATTISTA_D1SAND-TR24-30.webp"
+                    lar="25"
+                    haut="34"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Giambattista"
+                    alt="Giambattista blue bandana"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="GIAMBATTISTA_A2TIDY-TA07-08.webp"
+                    lar="23"
+                    haut="28"
                     ajustHauteurTop="6"
                     ajustHauteurBottom=""
                     anim={2}
                     scrollX={scrollX}
-                    marque="Staff"
-                    alt="black tee staff"
+                    marque="Giambattista"
+                    alt="Giambattista sweat"
                   />
                   <IMGPC
                     linkUrl="/service-packshot-horizontal"
-                    src="inoui_accesoires.webp"
-                    lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Inoui"
-                    alt="inoui accesoires"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="cargo_mouty_details.webp"
+                    src="HAST_pants_black_blue_Front.webp"
                     lar="22"
-                    haut="39"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Mouty"
-                    alt="cargo mouty details"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="hast_pants_corduroy.webp"
-                    lar="22"
-                    haut="23"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Hast"
-                    alt="hast pants corduroy"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="Dentro_bag_1.webp"
-                    lar="22"
-                    haut="32"
-                    ajustHauteurTop=""
+                    haut="29"
+                    ajustHauteurTop="6"
                     ajustHauteurBottom=""
                     anim={2}
                     scrollX={scrollX}
-                    marque="Dentro"
-                    alt="Dentro bag"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="chemise_kid_super.webp"
-                    lar="32"
-                    haut="28"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Kid Super"
-                    alt="chemise kid super"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="hast_gants.webp"
-                    lar="28"
-                    haut="27"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
                     marque="Hast"
-                    alt="hast gants"
+                    alt="Hast pants black blue"
                   />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="classic_motors_leather_red_jacket.webp"
-                    lar="32"
-                    haut="29"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="3"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Classic motors"
-                    alt="classic motors leather red jacket"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="inoui_editions_scarf.webp"
-                    lar="28"
-                    haut="50"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Inoui"
-                    alt="inoui editions scarf"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="inoui_editions_tote_bag.webp"
-                    lar="25"
-                    haut="34"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Inoui"
-                    alt="inoui editions tote bag"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="hast_chemise_bleu.webp"
-                    lar="32"
-                    haut="35"
-                    ajustHauteurTop="7"
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Hast"
-                    alt="hast chemise bleu"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="kid_super_foulards.webp"
-                    lar="34"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Kid Super"
-                    alt="kid super foulards"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="cargo_mouty_green.webp"
-                    lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="8"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Mouty"
-                    alt="cargo mouty green"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="kid_super_manteau.webp"
-                    lar="32"
-                    haut="23"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Kid Super"
-                    alt="kid super manteau"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="inoui_editions_access.webp"
-                    lar="22"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="10"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Inoui"
-                    alt="inoui editions access"
-                  />
-
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="kid_super_blazer.webp"
-                    lar="42"
-                    haut="41"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Kid Super"
-                    alt="kid super blazer"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="hast_details.webp"
-                    lar="28"
-                    haut="30"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="20"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Hast"
-                    alt="hast details"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="Drentro_bag_close.webp"
-                    lar="21"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="9"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Dentro"
-                    alt="Dentro bag close"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="inoui_editions_1_foulards.webp"
-                    lar="32"
-                    haut="33"
-                    ajustHauteurTop="2"
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Inoui"
-                    alt="inoui editions foulards"
-                  />
-                  {/* <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="inoui_editions_scarves.webp"
-                    lar="35"
-                    haut="22"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Inoui"
-                    alt="inoui editions scarves"
-                  /> */}
                 </>
               )}
               {selectedLink === "horizontalGarments" && (
                 <>
                   <IMGPC
                     linkUrl="/service-packshot-horizontal"
-                    src="black_tee_staff.webp"
-                    lar="28"
+                    src="HIRCUS_pantalon_Front.webp"
+                    lar="25"
+                    haut="38"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Hircus"
+                    alt="Hircus pantalon beige"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="ATTIRE_A2OROL-MA03-30.webp"
+                    lar="23"
+                    haut="28"
+                    ajustHauteurTop="5"
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Attire The Studio"
+                    alt="Attire The Studio black"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="HAST_polo_burgundy_Front.webp"
+                    lar="25"
+                    haut="25"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Hast"
+                    alt="Hast polo burgundy"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="GIAMBATTISTA_A2TIDY-TA07-08.webp"
+                    lar="23"
+                    haut="28"
+                    ajustHauteurTop="6"
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Giambattista"
+                    alt="Giambattista sweat"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="HAST_pants_black_blue_Front.webp"
+                    lar="22"
                     haut="25"
                     ajustHauteurTop="6"
                     ajustHauteurBottom=""
                     anim={2}
                     scrollX={scrollX}
-                    marque="Staff"
-                    alt="black tee staff"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="kid_super_blazer.webp"
-                    lar="42"
-                    haut="41"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Kid Super"
-                    alt="kid super blazer"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="cargo_mouty_details.webp"
-                    lar="22"
-                    haut="39"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Mouty"
-                    alt="cargo mouty details"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="hast_pants_corduroy.webp"
-                    lar="22"
-                    haut="23"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
                     marque="Hast"
-                    alt="hast pants corduroy"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="chemise_kid_super.webp"
-                    lar="32"
-                    haut="28"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Kid Super"
-                    alt="chemise kid super"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="classic_motors_leather_red_jacket.webp"
-                    lar="32"
-                    haut="29"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="3"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Classic motors"
-                    alt="classic motors leather red jacket"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="hast_chemise_bleu.webp"
-                    lar="32"
-                    haut="35"
-                    ajustHauteurTop="7"
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Hast"
-                    alt="hast chemise bleu"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="cargo_mouty_green.webp"
-                    lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="8"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Mouty"
-                    alt="cargo mouty green"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="hast_details.webp"
-                    lar="28"
-                    haut="30"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="20"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Hast"
-                    alt="hast details"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="kid_super_manteau.webp"
-                    lar="32"
-                    haut="23"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Kid Super"
-                    alt="kid super manteau"
+                    alt="Hast pants black blue"
                   />
                 </>
               )}
@@ -521,123 +280,27 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                 <>
                   <IMGPC
                     linkUrl="/service-packshot-horizontal"
-                    src="inoui_editions_access.webp"
-                    lar="22"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="10"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Inoui"
-                    alt="inoui editions access"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="Dentro_bag_1.webp"
-                    lar="22"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={2}
-                    scrollX={scrollX}
-                    marque="Dentro"
-                    alt="Dentro bag"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="inoui_editions_scarf.webp"
-                    lar="28"
-                    haut="50"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Inoui"
-                    alt="inoui editions scarf"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="hast_gants.webp"
-                    lar="28"
-                    haut="27"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Hast"
-                    alt="hast gants"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="inoui_accesoires.webp"
+                    src="GIAMBATTISTA_D2ELFA-KR19-71.webp"
                     lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
+                    haut="34"
+                    ajustHauteurTop="5"
                     ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
-                    marque="Inoui"
-                    alt="inoui accesoires"
+                    marque="Giambattista"
+                    alt="Giambattista orange scarf"
                   />
                   <IMGPC
                     linkUrl="/service-packshot-horizontal"
-                    src="Drentro_bag_close.webp"
-                    lar="21"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="9"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Dentro"
-                    alt="Dentro bag close"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="inoui_editions_1_foulards.webp"
-                    lar="32"
-                    haut="33"
-                    ajustHauteurTop="2"
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Inoui"
-                    alt="inoui editions foulards"
-                  />
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="kid_super_foulards.webp"
-                    lar="34"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Kid Super"
-                    alt="kid super foulards"
-                  />
-                  {/* <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="inoui_editions_scarves.webp"
-                    lar="35"
-                    haut="22"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Inoui"
-                    alt="inoui editions scarves"
-                  /> */}
-                  <IMGPC
-                    linkUrl="/service-packshot-horizontal"
-                    src="inoui_editions_tote_bag.webp"
+                    src="GIAMBATTISTA_D1SAND-TR24-30.webp"
                     lar="25"
                     haut="34"
                     ajustHauteurTop=""
-                    ajustHauteurBottom=""
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
-                    marque="Inoui"
-                    alt="inoui editions tote bag"
+                    marque="Giambattista"
+                    alt="Giambattista blue bandana"
                   />
                 </>
               )}
@@ -683,212 +346,47 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
               <>
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
-                  src="black_tee_staff.webp"
-                  lar="63"
-                  haut="56"
+                  src="ATTIRE_A2OROL-MA03-30.webp"
+                  lar="45"
+                  haut="50"
                   left=""
                   right="40px"
                   ajustHauteur="-23"
-                  marque="Staff"
-                  alt="black tee staff"
+                  marque="Attire The Studio"
+                  alt="Attire The Studio black"
                 />
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
-                  src="hast_gants.webp"
-                  lar="52"
-                  haut="51"
-                  left="40px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="Hast"
-                  alt="hast gants"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="kid_super_blazer.webp"
-                  lar="78"
-                  haut="51"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Kid Super"
-                  alt="kid super blazer"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="kid_super_foulards.webp"
-                  lar="60"
-                  haut="45"
-                  left="40px"
-                  right=""
-                  ajustHauteur="-2"
-                  marque="Kid Super"
-                  alt="kid super foulards"
-                />
-                {/* <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="inoui_editions_scarves.webp"
-                  lar="60"
-                  haut="45"
-                  left=""
-                  right="40px"
-                  ajustHauteur="-2"
-                  marque="Inoui"
-                  alt="inoui editions scarves"
-                /> */}
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="cargo_mouty_details.webp"
-                  lar="47"
-                  haut="78"
-                  left="40px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="Mouty"
-                  alt="cargo mouty details"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="hast_pants_corduroy.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="100px"
-                  ajustHauteur="5"
-                  marque="Hast"
-                  alt="hast pants corduroy"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="kid_super_manteau.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="30px"
-                  ajustHauteur="-2"
-                  marque="Kid Super"
-                  alt="kid super manteau"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="inoui_editions_access.webp"
-                  lar="43"
-                  haut="63"
-                  left="90px"
-                  right=""
-                  ajustHauteur="-23"
-                  marque="Inoui"
-                  alt="inoui editions access"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="Dentro_bag_1.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Dentro"
-                  alt="Dentro bag"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="hast_details.webp"
-                  lar="63"
-                  haut="69"
-                  left="90px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="Hast"
-                  alt="hast details"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="inoui_editions_scarf.webp"
-                  lar="34"
-                  haut="53"
-                  left="100px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="Inoui"
-                  alt="inoui editions scarf"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="inoui_accesoires.webp"
-                  lar="53"
-                  haut="71"
-                  left="40px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="Inoui"
-                  alt="inoui accesoires"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="Drentro_bag_close.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="90px"
-                  ajustHauteur="5"
-                  marque="Dentro"
-                  alt="Dentro bag close"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="inoui_editions_1_foulards.webp"
+                  src="HAST_polo_burgundy_Front.webp"
                   lar="50"
-                  haut="52"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Inoui"
-                  alt="inoui editions foulards"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="classic_motors_leather_red_jacket.webp"
-                  lar="72"
-                  haut="63"
+                  haut="50"
                   left="40px"
                   right=""
                   ajustHauteur="5"
-                  marque="Classic motors"
-                  alt="classic motors leather red jacket"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="hast_chemise_bleu.webp"
-                  lar="50"
-                  haut="52"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
                   marque="Hast"
-                  alt="hast chemise bleu"
+                  alt="Hast polo burgundy"
                 />
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
-                  src="cargo_mouty_green.webp"
-                  lar="40"
-                  haut="35"
+                  src="GIAMBATTISTA_D1SAND-TR24-30.webp"
+                  lar="45"
+                  haut="50"
                   left=""
                   right="40px"
                   ajustHauteur="5"
-                  marque="Mouty"
-                  alt="cargo mouty green"
+                  marque="Giambattista"
+                  alt="Giambattista blue bandana"
                 />
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
-                  src="inoui_editions_tote_bag.webp"
+                  src="HAST_pants_black_blue_Front.webp"
                   lar="40"
                   haut="45"
-                  left="150px"
+                  left="40px"
                   right=""
-                  ajustHauteur="-2"
-                  marque="Inoui"
-                  alt="inoui editions tote bag"
+                  ajustHauteur="5"
+                  marque="Hast"
+                  alt="Hast pants black blue"
                 />
               </>
             )}
@@ -896,113 +394,58 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
               <>
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
-                  src="black_tee_staff.webp"
-                  lar="63"
-                  haut="56"
-                  left=""
-                  right="40px"
-                  ajustHauteur="-23"
-                  marque="Staff"
-                  alt="black tee staff"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="kid_super_blazer.webp"
-                  lar="78"
-                  haut="51"
+                  src="HIRCUS_pantalon_Front.webp"
+                  lar="45"
+                  haut="60"
                   left=""
                   right="40px"
                   ajustHauteur="5"
-                  marque="Kid Super"
-                  alt="kid super blazer"
+                  marque="Hircus"
+                  alt="Hircus pantalon beige"
                 />
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
-                  src="cargo_mouty_details.webp"
-                  lar="47"
-                  haut="78"
+                  src="ATTIRE_A2OROL-MA03-30.webp"
+                  lar="50"
+                  haut="54"
+                  left="90px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Attire The Studio"
+                  alt="Attire The Studio black"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="HAST_polo_burgundy_Front.webp"
+                  lar="49"
+                  haut="50"
                   left="40px"
                   right=""
                   ajustHauteur="5"
-                  marque="Mouty"
-                  alt="cargo mouty details"
+                  marque="Hast"
+                  alt="Hast polo burgundy"
                 />
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
-                  src="hast_pants_corduroy.webp"
+                  src="GIAMBATTISTA_A2TIDY-TA07-08.webp"
                   lar="43"
                   haut="63"
                   left=""
                   right="100px"
                   ajustHauteur="5"
-                  marque="Hast"
-                  alt="hast pants corduroy"
+                  marque="Giambattista"
+                  alt="Giambattista sweat"
                 />
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
-                  src="chemise_kid_super.webp"
+                  src="HAST_pants_black_blue_Front.webp"
                   lar="50"
                   haut="63"
                   left="40px"
                   right=""
                   ajustHauteur="5"
-                  marque="Kid Super"
-                  alt="chemise kid super"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="classic_motors_leather_red_jacket.webp"
-                  lar="72"
-                  haut="63"
-                  left="40px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="Classic motors"
-                  alt="classic motors leather red jacket"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="hast_chemise_bleu.webp"
-                  lar="50"
-                  haut="52"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
                   marque="Hast"
-                  alt="hast chemise bleu"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="cargo_mouty_green.webp"
-                  lar="40"
-                  haut="35"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Mouty"
-                  alt="cargo mouty green"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="hast_details.webp"
-                  lar="63"
-                  haut="69"
-                  left="90px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="Hast"
-                  alt="hast details"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="kid_super_manteau.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="30px"
-                  ajustHauteur="-2"
-                  marque="Kid Super"
-                  alt="kid super manteau"
+                  alt="Hast pants black blue"
                 />
               </>
             )}
@@ -1010,113 +453,25 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
               <>
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
-                  src="inoui_editions_access.webp"
+                  src="GIAMBATTISTA_D2ELFA-KR19-71.webp"
                   lar="43"
                   haut="63"
                   left="90px"
                   right=""
                   ajustHauteur="-23"
-                  marque="Inoui"
-                  alt="inoui editions access"
+                  marque="Giambattista"
+                  alt="Giambattista orange scarf"
                 />
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
-                  src="Dentro_bag_1.webp"
+                  src="GIAMBATTISTA_D1SAND-TR24-30.webp"
                   lar="43"
                   haut="63"
                   left=""
                   right="40px"
                   ajustHauteur="5"
-                  marque="Dentro"
-                  alt="Dentro bag"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="inoui_editions_scarf.webp"
-                  lar="34"
-                  haut="53"
-                  left="100px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="Inoui"
-                  alt="inoui editions scarf"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="hast_gants.webp"
-                  lar="52"
-                  haut="51"
-                  left=""
-                  right="100px"
-                  ajustHauteur="5"
-                  marque="Hast"
-                  alt="hast gants"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="kid_super_foulards.webp"
-                  lar="60"
-                  haut="45"
-                  left="40px"
-                  right=""
-                  ajustHauteur="-2"
-                  marque="Kid Super"
-                  alt="kid super foulards"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="inoui_accesoires.webp"
-                  lar="53"
-                  haut="71"
-                  left="40px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="Inoui"
-                  alt="inoui accesoires"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="Drentro_bag_close.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="90px"
-                  ajustHauteur="5"
-                  marque="Dentro"
-                  alt="Dentro bag close"
-                />
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="inoui_editions_1_foulards.webp"
-                  lar="50"
-                  haut="52"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Inoui"
-                  alt="inoui editions foulards"
-                />
-                {/* <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="inoui_editions_scarves.webp"
-                  lar="60"
-                  haut="45"
-                  left=""
-                  right="40px"
-                  ajustHauteur="-2"
-                  marque="Inoui"
-                  alt="inoui editions scarves"
-                /> */}
-                <IMGMobile
-                  linkUrl="/service-packshot-horizontal"
-                  src="inoui_editions_tote_bag.webp"
-                  lar="40"
-                  haut="45"
-                  left="150px"
-                  right=""
-                  ajustHauteur="-2"
-                  marque="Inoui"
-                  alt="inoui editions tote bag"
+                  marque="Giambattista"
+                  alt="Giambattista blue bandana"
                 />
               </>
             )}

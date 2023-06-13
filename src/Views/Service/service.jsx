@@ -358,6 +358,7 @@ const Service = ({ setPageLoad }) => {
                     {t(pageData.titre)}
                     <br />
                     {t(pageData.sousTitre)}
+                    {pageData.photoVideo}
                   </h1>
                 </div>
                 {!matches ? (

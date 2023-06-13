@@ -123,7 +123,7 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
     videoRef.current.style.filter = "grayscale(0)";
   };
   const location = useLocation();
-  const { selectedLink = "horizontal" } = location.state || {};
+  const { selectedLink = "vertical" } = location.state || {};
 
   return (
     <>
@@ -149,476 +149,212 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
               {selectedLink === "vertical" && (
                 <>
                   <IMGPC
+                    linkUrl="/service-packshot-vertical"
+                    src="JPG_23-12-F-MB006-J514_Front+1.webp"
+                    lar="23"
+                    haut="29"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="9"
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Jean Paul Gaultier"
+                    alt="Jean Paul Gaultier maillot 1 pièce"
+                  />
+                  <IMGPC
                     linkUrl="/service-mannequin-vertical"
-                    src="adela_amel_orchid_hush.webp"
-                    lar="42"
-                    haut="41"
+                    src="ATTIRE_PIQUE_avery_Front.webp"
+                    lar="22"
+                    haut="33"
                     ajustHauteurTop=""
                     ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
-                    marque="Adela"
-                    alt="adela amel orchid hush"
+                    marque="Attire The Studio"
+                    alt="Attire The Studio jeans"
                   />
                   <IMGPC
                     linkUrl="/service-mannequin-vertical"
-                    src="chamade_bandeau.webp"
-                    lar="32"
-                    haut="31"
+                    src="ATTIRE_PIQUE_brown_jacket_Front.webp"
+                    lar="22"
+                    haut="33"
                     ajustHauteurTop=""
                     ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
-                    marque="Chamade"
-                    alt="chamade bandeau"
+                    marque="Attire The Studio"
+                    alt="Attire The Studio brown jacket"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-vertical"
+                    src="JPG_23-12-F-TO056-M044_Front.webp"
+                    lar="23"
+                    haut="29"
+                    ajustHauteurTop="9"
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Jean Paul Gaultier"
+                    alt="Jean Paul Gaultier top"
                   />
                   <IMGPC
                     linkUrl="/service-mannequin-vertical"
-                    src="shangxia_robe_jaune_fluo.webp"
+                    src="SHANG_PIQUE_FR1223S017BK1_Front.webp"
                     lar="25"
-                    haut="24"
+                    haut="25"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="5"
+                    ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
                     marque="shangxia"
-                    alt="shangxia robe jaune fluo"
+                    alt="shangxia"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-vertical"
+                    src="IKUZO_Green_Kimono_Side.webp"
+                    lar="23"
+                    haut="29"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Ikuzo"
+                    alt="Ikuzo"
                   />
                   <IMGPC
                     linkUrl="/service-mannequin-vertical"
-                    src="robe_de_soirée_noire_attire_the_studio.webp"
-                    lar="34"
-                    haut="45"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
+                    src="SHANG_PIQUE_NO_SKU_Front+1.webp"
+                    lar="25"
+                    haut="25"
+                    ajustHauteurTop="9"
+                    ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
-                    marque="Attire the studio"
-                    alt="robe de soirée noire attire the studio"
+                    marque="shangxia"
+                    alt="shangxia"
                   />
                   <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="jacket_the_north_face_supreme_Front.webp"
-                    lar="35"
+                    linkUrl="/service-packshot-vertical"
+                    src="IKUZO_Blue-Hoodie_Front.webp"
+                    lar="23"
+                    haut="29"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="9"
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Ikuzo"
+                    alt="Ikuzo sweat blue"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-vertical"
+                    src="FURSAC_C3PREL-TC06-30.webp"
+                    lar="23"
                     haut="35"
                     ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="The North Face"
-                    alt="jacket the north face supreme Front"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="vaillant_white.webp"
-                    lar="32"
-                    haut="43"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Vaillant"
-                    alt="vaillant white"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="shangxia_latex_orange.webp"
-                    lar="25"
-                    haut="25"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="shangxia"
-                    alt="shangxia latex orange"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="attire_the_studio_trench.webp"
-                    lar="22"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
+                    ajustHauteurBottom="9"
                     anim={2}
                     scrollX={scrollX}
-                    marque="Attire the studio"
-                    alt="attire the studio trench."
+                    marque="Fursac"
+                    alt="Fursac blue"
                   />
                   <IMGPC
                     linkUrl="/service-mannequin-vertical"
-                    src="jacket_supreme_gore_tex_Front.webp"
-                    lar="32"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="20"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Supreme"
-                    alt="jacket supreme gore tex Front"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="tracksuit_pants_rainbow_palm_angels_Front.webp"
-                    lar="32"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Palm Angels"
-                    alt="tracksuit pants rainbow palm angels Front"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="adela_top_light.webp"
-                    lar="32"
-                    haut="32"
-                    ajustHauteurTop="7"
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Adela"
-                    alt="adela top light"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="adela_akiko.webp"
-                    lar="28"
-                    haut="28"
-                    ajustHauteurTop="6"
-                    ajustHauteurBottom=""
-                    anim={2}
-                    scrollX={scrollX}
-                    marque="Adela"
-                    alt="adela akiko"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="chamade_knitwear_shorty_lime_Front.webp"
-                    lar="25"
-                    haut="25"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="8"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Chamade"
-                    alt="chamade knitwear shorty lime Front"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="moonview_doudoune_black_Front.webp"
-                    lar="32"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Moonview"
-                    alt="moonview doudoune black Front"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="rudy_maillot_une_pièce.webp"
-                    lar="32"
-                    haut="43"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Rudy"
-                    alt="rudy maillot une pièce"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="shangxia_doudoune.webp"
-                    lar="35"
-                    haut="38"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="shangxia"
-                    alt="shangxia doudoune."
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="antidote_magazine_bra.webp"
+                    src="SHANG_PIQUE_FR0123S066_Front+1.webp"
                     lar="22"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Antidote"
-                    alt="antidote magazine bra"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="belmadi_orange_jacket.webp"
-                    lar="32"
-                    haut="32"
+                    haut="22"
                     ajustHauteurTop=""
                     ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
-                    marque="Belmadi"
-                    alt="belmadi_orange_jacket.webp"
+                    marque="shangxia"
+                    alt="Shangxia blue skirt"
                   />
                   <IMGPC
                     linkUrl="/service-mannequin-vertical"
-                    src="tracksuit_palm_angels_Front.webp"
-                    lar="32"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Palm Angels"
-                    alt="tracksuit palm angels Front"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="chamade_knitwear_hat.webp"
-                    lar="32"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="3"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Chamade"
-                    alt="chamade knitwear hat"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="attire_the_studio_everyday_blazer_black_front.webp"
+                    src="ATTIRE_PIQUE_trench blanc_Front.webp"
                     lar="22"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="10"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Attire the studio"
-                    alt="attire the studio everyday blazer black front"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="shangxia_leather_electric_blue_jacket.webp"
-                    lar="25"
-                    haut="25"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="shangxia"
-                    alt="shangxia leather electric blue jacket"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="shangxia_manteau.webp"
-                    lar="25"
-                    haut="25"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="shangxia"
-                    alt="shangxia manteau"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="hast_chemise_rouge.webp"
-                    lar="32"
                     haut="33"
-                    ajustHauteurTop="2"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Attire The Studio"
+                    alt="Attire The Studio trench blanc"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mannequin-vertical"
+                    src="ATTIRE_PIQUE_forest_rouge_Front.webp"
+                    lar="22"
+                    haut="33"
+                    ajustHauteurTop="9"
                     ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
-                    marque="Hast"
-                    alt="hast chemise rouge"
+                    marque="Attire The Studio"
+                    alt="Attire The Studio forest rouge"
                   />
                 </>
               )}
               {selectedLink === "verticalGhost" && (
                 <>
                   <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="adela_amel_orchid_hush.webp"
-                    lar="42"
-                    haut="41"
+                    linkUrl="/service-packshot-vertical"
+                    src="JPG_23-12-F-MB006-J514_Front+1.webp"
+                    lar="23"
+                    haut="29"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Adela"
-                    alt="adela_amel_orchid_hush.webp"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="vaillant_white.webp"
-                    lar="32"
-                    haut="43"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Vaillant"
-                    alt="vaillant white"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="antidote_magazine_bra.webp"
-                    lar="22"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Antidote"
-                    alt="antidote magazine bra"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="belmadi_orange_jacket.webp"
-                    lar="32"
-                    haut="32"
-                    ajustHauteurTop="2"
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Belmadi"
-                    alt="belmadi_orange_jacket.webp"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="tracksuit_pants_rainbow_palm_angels_Front.webp"
-                    lar="32"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Palm Angels"
-                    alt="tracksuit pants rainbow palm angels Front"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="adela_top_light.webp"
-                    lar="32"
-                    haut="32"
-                    ajustHauteurTop="7"
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Adela"
-                    alt="adela top light"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="jacket_the_north_face_supreme_Front.webp"
-                    lar="35"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="The North Face"
-                    alt="jacket the north face supreme Front"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="chamade_bandeau.webp"
-                    lar="32"
-                    haut="31"
-                    ajustHauteurTop="2"
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Chamade"
-                    alt="chamade bandeau"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="adela_akiko.webp"
-                    lar="28"
-                    haut="28"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
+                    ajustHauteurBottom="9"
                     anim={2}
                     scrollX={scrollX}
-                    marque="Adela"
-                    alt="adela akiko"
+                    marque="Jean Paul Gaultier"
+                    alt="Jean Paul Gaultier maillot 1 pièce"
                   />
                   <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="jacket_supreme_gore_tex_Front.webp"
-                    lar="32"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="20"
-                    anim={1}
+                    linkUrl="/service-packshot-vertical"
+                    src="JPG_23-12-F-TO056-M044_Front.webp"
+                    lar="23"
+                    haut="29"
+                    ajustHauteurTop="9"
+                    ajustHauteurBottom=""
+                    anim={2}
                     scrollX={scrollX}
-                    marque="Supreme"
-                    alt="jacket supreme gore tex Front"
+                    marque="Jean Paul Gaultier"
+                    alt="Jean Paul Gaultier top"
                   />
                   <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="chamade_knitwear_shorty_lime_Front.webp"
-                    lar="25"
-                    haut="25"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="8"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Chamade"
-                    alt="chamade knitwear shorty lime Front"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="moonview_doudoune_black_Front.webp"
-                    lar="32"
-                    haut="32"
+                    linkUrl="/service-packshot-vertical"
+                    src="IKUZO_Green_Kimono_Side.webp"
+                    lar="23"
+                    haut="29"
                     ajustHauteurTop=""
                     ajustHauteurBottom=""
-                    anim={1}
+                    anim={2}
                     scrollX={scrollX}
-                    marque="Moonview"
-                    alt="moonview doudoune black Front"
+                    marque="Ikuzo"
+                    alt="Ikuzo"
                   />
                   <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="rudy_maillot_une_pièce.webp"
-                    lar="32"
-                    haut="38"
+                    linkUrl="/service-packshot-vertical"
+                    src="IKUZO_Blue-Hoodie_Front.webp"
+                    lar="23"
+                    haut="29"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
+                    ajustHauteurBottom="9"
+                    anim={2}
                     scrollX={scrollX}
-                    marque="Rudy"
-                    alt="rudy maillot une pièce"
+                    marque="Ikuzo"
+                    alt="Ikuzo sweat blue"
                   />
                   <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="tracksuit_palm_angels_Front.webp"
-                    lar="32"
-                    haut="32"
+                    linkUrl="/service-packshot-vertical"
+                    src="FURSAC_C3PREL-TC06-30.webp"
+                    lar="23"
+                    haut="35"
                     ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
+                    ajustHauteurBottom="9"
+                    anim={2}
                     scrollX={scrollX}
-                    marque="Palm Angels"
-                    alt="tracksuit palm angels Front"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="chamade_knitwear_hat.webp"
-                    lar="32"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="3"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Chamade"
-                    alt="chamade knitwear hat"
+                    marque="Fursac"
+                    alt="Fursac blue"
                   />
                 </>
               )}
@@ -626,7 +362,7 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                 <>
                   <IMGPC
                     linkUrl="/service-mannequin-vertical"
-                    src="shangxia_leather_electric_blue_jacket.webp"
+                    src="SHANG_PIQUE_FR1223S017BK1_Front.webp"
                     lar="25"
                     haut="25"
                     ajustHauteurTop=""
@@ -634,91 +370,55 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                     anim={1}
                     scrollX={scrollX}
                     marque="shangxia"
-                    alt="shangxia leather electric blue jacket"
+                    alt="shangxia"
                   />
                   <IMGPC
                     linkUrl="/service-mannequin-vertical"
-                    src="hast_chemise_rouge.webp"
-                    lar="32"
-                    haut="33"
-                    ajustHauteurTop="2"
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Hast"
-                    alt="hast chemise rouge"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="shangxia_robe_jaune_fluo.webp"
-                    lar="25"
-                    haut="24"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="shangxia"
-                    alt="shangxia robe jaune fluo"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="robe_de_soirée_noire_attire_the_studio.webp"
-                    lar="34"
-                    haut="45"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Attire the studio"
-                    alt="robe de soirée noire attire the studio"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="shangxia_doudoune.webp"
-                    lar="35"
-                    haut="38"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="shangxia"
-                    alt="shangxia doudoune"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="shangxia_latex_orange.webp"
-                    lar="25"
-                    haut="25"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="shangxia"
-                    alt="shangxia latex orange"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mannequin-vertical"
-                    src="attire_the_studio_trench.webp"
+                    src="ATTIRE_PIQUE_forest_rouge_Front.webp"
                     lar="22"
-                    haut="32"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={2}
+                    haut="33"
+                    ajustHauteurTop="9"
+                    ajustHauteurBottom=""
+                    anim={1}
                     scrollX={scrollX}
-                    marque="Attire the studio"
-                    alt="attire the studio trench."
+                    marque="Attire The Studio"
+                    alt="Attire The Studio forest rouge"
                   />
                   <IMGPC
                     linkUrl="/service-mannequin-vertical"
-                    src="shangxia_manteau.webp"
-                    lar="25"
-                    haut="25"
+                    src="ATTIRE_PIQUE_brown_jacket_Front.webp"
+                    lar="22"
+                    haut="33"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Attire The Studio"
+                    alt="Attire The Studio brown jacket"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mannequin-vertical"
+                    src="SHANG_PIQUE_FR0123S066_Front+1.webp"
+                    lar="22"
+                    haut="22"
                     ajustHauteurTop=""
                     ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
                     marque="shangxia"
-                    alt="shangxia manteau"
+                    alt="Shangxia blue skirt"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mannequin-vertical"
+                    src="ATTIRE_PIQUE_avery_Front.webp"
+                    lar="22"
+                    haut="33"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Attire The Studio"
+                    alt="Attire The Studio jeans"
                   />
                 </>
               )}
@@ -764,223 +464,135 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
               <>
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="jacket_supreme_gore_tex_Front.webp"
+                  src="JPG_23-12-F-MB006-J514_Front+1.webp"
                   lar="43"
                   haut="63"
                   left=""
                   right="30px"
-                  ajustHauteur="-25"
-                  marque="Supreme"
-                  alt="jacket supreme gore tex Front"
+                  ajustHauteur="5"
+                  marque="Jean Paul Gaultier"
+                  alt="Jean Paul Gaultier maillot 1 pièce"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="belmadi_orange_jacket.webp"
+                  src="ATTIRE_PIQUE_avery_Front.webp"
                   lar="43"
                   haut="63"
                   left=""
                   right="100px"
                   ajustHauteur="5"
-                  marque="Belmadi"
-                  alt="belmadi_orange_jacket.webp"
+                  marque="Attire The Studio"
+                  alt="Attire The Studio jeans"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="adela_top_light.webp"
+                  src="ATTIRE_PIQUE_brown_jacket_Front.webp"
                   lar="43"
                   haut="63"
                   left="40px"
                   right=""
                   ajustHauteur="5"
-                  marque="Adela"
-                  alt="adela top light"
+                  marque="Attire The Studio"
+                  alt="Attire The Studio brown jacket"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="vaillant_white.webp"
+                  src="JPG_23-12-F-TO056-M044_Front.webp"
                   lar="51"
                   haut="51"
                   left=""
                   right="40px"
                   ajustHauteur="5"
-                  marque="Vaillant"
-                  alt="vaillant white"
+                  marque="Jean Paul Gaultier"
+                  alt="Jean Paul Gaultier top"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="adela_akiko.webp"
+                  src="SHANG_PIQUE_FR1223S017BK1_Front.webp"
                   lar="63"
                   haut="73"
                   left="90px"
                   right=""
                   ajustHauteur="5"
-                  marque="Adela"
-                  alt="adela akiko"
+                  marque="shangxia"
+                  alt="shangxia"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="jacket_the_north_face_supreme_Front.webp"
+                  src="IKUZO_Green_Kimono_Side.webp"
                   lar="50"
                   haut="67"
                   left="40px"
                   right=""
                   ajustHauteur="5"
-                  marque="The North Face"
-                  alt="jacket the north face supreme Front"
+                  marque="Ikuzo"
+                  alt="Ikuzo"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="attire_the_studio_trench.webp"
+                  src="SHANG_PIQUE_NO_SKU_Front+1.webp"
                   lar="50"
                   haut="68"
                   left=""
                   right="40px"
                   ajustHauteur="5"
-                  marque="Attire the studio"
-                  alt="attire the studio trench."
+                  marque="shangxia"
+                  alt="shangxia"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="shangxia_manteau.webp"
+                  src="IKUZO_Blue-Hoodie_Front.webp"
                   lar="60"
                   haut="62"
                   left="40px"
                   right=""
                   ajustHauteur="5"
-                  marque="shangxia"
-                  alt="shangxia manteau"
+                  marque="Ikuzo"
+                  alt="Ikuzo sweat blue"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="chamade_knitwear_shorty_lime_Front.webp"
-                  lar="55"
-                  haut="63"
+                  src="FURSAC_C3PREL-TC06-30.webp"
+                  lar="40"
+                  haut="59"
                   left=""
                   right="40px"
                   ajustHauteur="5"
-                  marque="Chamade"
-                  alt="chamade knitwear shorty lime Front"
+                  marque="Fursac"
+                  alt="Fursac blue"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="antidote_magazine_bra.webp"
+                  src="SHANG_PIQUE_FR0123S066_Front+1.webp"
                   lar="47"
                   haut="78"
                   left="40px"
                   right=""
                   ajustHauteur="5"
-                  marque="Antidote"
-                  alt="antidote magazine bra"
+                  marque="shangxia"
+                  alt="Shangxia blue skirt"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="adela_amel_orchid_hush.webp"
-                  lar="63"
+                  src="ATTIRE_PIQUE_trench blanc_Front.webp"
+                  lar="45"
                   haut="56"
                   left=""
                   right="40px"
-                  ajustHauteur="-23"
-                  marque="Adela"
-                  alt="adela_amel_orchid_hush.webp"
+                  ajustHauteur="5"
+                  marque="Attire The Studio"
+                  alt="Attire The Studio trench blanc"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="moonview_doudoune_black_Front.webp"
+                  src="ATTIRE_PIQUE_forest_rouge_Front.webp"
                   lar="43"
                   haut="63"
                   left=""
                   right="30px"
                   ajustHauteur="5"
-                  marque="Moonview"
-                  alt="moonview doudoune black Front"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="hast_chemise_rouge.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Hast"
-                  alt="hast chemise rouge"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="shangxia_robe_jaune_fluo.webp"
-                  lar="53"
-                  haut="42"
-                  left=""
-                  right="100px"
-                  ajustHauteur="5"
-                  marque="shangxia"
-                  alt="shangxia robe jaune fluo"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="robe_de_soirée_noire_attire_the_studio.webp"
-                  lar="52"
-                  haut="51"
-                  left=""
-                  right="100px"
-                  ajustHauteur="5"
-                  marque="Attire the studio"
-                  alt="robe de soirée noire attire the studio"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="tracksuit_pants_rainbow_palm_angels_Front.webp"
-                  lar="50"
-                  haut="63"
-                  left="40px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="Palm Angels"
-                  alt="tracksuit pants rainbow palm angels Front"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="shangxia_doudoune.webp"
-                  lar="53"
-                  haut="71"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="shangxia"
-                  alt="shangxia doudoune"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="shangxia_latex_orange.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="90px"
-                  ajustHauteur="5"
-                  marque="shangxia"
-                  alt="shangxia latex orange"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="shangxia_leather_electric_blue_jacket.webp"
-                  lar="43"
-                  haut="63"
-                  left="90px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="shangxia"
-                  alt="shangxia leather electric blue jacket"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="chamade_bandeau.webp"
-                  lar="50"
-                  haut="60"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Chamade"
-                  alt="chamade bandeau"
+                  marque="Attire The Studio"
+                  alt="Attire The Studio forest rouge"
                 />
               </>
             )}
@@ -988,135 +600,58 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
               <>
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="adela_amel_orchid_hush.webp"
+                  src="JPG_23-12-F-MB006-J514_Front+1.webp"
                   lar="63"
                   haut="56"
                   left=""
                   right="40px"
-                  ajustHauteur="-23"
-                  marque="Adela"
-                  alt="adela_amel_orchid_hush.webp"
+                  ajustHauteur="5"
+                  marque="Jean Paul Gaultier"
+                  alt="Jean Paul Gaultier maillot 1 pièce"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="vaillant_white.webp"
+                  src="JPG_23-12-F-TO056-M044_Front.webp"
                   lar="51"
                   haut="51"
                   left=""
                   right="40px"
                   ajustHauteur="5"
-                  marque="Vaillant"
-                  alt="vaillant white"
+                  marque="Jean Paul Gaultier"
+                  alt="Jean Paul Gaultier top"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="antidote_magazine_bra.webp"
+                  src="IKUZO_Green_Kimono_Side.webp"
                   lar="47"
                   haut="78"
                   left="40px"
                   right=""
                   ajustHauteur="5"
-                  marque="Antidote"
-                  alt="antidote_magazine_bra.webp"
+                  marque="Ikuzo"
+                  alt="Ikuzo"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="belmadi_orange_jacket.webp"
+                  src="IKUZO_Blue-Hoodie_Front.webp"
                   lar="43"
                   haut="63"
                   left=""
                   right="100px"
                   ajustHauteur="5"
-                  marque="Belmadi"
-                  alt="belmadi_orange_jacket.webp"
+                  marque="Ikuzo"
+                  alt="Ikuzo sweat blue"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="tracksuit_pants_rainbow_palm_angels_Front.webp"
-                  lar="50"
-                  haut="63"
+                  src="FURSAC_C3PREL-TC06-30.webp"
+                  lar="40"
+                  haut="59"
                   left="40px"
                   right=""
                   ajustHauteur="5"
-                  marque="Palm Angels"
-                  alt="tracksuit pants rainbow palm angels Front"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="adela_top_light.webp"
-                  lar="43"
-                  haut="63"
-                  left="40px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="Adela"
-                  alt="adela top light"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="jacket_the_north_face_supreme_Front.webp"
-                  lar="50"
-                  haut="67"
-                  left="190px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="The North Face"
-                  alt="jacket the north face supreme Front"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="chamade_bandeau.webp"
-                  lar="50"
-                  haut="60"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Chamade"
-                  alt="chamade bandeau"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="adela_akiko.webp"
-                  lar="63"
-                  haut="73"
-                  left="90px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="Adela"
-                  alt="adela akiko"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="jacket_supreme_gore_tex_Front.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="30px"
-                  ajustHauteur="5"
-                  marque="Supreme"
-                  alt="jacket supreme gore tex Front"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="chamade_knitwear_shorty_lime_Front.webp"
-                  lar="55"
-                  haut="63"
-                  left="40px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="Chamade"
-                  alt="chamade knitwear shorty lime Front"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="moonview_doudoune_black_Front.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="30px"
-                  ajustHauteur="5"
-                  marque="Moonview"
-                  alt="moonview doudoune black Front"
+                  marque="Fursac"
+                  alt="Fursac blue"
                 />
               </>
             )}
@@ -1124,91 +659,58 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
               <>
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="shangxia_leather_electric_blue_jacket.webp"
-                  lar="43"
-                  haut="63"
-                  left="90px"
-                  right=""
-                  ajustHauteur="-23"
-                  marque="shangxia"
-                  alt="shangxia leather electric blue jacket"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="hast_chemise_rouge.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Hast"
-                  alt="hast chemise rouge"
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="shangxia_robe_jaune_fluo.webp"
+                  src="SHANG_PIQUE_FR1223S017BK1_Front.webp"
                   lar="53"
                   haut="42"
                   left="40px"
                   right=""
                   ajustHauteur="5"
                   marque="shangxia"
-                  alt="shangxia robe jaune fluo"
+                  alt="shangxia"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="robe_de_soirée_noire_attire_the_studio.webp"
+                  src="ATTIRE_PIQUE_forest_rouge_Front.webp"
                   lar="52"
                   haut="51"
                   left=""
                   right="100px"
                   ajustHauteur="5"
-                  marque="Attire the studio"
-                  alt="robe de soirée noire attire the studio"
+                  marque="Attire The Studio"
+                  alt="Attire The Studio forest rouge"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="shangxia_doudoune.webp"
+                  src="ATTIRE_PIQUE_brown_jacket_Front.webp"
                   lar="53"
                   haut="71"
                   left="40px"
                   right=""
                   ajustHauteur="5"
-                  marque="shangxia"
-                  alt="shangxia doudoune"
+                  marque="Attire The Studio"
+                  alt="Attire The Studio brown jacket"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="shangxia_latex_orange.webp"
+                  src="SHANG_PIQUE_FR0123S066_Front+1.webp"
                   lar="43"
                   haut="63"
                   left=""
                   right="90px"
                   ajustHauteur="5"
                   marque="shangxia"
-                  alt="shangxia latex orange"
+                  alt="Shangxia blue skirt"
                 />
                 <IMGMobile
                   linkUrl="/service-mannequin-vertical"
-                  src="attire_the_studio_trench.webp"
+                  src="ATTIRE_PIQUE_avery_Front.webp"
                   lar="50"
                   haut="68"
                   left=""
                   right="40px"
                   ajustHauteur="5"
-                  marque="Attire the studio"
-                  alt="attire the studio trench."
-                />
-                <IMGMobile
-                  linkUrl="/service-mannequin-vertical"
-                  src="shangxia_manteau.webp"
-                  lar="60"
-                  haut="62"
-                  left="40px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="shangxia"
-                  alt="shangxia manteau"
+                  marque="Attire The Studio"
+                  alt="Attire The Studio jeans"
                 />
               </>
             )}

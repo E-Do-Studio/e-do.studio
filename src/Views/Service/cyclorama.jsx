@@ -44,6 +44,8 @@ import "./cyclorama.scss";
 import i18next, { t } from "i18next";
 import { useTranslation } from "react-i18next";
 
+import CycloramaGallery from "./cycloramaGallery";
+
 const serviceData = [
   {
     titre: "LIVE / ON MODEL",
@@ -580,6 +582,7 @@ const CycloramaDesktop = () => {
             CYCLORAMA <span>{t("FREE PRODUCTION")}</span>
           </div>
         </div>
+        {/* <CycloramaGallery /> */}
         <div className="PS_AutresServices">
           <div className="PS_AutresServicesWrapper">
             <div className="PS_TitreSection">{t("OTHER SERVICES")}</div>

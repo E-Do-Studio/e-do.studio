@@ -199,7 +199,15 @@ const Galerie360 = ({ setPageLoad, setSelectedLink }) => {
           </div>
         </>
       ) : (
-        <div className="galeriePC">
+        <div
+          className="galeriePC"
+          s={{
+            display: "flex",
+            flexDirection: "row",
+            flexWrap: "wrap",
+            justifyContent: "center",
+          }}
+        >
           <iframe
             width="500px"
             height="400px"

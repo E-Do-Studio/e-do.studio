@@ -166,282 +166,153 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
           >
             {selectedLink === "all" && (
               <>
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="ensemble-survetement-vert-mouty.mp4"
-                  lar="25"
-                  haut="35"
-                  ajustHauteurTop=""
+                {/* Horizontal */}
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="ATTIRE_A2OROL-MA03-30.webp"
+                  lar="23"
+                  haut="28"
+                  ajustHauteurTop="5"
                   ajustHauteurBottom=""
-                  anim={1}
+                  anim={2}
                   scrollX={scrollX}
-                  marque="Mouty"
+                  marque="Attire The Studio"
+                  alt="Attire The Studio black"
                 />
                 <IMGPC
-                  linkUrl="/service-mannequin-vertical"
-                  src="adela_amel_orchid_hush.webp"
-                  lar="42"
-                  haut="41"
+                  linkUrl="/service-packshot-horizontal"
+                  src="HAST_polo_burgundy_Front.webp"
+                  lar="25"
+                  haut="25"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={2}
+                  scrollX={scrollX}
+                  marque="Hast"
+                  alt="Hast polo burgundy"
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="GIAMBATTISTA_D1SAND-TR24-30.webp"
+                  lar="25"
+                  haut="34"
                   ajustHauteurTop=""
                   ajustHauteurBottom="5"
                   anim={1}
                   scrollX={scrollX}
-                  marque="Adela"
-                  alt="adela_amel_orchid_hush.webp"
+                  marque="Giambattista"
+                  alt="Giambattista blue bandana"
                 />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="3graces_3.mp4"
-                  lar="25"
-                  haut="35"
+                {/* Vertical */}
+                <IMGPC
+                  linkUrl="/service-packshot-vertical"
+                  src="JPG_23-12-F-MB006-J514_Front+1.webp"
+                  lar="23"
+                  haut="29"
                   ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
+                  ajustHauteurBottom="9"
+                  anim={2}
                   scrollX={scrollX}
-                  marque="3graces"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="jerome_malbrel.mp4"
-                  lar="25"
-                  haut="35"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Jerome Malbrel"
+                  marque="Jean Paul Gaultier"
+                  alt="Jean Paul Gaultier maillot 1 pièce"
                 />
                 <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="Dentro_bag_1.webp"
+                  linkUrl="/service-mannequin-vertical"
+                  src="ATTIRE_PIQUE_avery_Front.webp"
                   lar="22"
-                  haut="32"
+                  haut="33"
                   ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={2}
+                  ajustHauteurBottom="5"
+                  anim={1}
                   scrollX={scrollX}
-                  marque="Dentro"
-                  alt="Dentro bag"
+                  marque="Attire The Studio"
+                  alt="Attire The Studio jeans"
                 />
                 <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="black_tee_staff.webp"
-                  lar="28"
-                  haut="25"
-                  ajustHauteurTop="6"
-                  ajustHauteurBottom=""
-                  anim={2}
-                  scrollX={scrollX}
-                  marque="Staff"
-                  alt="black tee staff"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="jordan_luca.mp4"
-                  lar="25"
-                  haut="35"
+                  linkUrl="/service-mannequin-vertical"
+                  src="ATTIRE_PIQUE_brown_jacket_Front.webp"
+                  lar="22"
+                  haut="33"
                   ajustHauteurTop=""
                   ajustHauteurBottom=""
                   anim={1}
                   scrollX={scrollX}
-                  marque="Jordan Luca"
+                  marque="Attire The Studio"
+                  alt="Attire The Studio brown jacket"
+                />
+                {/* Live */}
+                <IMGPC
+                  linkUrl="/service-mise-en-scene-live"
+                  src="SHANGXIA_FR1023S002-Fullbody-tiff-6.webp"
+                  lar="26"
+                  haut="26"
+                  ajustHauteurTop="9"
+                  ajustHauteurBottom=""
+                  anim={2}
+                  scrollX={scrollX}
+                  marque="Shangxia"
+                  alt="Shangxia fullbody"
                 />
                 <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="chemise_kid_super.webp"
-                  lar="32"
+                  linkUrl="/service-mise-en-scene-live"
+                  src="PORT_TANGER_PT-2200-TOP-RAW-3.webp"
+                  lar="24"
                   haut="28"
                   ajustHauteurTop=""
                   ajustHauteurBottom=""
                   anim={1}
                   scrollX={scrollX}
-                  marque="Kid Super"
-                  alt="chemise kid super"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="3graces.mp4"
-                  lar="25"
-                  haut="35"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="3graces"
+                  marque="Port Tanger"
+                  alt="Port Tanger red glasses"
                 />
                 <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="hast_gants.webp"
-                  lar="28"
-                  haut="27"
+                  linkUrl="/service-mise-en-scene-live"
+                  src="SHANGXIA_FR1223S007QUARTZ-Fullbody-tiff-1.webp"
+                  lar="26"
+                  haut="26"
                   ajustHauteurTop=""
-                  ajustHauteurBottom="5"
-                  anim={1}
+                  ajustHauteurBottom=""
+                  anim={2}
                   scrollX={scrollX}
-                  marque="Hast"
-                  alt="hast gants"
+                  marque="Shangxia"
+                  alt="Shangxia fullbody"
                 />
-                <VIDEOGalerie
+                {/* Eclipse */}
+                <IMGPC
                   linkUrl="/service-accessoires-eclipse"
-                  src="video-accessoires-ludovic-de-saint-sernin.mp4"
-                  lar="25"
-                  haut="35"
+                  src="SHANG_PCAPSBblack_silver-34-tiff-2.webp"
+                  lar="22"
+                  haut="21"
                   ajustHauteurTop=""
                   ajustHauteurBottom=""
                   anim={1}
                   scrollX={scrollX}
-                  marque="Ludovic de Saint Sernin"
+                  marque="Shangxia"
+                  alt="shangxia black silver bag"
                 />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="video-close-up-panconesi.mp4"
-                  lar="25"
-                  haut="35"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Panconesi"
-                />
-                <VIDEOGalerie
+                <IMGPC
                   linkUrl="/service-accessoires-eclipse"
-                  src="chaussures-jordan-luca.mp4"
-                  lar="25"
-                  haut="35"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Jordan Luca"
-                />
-                <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="classic_motors_leather_red_jacket.webp"
-                  lar="32"
-                  haut="29"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom="3"
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Classic motors"
-                  alt="classic motors leather red jacket"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="inoui_editions.mp4"
-                  lar="25"
-                  haut="35"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Inoui"
-                />
-                <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="inoui_editions_scarf.webp"
-                  lar="28"
-                  haut="50"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Inoui"
-                  alt="inoui editions scarf"
-                />
-                {/* <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="hast_chemise_bleu.webp"
-                  lar="32"
-                  haut="35"
-                  ajustHauteurTop="7"
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Hast"
-                  alt="hast chemise bleu"
-                /> */}
-                <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="cargo_mouty_green.webp"
-                  lar="25"
-                  haut="35"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom="8"
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Mouty"
-                  alt="cargo mouty green"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="studio-maison-ciero-video-crea.mp4"
-                  lar="25"
-                  haut="35"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Studio Maison Ciero"
-                />
-
-                {/* <IMGPC
-                  linkUrl="/service-mannequin-vertical"
-                  src="chamade_bandeau.webp"
-                  lar="32"
-                  haut="31"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Chamade"
-                  alt="chamade bandeau"
-                /> */}
-                <IMGPC
-                  linkUrl="/service-mannequin-vertical"
-                  src="shangxia_robe_jaune_fluo.webp"
-                  lar="25"
+                  src="MELLERIO_giardino-ring-pink-sapphire-pink-gold-j1pg029-sf_02.webp"
+                  lar="24"
                   haut="25"
                   ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
+                  ajustHauteurBottom="5"
+                  anim={2}
                   scrollX={scrollX}
-                  marque="shangxia"
-                  alt="shangxia robe jaune fluo"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-accessoires-eclipse"
-                  src="giambattista_valli_bag.mp4"
-                  lar="25"
-                  haut="35"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Giambattista Valli"
+                  marque="Mellerio"
+                  alt="mellerio giardino ring pink sapphire pink gold"
                 />
                 <IMGPC
-                  linkUrl="/service-mannequin-vertical"
-                  src="robe_de_soirée_noire_attire_the_studio.webp"
-                  lar="34"
-                  haut="45"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom="5"
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Attire the studio"
-                  alt="robe de soirée noire attire the studio"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="chaussures-talons-nodaleto.mp4"
-                  lar="25"
-                  haut="35"
+                  linkUrl="/service-accessoires-eclipse"
+                  src="MELISSA_JPG_F-CS002-X-33-01-side 2-tiff-1.webp"
+                  lar="22"
+                  haut="30"
                   ajustHauteurTop=""
                   ajustHauteurBottom=""
                   anim={1}
                   scrollX={scrollX}
-                  marque="Nodaleto"
+                  marque="Melissa x Jean Paul Gaultier"
+                  alt="Pink shoes Melissa x Jean Paul Gaultier"
                 />
               </>
             )}
@@ -482,435 +353,142 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       ) : (
         <>
           <div className="galerieMobile">
-            <VIDEOGalerie
-              linkUrl="/service-mise-en-scene-live"
-              src="ensemble-survetement-vert-mouty.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Mouty"
+            {/* Horizontal */}
+            <IMGMobile
+              linkUrl="/service-packshot-horizontal"
+              src="ATTIRE_A2OROL-MA03-30.webp"
+              lar="45"
+              haut="50"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Attire The Studio"
+              alt="Attire The Studio black"
             />
             <IMGMobile
               linkUrl="/service-packshot-horizontal"
-              src="black_tee_staff.webp"
-              lar="63"
-              haut="56"
-              left=""
-              right="40px"
-              ajustHauteur="-23"
-              marque="Staff"
-              alt="black tee staff"
-            />
-            <VIDEOGalerie
-              linkUrl="/service-mise-en-scene-live"
-              src="video-close-up-panconesi.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Panconesi"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="attire_the_studio_trench.webp"
+              src="HAST_polo_burgundy_Front.webp"
               lar="50"
-              haut="68"
-              left=""
-              right="40px"
-              ajustHauteur="5"
-              marque="Attire the studio"
-              alt="attire the studio trench."
-            />
-            <VIDEOGalerie
-              linkUrl="/service-mise-en-scene-live"
-              src="3graces_3.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="3graces"
-            />
-            <IMGMobile
-              linkUrl="/service-packshot-horizontal"
-              src="kid_super_blazer.webp"
-              lar="78"
-              haut="51"
-              left=""
-              right="40px"
-              ajustHauteur="5"
-              marque="Kid Super"
-              alt="kid super blazer"
-            />
-            <VIDEOGalerie
-              linkUrl="/service-accessoires-eclipse"
-              src="video-accessoires-ludovic-de-saint-sernin.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Ludovic de Saint Sernin"
-            />
-            <IMGMobile
-              linkUrl="/service-packshot-horizontal"
-              src="kid_super_foulards.webp"
-              lar="60"
-              haut="45"
-              left="40px"
-              right=""
-              ajustHauteur="-2"
-              marque="Kid Super"
-              alt="kid super foulards"
-            />
-            {/* <IMGMobile
-              linkUrl="/service-packshot-horizontal"
-              src="inoui_editions_scarves.webp"
-              lar="60"
-              haut="45"
-              left=""
-              right="40px"
-              ajustHauteur="-2"
-              marque="Inoui"
-              alt="inoui editions scarves"
-            /> */}
-            <IMGMobile
-              linkUrl="/service-packshot-horizontal"
-              src="cargo_mouty_details.webp"
-              lar="47"
-              haut="78"
+              haut="50"
               left="40px"
               right=""
               ajustHauteur="5"
-              marque="Mouty"
-              alt="cargo mouty details"
+              marque="Hast"
+              alt="Hast polo burgundy"
             />
-            <VIDEOGalerie
-              linkUrl="/service-mise-en-scene-live"
-              src="jordan_luca.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Jordan Luca"
+            <IMGMobile
+              linkUrl="/service-packshot-horizontal"
+              src="GIAMBATTISTA_D1SAND-TR24-30.webp"
+              lar="45"
+              haut="50"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Giambattista"
+              alt="Giambattista blue bandana"
             />
+            {/* Vertical */}
             <IMGMobile
               linkUrl="/service-mannequin-vertical"
-              src="jacket_supreme_gore_tex_Front.webp"
+              src="JPG_23-12-F-MB006-J514_Front+1.webp"
               lar="43"
               haut="63"
               left=""
               right="30px"
-              ajustHauteur="-25"
-              marque="Supreme"
-              alt="jacket supreme gore tex Front"
-            />
-            <VIDEOGalerie
-              linkUrl="/service-accessoires-eclipse"
-              src="chaussure-jordan-luca.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Jordan Luca"
+              ajustHauteur="5"
+              marque="Jean Paul Gaultier"
+              alt="Jean Paul Gaultier maillot 1 pièce"
             />
             <IMGMobile
               linkUrl="/service-mannequin-vertical"
-              src="belmadi_orange_jacket.webp"
+              src="ATTIRE_PIQUE_avery_Front.webp"
               lar="43"
               haut="63"
               left=""
               right="100px"
               ajustHauteur="5"
-              marque="Belmadi"
-              alt="belmadi_orange_jacket.webp"
+              marque="Attire The Studio"
+              alt="Attire The Studio jeans"
             />
             <IMGMobile
               linkUrl="/service-mannequin-vertical"
-              src="adela_top_light.webp"
+              src="ATTIRE_PIQUE_brown_jacket_Front.webp"
               lar="43"
               haut="63"
               left="40px"
               right=""
               ajustHauteur="5"
-              marque="Adela"
-              alt="adela top light"
+              marque="Attire The Studio"
+              alt="Attire The Studio brown jacket"
             />
-            <VIDEOGalerie
-              linkUrl="/service-mise-en-scene-live"
-              src="studio-maison-ciero-video-crea.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Studio Maison Ciero"
-            />
+            {/* Live */}
             <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="vaillant_white.webp"
-              lar="51"
-              haut="51"
+              linkUrl="/service-mise-en-scene-live"
+              src="SHANGXIA_FR1023S002-Fullbody-tiff-6.webp"
+              lar="50"
+              haut="75"
               left=""
               right="40px"
               ajustHauteur="5"
-              marque="Vaillant"
-              alt="vaillant white"
+              marque="Shangxia"
+              alt="Shangxia fullbody"
             />
             <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="adela_akiko.webp"
+              linkUrl="/service-mise-en-scene-live"
+              src="PORT_TANGER_PT-2200-TOP-RAW-3.webp"
+              lar="52"
+              haut="75"
+              left=""
+              right="90px"
+              ajustHauteur="5"
+              marque="Port Tanger"
+              alt="Port Tanger red glasses"
+            />
+            <IMGMobile
+              linkUrl="/service-mise-en-scene-live"
+              src="SHANGXIA_FR1223S007QUARTZ-Fullbody-tiff-1.webp"
+              lar="50"
+              haut="75"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Shangxia"
+              alt="Shangxia fullbody"
+            />
+            {/* Eclipse */}
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="SHANG_PCAPSBblack_silver-34-tiff-2.webp"
               lar="63"
-              haut="73"
+              haut="43"
+              left="40px"
+              right=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Shangxia"
+              alt="shangxia black silver bag"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="MELLERIO_giardino-ring-pink-sapphire-pink-gold-j1pg029-sf_02.webp"
+              lar="43"
+              haut="63"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Mellerio"
+              alt="mellerio giardino ring pink sapphire pink gold"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="MELISSA_JPG_F-CS002-X-33-01-side 2-tiff-1.webp"
+              lar="43"
+              haut="63"
               left="90px"
               right=""
               ajustHauteur="5"
-              marque="Adela"
-              alt="adela akiko"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="jacket_the_north_face_supreme_Front.webp"
-              lar="50"
-              haut="67"
-              left="190px"
-              right=""
-              ajustHauteur="5"
-              marque="The North Face"
-              alt="jacket the north face supreme Front"
-            />
-            <IMGMobile
-              linkUrl="/service-packshot-horizontal"
-              src="hast_gants.webp"
-              lar="52"
-              haut="51"
-              left="40px"
-              right=""
-              ajustHauteur="5"
-              marque="Hast"
-              alt="hast gants"
-            />
-            <VIDEOGalerie
-              linkUrl="/service-accessoires-eclipse"
-              src="chaussures-jordan-luca.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Jordan Luca"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="shangxia_manteau.webp"
-              lar="60"
-              haut="62"
-              left="40px"
-              right=""
-              ajustHauteur="5"
-              marque="shangxia"
-              alt="shangxia manteau"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="adela_amel_orchid_hush.webp"
-              lar="63"
-              haut="56"
-              left=""
-              right="40px"
-              ajustHauteur="-23"
-              marque="Adela"
-              alt="adela_amel_orchid_hush.webp"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="moonview_doudoune_black_Front.webp"
-              lar="43"
-              haut="63"
-              left=""
-              right="30px"
-              ajustHauteur="5"
-              marque="Moonview"
-              alt="moonview doudoune black Front"
-            />
-            <VIDEOGalerie
-              linkUrl="/service-mise-en-scene-live"
-              src="chaussures-talons-nodaleto.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Nodaleto"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="hast_chemise_rouge.webp"
-              lar="43"
-              haut="63"
-              left=""
-              right="40px"
-              ajustHauteur="5"
-              marque="Hast"
-              alt="hast chemise rouge"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="shangxia_robe_jaune_fluo.webp"
-              lar="53"
-              haut="42"
-              left="40px"
-              right=""
-              ajustHauteur="5"
-              marque="shangxia"
-              alt="shangxia robe jaune fluo"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="robe_de_soirée_noire_attire_the_studio.webp"
-              lar="52"
-              haut="51"
-              left=""
-              right="100px"
-              ajustHauteur="5"
-              marque="Attire the studio"
-              alt="robe de soirée noire attire the studio"
-            />
-            <VIDEOGalerie
-              linkUrl="/service-mise-en-scene-live"
-              src="be-collection.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Be Collection"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="tracksuit_pants_rainbow_palm_angels_Front.webp"
-              lar="50"
-              haut="63"
-              left="40px"
-              right=""
-              ajustHauteur="5"
-              marque="Palm Angels"
-              alt="tracksuit pants rainbow palm angels Front"
-            />
-            <IMGMobile
-              linkUrl="/service-mise-en-scene-live"
-              src="black_nuage_top_ldss.webp"
-              lar="50"
-              haut="75"
-              left=""
-              right="40px"
-              ajustHauteur="-23"
-              marque="Black Nuage"
-              alt="black nuage top"
-            />
-            <IMGMobile
-              linkUrl="/service-mise-en-scene-live"
-              src="13_09_glasses_on_model.webp"
-              lar="52"
-              haut="75"
-              left=""
-              right="100px"
-              ajustHauteur="5"
-              marque="13/09"
-              alt="13/09 glasses on model"
-            />
-            <VIDEOGalerie
-              linkUrl="/service-mise-en-scene-live"
-              src="semaine.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Semaine"
-            />
-            <IMGMobile
-              linkUrl="/service-mise-en-scene-live"
-              src="giambatista_valli_dress.webp"
-              lar="50"
-              haut="75"
-              left=""
-              right="40px"
-              ajustHauteur="5"
-              marque="Giambatista"
-              alt="giambatista valli dress"
-            />
-            <IMGMobile
-              linkUrl="/service-mise-en-scene-live"
-              src="ludovic_de_saint_sernin_dress.webp"
-              lar="47"
-              haut="78"
-              left="40px"
-              right=""
-              ajustHauteur="5"
-              marque="ludovic de saint sernin"
-              alt="ludovic de saint sernin dress"
-            />
-            <VIDEOGalerie
-              linkUrl="/service-accessoires-eclipse"
-              src="collier-givenchy.mp4"
-              lar="25"
-              haut="35"
-              left="100px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Givenchy"
-            />
-            <IMGMobile
-              linkUrl="/service-mise-en-scene-live"
-              src="rudy_maillot_de_bain_2_pieces.webp"
-              lar="50"
-              haut="63"
-              left="40px"
-              right=""
-              ajustHauteur="5"
-              marque="Rudy"
-              alt="rudy maillot de bain 2 piece"
-            />
-            <IMGMobile
-              linkUrl="/service-mise-en-scene-live"
-              src="port_tanger_red_glasses_on_model.webp"
-              lar="40"
-              haut="45"
-              left="150px"
-              right=""
-              ajustHauteur="5"
-              marque="Port Tanger"
-              alt="port tanger red glasses on model"
+              marque="Melissa x Jean Paul Gaultier"
+              alt="Pink shoes Melissa x Jean Paul Gaultier"
             />
           </div>
         </>

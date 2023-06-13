@@ -88,7 +88,7 @@ const RetoucheMenu = ({ selectedCat, setSelectedCat }) => {
                 selectedCat === "bijoux" ? "active" : ""
               }`}
             >
-              {t("JEWELRY")}
+              {t("JEWELLERY")}
             </span>
           </li>
         </ul>

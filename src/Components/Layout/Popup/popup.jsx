@@ -12,10 +12,9 @@ import { useTranslation } from "react-i18next";
 import "./popup.scss";
 
 const PopupDesktop = () => {
+  const { t, i18n } = useTranslation("popup");
   const NewsletterBanner = useRef();
   const emailRef = useRef(null);
-
-  const { t, i18n } = useTranslation("popup");
 
   function NewsletterBannerClose() {
     NewsletterBanner.current.style.display = "none";

@@ -28,6 +28,7 @@ const ServiceMenuElement = ({
   lien,
   setElemActif,
   elemActif,
+  infoPlus,
 }) => {
   const { t, i18n } = useTranslation("servicesData");
   const ServiceMenuElementWrapper = useRef();
@@ -164,6 +165,9 @@ const ServiceMenuElement = ({
               <div className="sousTitreBloc">
                 <h2>{t(soustitre)}</h2>
                 <h2>{t(numero)}</h2>
+              </div>
+              <div className="sousTitreBloc" style={{ paddingTop: "10px" }}>
+                <h2 style={{ fontSize: "15px" }}>{infoPlus}</h2>
               </div>
               <h1>{t(titre)}</h1>
             </div>
@@ -426,6 +430,7 @@ const ServicesMenu = ({ setPageLoad }) => {
           <ServiceMenuElement
             titre={t("ON MODEL")}
             soustitre="( LIVE )"
+            infoPlus="( PHOTO + VIDEO )"
             horaire={t("1 hour : 170 € excl. tax.")}
             demijournee={t("4 hours : 590 € excl. tax.")}
             journee={t("8 hours : 1020 € excl. tax.")}
@@ -462,6 +467,7 @@ const ServicesMenu = ({ setPageLoad }) => {
           <ServiceMenuElement
             titre={t("ACCESSORIES")}
             soustitre="( ECLIPSE )"
+            infoPlus="( PHOTO + VIDEO )"
             horaire={t("1 hour : 150 € excl. tax.")}
             demijournee={t("4 hours : 530 € excl. tax.")}
             journee={t("8 hours : 890 € excl. tax.")}
