@@ -47,6 +47,8 @@ import IMGFichier from "./Assets/img/accueil/machine-photo-mannequin-invisible.j
 //     // ReactGA.pageview(window.location.pathname + window.location.search);
 // });
 
+import TestAccroche from "Views/TestAccroche/test-accroche";
+
 const App = () => {
   // const [windowWidth, windowHeight] = useWindowSize(); //Force le rendu au redimensionnement de la fenêtre
   const [pageLoad, setPageLoad] = useState(false);
@@ -253,6 +255,16 @@ const App = () => {
                   render={() => <GalerieLive setPageLoad={setPageLoad} />}
                 />
                 <Route
+                  path="/galerie-live-bijoux"
+                  exact
+                  render={() => <GalerieLive setPageLoad={setPageLoad} />}
+                />
+                <Route
+                  path="/galerie-live-chaussures"
+                  exact
+                  render={() => <GalerieLive setPageLoad={setPageLoad} />}
+                />
+                <Route
                   path="/galerie-eclipse"
                   exact
                   render={() => <GalerieEclipse setPageLoad={setPageLoad} />}
@@ -366,6 +378,7 @@ const App = () => {
               </div>
             </Switch>
           </main>
+          <Route path="/test" exact render={() => <TestAccroche />} />
         </BrowserRouter>
       </ViewportProvider>
 

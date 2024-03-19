@@ -56,6 +56,8 @@ const GalerieMenu = ({ setPageLoad }) => {
             {selectedLink === "live" && t("LIVE")}
             {selectedLink === "liveGarments" && t("LIVE")}
             {selectedLink === "liveAccess" && t("LIVE")}
+            {selectedLink === "liveJewels" && t("LIVE")}
+            {selectedLink === "liveShoes" && t("LIVE")}
             {selectedLink === "eclipse" && t("ECLIPSE")}
             {selectedLink === "eclipseAccess" && t("ECLIPSE")}
             {selectedLink === "eclipseShoes" && t("ECLIPSE")}
@@ -217,6 +219,8 @@ const GalerieMenu = ({ setPageLoad }) => {
               </Link>
               {selectedLink === "live" ||
               selectedLink === "liveGarments" ||
+              selectedLink === "liveJewels" ||
+              selectedLink === "liveShoes" ||
               selectedLink === "liveAccess" ? (
                 <ul className="sub-category">
                   <Link
@@ -250,6 +254,30 @@ const GalerieMenu = ({ setPageLoad }) => {
                       className={selectedLink === "liveAccess" ? "active" : ""}
                     >
                       — {t("Accesories")}
+                    </li>
+                  </Link>
+                  <Link
+                    to={{
+                      pathname: "/galerie-live-bijoux",
+                      state: { selectedLink: "liveJewels" },
+                    }}
+                  >
+                    <li
+                      className={selectedLink === "liveJewels" ? "active" : ""}
+                    >
+                      — {t("Jewellery")}
+                    </li>
+                  </Link>
+                  <Link
+                    to={{
+                      pathname: "/galerie-live-chaussures",
+                      state: { selectedLink: "liveShoes" },
+                    }}
+                  >
+                    <li
+                      className={selectedLink === "liveShoes" ? "active" : ""}
+                    >
+                      — {t("Shoes")}
                     </li>
                   </Link>
                 </ul>
@@ -353,7 +381,7 @@ const GalerieMenu = ({ setPageLoad }) => {
                       — {t("Cosmetics")}
                     </li>
                   </Link>
-                  {/* <Link
+                  <Link
                     to={{
                       pathname: "/galerie-eclipse-livres",
                       state: { selectedLink: "eclipseBooks" },
@@ -366,7 +394,7 @@ const GalerieMenu = ({ setPageLoad }) => {
                     >
                       — {t("Books")}
                     </li>
-                  </Link> */}
+                  </Link>
                   <Link
                     to={{
                       pathname: "/galerie-eclipse-bijoux",

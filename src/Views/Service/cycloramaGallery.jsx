@@ -1,4 +1,6 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import Slider from "react-slick";
+
 import "./cycloramaGallery.scss";
 
 import img1 from "./img/ARIELLE_BARON_18_01_2375839.webp";
@@ -29,11 +31,7 @@ function shuffle(array) {
 
 export default function CycloramaGallery() {
   const [images, setImages] = useState([]);
-  const galleryRef = useRef(null);
-  const slideContainerRef = useRef(null);
-  const slideElementsRef = useRef([]);
-  const requestRef = useRef(null);
-  const positionRef = useRef(0);
+  const sliderRef = useRef(null);
 
   useEffect(() => {
     const shuffledImages = shuffle([
@@ -51,58 +49,46 @@ export default function CycloramaGallery() {
   }, []);
 
   useEffect(() => {
-    const galleryElement = galleryRef.current;
-    const slideContainerElement = slideContainerRef.current;
-    const slideElements = slideElementsRef.current;
+    const slider = sliderRef.current;
 
-    const startGalleryAnimation = () => {
-      const containerWidth = galleryElement.offsetWidth;
-      let totalWidth = 0;
-
-      slideElements.forEach((slide) => {
-        totalWidth += slide.offsetWidth;
-      });
-
-      const animate = () => {
-        positionRef.current -= 1;
-
-        if (positionRef.current <= -(totalWidth - containerWidth)) {
-          positionRef.current = 0;
-        }
-
-        slideContainerElement.style.transform = `translateX(${positionRef.current}px)`;
-
-        requestRef.current = requestAnimationFrame(animate);
-      };
-
-      animate();
+    const startSlider = () => {
+      const autoplayDelay = 3000; // Définir le délai d'autoplay en millisecondes
+      slider.slickPlay();
     };
 
-    startGalleryAnimation();
-
-    return () => {
-      cancelAnimationFrame(requestRef.current);
-    };
+    startSlider();
   }, []);
 
-  const handleSlideRef = (slide) => {
-    if (slide && !slideElementsRef.current.includes(slide)) {
-      slideElementsRef.current.push(slide);
-    }
+  const sliderTopSettings = {
+    infinite: true,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    speed: 5000,
+    autoplaySpeed: 0,
+    pauseOnHover: true,
+    cssEase: "linear",
+    swipeToSlide: true,
   };
 
   return (
-    <div className="gallery" ref={galleryRef}>
-      <div className="slide-container" ref={slideContainerRef}>
+    <div className="gallery" style={{ padding: "65px 0" }}>
+      <Slider {...sliderTopSettings} ref={sliderRef}>
         {images.map((image, index) => (
-          <img
-            key={index}
-            src={image}
-            alt="Gallery Image"
-            ref={handleSlideRef}
-          />
+          <div key={index} style={{ padding: "10px" }}>
+            <img
+              src={image}
+              alt="Gallery Image"
+              className="slider-image"
+              style={{
+                width: "300px",
+                // height: "500px",
+                objectFit: "cover",
+              }}
+            />
+          </div>
         ))}
-      </div>
+      </Slider>
     </div>
   );
 }

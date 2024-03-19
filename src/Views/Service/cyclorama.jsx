@@ -384,7 +384,7 @@ const CycloramaDesktop = () => {
         <div className="presentation">
           <div className="leftColumn">
             <div className="titreNosServices">{t("OUR SERVICES")}</div>
-            <Canvas
+            {/* <Canvas
               style={{
                 width: "25vw",
                 height: "500px",
@@ -398,7 +398,7 @@ const CycloramaDesktop = () => {
                 <OrbitControls autoRotate />
                 <Environment preset="studio" />
               </Suspense>
-            </Canvas>
+            </Canvas> */}
           </div>
           <div className="middleColumn">
             <div className="mainTitle">CYCLORAMA</div>
@@ -668,7 +668,7 @@ const CycloramaMobile = () => {
               {t("Get the Cyclorama brochure")}
             </div>
           </a>
-          <Canvas
+          {/* <Canvas
             camera={{ position: [0, 0, 3] }}
             style={{ height: "200px", marginTop: "20px" }}
           >
@@ -677,7 +677,7 @@ const CycloramaMobile = () => {
               <OrbitControls autoRotate />
               <Environment preset="studio" />
             </Suspense>
-          </Canvas>
+          </Canvas> */}
           <div className="cycloPlanBox">
             <img src={cycloPlan} alt="Plan du cyclorama" />
           </div>

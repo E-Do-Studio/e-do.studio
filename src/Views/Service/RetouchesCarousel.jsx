@@ -202,7 +202,7 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                     >
                       <img
                         className="sliderTopUnique_IMG"
-                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        src={imageSet[1]}
                         alt="retouche image on model ghost"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
@@ -216,15 +216,6 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                           objectFit: "contain",
                         }}
                       />
-                      {hover === true ? (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("After")}
-                        </p>
-                      ) : (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("Before")}
-                        </p>
-                      )}
                     </div>
                   ))}
                 </Slider>
@@ -244,7 +235,7 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                     >
                       <img
                         className="sliderTopUnique_IMG"
-                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        src={imageSet[1]}
                         alt="retouche image on model ghost"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
@@ -258,15 +249,6 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                           objectFit: "contain",
                         }}
                       />
-                      {hover === true ? (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("After")}
-                        </p>
-                      ) : (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("Before")}
-                        </p>
-                      )}
                     </div>
                   ))}
                 </Slider>
@@ -286,7 +268,7 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                     >
                       <img
                         className="sliderTopUnique_IMG"
-                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        src={imageSet[1]}
                         alt="retouche image on model ghost"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
@@ -300,15 +282,6 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                           objectFit: "contain",
                         }}
                       />
-                      {hover === true ? (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("After")}
-                        </p>
-                      ) : (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("Before")}
-                        </p>
-                      )}
                     </div>
                   ))}
                 </Slider>
@@ -328,7 +301,7 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                     >
                       <img
                         className="sliderTopUnique_IMG"
-                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        src={imageSet[1]}
                         alt="retouche image on model ghost"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
@@ -342,15 +315,6 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                           objectFit: "contain",
                         }}
                       />
-                      {hover === true ? (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("After")}
-                        </p>
-                      ) : (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("Before")}
-                        </p>
-                      )}
                     </div>
                   ))}
                 </Slider>
@@ -370,7 +334,7 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                     >
                       <img
                         className="sliderTopUnique_IMG"
-                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        src={imageSet[1]}
                         alt="retouche image on model ghost"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
@@ -384,15 +348,6 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                           objectFit: "contain",
                         }}
                       />
-                      {hover === true ? (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("After")}
-                        </p>
-                      ) : (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("Before")}
-                        </p>
-                      )}
                     </div>
                   ))}
                 </Slider>
@@ -412,7 +367,7 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                     >
                       <img
                         className="sliderTopUnique_IMG"
-                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        src={imageSet[1]}
                         alt="retouche image on model ghost"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
@@ -426,15 +381,6 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                           objectFit: "contain",
                         }}
                       />
-                      {hover === true ? (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("After")}
-                        </p>
-                      ) : (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("Before")}
-                        </p>
-                      )}
                     </div>
                   ))}
                 </Slider>
@@ -476,31 +422,6 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                       style={{ display: "flex !important" }}
                       key={index}
                     >
-                      <img
-                        className="sliderTopUnique_IMG"
-                        src={imageSet[0]}
-                        alt="retouche image on model ghost"
-                        onMouseEnter={handleMouseEnter}
-                        onMouseLeave={handleMouseLeave}
-                        style={{
-                          width: "50%",
-                          height: "300px",
-                          display: "flex",
-                          flexDirection: "column",
-                          alignItems: "center",
-                          margin: "0 auto",
-                          objectFit: "contain",
-                        }}
-                      />
-                      <p
-                        style={{
-                          paddingTop: "10px",
-                          paddingBottom: "10px",
-                          textAlign: "center",
-                        }}
-                      >
-                        {t("Before")}
-                      </p>
                       <img
                         className="sliderTopUnique_IMG"
                         src={imageSet[1]}
@@ -545,7 +466,7 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                     >
                       <img
                         className="sliderTopUnique_IMG"
-                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        src={imageSet[1]}
                         alt="retouche image on model ghost"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
@@ -559,15 +480,6 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                           objectFit: "contain",
                         }}
                       />
-                      {hover === true ? (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("After")}
-                        </p>
-                      ) : (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("Before")}
-                        </p>
-                      )}
                     </div>
                   ))}
                 </Slider>
@@ -587,7 +499,7 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                     >
                       <img
                         className="sliderTopUnique_IMG"
-                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        src={imageSet[1]}
                         alt="retouche image on model ghost"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
@@ -601,15 +513,6 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                           objectFit: "contain",
                         }}
                       />
-                      {hover === true ? (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("After")}
-                        </p>
-                      ) : (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("Before")}
-                        </p>
-                      )}
                     </div>
                   ))}
                 </Slider>
@@ -629,7 +532,7 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                     >
                       <img
                         className="sliderTopUnique_IMG"
-                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        src={imageSet[1]}
                         alt="retouche image on model ghost"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
@@ -643,15 +546,6 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                           objectFit: "contain",
                         }}
                       />
-                      {hover === true ? (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("After")}
-                        </p>
-                      ) : (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("Before")}
-                        </p>
-                      )}
                     </div>
                   ))}
                 </Slider>
@@ -671,7 +565,7 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                     >
                       <img
                         className="sliderTopUnique_IMG"
-                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        src={imageSet[1]}
                         alt="retouche image on model ghost"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
@@ -685,15 +579,6 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                           objectFit: "contain",
                         }}
                       />
-                      {hover === true ? (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("After")}
-                        </p>
-                      ) : (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("Before")}
-                        </p>
-                      )}
                     </div>
                   ))}
                 </Slider>
@@ -713,7 +598,7 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                     >
                       <img
                         className="sliderTopUnique_IMG"
-                        src={!hover === true ? imageSet[0] : imageSet[1]}
+                        src={imageSet[1]}
                         alt="retouche image on model ghost"
                         onMouseEnter={handleMouseEnter}
                         onMouseLeave={handleMouseLeave}
@@ -727,15 +612,6 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                           objectFit: "contain",
                         }}
                       />
-                      {hover === true ? (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("After")}
-                        </p>
-                      ) : (
-                        <p style={{ paddingTop: "10px", textAlign: "center" }}>
-                          {t("Before")}
-                        </p>
-                      )}
                     </div>
                   ))}
                 </Slider>

@@ -7,7 +7,7 @@
     "@fullpage/react-fullpage": "^0.1.18",
     "@react-hook/media-query": "^1.1.1",
     "@react-icons/all-files": "^4.1.0",
-    "@react-three/drei": "^8.11.3",
+    "@react-three/drei": "^8.20.2",
     "@react-three/fiber": "^7.0.26",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
@@ -22,10 +22,12 @@
     "express-handlebars": "^6.0.7",
     "formik": "^2.2.9",
     "framer-motion": "^3.10.6",
+    "gsap": "^3.12.1",
     "history": "^4.10.1",
     "http-server": "^0.12.3",
     "i18next": "^22.4.9",
     "locomotive-scroll": "^4.1.4",
+    "lodash": "^4.17.21",
     "lottie-react": "^2.1.0",
     "moment": "^2.29.1",
     "moment-timezone": "^0.5.32",
@@ -61,13 +63,14 @@
     "sass": "^1.32.5",
     "smtp-connection": "^4.0.2",
     "three": "^0.138.2",
+    "three-stdlib": "^2.23.9",
     "web-vitals": "^0.2.4",
     "webpack": "4.44.2",
     "xhr2": "^0.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && uglifyjs build/static/js/*.js -o build/static/js/main.min.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -90,7 +93,8 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
-    "react-image-webp": "^0.7.0"
+    "react-image-webp": "^0.7.0",
+    "uglify-js": "^3.17.4"
   },
   "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
   "main": "setupProxy.js",

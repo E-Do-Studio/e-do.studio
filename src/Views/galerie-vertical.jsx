@@ -52,20 +52,45 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
 
   function scrollLeft() {
     const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    const scrollAmount = 500;
+
+    if (scrollBox.scrollLeft === 0) {
+      // Si on est au début de la galerie, défilement jusqu'à la fin
+      scrollBox.scrollTo({
+        left: scrollBox.scrollWidth - scrollBox.clientWidth,
+        behavior: "smooth",
+      });
+    } else {
+      scrollBox.scrollBy({
+        left: -scrollAmount,
+        behavior: "smooth",
+      });
+    }
+
     sliderNavPrec();
-    scrollBox.scrollBy({
-      left: -500,
-      behavior: "smooth",
-    });
   }
 
   function scrollRight() {
     const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    const scrollAmount = 500;
+
+    if (
+      scrollBox.scrollLeft + scrollBox.clientWidth >=
+      scrollBox.scrollWidth - 1
+    ) {
+      // Si on est à la fin de la galerie, défilement jusqu'au début
+      scrollBox.scrollTo({
+        left: 0,
+        behavior: "smooth",
+      });
+    } else {
+      scrollBox.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
+
     sliderNavSuiv();
-    scrollBox.scrollBy({
-      left: 500,
-      behavior: "smooth",
-    });
   }
 
   useEffect(() => {
@@ -211,8 +236,8 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                   <IMGPC
                     linkUrl="/service-packshot-vertical"
                     src="IKUZO_Green_Kimono_Side.webp"
-                    lar="23"
-                    haut="29"
+                    lar="20"
+                    haut="30"
                     ajustHauteurTop=""
                     ajustHauteurBottom=""
                     anim={2}
@@ -235,8 +260,8 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                   <IMGPC
                     linkUrl="/service-packshot-vertical"
                     src="IKUZO_Blue-Hoodie_Front.webp"
-                    lar="23"
-                    haut="29"
+                    lar="20"
+                    haut="30"
                     ajustHauteurTop=""
                     ajustHauteurBottom="9"
                     anim={2}
@@ -323,8 +348,8 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                   <IMGPC
                     linkUrl="/service-packshot-vertical"
                     src="IKUZO_Green_Kimono_Side.webp"
-                    lar="23"
-                    haut="29"
+                    lar="20"
+                    haut="30"
                     ajustHauteurTop=""
                     ajustHauteurBottom=""
                     anim={2}
@@ -335,8 +360,8 @@ const GalerieVertical = ({ setPageLoad, setSelectedLink }) => {
                   <IMGPC
                     linkUrl="/service-packshot-vertical"
                     src="IKUZO_Blue-Hoodie_Front.webp"
-                    lar="23"
-                    haut="29"
+                    lar="20"
+                    haut="30"
                     ajustHauteurTop=""
                     ajustHauteurBottom="9"
                     anim={2}

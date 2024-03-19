@@ -109,6 +109,8 @@ const Footer = ({ AnimationBloc7, colorTheme }) => {
                 <br />
                 +33 1 44 04 11 49
                 <br />
+                contact@e-do.studio
+                <br />
                 <span className="FP_MetroDeco">14</span> Mairie de Saint-Ouen{" "}
                 <br />
                 <span className="FP_MetroDeco">13</span> Garibaldi

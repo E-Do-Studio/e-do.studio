@@ -85,7 +85,6 @@ const RetouchesMobile = () => {
             {t("On quotation only.")}
             <>
               <Link to="/contact">
-                {" "}
                 <svg
                   className="contactButtonRetouches"
                   xmlns="http://www.w3.org/2000/svg"

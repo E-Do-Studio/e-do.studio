@@ -52,20 +52,45 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
 
   function scrollLeft() {
     const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    const scrollAmount = 500;
+
+    if (scrollBox.scrollLeft === 0) {
+      // Si on est au début de la galerie, défilement jusqu'à la fin
+      scrollBox.scrollTo({
+        left: scrollBox.scrollWidth - scrollBox.clientWidth,
+        behavior: "smooth",
+      });
+    } else {
+      scrollBox.scrollBy({
+        left: -scrollAmount,
+        behavior: "smooth",
+      });
+    }
+
     sliderNavPrec();
-    scrollBox.scrollBy({
-      left: -500,
-      behavior: "smooth",
-    });
   }
 
   function scrollRight() {
     const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    const scrollAmount = 500;
+
+    if (
+      scrollBox.scrollLeft + scrollBox.clientWidth >=
+      scrollBox.scrollWidth - 1
+    ) {
+      // Si on est à la fin de la galerie, défilement jusqu'au début
+      scrollBox.scrollTo({
+        left: 0,
+        behavior: "smooth",
+      });
+    } else {
+      scrollBox.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
+
     sliderNavSuiv();
-    scrollBox.scrollBy({
-      left: 500,
-      behavior: "smooth",
-    });
   }
 
   useEffect(() => {
@@ -164,6 +189,18 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                   />
                   <IMGPC
                     linkUrl="/service-packshot-horizontal"
+                    src="AZ_scarf_loov.webp"
+                    lar="25"
+                    haut="32"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="AZ Factory"
+                    alt="AZ Factory scarf"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
                     src="HAST_polo_burgundy_Front.webp"
                     lar="25"
                     haut="25"
@@ -180,11 +217,23 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                     lar="25"
                     haut="34"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="5"
+                    ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
                     marque="Giambattista"
                     alt="Giambattista blue bandana"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
+                    src="HIRCUS_pantalon_Front.webp"
+                    lar="20"
+                    haut="28"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Hircus"
+                    alt="Hircus pantalon beige"
                   />
                   <IMGPC
                     linkUrl="/service-packshot-horizontal"
@@ -217,8 +266,8 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                   <IMGPC
                     linkUrl="/service-packshot-horizontal"
                     src="HIRCUS_pantalon_Front.webp"
-                    lar="25"
-                    haut="38"
+                    lar="20"
+                    haut="28"
                     ajustHauteurTop=""
                     ajustHauteurBottom="5"
                     anim={2}
@@ -292,6 +341,18 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                   />
                   <IMGPC
                     linkUrl="/service-packshot-horizontal"
+                    src="AZ_scarf_loov.webp"
+                    lar="25"
+                    haut="32"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="AZ Factory"
+                    alt="AZ Factory scarf"
+                  />
+                  <IMGPC
+                    linkUrl="/service-packshot-horizontal"
                     src="GIAMBATTISTA_D1SAND-TR24-30.webp"
                     lar="25"
                     haut="34"
@@ -351,7 +412,7 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                   haut="50"
                   left=""
                   right="40px"
-                  ajustHauteur="-23"
+                  ajustHauteur="5"
                   marque="Attire The Studio"
                   alt="Attire The Studio black"
                 />
@@ -368,6 +429,28 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                 />
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
+                  src="AZ_scarf_loov.webp"
+                  lar="50"
+                  haut="50"
+                  left="90px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="AZ Factory"
+                  alt="AZ Factory scarf"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="GIAMBATTISTA_D2ELFA-KR19-71.webp"
+                  lar="49"
+                  haut="49"
+                  left="90px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Giambattista"
+                  alt="Giambattista orange scarf"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
                   src="GIAMBATTISTA_D1SAND-TR24-30.webp"
                   lar="45"
                   haut="50"
@@ -380,8 +463,8 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
                   src="HAST_pants_black_blue_Front.webp"
-                  lar="40"
-                  haut="45"
+                  lar="80"
+                  haut="75"
                   left="40px"
                   right=""
                   ajustHauteur="5"
@@ -454,13 +537,24 @@ const GalerieHorizontal = ({ setPageLoad, setSelectedLink }) => {
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"
                   src="GIAMBATTISTA_D2ELFA-KR19-71.webp"
-                  lar="43"
-                  haut="63"
+                  lar="49"
+                  haut="49"
                   left="90px"
                   right=""
-                  ajustHauteur="-23"
+                  ajustHauteur="5"
                   marque="Giambattista"
                   alt="Giambattista orange scarf"
+                />
+                <IMGMobile
+                  linkUrl="/service-packshot-horizontal"
+                  src="AZ_scarf_loov.webp"
+                  lar="49"
+                  haut="49"
+                  left="90px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="AZ Factory"
+                  alt="AZ Factory scarf"
                 />
                 <IMGMobile
                   linkUrl="/service-packshot-horizontal"

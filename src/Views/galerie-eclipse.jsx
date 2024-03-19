@@ -53,20 +53,45 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
 
   function scrollLeft() {
     const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    const scrollAmount = 500;
+
+    if (scrollBox.scrollLeft === 0) {
+      // Si on est au début de la galerie, défilement jusqu'à la fin
+      scrollBox.scrollTo({
+        left: scrollBox.scrollWidth - scrollBox.clientWidth,
+        behavior: "smooth",
+      });
+    } else {
+      scrollBox.scrollBy({
+        left: -scrollAmount,
+        behavior: "smooth",
+      });
+    }
+
     sliderNavPrec();
-    scrollBox.scrollBy({
-      left: -500,
-      behavior: "smooth",
-    });
   }
 
   function scrollRight() {
     const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    const scrollAmount = 500;
+
+    if (
+      scrollBox.scrollLeft + scrollBox.clientWidth >=
+      scrollBox.scrollWidth - 1
+    ) {
+      // Si on est à la fin de la galerie, défilement jusqu'au début
+      scrollBox.scrollTo({
+        left: 0,
+        behavior: "smooth",
+      });
+    } else {
+      scrollBox.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
+
     sliderNavSuiv();
-    scrollBox.scrollBy({
-      left: 500,
-      behavior: "smooth",
-    });
   }
 
   useEffect(() => {
@@ -161,17 +186,16 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Shangxia"
                     alt="shangxia black silver bag"
                   />
-                  <IMGPC
+                  <VIDEOGalerie
                     linkUrl="/service-accessoires-eclipse"
-                    src="MELLERIO_giardino-ring-pink-sapphire-pink-gold-j1pg029-sf_02.webp"
-                    lar="24"
-                    haut="25"
+                    src="coperni-bag-1.mp4"
+                    lar="25"
+                    haut="35"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={2}
+                    ajustHauteurBottom=""
+                    anim={1}
                     scrollX={scrollX}
-                    marque="Mellerio"
-                    alt="mellerio giardino ring pink sapphire pink gold"
+                    marque="Coperni"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -185,6 +209,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Melissa x Jean Paul Gaultier"
                     alt="Pink shoes Melissa x Jean Paul Gaultier"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="coperni-pink-shoes.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Coperni"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="NODALETO_bulla_jones_65_ceramica_patent-creative-tiff-1.webp"
@@ -196,6 +231,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Nodaleto"
                     alt="bulla jones 65 ceramica"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="coperni-blue-flower.mov"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Coperni"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -220,6 +266,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Jean Paul Gaultier"
                     alt="Jean Paul Gaultier earring chrome"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="coperni-pink-shoes.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Coperni"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -256,6 +313,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Melissa x Jean Paul Gaultier"
                     alt="Pink shoes Melissa x Jean Paul Gaultier"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="LDSS_CLEAVAGE_KAKI_LEATHER.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Ludovic de Saint Sernin"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -320,6 +388,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Bruno Frisoni"
                     alt="Bruno Frisoni talons noir"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="coperni-blue-shoes-double.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Coperni"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="MELISSA_JPG_F-CS002-X-33-01-side 2-tiff-1.webp"
@@ -355,6 +434,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Giambattista"
                     alt="Giambattista talons"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="coperni-pink-shoes.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Coperni"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -392,81 +482,10 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Nujou"
                     alt="Nujou Black paire"
                   />
-                  {/* <VIDEOGalerie
-                    linkUrl="/service-accessoires-eclipse"
-                    src="ba&sh_stop_motion.mp4"
-                    lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="ba&sh"
-                  /> */}
-
-                  {/* <VIDEOGalerie
-                    linkUrl="/service-accessoires-eclipse"
-                    src="chaussure-givenchy.mp4"
-                    lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Givenchy"
-                  /> */}
-
-                  {/* <VIDEOGalerie
-                    linkUrl="/service-accessoires-eclipse"
-                    src="chaussures-jordan-luca.mp4"
-                    lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Jordan Luca"
-                  /> */}
-
-                  {/* <VIDEOGalerie
-                    linkUrl="/service-accessoires-eclipse"
-                    src="bruno_frisoni_talons_roses.mp4"
-                    lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="bruno frisoni"
-                  /> */}
-
-                  {/* <VIDEOGalerie
-                    linkUrl="/service-mise-en-scene-live"
-                    src="chaussures-talons-nodaleto.mp4"
-                    lar="25"
-                    haut="35"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Nodaleto"
-                  /> */}
                 </>
               )}
               {selectedLink === "eclipseJewellery" && (
                 <>
-                  <IMGPC
-                    linkUrl="/service-accessoires-eclipse"
-                    src="MELLERIO_2021_MELLERIO_E-DO_LAST_BADGE_JEWELLERY_COMMENTS_312.webp"
-                    lar="24"
-                    haut="25"
-                    ajustHauteurTop="9"
-                    ajustHauteurBottom=""
-                    anim={2}
-                    scrollX={scrollX}
-                    marque="Mellerio"
-                    alt="mellerio badge jewellery"
-                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="JPG_necklace black-TOP-tiff-1.webp"
@@ -478,18 +497,6 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Jean Paul Gaultier"
                     alt="Jean Paul Gaultier necklace black"
-                  />
-                  <IMGPC
-                    linkUrl="/service-accessoires-eclipse"
-                    src="MELLERIO_giardino-ring-pink-sapphire-pink-gold-j1pg029-sf_02.webp"
-                    lar="24"
-                    haut="25"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom="5"
-                    anim={2}
-                    scrollX={scrollX}
-                    marque="Mellerio"
-                    alt="mellerio giardino ring pink sapphire pink gold"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -706,7 +713,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
-                    src="DAY+_creme_hydratante-Top-tiff-1.webp"
+                    src="Gellule-Solaris.webp"
                     lar="22"
                     haut="30"
                     ajustHauteurTop=""
@@ -714,7 +721,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     anim={1}
                     scrollX={scrollX}
                     marque="Day +"
-                    alt="Day + crème hydratante"
+                    alt="Day + Gellule Solaris"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -754,7 +761,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
-                    src="DAY+_exfoliant-Top-tiff-1.webp"
+                    src="NUIT-DAY+.webp"
                     lar="28"
                     haut="30"
                     ajustHauteurTop=""
@@ -762,7 +769,7 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     anim={1}
                     scrollX={scrollX}
                     marque="Day +"
-                    alt="Day + exfoliant"
+                    alt="Day + Nuit"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -806,27 +813,111 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                 <>
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
-                    src="A_magazine_curated_by_erdem.webp"
-                    lar="32"
-                    haut="30"
+                    src="Purple_side50_2.webp"
+                    lar="25"
+                    haut="34"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Purple"
+                    alt="Purple Side"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="STILL_LIFE_LOIC_PALMIER_cover2.webp"
+                    lar="20"
+                    haut="25"
+                    ajustHauteurTop="5"
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Still Life"
+                    alt="STILL LIFE LOIC PALMIER COVER"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="A_MAGAZINE_SACAI.webp"
+                    lar="38"
+                    haut="32"
                     ajustHauteurTop=""
                     ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="a magazine"
-                    alt="a magazine curated by ederm"
+                    alt="A MAGAZINE SACAI COVER"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
-                    src="A_magazine_curated_by_francesco_rossi.webp"
-                    lar="30"
-                    haut="32"
-                    ajustHauteurTop="2"
+                    src="A_MAGAZINE_SACAI_Side_4.webp"
+                    lar="38"
+                    haut="40"
+                    ajustHauteurTop=""
                     ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
                     marque="a magazine"
-                    alt="a magazine curated by francesco rossi"
+                    alt="A MAGAZINE SACAI SIDE"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="Dana_Farhad_Memoire.webp"
+                    lar="25"
+                    haut="25"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Dana Farhad"
+                    alt="Dana Farhad Memoire"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="purple_magazine.webp"
+                    lar="30"
+                    haut="32"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Purple"
+                    alt="purple magazine"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="a_magazine_curtad_by_2.webp"
+                    lar="25"
+                    haut="34"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="a magazine"
+                    alt="a magazine curated"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="a_magazine_inside.webp"
+                    lar="38"
+                    haut="40"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="a magazine"
+                    alt="a magazine inside"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="a-magazine.webp"
+                    lar="38"
+                    haut="40"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="a magazine"
+                    alt="a magazine book"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -834,30 +925,31 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="32"
                     haut="30"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="5"
+                    ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
                     marque="a magazine"
                     alt="a magazine curated inside"
                   />
-                  {/* <VIDEOGalerie
+                  <IMGPC
                     linkUrl="/service-accessoires-eclipse"
-                    src="genfrey_shoes.mp4"
+                    src="Dana_Farhad_Memoire_2.webp"
                     lar="25"
-                    haut="35"
+                    haut="25"
                     ajustHauteurTop=""
-                    ajustHauteurBottom=""
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
-                    marque="genfrey"
-                  /> */}
+                    marque="Dana Farhad"
+                    alt="Dana Farhad Memoire"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="a_magazine_curated_by.webp"
                     lar="32"
                     haut="32"
                     ajustHauteurTop=""
-                    ajustHauteurBottom=""
+                    ajustHauteurBottom="5"
                     anim={1}
                     scrollX={scrollX}
                     marque="a magazine"
@@ -881,11 +973,23 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     lar="32"
                     haut="30"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="5"
+                    ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
                     marque="Purple"
                     alt="purple magazine"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="A_magazine_curated_by_erdem.webp"
+                    lar="32"
+                    haut="30"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="a magazine"
+                    alt="a magazine curated by ederm"
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
@@ -901,6 +1005,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
+                    src="A_MAGAZINE_SACAI_Side_3.webp"
+                    lar="38"
+                    haut="40"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="a magazine"
+                    alt="A MAGAZINE SACAI SIDE"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
                     src="a_magazine_inside.webp"
                     lar="28"
                     haut="25"
@@ -913,6 +1029,54 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
+                    src="A_MAGAZINE_SACAI_Side_2.webp"
+                    lar="38"
+                    haut="40"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="a magazine"
+                    alt="A MAGAZINE SACAI SIDE"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="Purple_side50_3.webp"
+                    lar="25"
+                    haut="34"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Purple"
+                    alt="Purple Side"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="A_MAGAZINE_SACAI_Side_6.webp"
+                    lar="38"
+                    haut="40"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="a magazine"
+                    alt="A MAGAZINE SACAI SIDE"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="STILL_LIFE_LOIC_PALMIER_4.webp"
+                    lar="20"
+                    haut="30"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Still Life"
+                    alt="STILL LIFE LOIC PALMIER"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
                     src="a-magazine.webp"
                     lar="22"
                     haut="30"
@@ -922,6 +1086,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="a magazine"
                     alt="a magazine book"
+                  />
+                  <IMGPC
+                    linkUrl="/service-accessoires-eclipse"
+                    src="A_MAGAZINE_SACAI_1.webp"
+                    lar="38"
+                    haut="38"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="5"
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="a magazine"
+                    alt="A MAGAZINE SACAI COVER"
                   />
                 </>
               )}
@@ -1003,6 +1179,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
               )}
               {selectedLink === "eclipseBags" && (
                 <>
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="coperni-bag-1.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Coperni"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="SHANG_PCAPSBblack_silver-34-tiff-2.webp"
@@ -1015,6 +1202,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     marque="Shangxia"
                     alt="shangxia black silver bag"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="coperni-blue-flower.mov"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Coperni"
+                  />
                   <IMGPC
                     linkUrl="/service-accessoires-eclipse"
                     src="SHANG_PCAPSBoff_white_mint-Top-tiff-1.webp"
@@ -1026,6 +1224,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Shangxia"
                     alt="shangxia white bag"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-accessoires-eclipse"
+                    src="LDSS_CLEAVAGE_KAKI_LEATHER.mp4"
+                    lar="25"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Ludovic de Saint Sernin"
                   />
                 </>
               )}
@@ -1080,16 +1289,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Shangxia"
                   alt="shangxia black silver bag"
                 />
-                <IMGMobile
+                <VIDEOGalerie
                   linkUrl="/service-accessoires-eclipse"
-                  src="MELLERIO_giardino-ring-pink-sapphire-pink-gold-j1pg029-sf_02.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="40px"
-                  ajustHauteur="5"
-                  marque="Mellerio"
-                  alt="mellerio giardino ring pink sapphire pink gold"
+                  src="coperni-bag-1.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Coperni"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -1113,6 +1323,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Nodaleto"
                   alt="bulla jones 65 ceramica"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="coperni-blue-shoes-double.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Coperni"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="SATO_belel_silver-45-tiff-1_MERGED.webp"
@@ -1123,6 +1345,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Sato"
                   alt="sato silver glasses"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="veuve_clicquot_bouteille.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Veuve Clicquot"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -1146,6 +1379,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Shangxia"
                   alt="shangxia white bag"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="coperni-pink-shoes.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Coperni"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="BRUNO_FRISONI_q d’Orsay black-2-tiff-1.webp"
@@ -1167,6 +1412,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Melissa x Jean Paul Gaultier"
                   alt="Pink shoes Melissa x Jean Paul Gaultier"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="LDSS_CLEAVAGE_KAKI_LEATHER.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Ludovic de Saint Sernin"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -1194,6 +1451,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   marque="Bruno Frisoni"
                   alt="Bruno Frisoni talons noir"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="coperni-blue-shoes-double.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Coperni"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="MELISSA_JPG_F-CS002-X-33-01-side 2-tiff-1.webp"
@@ -1215,6 +1484,18 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Giambattista"
                   alt="Giambattista talons"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="coperni-pink-shoes.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Coperni"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -1266,17 +1547,6 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
               <>
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
-                  src="MELLERIO_2021_MELLERIO_E-DO_LAST_BADGE_JEWELLERY_COMMENTS_312.webp"
-                  lar="43"
-                  haut="63"
-                  left="40px"
-                  right=""
-                  ajustHauteur="-23"
-                  marque="Mellerio"
-                  alt="mellerio badge jewellery"
-                />
-                <IMGMobile
-                  linkUrl="/service-accessoires-eclipse"
                   src="JPG_necklace black-TOP-tiff-1.webp"
                   lar="43"
                   haut="63"
@@ -1285,17 +1555,6 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Jean Paul Gaultier"
                   alt="Jean Paul Gaultier necklace black"
-                />
-                <IMGMobile
-                  linkUrl="/service-accessoires-eclipse"
-                  src="MELLERIO_giardino-ring-pink-sapphire-pink-gold-j1pg029-sf_02.webp"
-                  lar="47"
-                  haut="50"
-                  left="40px"
-                  right=""
-                  ajustHauteur="5"
-                  marque="Mellerio"
-                  alt="mellerio giardino ring pink sapphire pink gold"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -1490,14 +1749,14 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
-                  src="DAY+_creme_hydratante-Top-tiff-1.webp"
+                  src="Gellule-Solaris.webp"
                   lar="43"
                   haut="63"
                   left=""
                   right="40px"
                   ajustHauteur="5"
                   marque="Day +"
-                  alt="Day + crème hydratante"
+                  alt="Day + Gellule Solaris"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -1535,14 +1794,14 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
-                  src="DAY+_exfoliant-Top-tiff-1.webp"
+                  src="NUIT-DAY+.webp"
                   lar="50"
                   haut="63"
                   left="40px"
                   right=""
                   ajustHauteur="5"
                   marque="Day +"
-                  alt="Day + exfoliant"
+                  alt="Day + Nuit"
                 />
 
                 <IMGMobile
@@ -1584,58 +1843,58 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
               <>
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
-                  src="A_magazine_curated_by_erdem.webp"
+                  src="Purple_side50_2.webp"
                   lar="50"
                   haut="56"
                   left="40px"
                   right=""
-                  ajustHauteur="-23"
-                  marque="a magazine"
-                  alt="a magazine curated by ederm"
+                  ajustHauteur="5"
+                  marque="Purple"
+                  alt="Purple Side"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
-                  src="A_magazine_curated_by_francesco_rossi.webp"
+                  src="STILL_LIFE_LOIC_PALMIER_cover2.webp"
                   lar="43"
                   haut="63"
                   left=""
                   right="40px"
                   ajustHauteur="5"
-                  marque="a magazine"
-                  alt="a magazine curated by francesco rossi"
+                  marque="Still Life"
+                  alt="STILL LIFE LOIC PALMIER COVER"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
-                  src="a_magazine_curated_by_inside.webp"
-                  lar="54"
-                  haut="47"
+                  src="A_MAGAZINE_SACAI.webp"
+                  lar="65"
+                  haut="55"
                   left="40px"
                   right=""
                   ajustHauteur="5"
                   marque="a magazine"
-                  alt="a magazine curated inside"
+                  alt="A MAGAZINE SACAI COVER"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
-                  src="a_magazine_curated_by.webp"
-                  lar="43"
-                  haut="63"
-                  left=""
-                  right="100px"
+                  src="A_MAGAZINE_SACAI_Side_4.webp"
+                  lar="70"
+                  haut="50"
+                  left="40px"
+                  right=""
                   ajustHauteur="5"
                   marque="a magazine"
-                  alt="a magazine curated"
+                  alt="A MAGAZINE SACAI SIDE"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
-                  src="a_magazine_by_ederm.webp"
+                  src="Dana_Farhad_Memoire.webp"
                   lar="50"
                   haut="63"
                   left=""
                   right="40px"
                   ajustHauteur="5"
-                  marque="a magazine"
-                  alt="a magazine by ederm"
+                  marque="Dana Farhad"
+                  alt="Dana Farhad Memoire"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -1651,10 +1910,10 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="a_magazine_curtad_by_2.webp"
-                  lar="50"
-                  haut="52"
-                  left="190px"
-                  right=""
+                  lar="69"
+                  haut="45"
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="a magazine"
                   alt="a magazine curated"
@@ -1662,13 +1921,142 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="a_magazine_inside.webp"
-                  lar="40"
-                  haut="35"
+                  lar="50"
+                  haut="43"
                   left=""
                   right="40px"
                   ajustHauteur="5"
                   marque="a magazine"
                   alt="a magazine inside"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="a-magazine.webp"
+                  lar="48"
+                  haut="63"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="a magazine"
+                  alt="a magazine book"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="a_magazine_curated_by_inside.webp"
+                  lar="50"
+                  haut="43"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="a magazine"
+                  alt="a magazine curated inside"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="Dana_Farhad_Memoire_2.webp"
+                  lar="60"
+                  haut="53"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Dana Farhad"
+                  alt="Dana Farhad Memoire"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="a_magazine_curated_by.webp"
+                  lar="59"
+                  haut="63"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="a magazine"
+                  alt="a magazine curated"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="a_magazine_by_ederm.webp"
+                  lar="43"
+                  haut="63"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="a magazine"
+                  alt="a magazine by ederm"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="purple_magazine.webp"
+                  lar="43"
+                  haut="63"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="Purple"
+                  alt="purple magazine"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="a_magazine_curtad_by_2.webp"
+                  lar="80"
+                  haut="57"
+                  left="40px"
+                  right=""
+                  marque="a magazine"
+                  alt="a magazine curated"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="A_MAGAZINE_SACAI_Side_3.webp"
+                  lar="85"
+                  haut="57"
+                  left="40px"
+                  right=""
+                  marque="a magazine"
+                  alt="A MAGAZINE SACAI SIDE"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="A_MAGAZINE_SACAI_Side_2.webp"
+                  lar="63"
+                  haut="42"
+                  left=""
+                  right="40px"
+                  marque="a magazine"
+                  alt="A MAGAZINE SACAI SIDE"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="Purple_side50_3.webp"
+                  lar="43"
+                  haut="63"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Purple"
+                  alt="Purple Side"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="A_MAGAZINE_SACAI_Side_6.webp"
+                  lar="80"
+                  haut="57"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="a magazine"
+                  alt="A MAGAZINE SACAI SIDE"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="STILL_LIFE_LOIC_PALMIER_4.webp"
+                  lar="43"
+                  haut="63"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="Still Life"
+                  alt="STILL LIFE LOIC PALMIER"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
@@ -1680,6 +2068,17 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="a magazine"
                   alt="a magazine book"
+                />
+                <IMGMobile
+                  linkUrl="/service-accessoires-eclipse"
+                  src="A_MAGAZINE_SACAI_1.webp"
+                  lar="86"
+                  haut="61"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="a magazine"
+                  alt="A MAGAZINE SACAI COVER"
                 />
               </>
             )}
@@ -1756,27 +2155,63 @@ const GalerieEclipse = ({ setPageLoad, setSelectedLink }) => {
             )}
             {selectedLink === "eclipseBags" && (
               <>
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="coperni-bag-1.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Coperni"
+                />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="SHANG_PCAPSBblack_silver-34-tiff-2.webp"
-                  lar="43"
+                  lar="48"
                   haut="63"
-                  left="40px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur=""
                   marque="Shangxia"
                   alt="shangxia black silver bag"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="coperni-blue-flower.mov"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Coperni"
                 />
                 <IMGMobile
                   linkUrl="/service-accessoires-eclipse"
                   src="SHANG_PCAPSBoff_white_mint-Top-tiff-1.webp"
                   lar="43"
                   haut="63"
-                  left=""
-                  right="40px"
+                  left="40px"
+                  right=""
                   ajustHauteur="5"
                   marque="Shangxia"
                   alt="shangxia white bag"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="LDSS_CLEAVAGE_KAKI_LEATHER.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Ludovic de Saint Sernin"
                 />
               </>
             )}

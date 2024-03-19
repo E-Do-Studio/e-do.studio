@@ -57,20 +57,45 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
 
   function scrollLeft() {
     const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    const scrollAmount = 500;
+
+    if (scrollBox.scrollLeft === 0) {
+      // Si on est au début de la galerie, défilement jusqu'à la fin
+      scrollBox.scrollTo({
+        left: scrollBox.scrollWidth - scrollBox.clientWidth,
+        behavior: "smooth",
+      });
+    } else {
+      scrollBox.scrollBy({
+        left: -scrollAmount,
+        behavior: "smooth",
+      });
+    }
+
     sliderNavPrec();
-    scrollBox.scrollBy({
-      left: -500,
-      behavior: "smooth",
-    });
   }
 
   function scrollRight() {
     const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    const scrollAmount = 500;
+
+    if (
+      scrollBox.scrollLeft + scrollBox.clientWidth >=
+      scrollBox.scrollWidth - 1
+    ) {
+      // Si on est à la fin de la galerie, défilement jusqu'au début
+      scrollBox.scrollTo({
+        left: 0,
+        behavior: "smooth",
+      });
+    } else {
+      scrollBox.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
+
     sliderNavSuiv();
-    scrollBox.scrollBy({
-      left: 500,
-      behavior: "smooth",
-    });
   }
 
   useEffect(() => {
@@ -166,67 +191,28 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
           >
             {selectedLink === "all" && (
               <>
-                {/* Horizontal */}
                 <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="ATTIRE_A2OROL-MA03-30.webp"
-                  lar="23"
-                  haut="28"
-                  ajustHauteurTop="5"
+                  linkUrl="/service-mise-en-scene-live"
+                  src="SHANGXIA_FR1223S007QUARTZ-Fullbody-tiff-1.webp"
+                  lar="26"
+                  haut="26"
+                  ajustHauteurTop=""
                   ajustHauteurBottom=""
                   anim={2}
                   scrollX={scrollX}
-                  marque="Attire The Studio"
-                  alt="Attire The Studio black"
+                  marque="Shangxia"
+                  alt="Shangxia fullbody"
                 />
-                <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="HAST_polo_burgundy_Front.webp"
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="coperni-bag-1.mp4"
                   lar="25"
-                  haut="25"
+                  haut="35"
                   ajustHauteurTop=""
-                  ajustHauteurBottom="5"
-                  anim={2}
-                  scrollX={scrollX}
-                  marque="Hast"
-                  alt="Hast polo burgundy"
-                />
-                <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="GIAMBATTISTA_D1SAND-TR24-30.webp"
-                  lar="25"
-                  haut="34"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom="5"
+                  ajustHauteurBottom=""
                   anim={1}
                   scrollX={scrollX}
-                  marque="Giambattista"
-                  alt="Giambattista blue bandana"
-                />
-                {/* Vertical */}
-                <IMGPC
-                  linkUrl="/service-packshot-vertical"
-                  src="JPG_23-12-F-MB006-J514_Front+1.webp"
-                  lar="23"
-                  haut="29"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom="9"
-                  anim={2}
-                  scrollX={scrollX}
-                  marque="Jean Paul Gaultier"
-                  alt="Jean Paul Gaultier maillot 1 pièce"
-                />
-                <IMGPC
-                  linkUrl="/service-mannequin-vertical"
-                  src="ATTIRE_PIQUE_avery_Front.webp"
-                  lar="22"
-                  haut="33"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom="5"
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Attire The Studio"
-                  alt="Attire The Studio jeans"
+                  marque="Coperni"
                 />
                 <IMGPC
                   linkUrl="/service-mannequin-vertical"
@@ -240,7 +226,53 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   marque="Attire The Studio"
                   alt="Attire The Studio brown jacket"
                 />
-                {/* Live */}
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="AZ_scarf_loov.webp"
+                  lar="25"
+                  haut="32"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="AZ Factory"
+                  alt="AZ Factory scarf"
+                />
+                <IMGPC
+                  linkUrl="/service-mise-en-scene-live"
+                  src="LDSS-AW22.webp"
+                  lar="26"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={2}
+                  scrollX={scrollX}
+                  marque="Ludovic de Saint Sernin"
+                  alt="Ludovic de Saint Sernin fullbody AW22"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-accessoires-eclipse"
+                  src="coperni-blue-shoes-double.mp4"
+                  lar="25"
+                  haut="35"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Coperni"
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="GIAMBATTISTA_D1SAND-TR24-30.webp"
+                  lar="25"
+                  haut="34"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Giambattista"
+                  alt="Giambattista blue bandana"
+                />
                 <IMGPC
                   linkUrl="/service-mise-en-scene-live"
                   src="SHANGXIA_FR1023S002-Fullbody-tiff-6.webp"
@@ -254,30 +286,138 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   alt="Shangxia fullbody"
                 />
                 <IMGPC
-                  linkUrl="/service-mise-en-scene-live"
-                  src="PORT_TANGER_PT-2200-TOP-RAW-3.webp"
-                  lar="24"
-                  haut="28"
+                  linkUrl="/service-accessoires-eclipse"
+                  src="JPG_earring_chrome-back-tiff-1.webp"
+                  lar="22"
+                  haut="27"
                   ajustHauteurTop=""
                   ajustHauteurBottom=""
                   anim={1}
                   scrollX={scrollX}
-                  marque="Port Tanger"
-                  alt="Port Tanger red glasses"
+                  marque="Jean Paul Gaultier"
+                  alt="Jean Paul Gaultier earring chrome"
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="GIAMBATTISTA_A2TIDY-TA07-08.webp"
+                  lar="23"
+                  haut="28"
+                  ajustHauteurTop="6"
+                  ajustHauteurBottom=""
+                  anim={2}
+                  scrollX={scrollX}
+                  marque="Giambattista"
+                  alt="Giambattista sweat"
                 />
                 <IMGPC
                   linkUrl="/service-mise-en-scene-live"
-                  src="SHANGXIA_FR1223S007QUARTZ-Fullbody-tiff-1.webp"
+                  src="SHANGXIA_FR1023S031lavender-Top-tiff-1.webp"
                   lar="26"
                   haut="26"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={2}
+                  scrollX={scrollX}
+                  marque="Shangxia"
+                  alt="Shangxia lavender"
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-vertical"
+                  src="JPG_23-12-F-MB006-J514_Front+1.webp"
+                  lar="23"
+                  haut="29"
                   ajustHauteurTop=""
                   ajustHauteurBottom=""
                   anim={2}
                   scrollX={scrollX}
-                  marque="Shangxia"
-                  alt="Shangxia fullbody"
+                  marque="Jean Paul Gaultier"
+                  alt="Jean Paul Gaultier maillot 1 pièce"
                 />
-                {/* Eclipse */}
+                <IMGPC
+                  linkUrl="/service-packshot-horizontal"
+                  src="HIRCUS_pantalon_Front.webp"
+                  lar="20"
+                  haut="28"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={2}
+                  scrollX={scrollX}
+                  marque="Hircus"
+                  alt="Hircus pantalon beige"
+                />
+                <IMGPC
+                  linkUrl="/service-accessoires-eclipse"
+                  src="Parfum_x_Y_Project-back-tiff-1.webp"
+                  lar="23"
+                  haut="33"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jean Paul Gaultier x Y Project"
+                  alt="Parfum Jean Paul Gaultier x Y Project"
+                />
+                <IMGPC
+                  linkUrl="/service-mise-en-scene-live"
+                  src="PORT_TANGER_P230113122211-PT-2600-TOP-RAW-11.webp"
+                  lar="24"
+                  haut="28"
+                  ajustHauteurTop="9"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Port Tanger"
+                  alt="Port Tanger black glasses"
+                />
+                <IMGPC
+                  linkUrl="/service-accessoires-eclipse"
+                  src="JACQUES_GENIN_2022_CHOCOLATE_EGGS_MARCH_186970.webp"
+                  lar="23"
+                  haut="33"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jacques Genin"
+                  alt="Jacques Genin chocolate egg paint blue"
+                />
+                <IMGPC
+                  linkUrl="/service-mannequin-vertical"
+                  src="ATTIRE_PIQUE_avery_Front.webp"
+                  lar="22"
+                  haut="33"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Attire The Studio"
+                  alt="Attire The Studio jeans"
+                />
+                {/* Vertical */}
+                <IMGPC
+                  linkUrl="/service-packshot-vertical"
+                  src="JPG_23-12-F-TO056-M044_Front.webp"
+                  lar="23"
+                  haut="29"
+                  ajustHauteurTop="9"
+                  ajustHauteurBottom=""
+                  anim={2}
+                  scrollX={scrollX}
+                  marque="Jean Paul Gaultier"
+                  alt="Jean Paul Gaultier top"
+                />
+                <IMGPC
+                  linkUrl="/service-mannequin-vertical"
+                  src="SHANG_PIQUE_FR1223S017BK1_Front.webp"
+                  lar="25"
+                  haut="25"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="shangxia"
+                  alt="shangxia"
+                />
                 <IMGPC
                   linkUrl="/service-accessoires-eclipse"
                   src="SHANG_PCAPSBblack_silver-34-tiff-2.webp"
@@ -291,16 +431,64 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   alt="shangxia black silver bag"
                 />
                 <IMGPC
-                  linkUrl="/service-accessoires-eclipse"
-                  src="MELLERIO_giardino-ring-pink-sapphire-pink-gold-j1pg029-sf_02.webp"
+                  linkUrl="/service-mise-en-scene-live"
+                  src="JPG_P220613151038_Fullbody_jpg_13.webp"
                   lar="24"
-                  haut="25"
+                  haut="28"
+                  ajustHauteurTop="5"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jean Paul Gaultier"
+                  alt="Jean Paul Gaultier glasses"
+                />
+                <IMGPC
+                  linkUrl="/service-packshot-vertical"
+                  src="IKUZO_Green_Kimono_Side.webp"
+                  lar="20"
+                  haut="30"
                   ajustHauteurTop=""
-                  ajustHauteurBottom="5"
+                  ajustHauteurBottom=""
                   anim={2}
                   scrollX={scrollX}
-                  marque="Mellerio"
-                  alt="mellerio giardino ring pink sapphire pink gold"
+                  marque="Ikuzo"
+                  alt="Ikuzo"
+                />
+                <IMGPC
+                  linkUrl="/service-mise-en-scene-live"
+                  src="PORT_TANGER_P230113122211-PT-2600-TOP-RAW-11.webp"
+                  lar="24"
+                  haut="28"
+                  ajustHauteurTop="9"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Port Tanger"
+                  alt="Port Tanger black glasses"
+                />
+                <IMGPC
+                  linkUrl="/service-mannequin-vertical"
+                  src="SHANG_PIQUE_NO_SKU_Front+1.webp"
+                  lar="25"
+                  haut="25"
+                  ajustHauteurTop="9"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="shangxia"
+                  alt="shangxia"
+                />
+                <IMGPC
+                  linkUrl="/service-mise-en-scene-live"
+                  src="JPG_P220613151038_Fullbody_jpg_16.webp"
+                  lar="24"
+                  haut="28"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom="5"
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jean Paul Gaultier"
+                  alt="Jean Paul Gaultier glasses"
                 />
                 <IMGPC
                   linkUrl="/service-accessoires-eclipse"
@@ -313,6 +501,18 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="Melissa x Jean Paul Gaultier"
                   alt="Pink shoes Melissa x Jean Paul Gaultier"
+                />
+                <IMGPC
+                  linkUrl="/service-accessoires-eclipse"
+                  src="NODALETO_bulla_jones_65_ceramica_patent-creative-tiff-1.webp"
+                  lar="25"
+                  haut="26"
+                  ajustHauteurTop="7"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Nodaleto"
+                  alt="bulla jones 65 ceramica"
                 />
               </>
             )}
@@ -387,6 +587,17 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               marque="Giambattista"
               alt="Giambattista blue bandana"
             />
+            <IMGMobile
+              linkUrl="/service-packshot-horizontal"
+              src="HAST_pants_black_blue_Front.webp"
+              lar="45"
+              haut="50"
+              left=""
+              right="90px"
+              ajustHauteur="5"
+              marque="Hast"
+              alt="Hast pants black blue"
+            />
             {/* Vertical */}
             <IMGMobile
               linkUrl="/service-mannequin-vertical"
@@ -394,7 +605,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               lar="43"
               haut="63"
               left=""
-              right="30px"
+              right="40px"
               ajustHauteur="5"
               marque="Jean Paul Gaultier"
               alt="Jean Paul Gaultier maillot 1 pièce"
@@ -421,6 +632,61 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               marque="Attire The Studio"
               alt="Attire The Studio brown jacket"
             />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="JPG_23-12-F-TO056-M044_Front.webp"
+              lar="43"
+              haut="63"
+              left="90px"
+              right=""
+              ajustHauteur="5"
+              marque="Jean Paul Gaultier"
+              alt="Jean Paul Gaultier top"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="SHANG_PIQUE_FR1223S017BK1_Front.webp"
+              lar="43"
+              haut="63"
+              left="90px"
+              right=""
+              ajustHauteur="5"
+              marque="shangxia"
+              alt="shangxia"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="IKUZO_Green_Kimono_Side.webp"
+              lar="43"
+              haut="63"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="Ikuzo"
+              alt="Ikuzo"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="SHANG_PIQUE_NO_SKU_Front+1.webp"
+              lar="43"
+              haut="63"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="shangxia"
+              alt="shangxia"
+            />
+            <IMGMobile
+              linkUrl="/service-mannequin-vertical"
+              src="FURSAC_C3PREL-TC06-30.webp"
+              lar="43"
+              haut="63"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="Fursac"
+              alt="Fursac blue"
+            />
             {/* Live */}
             <IMGMobile
               linkUrl="/service-mise-en-scene-live"
@@ -435,17 +701,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
             />
             <IMGMobile
               linkUrl="/service-mise-en-scene-live"
-              src="PORT_TANGER_PT-2200-TOP-RAW-3.webp"
-              lar="52"
-              haut="75"
-              left=""
-              right="90px"
-              ajustHauteur="5"
-              marque="Port Tanger"
-              alt="Port Tanger red glasses"
-            />
-            <IMGMobile
-              linkUrl="/service-mise-en-scene-live"
               src="SHANGXIA_FR1223S007QUARTZ-Fullbody-tiff-1.webp"
               lar="50"
               haut="75"
@@ -454,6 +709,50 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               ajustHauteur="5"
               marque="Shangxia"
               alt="Shangxia fullbody"
+            />
+            <IMGMobile
+              linkUrl="/service-mise-en-scene-live"
+              src="JPG_P220613151038_Fullbody_jpg_13.webp"
+              lar="50"
+              haut="75"
+              left="90px"
+              right=""
+              ajustHauteur="5"
+              marque="Jean Paul Gaultier"
+              alt="Jean Paul Gaultier glasses"
+            />
+            <IMGMobile
+              linkUrl="/service-mise-en-scene-live"
+              src="SHANGXIA_FR1023S031lavender-Top-tiff-1.webp"
+              lar="50"
+              haut="75"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Shangxia"
+              alt="Shangxia lavender"
+            />
+            <IMGMobile
+              linkUrl="/service-mise-en-scene-live"
+              src="PORT_TANGER_P230113122211-PT-2600-TOP-RAW-11.webp"
+              lar="50"
+              haut="75"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="Port Tanger"
+              alt="Port Tanger black glasses"
+            />
+            <IMGMobile
+              linkUrl="/service-mise-en-scene-live"
+              src="JPG_P220613151038_Fullbody_jpg_16.webp"
+              lar="50"
+              haut="75"
+              left="90px"
+              right=""
+              ajustHauteur="5"
+              marque="Jean Paul Gaultier"
+              alt="Jean Paul Gaultier glasses"
             />
             {/* Eclipse */}
             <IMGMobile
@@ -470,25 +769,58 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
             />
             <IMGMobile
               linkUrl="/service-accessoires-eclipse"
-              src="MELLERIO_giardino-ring-pink-sapphire-pink-gold-j1pg029-sf_02.webp"
-              lar="43"
-              haut="63"
+              src="MELISSA_JPG_F-CS002-X-33-01-side 2-tiff-1.webp"
+              lar="55"
+              haut="55"
               left=""
               right="40px"
               ajustHauteur="5"
-              marque="Mellerio"
-              alt="mellerio giardino ring pink sapphire pink gold"
+              marque="Melissa x Jean Paul Gaultier"
+              alt="Pink shoes Melissa x Jean Paul Gaultier"
             />
             <IMGMobile
               linkUrl="/service-accessoires-eclipse"
-              src="MELISSA_JPG_F-CS002-X-33-01-side 2-tiff-1.webp"
+              src="NODALETO_bulla_jones_65_ceramica_patent-creative-tiff-1.webp"
+              lar="63"
+              haut="50"
+              left="90px"
+              right=""
+              ajustHauteur="5"
+              marque="Nodaleto"
+              alt="bulla jones 65 ceramica"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="SATO_belel_silver-45-tiff-1_MERGED.webp"
+              lar="63"
+              haut="50"
+              left=""
+              right="40px"
+              ajustHauteur="5"
+              marque="Sato"
+              alt="sato silver glasses"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="JPG_earring_chrome-back-tiff-1.webp"
+              lar="43"
+              haut="63"
+              left="40px"
+              right=""
+              ajustHauteur="5"
+              marque="Jean Paul Gaultier"
+              alt="Jean Paul Gaultier earring chrome"
+            />
+            <IMGMobile
+              linkUrl="/service-accessoires-eclipse"
+              src="SHANG_PCAPSBoff_white_mint-Top-tiff-1.webp"
               lar="43"
               haut="63"
               left="90px"
               right=""
               ajustHauteur="5"
-              marque="Melissa x Jean Paul Gaultier"
-              alt="Pink shoes Melissa x Jean Paul Gaultier"
+              marque="Shangxia"
+              alt="shangxia white bag"
             />
           </div>
         </>

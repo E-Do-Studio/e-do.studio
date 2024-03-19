@@ -53,20 +53,45 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
 
   function scrollLeft() {
     const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    const scrollAmount = 500;
+
+    if (scrollBox.scrollLeft === 0) {
+      // Si on est au début de la galerie, défilement jusqu'à la fin
+      scrollBox.scrollTo({
+        left: scrollBox.scrollWidth - scrollBox.clientWidth,
+        behavior: "smooth",
+      });
+    } else {
+      scrollBox.scrollBy({
+        left: -scrollAmount,
+        behavior: "smooth",
+      });
+    }
+
     sliderNavPrec();
-    scrollBox.scrollBy({
-      left: -500,
-      behavior: "smooth",
-    });
   }
 
   function scrollRight() {
     const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
+    const scrollAmount = 500;
+
+    if (
+      scrollBox.scrollLeft + scrollBox.clientWidth >=
+      scrollBox.scrollWidth - 1
+    ) {
+      // Si on est à la fin de la galerie, défilement jusqu'au début
+      scrollBox.scrollTo({
+        left: 0,
+        behavior: "smooth",
+      });
+    } else {
+      scrollBox.scrollBy({
+        left: scrollAmount,
+        behavior: "smooth",
+      });
+    }
+
     sliderNavSuiv();
-    scrollBox.scrollBy({
-      left: 500,
-      behavior: "smooth",
-    });
   }
 
   useEffect(() => {
@@ -149,6 +174,18 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
             >
               {selectedLink === "live" && (
                 <>
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="NOAH.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mirae"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="SHANGXIA_FR1023S002-Fullbody-tiff-6.webp"
@@ -163,18 +200,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
-                    src="PORT_TANGER_PT-2200-TOP-RAW-3.webp"
-                    lar="24"
-                    haut="28"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Port Tanger"
-                    alt="Port Tanger red glasses"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mise-en-scene-live"
                     src="SHANGXIA_FR1223S007QUARTZ-Fullbody-tiff-1.webp"
                     lar="26"
                     haut="26"
@@ -184,6 +209,54 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Shangxia"
                     alt="Shangxia fullbody"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="GUC_VIDEO.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="GUC"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="PRESSIAT.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Pressiat"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="Giambattista_fullbody.webp"
+                    lar="26"
+                    haut="26"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Giambattista"
+                    alt="Giambattista fullbody"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="destroy_hoodie.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Jordran Luca"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -199,6 +272,30 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
+                    src="LDSS-AW22.webp"
+                    lar="26"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Ludovic de Saint Sernin"
+                    alt="Ludovic de Saint Sernin fullbody AW22"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="ORANGE_JUPE.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mirae"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
                     src="JPG_P220613151038_Fullbody_jpg_13.webp"
                     lar="24"
                     haut="28"
@@ -208,6 +305,30 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Jean Paul Gaultier"
                     alt="Jean Paul Gaultier glasses"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="SacT-shirt V1.mov"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Jordan Luca"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="Giambattista_23FWSVTE524B_fullbody.webp"
+                    lar="26"
+                    haut="26"
+                    ajustHauteurTop="9"
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Giambattista"
+                    alt="Giambattista fullbody"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -233,6 +354,30 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Port Tanger"
                     alt="Port Tanger black glasses"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="ensemble-survetement-vert-mouty.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mouty"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="LDSS-kendall-fullbody.webp"
+                    lar="26"
+                    haut="32"
+                    ajustHauteurTop="2"
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Ludoic de Saint Sernin"
+                    alt="Ludovic de Saint Sernin kendall fullbody"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="JPG_P220613151038_Fullbody_jpg_16.webp"
@@ -249,6 +394,79 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
               )}
               {selectedLink === "liveGarments" && (
                 <>
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="NOAH.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mirae"
+                  />
+
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="Giambattista_fullbody.webp"
+                    lar="26"
+                    haut="26"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Giambattista"
+                    alt="Giambattista fullbody"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="GUC_VIDEO.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="GUC"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="LDSS-AW22.webp"
+                    lar="26"
+                    haut="35"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Ludovic de Saint Sernin"
+                    alt="Ludovic de Saint Sernin fullbody AW22"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="MINASTORM.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mina Storm"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="destroy_hoodie.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Jordran Luca"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="SHANGXIA_FR1023S002-Fullbody-tiff-6.webp"
@@ -261,17 +479,88 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Shangxia"
                     alt="Shangxia fullbody"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="SacT-shirt V1.mov"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Jordan Luca"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="Giambattista_23FWSVTE524B_fullbody.webp"
+                    lar="26"
+                    haut="26"
+                    ajustHauteurTop="9"
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Giambattista"
+                    alt="Giambattista fullbody"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="PRESSIAT.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Pressiat"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="Future_is_Yours_Tee.mov"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Jordan Luca"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="SHANGXIA_FR1223S007QUARTZ-Fullbody-tiff-1.webp"
                     lar="26"
                     haut="26"
                     ajustHauteurTop=""
-                    ajustHauteurBottom=""
+                    ajustHauteurBottom="5"
                     anim={2}
                     scrollX={scrollX}
                     marque="Shangxia"
                     alt="Shangxia fullbody"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="INOUI_EDITIONS.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="GUC"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="LDSS-blue-fullbody.webp"
+                    lar="26"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Ludovic de Saint Sernin"
+                    alt="Ludovic de Saint Sernin blue fullbody"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -284,6 +573,54 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Shangxia"
                     alt="Shangxia lavender"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="SCHOTT_BOMBERS.mov"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Schott"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="ORANGE_JUPE.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mirae"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="ensemble-survetement-vert-mouty.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Mouty"
+                  />
+                  <IMGPC
+                    linkUrl="/service-mise-en-scene-live"
+                    src="LDSS-kendall-fullbody.webp"
+                    lar="26"
+                    haut="32"
+                    ajustHauteurTop="2"
+                    ajustHauteurBottom=""
+                    anim={2}
+                    scrollX={scrollX}
+                    marque="Ludoic de Saint Sernin"
+                    alt="Ludovic de Saint Sernin kendall fullbody"
                   />
                 </>
               )}
@@ -437,6 +774,18 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     marque="Jean Paul Gaultier"
                     alt="Jean Paul Gaultier glasses"
                   />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="hit-air.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Hit-Air"
+                  />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
                     src="2023_RIMOWA2748.webp"
@@ -451,18 +800,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
-                    src="PORT_TANGER_PT-2200-TOP-RAW-3.webp"
-                    lar="24"
-                    haut="28"
-                    ajustHauteurTop=""
-                    ajustHauteurBottom=""
-                    anim={1}
-                    scrollX={scrollX}
-                    marque="Port Tanger"
-                    alt="Port Tanger red glasses"
-                  />
-                  <IMGPC
-                    linkUrl="/service-mise-en-scene-live"
                     src="JPG_P220613151038_Fullbody_jpg_13.webp"
                     lar="24"
                     haut="28"
@@ -472,6 +809,98 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     scrollX={scrollX}
                     marque="Jean Paul Gaultier"
                     alt="Jean Paul Gaultier glasses"
+                  />
+                </>
+              )}
+              {selectedLink === "liveJewels" && (
+                <>
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="prisca_violati.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Prisca Violati"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="TDA.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="TDA"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="PANCONESI_1.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Panconesi"
+                  />
+                </>
+              )}
+              {selectedLink === "liveShoes" && (
+                <>
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="13_09.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="13/09"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="le_monde_beryl_shoes.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Le Monde Beryl"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="IINDACO.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="IINDACO"
+                  />
+                  <VIDEOGalerie
+                    linkUrl="/service-mise-en-scene-live"
+                    src="le_monde_beryl.mp4"
+                    lar="25"
+                    haut="35"
+                    left="40px"
+                    ajustHauteurTop=""
+                    ajustHauteurBottom=""
+                    anim={1}
+                    scrollX={scrollX}
+                    marque="Le Monde Beryl"
                   />
                 </>
               )}
@@ -515,6 +944,18 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
           <>
             {selectedLink === "live" && (
               <>
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="NOAH.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mirae"
+                />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="SHANGXIA_FR1023S002-Fullbody-tiff-6.webp"
@@ -526,49 +967,202 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   marque="Shangxia"
                   alt="Shangxia fullbody"
                 />
-                <IMGMobile
+                <VIDEOGalerie
                   linkUrl="/service-mise-en-scene-live"
-                  src="PORT_TANGER_PT-2200-TOP-RAW-3.webp"
-                  lar="52"
-                  haut="75"
-                  left=""
-                  right="100px"
-                  ajustHauteur="5"
-                  marque="Port Tanger"
-                  alt="Port Tanger red glasses"
+                  src="GUC_VIDEO.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="GUC"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="SHANGXIA_FR1223S007QUARTZ-Fullbody-tiff-1.webp"
                   lar="50"
                   haut="75"
-                  left=""
-                  right="40px"
+                  left="40px"
+                  right=""
                   ajustHauteur="5"
                   marque="Shangxia"
                   alt="Shangxia fullbody"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="MINASTORM.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mina Storm"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="destroy_hoodie.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordran Luca"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="Giambattista_fullbody.webp"
+                  lar="50"
+                  haut="75"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="Giambattista"
+                  alt="Giambattista fullbody"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="SacT-shirt V1.mov"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan Luca"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="LDSS-AW22.webp"
+                  lar="50"
+                  haut="75"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Ludovic de Saint Sernin"
+                  alt="Ludovic de Saint Sernin fullbody AW22"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="PRESSIAT.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Pressiat"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="Future_is_Yours_Tee.mov"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan Luca"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="2023_RIMOWA2748.webp"
                   lar="47"
                   haut="78"
-                  left="40px"
-                  right=""
+                  left=""
+                  right="40px"
                   ajustHauteur="5"
                   marque="Rimowa"
                   alt="Rimowa valise"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="INOUI_EDITIONS.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="GUC"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="SHANGXIA_FR1223S007QUARTZ-Fullbody-tiff-1.webp"
+                  lar="50"
+                  haut="75"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Shangxia"
+                  alt="Shangxia fullbody"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="JPG_P220613151038_Fullbody_jpg_13.webp"
                   lar="50"
-                  haut="63"
+                  haut="73"
                   left="40px"
                   right=""
                   ajustHauteur="5"
                   marque="Jean Paul Gaultier"
                   alt="Jean Paul Gaultier glasses"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="SCHOTT_BOMBERS.mov"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Schott"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ORANGE_JUPE.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mirae"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ensemble-survetement-vert-mouty.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mouty"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="LDSS-blue-fullbody.webp"
+                  lar="50"
+                  haut="75"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Ludovic de Saint Sernin"
+                  alt="Ludovic de Saint Sernin blue fullbody"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
@@ -592,10 +1186,80 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   marque="Jean Paul Gaultier"
                   alt="Jean Paul Gaultier glasses"
                 />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="LDSS-kendall-fullbody.webp"
+                  lar="47"
+                  haut="78"
+                  left=""
+                  right="90px"
+                  ajustHauteur="5"
+                  marque="Ludoic de Saint Sernin"
+                  alt="Ludovic de Saint Sernin kendall fullbody"
+                />
               </>
             )}
             {selectedLink === "liveGarments" && (
               <>
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ORANGE_JUPE.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mirae"
+                />
+
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="Giambattista_fullbody.webp"
+                  lar="50"
+                  haut="75"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="Giambattista"
+                  alt="Giambattista fullbody"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="destroy_hoodie.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordran Luca"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="LDSS-AW22.webp"
+                  lar="50"
+                  haut="75"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Ludovic de Saint Sernin"
+                  alt="Ludovic de Saint Sernin fullbody AW22"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="MINASTORM.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mina Storm"
+                />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="SHANGXIA_FR1023S002-Fullbody-tiff-6.webp"
@@ -603,9 +1267,45 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   haut="75"
                   left=""
                   right="40px"
-                  ajustHauteur=""
+                  ajustHauteur="5"
                   marque="Shangxia"
                   alt="Shangxia fullbody"
+                />
+
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="PRESSIAT.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Pressiat"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="Giambattista_23FWSVTE524B_fullbody.webp"
+                  lar="50"
+                  haut="75"
+                  left=""
+                  right="40px"
+                  ajustHauteur="5"
+                  marque="Giambattista"
+                  alt="Giambattista fullbody"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="Future_is_Yours_Tee.mov"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan Luca"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
@@ -618,6 +1318,53 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   marque="Shangxia"
                   alt="Shangxia fullbody"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="GUC_VIDEO.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="GUC"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="LDSS-blue-fullbody.webp"
+                  lar="50"
+                  haut="75"
+                  left="40px"
+                  right=""
+                  ajustHauteur="5"
+                  marque="Ludovic de Saint Sernin"
+                  alt="Ludovic de Saint Sernin blue fullbody"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ensemble-survetement-vert-mouty.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mouty"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="INOUI_EDITIONS.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="GUC"
+                />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="SHANGXIA_FR1023S031lavender-Top-tiff-1.webp"
@@ -628,6 +1375,53 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Shangxia"
                   alt="Shangxia lavender"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="NOAH.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mirae"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="SacT-shirt V1.mov"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan Luca"
+                />
+                <IMGMobile
+                  linkUrl="/service-mise-en-scene-live"
+                  src="LDSS-kendall-fullbody.webp"
+                  lar="47"
+                  haut="78"
+                  left=""
+                  right="90px"
+                  ajustHauteur="5"
+                  marque="Ludoic de Saint Sernin"
+                  alt="Ludovic de Saint Sernin kendall fullbody"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="SCHOTT_BOMBERS.mov"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Schott"
                 />
               </>
             )}
@@ -781,6 +1575,18 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   marque="Jean Paul Gaultier"
                   alt="Jean Paul Gaultier glasses"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="hit-air.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Hit-Air"
+                />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
                   src="2023_RIMOWA2748.webp"
@@ -794,17 +1600,6 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
-                  src="PORT_TANGER_PT-2200-TOP-RAW-3.webp"
-                  lar="52"
-                  haut="75"
-                  left=""
-                  right="100px"
-                  ajustHauteur="5"
-                  marque="Port Tanger"
-                  alt="Port Tanger red glasses"
-                />
-                <IMGMobile
-                  linkUrl="/service-mise-en-scene-live"
                   src="JPG_P220613151038_Fullbody_jpg_13.webp"
                   lar="53"
                   haut="71"
@@ -813,6 +1608,58 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteur="5"
                   marque="Jean Paul Gaultier"
                   alt="Jean Paul Gaultier glasses"
+                />
+              </>
+            )}
+            {selectedLink === "liveShoes" && (
+              <>
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="13_09.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="13/09"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="le_monde_beryl_shoes.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Le Monde Beryl"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="IINDACO.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="IINDACO"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="le_monde_beryl.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Le Monde Beryl"
                 />
               </>
             )}
