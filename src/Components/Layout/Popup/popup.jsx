@@ -37,7 +37,7 @@ const PopupDesktop = () => {
       body: urlData,
     });
 
-    localStorage.setItem("CookieNewsletterBanner", true);
+    localStorage.setItem("CookieNewsletterBanner", "true");
     var noConfirm = document.getElementsByClassName("noConfirm");
     var noConfirmArray = [...noConfirm];
     noConfirmArray.map((element) => element.classList.add("hidden"));

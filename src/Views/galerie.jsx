@@ -60,7 +60,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     const scrollAmount = 500;
 
     if (scrollBox.scrollLeft === 0) {
-      // Si on est au début de la galerie, défilement jusqu'à la fin
       scrollBox.scrollTo({
         left: scrollBox.scrollWidth - scrollBox.clientWidth,
         behavior: "smooth",
@@ -181,7 +180,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
             cursor: "url(cursor/cursor.svg), auto",
           }}
         >
-          {/* <div className="brand">{imgHover}</div> */}
           <ScrollContainer
             className="galeriePCWrapper"
             onScroll={handleScroll}
@@ -191,6 +189,18 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
           >
             {selectedLink === "all" && (
               <>
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="NOAH.mp4"
+                  lar="25"
+                  haut=""
+                  left="40px"
+                  ajustHauteurTop="118px"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mirae"
+                />
                 <IMGPC
                   linkUrl="/service-mise-en-scene-live"
                   src="SHANGXIA_FR1223S007QUARTZ-Fullbody-tiff-1.webp"
@@ -226,6 +236,18 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   marque="Attire The Studio"
                   alt="Attire The Studio brown jacket"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="PRESSIAT.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop="118px"
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Pressiat"
+                />
                 <IMGPC
                   linkUrl="/service-packshot-horizontal"
                   src="AZ_scarf_loov.webp"
@@ -237,6 +259,18 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="AZ Factory"
                   alt="AZ Factory scarf"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="GUC_VIDEO.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="GUC"
                 />
                 <IMGPC
                   linkUrl="/service-mise-en-scene-live"
@@ -273,6 +307,18 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   marque="Giambattista"
                   alt="Giambattista blue bandana"
                 />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="destroy_hoodie.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan Luca"
+                />
                 <IMGPC
                   linkUrl="/service-mise-en-scene-live"
                   src="SHANGXIA_FR1023S002-Fullbody-tiff-6.webp"
@@ -308,6 +354,18 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="Giambattista"
                   alt="Giambattista sweat"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="SacT-shirt V1.mov"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Jordan Luca"
                 />
                 <IMGPC
                   linkUrl="/service-mise-en-scene-live"
@@ -380,6 +438,18 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   scrollX={scrollX}
                   marque="Jacques Genin"
                   alt="Jacques Genin chocolate egg paint blue"
+                />
+                <VIDEOGalerie
+                  linkUrl="/service-mise-en-scene-live"
+                  src="ensemble-survetement-vert-mouty.mp4"
+                  lar="25"
+                  haut="35"
+                  left="40px"
+                  ajustHauteurTop=""
+                  ajustHauteurBottom=""
+                  anim={1}
+                  scrollX={scrollX}
+                  marque="Mouty"
                 />
                 <IMGPC
                   linkUrl="/service-mannequin-vertical"
@@ -543,9 +613,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                 animationData={boutonSliderBlanc}
                 loop={false}
                 autoplay={false}
-                onEnterFrame={(event) => {
-                  // console.log(event)
-                }}
+                onEnterFrame={(event) => {}}
               />
             </button>
           </div>
@@ -554,6 +622,19 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         <>
           <div className="galerieMobile">
             {/* Horizontal */}
+
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="NOAH.mp4"
+              lar="25"
+              haut=""
+              left="40px"
+              ajustHauteurTop="118px"
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Mirae"
+            />
             <IMGMobile
               linkUrl="/service-packshot-horizontal"
               src="ATTIRE_A2OROL-MA03-30.webp"
@@ -575,6 +656,18 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               ajustHauteur="5"
               marque="Hast"
               alt="Hast polo burgundy"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="PRESSIAT.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop="118px"
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Pressiat"
             />
             <IMGMobile
               linkUrl="/service-packshot-horizontal"
@@ -598,7 +691,18 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               marque="Hast"
               alt="Hast pants black blue"
             />
-            {/* Vertical */}
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="destroy_hoodie.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Jordan Luca"
+            />
             <IMGMobile
               linkUrl="/service-mannequin-vertical"
               src="JPG_23-12-F-MB006-J514_Front+1.webp"
@@ -620,6 +724,18 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               ajustHauteur="5"
               marque="Attire The Studio"
               alt="Attire The Studio jeans"
+            />
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="ORANGE_JUPE.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Mirae"
             />
             <IMGMobile
               linkUrl="/service-mannequin-vertical"
@@ -654,6 +770,18 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               marque="shangxia"
               alt="shangxia"
             />
+            <VIDEOGalerie
+              linkUrl="/service-mise-en-scene-live"
+              src="ensemble-survetement-vert-mouty.mp4"
+              lar="25"
+              haut="35"
+              left="40px"
+              ajustHauteurTop=""
+              ajustHauteurBottom=""
+              anim={1}
+              scrollX={scrollX}
+              marque="Mouty"
+            />
             <IMGMobile
               linkUrl="/service-mannequin-vertical"
               src="IKUZO_Green_Kimono_Side.webp"
@@ -687,7 +815,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               marque="Fursac"
               alt="Fursac blue"
             />
-            {/* Live */}
             <IMGMobile
               linkUrl="/service-mise-en-scene-live"
               src="SHANGXIA_FR1023S002-Fullbody-tiff-6.webp"

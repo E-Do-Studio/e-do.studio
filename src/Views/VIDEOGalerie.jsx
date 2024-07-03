@@ -87,6 +87,9 @@ const VIDEOGalerie = ({
               height="600"
               width="300"
               style={{
+                position: "relative",
+                top: ajustHauteurTop,
+                bottom: ajustHauteurBottom,
                 opacity: imgHover ? 0.4 : 1,
                 transition: "all 300ms ease-out",
               }}

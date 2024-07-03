@@ -1,14 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Helmet } from "react-helmet";
 import { useMediaQuery } from "@react-hook/media-query";
+import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 // Images
-import scrollDownButton from "../../Assets/img/retouches/scrollButton.svg";
-import arrow from "../../Assets/img/retouches/arrow.png";
-import circle from "../../Assets/img/retouches/circle.png";
-import round from "../../Assets/img/retouches/round.png";
-import roundDot from "../../Assets/img/retouches/round-dot.png";
 
 // Sections
 import Footer from "../../Components/Layout/Footer/footer";
@@ -22,7 +17,6 @@ import RetoucheMenu from "./RetoucheMenu";
 import RetouchesCarousel from "./RetouchesCarousel";
 
 //Traduction
-import i18next, { t } from "i18next";
 import { useTranslation } from "react-i18next";
 
 //Animation
@@ -131,15 +125,15 @@ const RetouchesDesktop = () => {
   };
 
   if (selectedCat === "onModel") {
-    price = "7,50€";
+    price = "Starting at 7,50€";
   } else if (selectedCat === "plat") {
-    price = "5€";
+    price = "Starting at 5€";
   } else if (selectedCat === "lunettes") {
-    price = "10€";
+    price = "Starting at 10€";
   } else if (selectedCat === "ghost") {
     price = "From 5€ to 7,50€";
   } else if (selectedCat === "access") {
-    price = "5€";
+    price = "Starting at 5€";
   } else if (selectedCat === "bijoux") {
     price = "Starting at 12€";
   }

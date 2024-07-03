@@ -5,21 +5,14 @@ import { Waypoint } from "react-waypoint";
 import ScrollContainer from "react-indiana-drag-scroll";
 import { Helmet } from "react-helmet";
 import Lottie from "lottie-react";
-
 import { useLocation } from "react-router-dom";
-
 import anime from "animejs/lib/anime.es.js";
-
 import "./galerie.scss";
-
 import Footer from "../Components/Layout/Footer/footer";
-
 import boutonSliderBlanc from "../Assets/animations/boutonMenuServices.json";
-
 import { useTranslation } from "react-i18next";
 
 // Composants
-
 import GalerieMenu from "./GalerieMenu";
 import IMGPC from "./IMGPC";
 import IMGMobile from "./IMGMobile";
@@ -178,9 +171,9 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     linkUrl="/service-mise-en-scene-live"
                     src="NOAH.mp4"
                     lar="25"
-                    haut="35"
+                    haut=""
                     left="40px"
-                    ajustHauteurTop=""
+                    ajustHauteurTop="118px"
                     ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
@@ -228,7 +221,7 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     lar="25"
                     haut="35"
                     left="40px"
-                    ajustHauteurTop=""
+                    ajustHauteurTop="118px"
                     ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
@@ -256,7 +249,7 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
-                    marque="Jordran Luca"
+                    marque="Jordan Luca"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -299,8 +292,8 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     src="JPG_P220613151038_Fullbody_jpg_13.webp"
                     lar="24"
                     haut="28"
-                    ajustHauteurTop="5"
-                    ajustHauteurBottom=""
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="8"
                     anim={1}
                     scrollX={scrollX}
                     marque="Jean Paul Gaultier"
@@ -371,8 +364,8 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     src="LDSS-kendall-fullbody.webp"
                     lar="26"
                     haut="32"
-                    ajustHauteurTop="2"
-                    ajustHauteurBottom=""
+                    ajustHauteurTop=""
+                    ajustHauteurBottom="8"
                     anim={2}
                     scrollX={scrollX}
                     marque="Ludoic de Saint Sernin"
@@ -384,7 +377,7 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     lar="24"
                     haut="28"
                     ajustHauteurTop=""
-                    ajustHauteurBottom="5"
+                    ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
                     marque="Jean Paul Gaultier"
@@ -465,7 +458,7 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                     ajustHauteurBottom=""
                     anim={1}
                     scrollX={scrollX}
-                    marque="Jordran Luca"
+                    marque="Jordan Luca"
                   />
                   <IMGPC
                     linkUrl="/service-mise-en-scene-live"
@@ -1012,7 +1005,7 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteurBottom=""
                   anim={1}
                   scrollX={scrollX}
-                  marque="Jordran Luca"
+                  marque="Jordan Luca"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
@@ -1235,7 +1228,7 @@ const GalerieLive = ({ setPageLoad, setSelectedLink }) => {
                   ajustHauteurBottom=""
                   anim={1}
                   scrollX={scrollX}
-                  marque="Jordran Luca"
+                  marque="Jordan Luca"
                 />
                 <IMGMobile
                   linkUrl="/service-mise-en-scene-live"
