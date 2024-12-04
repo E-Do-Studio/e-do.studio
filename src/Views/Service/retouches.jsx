@@ -3,8 +3,6 @@ import { useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
-// Images
-
 // Sections
 import Footer from "../../Components/Layout/Footer/footer";
 
@@ -12,7 +10,6 @@ import Footer from "../../Components/Layout/Footer/footer";
 import "./retouches.scss";
 
 // Import composants
-
 import RetoucheMenu from "./RetoucheMenu";
 import RetouchesCarousel from "./RetouchesCarousel";
 
@@ -20,7 +17,6 @@ import RetouchesCarousel from "./RetouchesCarousel";
 import { useTranslation } from "react-i18next";
 
 //Animation
-
 import anime from "animejs/lib/anime.es.js";
 
 const RetouchesMobile = () => {
@@ -32,15 +28,15 @@ const RetouchesMobile = () => {
   let price = "";
 
   if (selectedCat === "onModel") {
-    price = "7,50€";
+    price = "Starting at 7,50€";
   } else if (selectedCat === "plat") {
-    price = "5€";
+    price = "Starting at 5€";
   } else if (selectedCat === "lunettes") {
-    price = "10€";
+    price = "Starting at 10€";
   } else if (selectedCat === "ghost") {
     price = "From 5€ to 7,50€";
   } else if (selectedCat === "access") {
-    price = "5€";
+    price = "Starting at 5€";
   } else if (selectedCat === "bijoux") {
     price = "Starting at 12€";
   }
@@ -54,10 +50,10 @@ const RetouchesMobile = () => {
         />
         <div className="prix">
           <div className="circle">
+            <p className="indication">{t("*Price per image")}</p>
             <h2 className="prix-ht">
               {t(price)} {t("excl. tax")}
             </h2>
-            <p className="indication">{t("*Price per image")}</p>
           </div>
         </div>
       </div>
@@ -154,10 +150,10 @@ const RetouchesDesktop = () => {
             onMouseEnter={animBoutonRond}
             onMouseLeave={animBoutonRondLeave}
           >
+            <p className="indication">{t("*Price per image")}</p>
             <h2 className="prix-ht">
               {t(price)} {t("excl. tax")}
             </h2>
-            <p className="indication">{t("*Price per image")}</p>
           </div>
         </div>
         <div className="beauty-retouche">

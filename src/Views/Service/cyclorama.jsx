@@ -1,50 +1,45 @@
 // Librairies
-import React, { useEffect, useCallback, useRef, Suspense, lazy } from "react";
-import { Helmet } from "react-helmet";
 import { useMediaQuery } from "@react-hook/media-query";
-import { Link } from "react-router-dom";
-import { Canvas } from "@react-three/fiber";
 import anime from "animejs/lib/anime.es.js";
-import { Environment, OrbitControls } from "@react-three/drei";
 import throttle from "lodash/throttle";
+import { useCallback, useEffect, useRef } from "react";
+import { Helmet } from "react-helmet";
+import { Link } from "react-router-dom";
 
 // Modèle 3D
-import Model from "./Model";
 
 // Images
+import cabines from "../../Assets/img/cyclorama/cabines.jpg";
+import cabinesWebp from "../../Assets/img/cyclorama/cabines.webp";
+import cross from "../../Assets/img/cyclorama/cross.svg";
+import cuisine from "../../Assets/img/cyclorama/cuisine.jpg";
+import cuisineWebp from "../../Assets/img/cyclorama/cuisine.webp";
 import cycloPlan from "../../Assets/img/cyclorama/cyclo-plan.svg";
-import scrollCircle from "../../Assets/img/cyclorama/scrollButton.svg";
 import cyclo from "../../Assets/img/cyclorama/cyclo.jpg";
 import cycloWebp from "../../Assets/img/cyclorama/cyclo.webp";
+import leftArrow from "../../Assets/img/cyclorama/leftArrow.svg";
+import rightArrow from "../../Assets/img/cyclorama/rightArrow.svg";
+import scrollCircle from "../../Assets/img/cyclorama/scrollButton.svg";
 import studio from "../../Assets/img/cyclorama/studio.jpg";
 import studioWebp from "../../Assets/img/cyclorama/studio.webp";
 import table from "../../Assets/img/cyclorama/table.jpg";
 import tableWebp from "../../Assets/img/cyclorama/table.webp";
-import cabines from "../../Assets/img/cyclorama/cabines.jpg";
-import cabinesWebp from "../../Assets/img/cyclorama/cabines.webp";
-import cuisine from "../../Assets/img/cyclorama/cuisine.jpg";
-import cuisineWebp from "../../Assets/img/cyclorama/cuisine.webp";
-import leftArrow from "../../Assets/img/cyclorama/leftArrow.svg";
-import rightArrow from "../../Assets/img/cyclorama/rightArrow.svg";
-import cross from "../../Assets/img/cyclorama/cross.svg";
 
 // Plaquette Cyclo
 
-import plaquetteCycloFr from "../../Assets/plaquette/CYCLO_E-DO_FR_UPDATE_ELECTRICITÉ.pdf";
 import plaquetteCycloEn from "../../Assets/plaquette/CYCLO_E-DO ENG_ELECTRICITY_UPDATE.pdf";
+import plaquetteCycloFr from "../../Assets/plaquette/CYCLO_E-DO_FR_UPDATE_ELECTRICITÉ.pdf";
 
 // Sections
-import AutresServices from "./autresServices.jsx";
 import Footer from "../../Components/Layout/Footer/footer";
+import AutresServices from "./autresServices.jsx";
 
 // CSS
 import "./cyclorama.scss";
 
 //Traduction
-import i18next, { t } from "i18next";
+import i18next from "i18next";
 import { useTranslation } from "react-i18next";
-
-import CycloramaGallery from "./cycloramaGallery";
 
 const serviceData = [
   {

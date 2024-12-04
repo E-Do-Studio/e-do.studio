@@ -1,12 +1,8 @@
-import { useCallback, useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { useMediaQuery } from "@react-hook/media-query";
 import { Waypoint } from "react-waypoint";
-import ScrollContainer from "react-indiana-drag-scroll";
-import { Helmet } from "react-helmet";
-import Lottie from "lottie-react";
 
-const IMGPC = ({
+const IMGPC = React.memo(function IMGPCComponent({
   src,
   lar,
   haut,
@@ -16,7 +12,7 @@ const IMGPC = ({
   linkUrl,
   marque,
   alt,
-}) => {
+}) {
   const image = useRef();
   const IMGPCDessus = useRef();
   const [animETAT, setAnimETAT] = useState(false);
@@ -24,34 +20,41 @@ const IMGPC = ({
 
   const handleHover = (event) => {
     setImgHover(marque);
-    image.current.style.opacity = 0.8;
-    image.current.style.filter = "grayscale(1)";
+    if (image.current) {
+      image.current.style.opacity = 0.8;
+      image.current.style.filter = "grayscale(1)";
+    }
   };
 
   const handleMouseOut = (event) => {
     setImgHover(false);
-    image.current.style.opacity = 1;
-    image.current.style.filter = "grayscale(0)";
+    if (image.current) {
+      image.current.style.opacity = 1;
+      image.current.style.filter = "grayscale(0)";
+    }
   };
 
   const animIMG = () => {
-    //Lance l'animation
-    // console.log('test')
     if (!animETAT) {
       if (anim === 1) {
         setAnimETAT(true);
-        image.current.style.transform = "translateX(0%) scale(0.9)";
-        setTimeout(() => {
-          image.current.style.transition = "all 600ms ease-out";
-          image.current.style.transform = "translateX(0%) scale(1)";
-        }, 280);
+        if (image.current) {
+          image.current.style.transform = "translateX(0%) scale(0.9)";
+          setTimeout(() => {
+            image.current.style.transition = "all 600ms ease-out";
+            image.current.style.transform = "translateX(0%) scale(1)";
+          }, 280);
+        }
       }
 
       if (anim === 2) {
         setAnimETAT(true);
-        image.current.style.transform = "translateX(0%)";
-        // image.current.style.marginLeft = '100%'
-        IMGPCDessus.current.style.width = 0;
+        if (image.current) {
+          image.current.style.transform = "translateX(0%)";
+        }
+        if (IMGPCDessus.current) {
+          IMGPCDessus.current.style.width = 0;
+        }
       }
     }
   };
@@ -73,7 +76,7 @@ const IMGPC = ({
             bottom: ajustHauteurBottom ? ajustHauteurBottom + "vh" : "unset",
           }}
         >
-          {src ? (
+          {src && (
             <Link
               to={linkUrl}
               style={{ cursor: "url(cursor/cursor.svg), auto" }}
@@ -91,7 +94,7 @@ const IMGPC = ({
                     opacity: imgHover ? 0.4 : 1,
                     transition: "all 300ms ease-out",
                   }}
-                  className={anim == 1 ? "imgAnim1" : ""}
+                  className={anim === 1 ? "imgAnim1" : ""}
                   marque={marque}
                 />
                 <p
@@ -105,12 +108,10 @@ const IMGPC = ({
                 </p>
               </div>
             </Link>
-          ) : (
-            ""
           )}
         </div>
 
-        {anim == 2 ? (
+        {anim === 2 ? (
           <div
             ref={IMGPCDessus}
             className="IMGPCDessus"
@@ -132,11 +133,11 @@ const IMGPC = ({
             background: "blue",
           }}
         >
-          <Waypoint onEnter={animIMG} horizontal={true} />
+          <Waypoint onEnter={animIMG} horizontal />
         </div>
       </div>
     </>
   );
-};
+});
 
 export default IMGPC;

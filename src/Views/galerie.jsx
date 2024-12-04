@@ -1,10 +1,7 @@
-import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import { useMediaQuery } from "@react-hook/media-query";
-import { Waypoint } from "react-waypoint";
-import ScrollContainer from "react-indiana-drag-scroll";
-import { Helmet } from "react-helmet";
 import Lottie from "lottie-react";
+import React, { Suspense, useEffect, useRef, useState } from "react";
+import ScrollContainer from "react-indiana-drag-scroll";
 
 import { useLocation } from "react-router-dom";
 
@@ -16,17 +13,10 @@ import Footer from "../Components/Layout/Footer/footer";
 
 import boutonSliderBlanc from "../Assets/animations/boutonMenuServices.json";
 
-import { useTranslation } from "react-i18next";
-
 import GalerieMenu from "./GalerieMenu";
-import IMGPC from "./IMGPC";
 import IMGMobile from "./IMGMobile";
+import IMGPC from "./IMGPC";
 import VIDEOGalerie from "./VIDEOGalerie";
-
-import GalerieEclipse from "./galerie-eclipse";
-import GalerieLive from "./galerie-live";
-import GalerieVertical from "./galerie-live";
-import GalerieHorizontal from "./galerie-live";
 
 const Galerie = ({ setPageLoad, setSelectedLink }) => {
   const matches = useMediaQuery("only screen and (min-width: 1200px)");
@@ -167,7 +157,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
   const [marque, setMarque] = useState("");
 
   return (
-    <>
+    <Suspense fallback={<div>Loading...</div>}>
       <GalerieMenu
         setPageLoad={setPageLoad}
         selectedLink={selectedLink}
@@ -953,7 +943,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         </>
       )}
       <Footer AnimationBloc7={true} />
-    </>
+    </Suspense>
   );
 };
 

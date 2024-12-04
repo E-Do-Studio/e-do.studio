@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "./static/css/main.0dfefb8c.chunk.css",
-    "main.js": "./static/js/main.96e6096a.chunk.js",
-    "main.js.map": "./static/js/main.96e6096a.chunk.js.map",
+    "main.css": "./static/css/main.7535f3f3.chunk.css",
+    "main.js": "./static/js/main.7496513a.chunk.js",
+    "main.js.map": "./static/js/main.7496513a.chunk.js.map",
     "runtime-main.js": "./static/js/runtime-main.8b620b2f.js",
     "runtime-main.js.map": "./static/js/runtime-main.8b620b2f.js.map",
-    "static/js/2.1628212a.chunk.js": "./static/js/2.1628212a.chunk.js",
-    "static/js/2.1628212a.chunk.js.map": "./static/js/2.1628212a.chunk.js.map",
+    "static/js/2.6b4fd2f4.chunk.js": "./static/js/2.6b4fd2f4.chunk.js",
+    "static/js/2.6b4fd2f4.chunk.js.map": "./static/js/2.6b4fd2f4.chunk.js.map",
     "index.html": "./index.html",
-    "static/css/main.0dfefb8c.chunk.css.map": "./static/css/main.0dfefb8c.chunk.css.map",
-    "static/js/2.1628212a.chunk.js.LICENSE.txt": "./static/js/2.1628212a.chunk.js.LICENSE.txt",
+    "static/css/main.7535f3f3.chunk.css.map": "./static/css/main.7535f3f3.chunk.css.map",
+    "static/js/2.6b4fd2f4.chunk.js.LICENSE.txt": "./static/js/2.6b4fd2f4.chunk.js.LICENSE.txt",
     "static/media/2022_BETRAND_GUILLEMOT_0505220286.3b1d1e7d.webp": "./static/media/2022_BETRAND_GUILLEMOT_0505220286.3b1d1e7d.webp",
     "static/media/2022_BETRAND_GUILLEMOT_0505220432.ce2c50cf.webp": "./static/media/2022_BETRAND_GUILLEMOT_0505220432.ce2c50cf.webp",
     "static/media/2022_RIMOWA_LAVENDRE_CITRON1090.739f111c.webp": "./static/media/2022_RIMOWA_LAVENDRE_CITRON1090.739f111c.webp",
@@ -197,8 +197,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.8b620b2f.js",
-    "static/js/2.1628212a.chunk.js",
-    "static/css/main.0dfefb8c.chunk.css",
-    "static/js/main.96e6096a.chunk.js"
+    "static/js/2.6b4fd2f4.chunk.js",
+    "static/css/main.7535f3f3.chunk.css",
+    "static/js/main.7496513a.chunk.js"
   ]
 }
