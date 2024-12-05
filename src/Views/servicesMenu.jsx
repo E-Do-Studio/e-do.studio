@@ -1,10 +1,9 @@
-import React, { useEffect, useState, useRef } from "react";
-import { Link } from "react-router-dom";
-import Slider from "react-slick";
 import { useMediaQuery } from "@react-hook/media-query";
-import Image from "react-image-webp";
 import anime from "animejs/lib/anime.es.js";
 import Lottie from "lottie-react";
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import Slider from "react-slick";
 
 import { Helmet } from "react-helmet";
 
@@ -14,8 +13,19 @@ import "./servicesMenu.scss";
 
 import boutonSliderBlanc from "../Assets/animations/boutonMenuServices.json";
 
-import i18next, { t } from "i18next";
 import { useTranslation } from "react-i18next";
+
+import machineEclipseImg from "../assets/img/menuservices/machine-eclipse.jpg";
+import machineHorizontalImg from "../assets/img/menuservices/machine-horizontal.jpg";
+import machineLiveImg from "../assets/img/menuservices/machine-live.jpg";
+import machineVerticalImg from "../assets/img/menuservices/machine-vertical.jpg";
+
+const images = {
+  "machine-horizontal": machineHorizontalImg,
+  "machine-vertical": machineVerticalImg,
+  "machine-live": machineLiveImg,
+  "machine-eclipse": machineEclipseImg,
+};
 
 const ServiceMenuElement = ({
   titre,
@@ -151,12 +161,7 @@ const ServiceMenuElement = ({
         >
           <div className="SME_IMGBloc" ref={SME_IMGBloc}>
             <Link to={lien}>
-              <img
-                className="SME_IMG"
-                src={
-                  process.env.PUBLIC_URL + "/img/menuservices/" + img + ".jpg"
-                }
-              />
+              <img className="SME_IMG" src={images[img]} />
             </Link>
           </div>
 
