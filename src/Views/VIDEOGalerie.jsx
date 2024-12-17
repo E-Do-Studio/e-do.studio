@@ -1,10 +1,6 @@
-import { useCallback, useEffect, useRef, useState } from "react";
-import { Link } from "react-router-dom";
 import { useMediaQuery } from "@react-hook/media-query";
-import { Waypoint } from "react-waypoint";
-import ScrollContainer from "react-indiana-drag-scroll";
-import { Helmet } from "react-helmet";
-import Lottie from "lottie-react";
+import { useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const VIDEOGalerie = ({
   src,
@@ -95,10 +91,10 @@ const VIDEOGalerie = ({
               }}
               ref={videoRefs}
             >
-              <source
+              {/* <source
                 src={process.env.PUBLIC_URL + "/img/galerie/" + src}
                 type="video/mp4"
-              />
+              /> */}
             </video>
             <p
               style={{

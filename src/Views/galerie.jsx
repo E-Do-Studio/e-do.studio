@@ -1,6 +1,9 @@
 import { useMediaQuery } from "@react-hook/media-query";
 import Lottie from "lottie-react";
 import React, { Suspense, useEffect, useRef, useState } from "react";
+import IMGMobile from "./IMGMobile";
+import IMGPC from "./IMGPC";
+
 import ScrollContainer from "react-indiana-drag-scroll";
 
 import { useLocation } from "react-router-dom";
@@ -14,19 +17,225 @@ import Footer from "../Components/Layout/Footer/footer";
 import boutonSliderBlanc from "../Assets/animations/boutonMenuServices.json";
 
 import GalerieMenu from "./GalerieMenu";
-import IMGMobile from "./IMGMobile";
-import IMGPC from "./IMGPC";
-import VIDEOGalerie from "./VIDEOGalerie";
+
+import { LazyLoadComponent } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/opacity.css";
+
+const generateRandomOffset = (index) => {
+  const isMobile = window.innerWidth < 1200;
+  const amplitudeMultiplier = isMobile ? 0.6 : 1;
+
+  const topOffset =
+    (Math.sin(index * 0.7) * 35 +
+      Math.cos(index * 1.3) * 20 +
+      Math.sin(index * 0.2 + Math.PI) * 25 +
+      Math.cos(index * 2.1) * 15 +
+      Math.sin(index * 0.5 + index * 0.1) * 18) *
+    amplitudeMultiplier;
+
+  const horizontalOffset = isMobile
+    ? (Math.sin(index * 0.8) * 12 +
+        Math.cos(index * 1.2) * 8 +
+        Math.sin(index * 0.3 + Math.PI / 4) * 10 +
+        Math.cos(index * 1.8) * 6 +
+        Math.sin(index * 0.6 + index * 0.2) * 5) *
+      amplitudeMultiplier
+    : 0;
+
+  const randomFactor = Math.sin(index * 123.456) * 20 * amplitudeMultiplier;
+
+  return {
+    top: Math.round(topOffset + randomFactor),
+    bottom: isMobile ? 0 : Math.round(topOffset - randomFactor),
+    left: isMobile ? Math.round(horizontalOffset) : 0,
+  };
+};
 
 const Galerie = ({ setPageLoad, setSelectedLink }) => {
   const matches = useMediaQuery("only screen and (min-width: 1200px)");
   const location = useLocation();
-  const { selectedLink = "all" } = location.state || {};
+  const searchParams = new URLSearchParams(location.search);
+  const category = searchParams.get("category");
+  const subcategory = searchParams.get("subcategory");
+
+  // ��tat pour stocker les catégories organisées
+  const [categories, setCategories] = useState({});
+  const [images, setImages] = useState([]);
   const [scrollX, setScrollX] = useState(0);
 
+  // Ajout des états pour la pagination
+  const [page, setPage] = useState(1);
+  const [hasMore, setHasMore] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Au début du composant, ajoutez un nouvel état pour le cache
+  const [imageCache, setImageCache] = useState([]);
+
+  // Ajoutez cette fonction après les déclarations d'état
+  const preloadImage = (url) => {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.src = `https://cms-psi-five.vercel.app${url}`;
+      img.onload = resolve;
+      img.onerror = reject;
+    });
+  };
+
+  // Fonction pour organiser les images par catégories
+  const organizeCategories = (images) => {
+    if (!Array.isArray(images) || images.length === 0) {
+      console.log("No images to organize");
+      return;
+    }
+
+    const categoriesMap = images.reduce((acc, item) => {
+      if (!item?.categories?.name) {
+        console.log("Item missing category:", item);
+        return acc;
+      }
+
+      const category = item.categories.name.toLowerCase();
+
+      if (!acc[category]) {
+        acc[category] = new Set();
+      }
+
+      return acc;
+    }, {});
+
+    const formattedCategories = Object.entries(categoriesMap).reduce(
+      (acc, [category, subCats]) => {
+        acc[category] = Array.from(subCats).sort();
+        return acc;
+      },
+      {}
+    );
+
+    console.log("Formatted categories:", formattedCategories);
+    setCategories(formattedCategories);
+  };
+
+  // Modification de la fonction fetchImages
+  const fetchImages = async (pageNumber = 1) => {
+    try {
+      setIsLoading(true);
+      const response = await fetch(
+        `https://cms-psi-five.vercel.app/api/gallery?depth=1&draft=false&limit=20`
+      );
+      const data = await response.json();
+
+      if (data.docs) {
+        const validImages = data.docs.filter(
+          (item) => item.image && item.image.url
+        );
+
+        // Précharger les images
+        await Promise.all(
+          validImages.map((item) =>
+            preloadImage(item.image.url).catch((err) =>
+              console.warn(`Failed to preload image: ${item.image.url}`, err)
+            )
+          )
+        );
+
+        // Mise à jour du cache et des images
+        if (pageNumber === 1) {
+          // Pour la première page, on réinitialise le cache
+          setImageCache(validImages);
+          setImages(validImages);
+        } else {
+          // Pour les pages suivantes, on ajoute au cache existant
+          setImageCache((prevCache) => {
+            // Filtrer les doublons en utilisant l'ID
+            const newImages = validImages.filter(
+              (newImg) =>
+                !prevCache.some((cachedImg) => cachedImg.id === newImg.id)
+            );
+            return [...prevCache, ...newImages];
+          });
+          setImages((prevImages) => [...prevImages, ...validImages]);
+        }
+
+        setHasMore(data.hasNextPage);
+        organizeCategories(validImages);
+      }
+    } catch (error) {
+      console.error("Error fetching images:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchImages();
+  }, []);
+
+  // Modification de la fonction de filtrage
+  const filterImages = (images, category, subcategory) => {
+    if (!category) return imageCache; // Utiliser le cache au lieu de images
+
+    return imageCache.filter((item) => {
+      const itemCategory = item.categories?.name.toLowerCase();
+      return itemCategory === category.toLowerCase();
+    });
+  };
+
+  // Modification du selectedLink pour inclure le "/"
+  const selectedLink = category
+    ? subcategory
+      ? `${category.toUpperCase()} / ${subcategory.toUpperCase()}`
+      : category.toUpperCase()
+    : "all";
+
+  // Log pour le débogage
+  useEffect(() => {
+    console.log("Raw images data:", images);
+    console.log("Organized categories:", categories);
+    console.log("Current category:", category);
+    console.log("Current subcategory:", subcategory);
+  }, [images, categories, category, subcategory]);
+
+  // Fonction pour gérer le scroll et charger plus d'images
   const handleScroll = (event) => {
     setScrollX(event);
+
+    // Pour la version PC
+    if (matches) {
+      const scrollContainer =
+        document.getElementsByClassName("galeriePCWrapper")[0];
+      const scrollPercentage =
+        (scrollContainer.scrollLeft + scrollContainer.clientWidth) /
+        scrollContainer.scrollWidth;
+
+      if (scrollPercentage > 0.8 && !isLoading && hasMore) {
+        setPage((prev) => prev + 1);
+      }
+    }
+    // Pour la version mobile
+    else {
+      const scrollPercentage =
+        (window.innerHeight + window.scrollY) /
+        document.documentElement.scrollHeight;
+
+      if (scrollPercentage > 0.8 && !isLoading && hasMore) {
+        setPage((prev) => prev + 1);
+      }
+    }
   };
+
+  // Effet pour charger plus d'images quand la page change
+  useEffect(() => {
+    if (page > 1) {
+      fetchImages(page);
+    }
+  }, [page]);
+
+  // Effet pour réinitialiser la pagination quand la catégorie change
+  useEffect(() => {
+    setPage(1);
+    setHasMore(true);
+    fetchImages(1);
+  }, [category, subcategory]);
 
   const PMS_BoutonPCNextButton = useRef();
   const PMS_BoutonPCPrecButton = useRef();
@@ -72,7 +281,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       scrollBox.scrollLeft + scrollBox.clientWidth >=
       scrollBox.scrollWidth - 1
     ) {
-      // Si on est à la fin de la galerie, défilement jusqu'au début
       scrollBox.scrollTo({
         left: 0,
         behavior: "smooth",
@@ -156,791 +364,116 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
   const [imgHover, setImgHover] = useState(false);
   const [marque, setMarque] = useState("");
 
+  const getCategoryLink = (category) => {
+    if (!category) return "#";
+
+    const categoryLinks = {
+      live: "/service-mise-en-scene-live",
+      horizontal: "/service-packshot-horizontal",
+      vertical: "/service-mannequin-vertical",
+      eclipse: "/service-accessoires-eclipse",
+    };
+
+    return categoryLinks[category.toLowerCase()] || "#";
+  };
+
+  const renderGalerieItem = (item, index) => {
+    if (!item?.image?.url) {
+      return null;
+    }
+
+    const itemCategory = item.categories?.name?.toLowerCase();
+    const linkUrl = getCategoryLink(itemCategory);
+    const imageUrl = `https://cms-psi-five.vercel.app${item.image.url}`;
+
+    return (
+      <LazyLoadComponent key={item.id || index} threshold={400}>
+        <div className="gallery-item">
+          <img
+            // linkUrl={linkUrl}
+            src={imageUrl}
+            // lar="24"
+            // haut="32"
+            // anim={2}
+            // scrollX={scrollX}
+            // marque={item.brand?.name}
+            // alt={item.brand?.name || "Image"}
+            // onError={(e) => {
+            //   console.log("Image failed to load:", imageUrl);
+            //   e.target.style.display = "none";
+            // }}
+          />
+        </div>
+      </LazyLoadComponent>
+    );
+  };
+
+  const renderMobileItem = (item, index) => {
+    if (!item?.image?.url) {
+      return null;
+    }
+
+    const offsets = generateRandomOffset(index);
+    const linkUrl = getCategoryLink(item.categories?.name?.toLowerCase());
+    const imageUrl = `https://cms-psi-five.vercel.app${item.image.url}`;
+
+    return (
+      <LazyLoadComponent key={item.id || index} threshold={200}>
+        <IMGMobile
+          linkUrl={linkUrl}
+          src={imageUrl}
+          lar="45"
+          haut="50"
+          left={`${20 + offsets.left}px`}
+          right=""
+          ajustHauteur={offsets.top}
+          marque={item.brand?.name}
+          alt={item.brand?.name || "Image"}
+        />
+      </LazyLoadComponent>
+    );
+  };
+
+  useEffect(() => {
+    console.log("Nombre total d'images:", images.length);
+    console.log(
+      "Images filtrées:",
+      filterImages(images, category, subcategory).length
+    );
+  }, [images, category, subcategory]);
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <GalerieMenu
         setPageLoad={setPageLoad}
         selectedLink={selectedLink}
         setSelectedLink={setSelectedLink}
+        categories={categories}
       />
       {matches ? (
-        <div
-          className="galeriePC"
-          style={{
-            cursor: "url(cursor/cursor.svg), auto",
-          }}
-        >
-          <ScrollContainer
-            className="galeriePCWrapper"
-            onScroll={handleScroll}
-            hideScrollbars={false}
-            vertical={false}
-            style={{ overflowY: "hidden" }}
-          >
-            {selectedLink === "all" && (
-              <>
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="NOAH.mp4"
-                  lar="25"
-                  haut=""
-                  left="40px"
-                  ajustHauteurTop="118px"
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Mirae"
-                />
-                <IMGPC
-                  linkUrl="/service-mise-en-scene-live"
-                  src="SHANGXIA_FR1223S007QUARTZ-Fullbody-tiff-1.webp"
-                  lar="26"
-                  haut="26"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={2}
-                  scrollX={scrollX}
-                  marque="Shangxia"
-                  alt="Shangxia fullbody"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-accessoires-eclipse"
-                  src="coperni-bag-1.mp4"
-                  lar="25"
-                  haut="35"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Coperni"
-                />
-                <IMGPC
-                  linkUrl="/service-mannequin-vertical"
-                  src="ATTIRE_PIQUE_brown_jacket_Front.webp"
-                  lar="22"
-                  haut="33"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Attire The Studio"
-                  alt="Attire The Studio brown jacket"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="PRESSIAT.mp4"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop="118px"
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Pressiat"
-                />
-                <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="AZ_scarf_loov.webp"
-                  lar="25"
-                  haut="32"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom="5"
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="AZ Factory"
-                  alt="AZ Factory scarf"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="GUC_VIDEO.mp4"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="GUC"
-                />
-                <IMGPC
-                  linkUrl="/service-mise-en-scene-live"
-                  src="LDSS-AW22.webp"
-                  lar="26"
-                  haut="35"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom="5"
-                  anim={2}
-                  scrollX={scrollX}
-                  marque="Ludovic de Saint Sernin"
-                  alt="Ludovic de Saint Sernin fullbody AW22"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-accessoires-eclipse"
-                  src="coperni-blue-shoes-double.mp4"
-                  lar="25"
-                  haut="35"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Coperni"
-                />
-                <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="GIAMBATTISTA_D1SAND-TR24-30.webp"
-                  lar="25"
-                  haut="34"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom="5"
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Giambattista"
-                  alt="Giambattista blue bandana"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="destroy_hoodie.mp4"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Jordan Luca"
-                />
-                <IMGPC
-                  linkUrl="/service-mise-en-scene-live"
-                  src="SHANGXIA_FR1023S002-Fullbody-tiff-6.webp"
-                  lar="26"
-                  haut="26"
-                  ajustHauteurTop="9"
-                  ajustHauteurBottom=""
-                  anim={2}
-                  scrollX={scrollX}
-                  marque="Shangxia"
-                  alt="Shangxia fullbody"
-                />
-                <IMGPC
-                  linkUrl="/service-accessoires-eclipse"
-                  src="JPG_earring_chrome-back-tiff-1.webp"
-                  lar="22"
-                  haut="27"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Jean Paul Gaultier"
-                  alt="Jean Paul Gaultier earring chrome"
-                />
-                <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="GIAMBATTISTA_A2TIDY-TA07-08.webp"
-                  lar="23"
-                  haut="28"
-                  ajustHauteurTop="6"
-                  ajustHauteurBottom=""
-                  anim={2}
-                  scrollX={scrollX}
-                  marque="Giambattista"
-                  alt="Giambattista sweat"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="SacT-shirt V1.mov"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Jordan Luca"
-                />
-                <IMGPC
-                  linkUrl="/service-mise-en-scene-live"
-                  src="SHANGXIA_FR1023S031lavender-Top-tiff-1.webp"
-                  lar="26"
-                  haut="26"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom="5"
-                  anim={2}
-                  scrollX={scrollX}
-                  marque="Shangxia"
-                  alt="Shangxia lavender"
-                />
-                <IMGPC
-                  linkUrl="/service-packshot-vertical"
-                  src="JPG_23-12-F-MB006-J514_Front+1.webp"
-                  lar="23"
-                  haut="29"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={2}
-                  scrollX={scrollX}
-                  marque="Jean Paul Gaultier"
-                  alt="Jean Paul Gaultier maillot 1 pièce"
-                />
-                <IMGPC
-                  linkUrl="/service-packshot-horizontal"
-                  src="HIRCUS_pantalon_Front.webp"
-                  lar="20"
-                  haut="28"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom="5"
-                  anim={2}
-                  scrollX={scrollX}
-                  marque="Hircus"
-                  alt="Hircus pantalon beige"
-                />
-                <IMGPC
-                  linkUrl="/service-accessoires-eclipse"
-                  src="Parfum_x_Y_Project-back-tiff-1.webp"
-                  lar="23"
-                  haut="33"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Jean Paul Gaultier x Y Project"
-                  alt="Parfum Jean Paul Gaultier x Y Project"
-                />
-                <IMGPC
-                  linkUrl="/service-mise-en-scene-live"
-                  src="PORT_TANGER_P230113122211-PT-2600-TOP-RAW-11.webp"
-                  lar="24"
-                  haut="28"
-                  ajustHauteurTop="9"
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Port Tanger"
-                  alt="Port Tanger black glasses"
-                />
-                <IMGPC
-                  linkUrl="/service-accessoires-eclipse"
-                  src="JACQUES_GENIN_2022_CHOCOLATE_EGGS_MARCH_186970.webp"
-                  lar="23"
-                  haut="33"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Jacques Genin"
-                  alt="Jacques Genin chocolate egg paint blue"
-                />
-                <VIDEOGalerie
-                  linkUrl="/service-mise-en-scene-live"
-                  src="ensemble-survetement-vert-mouty.mp4"
-                  lar="25"
-                  haut="35"
-                  left="40px"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Mouty"
-                />
-                <IMGPC
-                  linkUrl="/service-mannequin-vertical"
-                  src="ATTIRE_PIQUE_avery_Front.webp"
-                  lar="22"
-                  haut="33"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom="5"
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Attire The Studio"
-                  alt="Attire The Studio jeans"
-                />
-                {/* Vertical */}
-                <IMGPC
-                  linkUrl="/service-packshot-vertical"
-                  src="JPG_23-12-F-TO056-M044_Front.webp"
-                  lar="23"
-                  haut="29"
-                  ajustHauteurTop="9"
-                  ajustHauteurBottom=""
-                  anim={2}
-                  scrollX={scrollX}
-                  marque="Jean Paul Gaultier"
-                  alt="Jean Paul Gaultier top"
-                />
-                <IMGPC
-                  linkUrl="/service-mannequin-vertical"
-                  src="SHANG_PIQUE_FR1223S017BK1_Front.webp"
-                  lar="25"
-                  haut="25"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom="5"
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="shangxia"
-                  alt="shangxia"
-                />
-                <IMGPC
-                  linkUrl="/service-accessoires-eclipse"
-                  src="SHANG_PCAPSBblack_silver-34-tiff-2.webp"
-                  lar="22"
-                  haut="21"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Shangxia"
-                  alt="shangxia black silver bag"
-                />
-                <IMGPC
-                  linkUrl="/service-mise-en-scene-live"
-                  src="JPG_P220613151038_Fullbody_jpg_13.webp"
-                  lar="24"
-                  haut="28"
-                  ajustHauteurTop="5"
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Jean Paul Gaultier"
-                  alt="Jean Paul Gaultier glasses"
-                />
-                <IMGPC
-                  linkUrl="/service-packshot-vertical"
-                  src="IKUZO_Green_Kimono_Side.webp"
-                  lar="20"
-                  haut="30"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={2}
-                  scrollX={scrollX}
-                  marque="Ikuzo"
-                  alt="Ikuzo"
-                />
-                <IMGPC
-                  linkUrl="/service-mise-en-scene-live"
-                  src="PORT_TANGER_P230113122211-PT-2600-TOP-RAW-11.webp"
-                  lar="24"
-                  haut="28"
-                  ajustHauteurTop="9"
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Port Tanger"
-                  alt="Port Tanger black glasses"
-                />
-                <IMGPC
-                  linkUrl="/service-mannequin-vertical"
-                  src="SHANG_PIQUE_NO_SKU_Front+1.webp"
-                  lar="25"
-                  haut="25"
-                  ajustHauteurTop="9"
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="shangxia"
-                  alt="shangxia"
-                />
-                <IMGPC
-                  linkUrl="/service-mise-en-scene-live"
-                  src="JPG_P220613151038_Fullbody_jpg_16.webp"
-                  lar="24"
-                  haut="28"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom="5"
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Jean Paul Gaultier"
-                  alt="Jean Paul Gaultier glasses"
-                />
-                <IMGPC
-                  linkUrl="/service-accessoires-eclipse"
-                  src="MELISSA_JPG_F-CS002-X-33-01-side 2-tiff-1.webp"
-                  lar="22"
-                  haut="30"
-                  ajustHauteurTop=""
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Melissa x Jean Paul Gaultier"
-                  alt="Pink shoes Melissa x Jean Paul Gaultier"
-                />
-                <IMGPC
-                  linkUrl="/service-accessoires-eclipse"
-                  src="NODALETO_bulla_jones_65_ceramica_patent-creative-tiff-1.webp"
-                  lar="25"
-                  haut="26"
-                  ajustHauteurTop="7"
-                  ajustHauteurBottom=""
-                  anim={1}
-                  scrollX={scrollX}
-                  marque="Nodaleto"
-                  alt="bulla jones 65 ceramica"
-                />
-              </>
-            )}
-          </ScrollContainer>
-          <div className="buttonBox">
-            <button
-              className="PMS_BoutonPCPrev PMS_BoutonNav"
-              onClick={scrollLeft}
-            >
-              <Lottie
-                className="PMS_BoutonPCPrecButton"
-                lottieRef={PMS_BoutonPCPrecButton}
-                animationData={boutonSliderBlanc}
-                loop={false}
-                autoplay={false}
-                onEnterFrame={(event) => {
-                  // console.log(event)
-                }}
-              />
-            </button>
-            <button
-              className="PMS_BoutonPCNext PMS_BoutonNav"
-              onClick={scrollRight}
-            >
-              <Lottie
-                className="PMS_BoutonPCNextButton"
-                lottieRef={PMS_BoutonPCNextButton}
-                animationData={boutonSliderBlanc}
-                loop={false}
-                autoplay={false}
-                onEnterFrame={(event) => {}}
-              />
-            </button>
+        <div className="galeriePC">
+          <div className="galeriePCWrapper">
+            <div className="gallery-grid">
+              {filterImages(images, category, subcategory).map((item, index) =>
+                renderGalerieItem(item, index)
+              )}
+            </div>
+            {isLoading && <div className="loading-indicator">Loading...</div>}
           </div>
         </div>
       ) : (
-        <>
-          <div className="galerieMobile">
-            {/* Horizontal */}
-
-            <VIDEOGalerie
-              linkUrl="/service-mise-en-scene-live"
-              src="NOAH.mp4"
-              lar="25"
-              haut=""
-              left="40px"
-              ajustHauteurTop="118px"
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Mirae"
-            />
-            <IMGMobile
-              linkUrl="/service-packshot-horizontal"
-              src="ATTIRE_A2OROL-MA03-30.webp"
-              lar="45"
-              haut="50"
-              left=""
-              right="40px"
-              ajustHauteur="5"
-              marque="Attire The Studio"
-              alt="Attire The Studio black"
-            />
-            <IMGMobile
-              linkUrl="/service-packshot-horizontal"
-              src="HAST_polo_burgundy_Front.webp"
-              lar="50"
-              haut="50"
-              left="40px"
-              right=""
-              ajustHauteur="5"
-              marque="Hast"
-              alt="Hast polo burgundy"
-            />
-            <VIDEOGalerie
-              linkUrl="/service-mise-en-scene-live"
-              src="PRESSIAT.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop="118px"
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Pressiat"
-            />
-            <IMGMobile
-              linkUrl="/service-packshot-horizontal"
-              src="GIAMBATTISTA_D1SAND-TR24-30.webp"
-              lar="45"
-              haut="50"
-              left=""
-              right="40px"
-              ajustHauteur="5"
-              marque="Giambattista"
-              alt="Giambattista blue bandana"
-            />
-            <IMGMobile
-              linkUrl="/service-packshot-horizontal"
-              src="HAST_pants_black_blue_Front.webp"
-              lar="45"
-              haut="50"
-              left=""
-              right="90px"
-              ajustHauteur="5"
-              marque="Hast"
-              alt="Hast pants black blue"
-            />
-            <VIDEOGalerie
-              linkUrl="/service-mise-en-scene-live"
-              src="destroy_hoodie.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Jordan Luca"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="JPG_23-12-F-MB006-J514_Front+1.webp"
-              lar="43"
-              haut="63"
-              left=""
-              right="40px"
-              ajustHauteur="5"
-              marque="Jean Paul Gaultier"
-              alt="Jean Paul Gaultier maillot 1 pièce"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="ATTIRE_PIQUE_avery_Front.webp"
-              lar="43"
-              haut="63"
-              left=""
-              right="100px"
-              ajustHauteur="5"
-              marque="Attire The Studio"
-              alt="Attire The Studio jeans"
-            />
-            <VIDEOGalerie
-              linkUrl="/service-mise-en-scene-live"
-              src="ORANGE_JUPE.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Mirae"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="ATTIRE_PIQUE_brown_jacket_Front.webp"
-              lar="43"
-              haut="63"
-              left="40px"
-              right=""
-              ajustHauteur="5"
-              marque="Attire The Studio"
-              alt="Attire The Studio brown jacket"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="JPG_23-12-F-TO056-M044_Front.webp"
-              lar="43"
-              haut="63"
-              left="90px"
-              right=""
-              ajustHauteur="5"
-              marque="Jean Paul Gaultier"
-              alt="Jean Paul Gaultier top"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="SHANG_PIQUE_FR1223S017BK1_Front.webp"
-              lar="43"
-              haut="63"
-              left="90px"
-              right=""
-              ajustHauteur="5"
-              marque="shangxia"
-              alt="shangxia"
-            />
-            <VIDEOGalerie
-              linkUrl="/service-mise-en-scene-live"
-              src="ensemble-survetement-vert-mouty.mp4"
-              lar="25"
-              haut="35"
-              left="40px"
-              ajustHauteurTop=""
-              ajustHauteurBottom=""
-              anim={1}
-              scrollX={scrollX}
-              marque="Mouty"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="IKUZO_Green_Kimono_Side.webp"
-              lar="43"
-              haut="63"
-              left="40px"
-              right=""
-              ajustHauteur="5"
-              marque="Ikuzo"
-              alt="Ikuzo"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="SHANG_PIQUE_NO_SKU_Front+1.webp"
-              lar="43"
-              haut="63"
-              left=""
-              right="40px"
-              ajustHauteur="5"
-              marque="shangxia"
-              alt="shangxia"
-            />
-            <IMGMobile
-              linkUrl="/service-mannequin-vertical"
-              src="FURSAC_C3PREL-TC06-30.webp"
-              lar="43"
-              haut="63"
-              left="40px"
-              right=""
-              ajustHauteur="5"
-              marque="Fursac"
-              alt="Fursac blue"
-            />
-            <IMGMobile
-              linkUrl="/service-mise-en-scene-live"
-              src="SHANGXIA_FR1023S002-Fullbody-tiff-6.webp"
-              lar="50"
-              haut="75"
-              left=""
-              right="40px"
-              ajustHauteur="5"
-              marque="Shangxia"
-              alt="Shangxia fullbody"
-            />
-            <IMGMobile
-              linkUrl="/service-mise-en-scene-live"
-              src="SHANGXIA_FR1223S007QUARTZ-Fullbody-tiff-1.webp"
-              lar="50"
-              haut="75"
-              left=""
-              right="40px"
-              ajustHauteur="5"
-              marque="Shangxia"
-              alt="Shangxia fullbody"
-            />
-            <IMGMobile
-              linkUrl="/service-mise-en-scene-live"
-              src="JPG_P220613151038_Fullbody_jpg_13.webp"
-              lar="50"
-              haut="75"
-              left="90px"
-              right=""
-              ajustHauteur="5"
-              marque="Jean Paul Gaultier"
-              alt="Jean Paul Gaultier glasses"
-            />
-            <IMGMobile
-              linkUrl="/service-mise-en-scene-live"
-              src="SHANGXIA_FR1023S031lavender-Top-tiff-1.webp"
-              lar="50"
-              haut="75"
-              left=""
-              right="40px"
-              ajustHauteur="5"
-              marque="Shangxia"
-              alt="Shangxia lavender"
-            />
-            <IMGMobile
-              linkUrl="/service-mise-en-scene-live"
-              src="PORT_TANGER_P230113122211-PT-2600-TOP-RAW-11.webp"
-              lar="50"
-              haut="75"
-              left="40px"
-              right=""
-              ajustHauteur="5"
-              marque="Port Tanger"
-              alt="Port Tanger black glasses"
-            />
-            <IMGMobile
-              linkUrl="/service-mise-en-scene-live"
-              src="JPG_P220613151038_Fullbody_jpg_16.webp"
-              lar="50"
-              haut="75"
-              left="90px"
-              right=""
-              ajustHauteur="5"
-              marque="Jean Paul Gaultier"
-              alt="Jean Paul Gaultier glasses"
-            />
-            {/* Eclipse */}
-            <IMGMobile
-              linkUrl="/service-accessoires-eclipse"
-              src="SHANG_PCAPSBblack_silver-34-tiff-2.webp"
-              lar="63"
-              haut="43"
-              left="40px"
-              right=""
-              right="40px"
-              ajustHauteur="5"
-              marque="Shangxia"
-              alt="shangxia black silver bag"
-            />
-            <IMGMobile
-              linkUrl="/service-accessoires-eclipse"
-              src="MELISSA_JPG_F-CS002-X-33-01-side 2-tiff-1.webp"
-              lar="55"
-              haut="55"
-              left=""
-              right="40px"
-              ajustHauteur="5"
-              marque="Melissa x Jean Paul Gaultier"
-              alt="Pink shoes Melissa x Jean Paul Gaultier"
-            />
-            <IMGMobile
-              linkUrl="/service-accessoires-eclipse"
-              src="NODALETO_bulla_jones_65_ceramica_patent-creative-tiff-1.webp"
-              lar="63"
-              haut="50"
-              left="90px"
-              right=""
-              ajustHauteur="5"
-              marque="Nodaleto"
-              alt="bulla jones 65 ceramica"
-            />
-            <IMGMobile
-              linkUrl="/service-accessoires-eclipse"
-              src="SATO_belel_silver-45-tiff-1_MERGED.webp"
-              lar="63"
-              haut="50"
-              left=""
-              right="40px"
-              ajustHauteur="5"
-              marque="Sato"
-              alt="sato silver glasses"
-            />
-            <IMGMobile
-              linkUrl="/service-accessoires-eclipse"
-              src="JPG_earring_chrome-back-tiff-1.webp"
-              lar="43"
-              haut="63"
-              left="40px"
-              right=""
-              ajustHauteur="5"
-              marque="Jean Paul Gaultier"
-              alt="Jean Paul Gaultier earring chrome"
-            />
-            <IMGMobile
-              linkUrl="/service-accessoires-eclipse"
-              src="SHANG_PCAPSBoff_white_mint-Top-tiff-1.webp"
-              lar="43"
-              haut="63"
-              left="90px"
-              right=""
-              ajustHauteur="5"
-              marque="Shangxia"
-              alt="shangxia white bag"
-            />
-          </div>
-        </>
+        <div
+          className="galerieMobile"
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(2, 1fr)",
+            gap: "20px",
+            width: "100%",
+            padding: "0 20px",
+          }}
+        >
+          {filterImages(images, category, subcategory).map(renderMobileItem)}
+        </div>
       )}
       <Footer AnimationBloc7={true} />
     </Suspense>

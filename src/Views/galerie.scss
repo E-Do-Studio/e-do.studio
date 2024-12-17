@@ -8,52 +8,114 @@
   }
 
   .titreAnimationWrapper {
-    left: 31px;
-    top: 88px;
-
-    height: auto;
-    width: 230px;
     position: fixed;
-    overflow: hidden;
+    left: 50%;
+    bottom: 30px;
+    transform: translateX(-50%);
+    width: auto;
+    min-width: 300px;
+    max-width: 80%;
+    height: auto;
+    padding: 15px 25px;
+    background: rgba(255, 255, 255, 0.8);
+    color: black;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
 
-    z-index: 10;
-
-    @include xl {
-      left: 51px;
+    &:hover {
+      transform: translateX(-50%) translateY(-5px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
     }
 
-    // background:blue;
-
     .titrePageGalerie {
-      font-size: 25px;
-      font-weight: 300;
-      line-height: 1.6;
-      letter-spacing: -0.6px;
-
-      text-align: left;
-
-      // right:0;
-      // top:88px;
-      position: absolute;
-      transform: translateY(100%);
-      transition: transform 650ms ease-out;
-      text-transform: uppercase;
+      position: relative;
+      transform: none;
+      font-size: 20px;
+      margin-bottom: 15px;
+      color: black;
+      text-align: center;
     }
 
     ul {
-      padding: 0;
-      list-style-type: none;
-      margin-top: 40px;
+      display: flex;
+      flex-wrap: nowrap;
+      gap: 15px;
+      margin: 0;
+      justify-content: center;
+      padding: 5px;
+      overflow-x: auto;
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
 
       li {
-        margin-bottom: 1px;
+        margin: 0;
+        padding: 8px 15px;
+        border-radius: 12px;
+        background: rgba(255, 255, 255, 0.3);
+        color: black;
+        font-size: 0.9em;
+        white-space: nowrap;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
 
         &:hover {
-          color: grey;
+          background: rgba(255, 255, 255, 0.5);
+          transform: translateY(-3px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         &.active {
-          color: rgb(88, 88, 88);
+          background: rgba(255, 255, 255, 0.6);
+          color: black;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+      }
+    }
+
+    // Sous-catégories
+    .sub-category {
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      width: 100%;
+      margin: 0 !important;
+      padding: 10px;
+      // background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+      transform: translateY(-10px);
+      display: none;
+
+      ul {
+        flex-wrap: nowrap;
+        overflow-x: auto;
+      }
+
+      &.active {
+        display: block;
+      }
+
+      li {
+        font-size: 0.85em;
+        padding: 6px 12px;
+        margin-bottom: 5px;
+        background: rgba(255, 255, 255, 0.2);
+        flex-shrink: 0;
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.4);
         }
       }
     }
@@ -61,173 +123,100 @@
 }
 
 .galerieMobile {
-  padding-top: 30px;
-  margin-bottom: 50px;
-  // position:relative;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+  box-sizing: border-box;
+  width: 100%;
 
-  iframe {
-    width: 100vw;
-  }
+  .IMGMobile {
+    width: 100%;
+    height: auto;
 
-  .IMGMobileLigne {
-    position: relative;
-    // background:orange;
-
-    .IMGMobile {
-      position: absolute;
-
-      overflow: hidden;
-      // background:blue;
-
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        transform: translateX(-100%) scale(0.9);
-        transition: all 280ms linear;
-      }
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
     }
   }
-}
-
-.galeriePC::-webkit-scrollbar {
-  display: none;
-}
-
-.galeriePCWrapper::-webkit-scrollbar {
-  display: none;
 }
 
 .galeriePC {
   padding-top: 100px;
-  height: calc(100vh - 100px);
-  // background:orange;
-  // cursor:url('/cursor/cursor.svg');
-
-  overflow-x: auto;
-
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  overflow-y: auto;
 
   .galeriePCWrapper {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-    // width:600vw;
-    height: 100%;
-    display: flex;
-    flex-direction: row;
-    // min-height: 650px;
-    padding-left: 19vw;
-    padding-right: 8vw;
+    width: 100%;
+    padding: 0;
+    display: block;
 
-    .IMGPCColonne {
-      display: flex;
-      flex-direction: column;
-      flex-shrink: 0;
-      // width:500px;
-      // background:blue;
-      margin-left: 5.5vw;
-      position: relative;
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      width: 100%;
+      max-width: 1600px;
+      margin: 0;
+      grid-gap: 0;
+      font-size: 0;
 
-      &:first-child {
-        margin-left: 0;
-      }
+      .gallery-item {
+        // width: 100%;
+        // position: relative;
+        height: 100%;
+        // aspect-ratio: 4/4;
+        // display: block;
 
-      .IMGPC {
-        overflow: hidden;
-        position: absolute;
         img {
           width: 100%;
           height: 100%;
+          display: block;
           object-fit: cover;
         }
 
-        .imgAnim1 {
-          transform: translateX(-100%);
-          transition: all 500ms linear;
+        &:hover {
+          opacity: 0.8;
+          cursor: pointer;
         }
-      }
-
-      .IMGPCDessus {
-        background: white;
-        // opacity:0.4;
-        position: absolute;
-        z-index: 6;
-        transition: all 650ms ease-out;
-        right: 0;
-        // transform:rotate(180deg)
       }
     }
   }
+}
 
-  .buttonBox {
-    position: absolute;
-    z-index: 1000;
-    top: 90vh;
-    right: 46.6vw;
-    width: 116px;
-    height: 53px;
+// Masquer les scrollbars tout en gardant la fonctionnalité
+.galeriePC::-webkit-scrollbar {
+  display: none;
+}
 
-    /*.button-left{
-            width: 50px;
-            height: 50px;
-            margin-right: 10px;
-            
-            img{
-                width: 50px;
-                height: 50px;
-            }
-        }
+.galeriePC {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
-        .button-right{
-            width: 50px;
-            height: 50px;
-            
-            img{
-                width: 50px;
-                height: 50px;
-            }
-        }*/
+// Loading indicator
+.loading-indicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  color: white;
+  font-size: 1.2em;
+  gap: 10px;
 
-    .PMS_BoutonNav {
-      // background:green;
-      //position:absolute;
-      height: 53px;
-      width: 53px;
-      cursor: pointer;
+  .spinner {
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-top-color: white;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
 
-      .PMS_BoutonPCPrecButton {
-        height: 53px;
-      }
-
-      .PMS_BoutonPCNextButton {
-        height: 53px;
-      }
-
-      // .PMS_BoutonPCNextButton{
-      //     height:110px;
-      //     width:110px;
-      //     // background:red;
-      // }
-    }
-
-    .PMS_BoutonPCNext {
-      // float: right;
-      //bottom:40px;
-      //right:30px;
-    }
-
-    .PMS_BoutonPCPrev {
-      // float: left;
-      //bottom:40px;
-      //left:50px;
-
-      margin-right: 10px;
-
-      .PMS_BoutonPCPrecButton {
-        transform: rotate(180deg);
-      }
-    }
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
   }
 }
 
@@ -254,7 +243,7 @@ ul {
 .brand-display {
   display: block;
   position: absolute;
-  top: 50%;
+  top: 13%;
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 999;
@@ -270,10 +259,19 @@ ul {
 
 a {
   li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
     svg {
       margin-left: 5px;
       position: relative;
       top: 2px;
+      transition: transform 0.3s ease;
+    }
+
+    &:hover svg {
+      transform: translateX(3px);
     }
   }
 }
@@ -281,8 +279,100 @@ a {
 // Ajouter la hauteur de l'écran moins la hauteur du footer pour obtenir la hauteur à laquelle le menu doit s'arrêter
 @media (max-width: 768px) {
   .titreAnimationWrapper {
-    bottom: calc(
-      10vh + 100px
-    ); /* Changer 100px en fonction de la hauteur de votre footer */
+    bottom: 20px;
+    width: 90%;
+    padding: 12px 20px;
+
+    ul {
+      gap: 8px;
+
+      li {
+        padding: 6px 12px;
+        font-size: 0.85em;
+      }
+    }
+  }
+}
+
+// Style pour l'état de chargement
+.lazy-load-image-background {
+  width: 100%;
+  height: 100%;
+
+  &.opacity {
+    animation: lazyLoadFadeIn 0.3s ease-in;
+  }
+}
+
+@keyframes lazyLoadFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+// Animation pour l'apparition du menu
+.titreAnimationWrapper {
+  animation: dockSlideUp 0.5s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes dockSlideUp {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+// Add styles for image loading and error states
+.IMGPC,
+.IMGMobile {
+  position: relative;
+
+  &.loading {
+    // background: rgba(255, 255, 255, 0.1);
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      // background: linear-gradient(
+      //   90deg,
+      //   transparent,
+      //   rgba(255, 255, 255, 0.2),
+      //   transparent
+      // );
+      animation: shimmer 1.5s infinite;
+    }
+  }
+
+  &.error {
+    // background: rgba(255, 255, 255, 0.05);
+
+    &::after {
+      content: "Image unavailable";
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 0.9em;
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
   }
 }
