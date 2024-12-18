@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { motion } from "framer-motion";
 import anime from "animejs/lib/anime.es.js";
 import { useMediaQuery } from "@react-hook/media-query";
+import { motion } from "framer-motion";
 
 // Import i8next
 

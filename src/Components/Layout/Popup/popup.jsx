@@ -17,6 +17,7 @@ const PopupDesktop = () => {
   const emailRef = useRef(null);
 
   function NewsletterBannerClose() {
+    localStorage.setItem("popupClosed", "true");
     NewsletterBanner.current.style.display = "none";
   }
 
@@ -86,6 +87,7 @@ const PopupMobile = () => {
   const { t, i18n } = useTranslation("popup");
 
   function NewsletterBannerClose() {
+    localStorage.setItem("popupClosed", "true");
     NewsletterBanner.current.style.display = "none";
   }
 
@@ -141,6 +143,14 @@ const PopupMobile = () => {
 
 const Popup = () => {
   const matches = useMediaQuery("only screen and (min-width: 1024px)");
+  const [showPopup, setShowPopup] = useState(true);
+
+  useEffect(() => {
+    const isPopupClosed = localStorage.getItem("popupClosed") === "true";
+    setShowPopup(!isPopupClosed);
+  }, []);
+
+  if (!showPopup) return null;
 
   return !matches ? <PopupMobile /> : <PopupDesktop />;
 };

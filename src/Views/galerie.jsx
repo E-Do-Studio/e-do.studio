@@ -18,7 +18,10 @@ import boutonSliderBlanc from "../Assets/animations/boutonMenuServices.json";
 
 import GalerieMenu from "./GalerieMenu";
 
-import { LazyLoadComponent } from "react-lazy-load-image-component";
+import {
+  LazyLoadComponent,
+  LazyLoadImage,
+} from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 
 const generateRandomOffset = (index) => {
@@ -386,26 +389,21 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       return null;
     }
 
-    const itemCategory = item.categories?.name?.toLowerCase();
-    const linkUrl = getCategoryLink(itemCategory);
     const imageUrl = `https://cms-psi-five.vercel.app${item.image.url}`;
 
     return (
       <LazyLoadComponent key={item.id || index} threshold={400}>
         <div className="gallery-item">
-          <img
-            // linkUrl={linkUrl}
+          <div className="image-placeholder"></div>
+          <LazyLoadImage
             src={imageUrl}
-            // lar="24"
-            // haut="32"
-            // anim={2}
-            // scrollX={scrollX}
-            // marque={item.brand?.name}
-            // alt={item.brand?.name || "Image"}
-            // onError={(e) => {
-            //   console.log("Image failed to load:", imageUrl);
-            //   e.target.style.display = "none";
-            // }}
+            alt={item.brand?.name || "Gallery image"}
+            effect="blur"
+            wrapperClassName="gallery-image-wrapper"
+            beforeLoad={() => console.log("Loading started", imageUrl)}
+            afterLoad={() => console.log("Loading finished", imageUrl)}
+            threshold={100}
+            visibleByDefault={false}
           />
         </div>
       </LazyLoadComponent>
@@ -418,22 +416,29 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     }
 
     const offsets = generateRandomOffset(index);
-    const linkUrl = getCategoryLink(item.categories?.name?.toLowerCase());
     const imageUrl = `https://cms-psi-five.vercel.app${item.image.url}`;
 
     return (
       <LazyLoadComponent key={item.id || index} threshold={200}>
-        <IMGMobile
-          linkUrl={linkUrl}
-          src={imageUrl}
-          lar="45"
-          haut="50"
-          left={`${20 + offsets.left}px`}
-          right=""
-          ajustHauteur={offsets.top}
-          marque={item.brand?.name}
-          alt={item.brand?.name || "Image"}
-        />
+        <div
+          className="IMGMobile"
+          style={{
+            left: `${20 + offsets.left}px`,
+            marginTop: `${offsets.top}px`,
+          }}
+        >
+          <div className="image-placeholder"></div>
+          <LazyLoadImage
+            src={imageUrl}
+            alt={item.brand?.name || "Gallery image"}
+            effect="blur"
+            wrapperClassName="mobile-image-wrapper"
+            beforeLoad={() => console.log("Loading started", imageUrl)}
+            afterLoad={() => console.log("Loading finished", imageUrl)}
+            threshold={100}
+            visibleByDefault={false}
+          />
+        </div>
       </LazyLoadComponent>
     );
   };
@@ -448,41 +453,31 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      {matches ? (
-        <div className="galeriePC">
-          <GalerieMenu
-            setPageLoad={setPageLoad}
-            selectedLink={selectedLink}
-            setSelectedLink={setSelectedLink}
-          />
-          <div className="galeriePCWrapper">
-            <div className="gallery-grid">
-              {images.map((item, index) => renderGalerieItem(item, index))}
-            </div>
-            {isLoading && <div className="loading-indicator">Loading...</div>}
-            {!hasMore && (
-              <div className="end-message">No more images to load</div>
-            )}
+      <div className="galeriePC">
+        <GalerieMenu
+          setPageLoad={setPageLoad}
+          selectedLink={selectedLink}
+          setSelectedLink={setSelectedLink}
+        />
+        <div className="galeriePCWrapper">
+          <div className="gallery-grid">
+            {isLoading &&
+              images.length === 0 &&
+              Array(12)
+                .fill(0)
+                .map((_, index) => (
+                  <div key={`placeholder-${index}`} className="gallery-item">
+                    <div className="image-placeholder"></div>
+                  </div>
+                ))}
+            {images.map((item, index) => renderGalerieItem(item, index))}
           </div>
-        </div>
-      ) : (
-        <div
-          className="galerieMobile"
-          style={{
-            display: "grid",
-            gridTemplateColumns: "repeat(2, 1fr)",
-            gap: "20px",
-            width: "100%",
-            padding: "0 20px",
-          }}
-        >
-          {images.map(renderMobileItem)}
-          {isLoading && <div className="loading-indicator">Loading...</div>}
-          {!hasMore && (
-            <div className="end-message">No more images to load</div>
+          {isLoading && images.length > 0 && (
+            <div className="loading-indicator">Loading...</div>
           )}
         </div>
-      )}
+      </div>
+      )
       <Footer AnimationBloc7={true} />
     </Suspense>
   );

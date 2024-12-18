@@ -1,7 +1,7 @@
 @import "../Assets/scss/styles.scss";
 
 .pageGalerie {
-  padding: 130px 0 100px 0;
+  // padding: 130px 0 100px 0;
 
   @include xl {
     padding: 0;
@@ -159,6 +159,16 @@
       margin: 0;
       grid-gap: 0;
       font-size: 0;
+
+      // Tablette (768px à 1199px)
+      @media screen and (max-width: 1199px) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      // Mobile (jusqu'à 767px)
+      @media screen and (max-width: 767px) {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
       .gallery-item {
         // width: 100%;
@@ -374,5 +384,155 @@ a {
   }
   100% {
     transform: translateX(100%);
+  }
+}
+
+// Ajouter ces styles à la fin du fichier pour gérer le lazy loading
+.gallery-image-wrapper,
+.mobile-image-wrapper {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background-color: rgba(0, 0, 0, 0.05);
+  transition: opacity 0.3s ease;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: opacity 0.3s ease;
+  }
+
+  &.lazy-load-image-loaded {
+    background-color: transparent;
+  }
+}
+
+.lazy-load-image-background {
+  &.opacity {
+    opacity: 0;
+
+    &.lazy-load-image-loaded {
+      opacity: 1;
+    }
+  }
+}
+
+// Optimisation des transitions
+.gallery-item {
+  img {
+    will-change: opacity;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+}
+
+// Modifier les styles de lazy loading
+.gallery-item,
+.IMGMobile {
+  position: relative;
+  overflow: hidden;
+  background-color: #e0e0e0;
+
+  .image-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #e0e0e0;
+    animation: pulse 2s infinite ease-in-out;
+  }
+}
+
+// Styles de la grille desktop
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
+  max-width: 1600px;
+  margin: 0;
+  grid-gap: 0;
+
+  .gallery-item {
+    width: 100%;
+
+    .lazy-load-image-background {
+      display: block;
+      width: 100%;
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+  }
+}
+
+// Styles mobile
+.galerieMobile {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  padding: 20px;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .IMGMobile {
+    width: 100%;
+
+    .lazy-load-image-background {
+      display: block;
+      width: 100%;
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+    }
+  }
+}
+
+// Animation du placeholder
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// Transitions des images
+.gallery-image-wrapper,
+.mobile-image-wrapper {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+
+  &.lazy-load-image-loaded {
+    opacity: 1;
+
+    & + .image-placeholder {
+      display: none;
+    }
+  }
+}
+
+// Effet de blur
+.lazy-load-image-background {
+  &.blur {
+    filter: blur(20px);
+    transition: filter 0.3s ease-out;
+
+    &.lazy-load-image-loaded {
+      filter: blur(0);
+    }
   }
 }
