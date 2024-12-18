@@ -68,19 +68,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  // Au début du composant, ajoutez un nouvel état pour le cache
-  const [imageCache, setImageCache] = useState([]);
-
-  // Ajoutez cette fonction après les déclarations d'état
-  const preloadImage = (url) => {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      img.src = `https://cms-psi-five.vercel.app${url}`;
-      img.onload = resolve;
-      img.onerror = reject;
-    });
-  };
-
   // Fonction pour organiser les images par catégories
   const organizeCategories = (images) => {
     if (!Array.isArray(images) || images.length === 0) {
@@ -119,65 +106,56 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
   const fetchImages = async (pageNumber = 1) => {
     try {
       setIsLoading(true);
-      const response = await fetch(
-        `https://cms-psi-five.vercel.app/api/gallery?depth=1&draft=false&limit=20`
-      );
+      const url = `https://cms-psi-five.vercel.app/api/gallery?depth=2&draft=false&limit=20&page=${pageNumber}`;
+
+      const response = await fetch(url);
       const data = await response.json();
 
       if (data.docs) {
-        const validImages = data.docs.filter(
-          (item) => item.image && item.image.url
-        );
-
-        // Précharger les images
-        await Promise.all(
-          validImages.map((item) =>
-            preloadImage(item.image.url).catch((err) =>
-              console.warn(`Failed to preload image: ${item.image.url}`, err)
-            )
-          )
-        );
-
-        // Mise à jour du cache et des images
-        if (pageNumber === 1) {
-          // Pour la première page, on réinitialise le cache
-          setImageCache(validImages);
-          setImages(validImages);
-        } else {
-          // Pour les pages suivantes, on ajoute au cache existant
-          setImageCache((prevCache) => {
-            // Filtrer les doublons en utilisant l'ID
-            const newImages = validImages.filter(
-              (newImg) =>
-                !prevCache.some((cachedImg) => cachedImg.id === newImg.id)
+        const validImages = data.docs
+          .filter((item) => item.image && item.image.url)
+          .filter((item) => {
+            if (!category) return true;
+            return (
+              item.categories?.name?.toLowerCase() === category.toLowerCase()
             );
-            return [...prevCache, ...newImages];
           });
-          setImages((prevImages) => [...prevImages, ...validImages]);
-        }
 
-        setHasMore(data.hasNextPage);
-        organizeCategories(validImages);
+        if (validImages.length === 0 && pageNumber === 1) {
+          setHasMore(false);
+        } else {
+          setImages((prevImages) =>
+            pageNumber === 1 ? validImages : [...prevImages, ...validImages]
+          );
+          setHasMore(data.hasNextPage);
+          setPage(data.page);
+        }
       }
     } catch (error) {
       console.error("Error fetching images:", error);
+      setHasMore(false);
     } finally {
       setIsLoading(false);
     }
   };
 
+  // Effet pour charger les images initiales
   useEffect(() => {
-    fetchImages();
-  }, []);
+    setImages([]);
+    setPage(1);
+    setHasMore(true);
+    fetchImages(1);
+  }, [category]);
 
   // Modification de la fonction de filtrage
-  const filterImages = (images, category, subcategory) => {
-    if (!category) return imageCache; // Utiliser le cache au lieu de images
+  const filterImages = (images) => {
+    if (!Array.isArray(images)) return [];
 
-    return imageCache.filter((item) => {
-      const itemCategory = item.categories?.name.toLowerCase();
-      return itemCategory === category.toLowerCase();
-    });
+    if (!category) return images;
+
+    return images.filter(
+      (item) => item.categories?.name?.toLowerCase() === category.toLowerCase()
+    );
   };
 
   // Modification du selectedLink pour inclure le "/"
@@ -195,47 +173,73 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     console.log("Current subcategory:", subcategory);
   }, [images, categories, category, subcategory]);
 
-  // Fonction pour gérer le scroll et charger plus d'images
-  const handleScroll = (event) => {
-    setScrollX(event);
+  // Fonction de scroll unique pour PC et mobile
+  const handleScroll = () => {
+    if (isLoading || !hasMore) return;
 
-    // Pour la version PC
+    let shouldFetch = false;
+
     if (matches) {
-      const scrollContainer =
-        document.getElementsByClassName("galeriePCWrapper")[0];
-      const scrollPercentage =
-        (scrollContainer.scrollLeft + scrollContainer.clientWidth) /
-        scrollContainer.scrollWidth;
+      // Version PC
+      const scrollContainer = document.querySelector(".galeriePCWrapper");
+      if (!scrollContainer) return;
 
-      if (scrollPercentage > 0.8 && !isLoading && hasMore) {
-        setPage((prev) => prev + 1);
-      }
+      const { scrollLeft, clientWidth, scrollWidth } = scrollContainer;
+      shouldFetch = scrollLeft + clientWidth >= scrollWidth - 100;
+    } else {
+      // Version mobile
+      const { scrollTop, clientHeight, scrollHeight } =
+        document.documentElement;
+      shouldFetch = scrollTop + clientHeight >= scrollHeight - 100;
     }
-    // Pour la version mobile
-    else {
-      const scrollPercentage =
-        (window.innerHeight + window.scrollY) /
-        document.documentElement.scrollHeight;
 
-      if (scrollPercentage > 0.8 && !isLoading && hasMore) {
-        setPage((prev) => prev + 1);
-      }
+    if (shouldFetch) {
+      console.log("Fetching next page:", page + 1);
+      fetchImages(page + 1);
     }
   };
 
-  // Effet pour charger plus d'images quand la page change
+  // Effet pour gérer les événements de scroll
   useEffect(() => {
-    if (page > 1) {
-      fetchImages(page);
-    }
-  }, [page]);
+    const scrollHandler = () => {
+      if (!isLoading) {
+        handleScroll();
+      }
+    };
 
-  // Effet pour réinitialiser la pagination quand la catégorie change
+    if (matches) {
+      const scrollContainer = document.querySelector(".galeriePCWrapper");
+      if (scrollContainer) {
+        scrollContainer.addEventListener("scroll", scrollHandler, {
+          passive: true,
+        });
+        return () =>
+          scrollContainer.removeEventListener("scroll", scrollHandler);
+      }
+    } else {
+      window.addEventListener("scroll", scrollHandler, { passive: true });
+      return () => window.removeEventListener("scroll", scrollHandler);
+    }
+  }, [matches, isLoading, hasMore, page, category]);
+
+  // Effet pour vérifier s'il faut charger plus d'images quand la page est trop courte
   useEffect(() => {
-    setPage(1);
-    setHasMore(true);
-    fetchImages(1);
-  }, [category, subcategory]);
+    if (!isLoading && hasMore) {
+      if (matches) {
+        const scrollContainer = document.querySelector(".galeriePCWrapper");
+        if (
+          scrollContainer &&
+          scrollContainer.scrollWidth <= scrollContainer.clientWidth
+        ) {
+          fetchImages(page + 1);
+        }
+      } else {
+        if (document.documentElement.scrollHeight <= window.innerHeight) {
+          fetchImages(page + 1);
+        }
+      }
+    }
+  }, [images, matches, isLoading, hasMore]);
 
   const PMS_BoutonPCNextButton = useRef();
   const PMS_BoutonPCPrecButton = useRef();
@@ -444,21 +448,21 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
-      <GalerieMenu
-        setPageLoad={setPageLoad}
-        selectedLink={selectedLink}
-        setSelectedLink={setSelectedLink}
-        categories={categories}
-      />
       {matches ? (
         <div className="galeriePC">
+          <GalerieMenu
+            setPageLoad={setPageLoad}
+            selectedLink={selectedLink}
+            setSelectedLink={setSelectedLink}
+          />
           <div className="galeriePCWrapper">
             <div className="gallery-grid">
-              {filterImages(images, category, subcategory).map((item, index) =>
-                renderGalerieItem(item, index)
-              )}
+              {images.map((item, index) => renderGalerieItem(item, index))}
             </div>
             {isLoading && <div className="loading-indicator">Loading...</div>}
+            {!hasMore && (
+              <div className="end-message">No more images to load</div>
+            )}
           </div>
         </div>
       ) : (
@@ -472,7 +476,11 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
             padding: "0 20px",
           }}
         >
-          {filterImages(images, category, subcategory).map(renderMobileItem)}
+          {images.map(renderMobileItem)}
+          {isLoading && <div className="loading-indicator">Loading...</div>}
+          {!hasMore && (
+            <div className="end-message">No more images to load</div>
+          )}
         </div>
       )}
       <Footer AnimationBloc7={true} />

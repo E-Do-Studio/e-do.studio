@@ -1,23 +1,36 @@
 import { useMediaQuery } from "@react-hook/media-query";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLocation } from "react-router-dom";
-
 import { useTranslation } from "react-i18next";
 
-import { BsChevronRight } from "@react-icons/all-files/bs/BsChevronRight";
-
-const GalerieMenu = ({ setPageLoad, categories, selectedLink }) => {
+const GalerieMenu = ({ setPageLoad, selectedLink }) => {
   const titrePageGalerie = useRef();
   const matches = useMediaQuery("only screen and (min-width: 1200px)");
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const category = searchParams.get("category");
   const subcategory = searchParams.get("subcategory");
+  const [categories, setCategories] = useState([]);
 
   const { t } = useTranslation("gallery");
 
   useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch(
+          "https://cms-psi-five.vercel.app/api/categories"
+        );
+        const data = await response.json();
+        if (data.docs) {
+          setCategories(data.docs);
+        }
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+      }
+    };
+
+    fetchCategories();
     window.scrollTo(0, 0);
     setPageLoad(true);
     titrePageGalerie.current.style.transform = "translateY(0%)";
@@ -56,12 +69,11 @@ const GalerieMenu = ({ setPageLoad, categories, selectedLink }) => {
               <li className={!category ? "active" : ""}>All</li>
             </Link>
 
-            {/* Rendu simplifié des catégories sans sous-catégories */}
-            {Object.keys(categories).map((cat) => (
-              <div key={cat}>
-                <Link to={`/galerie?category=${cat.toLowerCase()}`}>
-                  <li className={isCategoryActive(cat) ? "active" : ""}>
-                    {t(cat.charAt(0).toUpperCase() + cat.slice(1))}
+            {categories.map((cat) => (
+              <div key={cat.id}>
+                <Link to={`/galerie?category=${cat.name.toLowerCase()}`}>
+                  <li className={isCategoryActive(cat.name) ? "active" : ""}>
+                    {t(cat.name.charAt(0).toUpperCase() + cat.name.slice(1))}
                   </li>
                 </Link>
               </div>
