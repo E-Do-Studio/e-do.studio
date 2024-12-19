@@ -417,14 +417,19 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       <LazyLoadComponent key={uniqueKey} threshold={400}>
         <div className="gallery-item">
           <div className="image-placeholder"></div>
-          <LazyLoadImage
-            src={imageUrl}
-            alt={item.brand?.name || "Gallery image"}
-            effect="blur"
-            wrapperClassName="gallery-image-wrapper"
-            threshold={100}
-            visibleByDefault={false}
-          />
+          <div className="gallery-image-container">
+            <LazyLoadImage
+              src={imageUrl}
+              alt={item.brand?.name || "Gallery image"}
+              effect="blur"
+              wrapperClassName="gallery-image-wrapper"
+              threshold={100}
+              visibleByDefault={false}
+            />
+            <div className="brand-overlay">
+              <span className="brand-name">{item.brand?.name || ""}</span>
+            </div>
+          </div>
         </div>
       </LazyLoadComponent>
     );
@@ -484,14 +489,21 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
             {visibleImages.length > 0
               ? visibleImages.map((item, index) => (
                   <div key={`${item.id}-${index}`} className="gallery-item">
-                    <LazyLoadImage
-                      src={`https://edocms.netlify.app${item.image.url}`}
-                      alt={item.brand?.name || "Gallery image"}
-                      effect="blur"
-                      wrapperClassName="gallery-image-wrapper"
-                      threshold={100}
-                      visibleByDefault={false}
-                    />
+                    <div className="gallery-image-container">
+                      <LazyLoadImage
+                        src={`https://edocms.netlify.app${item.image.url}`}
+                        alt={item.brand?.name || "Gallery image"}
+                        effect="blur"
+                        wrapperClassName="gallery-image-wrapper"
+                        threshold={100}
+                        visibleByDefault={false}
+                      />
+                      <div className="brand-overlay">
+                        <span className="brand-name">
+                          {item.brand?.name || "Marque"}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 ))
               : generatePlaceholders()}
