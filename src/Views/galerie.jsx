@@ -24,6 +24,18 @@ import {
 } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/opacity.css";
 
+import { debounce } from "lodash";
+
+import { useInView } from "react-intersection-observer";
+
+const API_BASE_URL = "https://edocms.netlify.app/api";
+const IMAGES_PER_PAGE = 10;
+const CACHE_DURATION = 24 * 60 * 60 * 1000;
+const SCROLL_DEBOUNCE = 2000;
+const IMAGE_LOAD_BATCH = 10;
+const SCROLL_THRESHOLD = 800;
+const BATCH_DELAY = 300;
+
 const generateRandomOffset = (index) => {
   const isMobile = window.innerWidth < 1200;
   const amplitudeMultiplier = isMobile ? 0.6 : 1;
@@ -52,6 +64,11 @@ const generateRandomOffset = (index) => {
     bottom: isMobile ? 0 : Math.round(topOffset - randomFactor),
     left: isMobile ? Math.round(horizontalOffset) : 0,
   };
+};
+
+const imageCache = {
+  data: new Map(),
+  timestamp: new Map(),
 };
 
 const Galerie = ({ setPageLoad, setSelectedLink }) => {
@@ -105,50 +122,136 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     setCategories(formattedCategories);
   };
 
-  // Modification de la fonction fetchImages
-  const fetchImages = async (pageNumber = 1) => {
+  // Configurer l'observer avec des options plus agressives
+  const { ref, inView } = useInView({
+    threshold: 0,
+    rootMargin: "400px", // Augmenter la marge pour charger plus tôt
+    triggerOnce: false,
+  });
+
+  // Effet pour le chargement initial
+  useEffect(() => {
+    console.log("🔄 Reset gallery for category:", category);
+    setImages([]);
+    setVisibleImages([]);
+    setPage(1);
+    setHasMore(true);
+    setIsLoading(false);
+    fetchImages(1);
+  }, [category]);
+
+  const fetchImages = async (currentPage) => {
     try {
+      if (isLoading) {
+        console.log("⏳ Already loading, skipping fetch");
+        return;
+      }
+
       setIsLoading(true);
-      const url = `https://cms-psi-five.vercel.app/api/gallery?depth=2&draft=false&limit=20&page=${pageNumber}`;
+      console.log("📥 Fetching page:", currentPage);
 
-      const response = await fetch(url);
+      // Construction de l'URL selon la doc Payload
+      const url = new URL(`${API_BASE_URL}/gallery`); // Collection endpoint
+
+      // Construction des paramètres selon la doc Payload
+      const where = category
+        ? {
+            categories: {
+              name: {
+                equals: category.toLowerCase(),
+              },
+            },
+          }
+        : undefined;
+
+      const params = new URLSearchParams({
+        depth: 2, // Pour les relations imbriquées
+        draft: false,
+        page: currentPage,
+        limit: IMAGES_PER_PAGE,
+        sort: "-createdAt",
+        where: where ? JSON.stringify(where) : undefined,
+      });
+
+      const finalUrl = `${url}?${params}`;
+      console.log("🔍 Request URL:", finalUrl);
+
+      // Requête selon la doc Payload
+      const response = await fetch(finalUrl, {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+        },
+      });
+
+      if (!response.ok) {
+        console.error("🚨 API Error:", response.status, response.statusText);
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
       const data = await response.json();
+      console.log("📦 API Response:", data);
 
-      if (data.docs) {
-        const validImages = data.docs
-          .filter((item) => item.image && item.image.url)
-          .filter((item) => {
-            if (!category) return true;
-            return (
-              item.categories?.name?.toLowerCase() === category.toLowerCase()
-            );
-          });
+      // Vérification de la structure de réponse Payload
+      if (!data || typeof data.docs === "undefined") {
+        console.error("❌ Invalid Payload response format:", data);
+        setHasMore(false);
+        return;
+      }
 
-        if (validImages.length === 0 && pageNumber === 1) {
-          setHasMore(false);
-        } else {
-          setImages((prevImages) =>
-            pageNumber === 1 ? validImages : [...prevImages, ...validImages]
-          );
-          setHasMore(data.hasNextPage);
-          setPage(data.page);
+      const validImages = data.docs.filter((item) => {
+        if (!item?.image?.url) {
+          console.log("❌ Invalid image data:", item);
+          return false;
         }
+        return true;
+      });
+
+      console.log(`✅ Valid images: ${validImages.length}/${data.docs.length}`);
+
+      if (currentPage === 1) {
+        setImages(validImages);
+        setVisibleImages(validImages);
+      } else {
+        setImages((prev) => {
+          const existingIds = new Set(prev.map((img) => img.id));
+          const newImages = validImages.filter(
+            (img) => !existingIds.has(img.id)
+          );
+          console.log(`➕ Adding ${newImages.length} new unique images`);
+          return [...prev, ...newImages];
+        });
+
+        setVisibleImages((prev) => {
+          const existingIds = new Set(prev.map((img) => img.id));
+          const newImages = validImages.filter(
+            (img) => !existingIds.has(img.id)
+          );
+          return [...prev, ...newImages];
+        });
+      }
+
+      // Gestion de la pagination selon Payload
+      setHasMore(data.hasNextPage);
+      if (data.hasNextPage) {
+        setPage(data.nextPage);
       }
     } catch (error) {
-      console.error("Error fetching images:", error);
+      console.error("🚨 Fetch error:", error);
       setHasMore(false);
     } finally {
       setIsLoading(false);
     }
   };
 
-  // Effet pour charger les images initiales
+  // Effet pour le chargement des pages suivantes
   useEffect(() => {
-    setImages([]);
-    setPage(1);
-    setHasMore(true);
-    fetchImages(1);
-  }, [category]);
+    if (inView && !isLoading && hasMore) {
+      console.log("👁️ Observer triggered, loading page:", page);
+      fetchImages(page);
+    }
+  }, [inView]);
 
   // Modification de la fonction de filtrage
   const filterImages = (images) => {
@@ -175,74 +278,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     console.log("Current category:", category);
     console.log("Current subcategory:", subcategory);
   }, [images, categories, category, subcategory]);
-
-  // Fonction de scroll unique pour PC et mobile
-  const handleScroll = () => {
-    if (isLoading || !hasMore) return;
-
-    let shouldFetch = false;
-
-    if (matches) {
-      // Version PC
-      const scrollContainer = document.querySelector(".galeriePCWrapper");
-      if (!scrollContainer) return;
-
-      const { scrollLeft, clientWidth, scrollWidth } = scrollContainer;
-      shouldFetch = scrollLeft + clientWidth >= scrollWidth - 100;
-    } else {
-      // Version mobile
-      const { scrollTop, clientHeight, scrollHeight } =
-        document.documentElement;
-      shouldFetch = scrollTop + clientHeight >= scrollHeight - 100;
-    }
-
-    if (shouldFetch) {
-      console.log("Fetching next page:", page + 1);
-      fetchImages(page + 1);
-    }
-  };
-
-  // Effet pour gérer les événements de scroll
-  useEffect(() => {
-    const scrollHandler = () => {
-      if (!isLoading) {
-        handleScroll();
-      }
-    };
-
-    if (matches) {
-      const scrollContainer = document.querySelector(".galeriePCWrapper");
-      if (scrollContainer) {
-        scrollContainer.addEventListener("scroll", scrollHandler, {
-          passive: true,
-        });
-        return () =>
-          scrollContainer.removeEventListener("scroll", scrollHandler);
-      }
-    } else {
-      window.addEventListener("scroll", scrollHandler, { passive: true });
-      return () => window.removeEventListener("scroll", scrollHandler);
-    }
-  }, [matches, isLoading, hasMore, page, category]);
-
-  // Effet pour vérifier s'il faut charger plus d'images quand la page est trop courte
-  useEffect(() => {
-    if (!isLoading && hasMore) {
-      if (matches) {
-        const scrollContainer = document.querySelector(".galeriePCWrapper");
-        if (
-          scrollContainer &&
-          scrollContainer.scrollWidth <= scrollContainer.clientWidth
-        ) {
-          fetchImages(page + 1);
-        }
-      } else {
-        if (document.documentElement.scrollHeight <= window.innerHeight) {
-          fetchImages(page + 1);
-        }
-      }
-    }
-  }, [images, matches, isLoading, hasMore]);
 
   const PMS_BoutonPCNextButton = useRef();
   const PMS_BoutonPCPrecButton = useRef();
@@ -389,10 +424,11 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       return null;
     }
 
-    const imageUrl = `https://cms-psi-five.vercel.app${item.image.url}`;
+    const imageUrl = `https://edocms.netlify.app${item.image.url}`;
+    const uniqueKey = `${item.id || "img"}-${index}`;
 
     return (
-      <LazyLoadComponent key={item.id || index} threshold={400}>
+      <LazyLoadComponent key={uniqueKey} threshold={400}>
         <div className="gallery-item">
           <div className="image-placeholder"></div>
           <LazyLoadImage
@@ -400,8 +436,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
             alt={item.brand?.name || "Gallery image"}
             effect="blur"
             wrapperClassName="gallery-image-wrapper"
-            beforeLoad={() => console.log("Loading started", imageUrl)}
-            afterLoad={() => console.log("Loading finished", imageUrl)}
             threshold={100}
             visibleByDefault={false}
           />
@@ -416,7 +450,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     }
 
     const offsets = generateRandomOffset(index);
-    const imageUrl = `https://cms-psi-five.vercel.app${item.image.url}`;
+    const imageUrl = `https://edocms.netlify.app${item.image.url}`;
 
     return (
       <LazyLoadComponent key={item.id || index} threshold={200}>
@@ -443,13 +477,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     );
   };
 
-  useEffect(() => {
-    console.log("Nombre total d'images:", images.length);
-    console.log(
-      "Images filtrées:",
-      filterImages(images, category, subcategory).length
-    );
-  }, [images, category, subcategory]);
+  const [visibleImages, setVisibleImages] = useState([]);
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
@@ -459,25 +487,37 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
           selectedLink={selectedLink}
           setSelectedLink={setSelectedLink}
         />
-        <div className="galeriePCWrapper">
+        <div className="galeriePCWrapper" id="scrollableDiv">
           <div className="gallery-grid">
-            {isLoading &&
-              images.length === 0 &&
-              Array(12)
-                .fill(0)
-                .map((_, index) => (
-                  <div key={`placeholder-${index}`} className="gallery-item">
-                    <div className="image-placeholder"></div>
-                  </div>
-                ))}
-            {images.map((item, index) => renderGalerieItem(item, index))}
+            {visibleImages.map((item, index) => (
+              <div key={`${item.id}-${index}`} className="gallery-item">
+                <LazyLoadImage
+                  src={`https://edocms.netlify.app${item.image.url}`}
+                  alt={item.brand?.name || "Gallery image"}
+                  effect="blur"
+                  wrapperClassName="gallery-image-wrapper"
+                  threshold={100}
+                  visibleByDefault={false}
+                />
+              </div>
+            ))}
           </div>
-          {isLoading && images.length > 0 && (
-            <div className="loading-indicator">Loading...</div>
-          )}
+
+          <div ref={ref} style={{ height: "50px", margin: "20px 0" }}>
+            {isLoading && (
+              <div className="loading-indicator">
+                <div className="spinner"></div>
+                Loading page {page}...
+              </div>
+            )}
+            {!hasMore && !isLoading && (
+              <div className="end-message">
+                <p>All {visibleImages.length} images loaded</p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-      )
       <Footer AnimationBloc7={true} />
     </Suspense>
   );
