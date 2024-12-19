@@ -29,12 +29,13 @@ import { debounce } from "lodash";
 import { useInView } from "react-intersection-observer";
 
 const API_BASE_URL = "https://edocms.netlify.app/api";
-const IMAGES_PER_PAGE = 10;
+const IMAGES_PER_PAGE = 12;
 const CACHE_DURATION = 24 * 60 * 60 * 1000;
 const SCROLL_DEBOUNCE = 2000;
 const IMAGE_LOAD_BATCH = 10;
 const SCROLL_THRESHOLD = 800;
 const BATCH_DELAY = 300;
+const PLACEHOLDER_COUNT = 12;
 
 const generateRandomOffset = (index) => {
   const isMobile = window.innerWidth < 1200;
@@ -70,6 +71,14 @@ const imageCache = {
   data: new Map(),
   timestamp: new Map(),
 };
+
+const ImagePlaceholder = () => (
+  <div className="gallery-item">
+    <div className="gallery-image-wrapper loading">
+      <div className="image-placeholder"></div>
+    </div>
+  </div>
+);
 
 const Galerie = ({ setPageLoad, setSelectedLink }) => {
   const matches = useMediaQuery("only screen and (min-width: 1200px)");
@@ -148,58 +157,38 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       }
 
       setIsLoading(true);
-      console.log("📥 Fetching page:", currentPage);
+      console.log("📥 Fetching page:", currentPage, "Category:", category);
 
-      // Construction de l'URL selon la doc Payload
-      const url = new URL(`${API_BASE_URL}/gallery`); // Collection endpoint
+      // Construction de l'URL de base
+      const url = new URL(`${API_BASE_URL}/gallery`);
 
-      // Construction des paramètres selon la doc Payload
-      const where = category
-        ? {
-            categories: {
-              name: {
-                equals: category.toLowerCase(),
-              },
-            },
-          }
-        : undefined;
-
+      // Construction des paramètres selon le format exact de Payload
       const params = new URLSearchParams({
-        depth: 2, // Pour les relations imbriquées
-        draft: false,
-        page: currentPage,
-        limit: IMAGES_PER_PAGE,
-        sort: "-createdAt",
-        where: where ? JSON.stringify(where) : undefined,
+        depth: 2,
+        page: currentPage.toString(),
+        limit: IMAGES_PER_PAGE.toString(),
       });
+
+      // Ajout du filtre de catégorie dans le format exact requis
+      if (category) {
+        const categoryName =
+          category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
+        params.append("where[categories.name][equals]", categoryName);
+      }
 
       const finalUrl = `${url}?${params}`;
       console.log("🔍 Request URL:", finalUrl);
 
-      // Requête selon la doc Payload
-      const response = await fetch(finalUrl, {
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        },
-      });
-
-      if (!response.ok) {
-        console.error("🚨 API Error:", response.status, response.statusText);
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
+      const response = await fetch(finalUrl);
       const data = await response.json();
-      console.log("📦 API Response:", data);
 
-      // Vérification de la structure de réponse Payload
-      if (!data || typeof data.docs === "undefined") {
-        console.error("❌ Invalid Payload response format:", data);
+      if (!data || !Array.isArray(data.docs)) {
+        console.error("❌ Invalid response format:", data);
         setHasMore(false);
         return;
       }
 
+      // Filtrage des images invalides
       const validImages = data.docs.filter((item) => {
         if (!item?.image?.url) {
           console.log("❌ Invalid image data:", item);
@@ -210,6 +199,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
 
       console.log(`✅ Valid images: ${validImages.length}/${data.docs.length}`);
 
+      // Mise à jour des images selon la page
       if (currentPage === 1) {
         setImages(validImages);
         setVisibleImages(validImages);
@@ -219,10 +209,8 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
           const newImages = validImages.filter(
             (img) => !existingIds.has(img.id)
           );
-          console.log(`➕ Adding ${newImages.length} new unique images`);
           return [...prev, ...newImages];
         });
-
         setVisibleImages((prev) => {
           const existingIds = new Set(prev.map((img) => img.id));
           const newImages = validImages.filter(
@@ -232,11 +220,9 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         });
       }
 
-      // Gestion de la pagination selon Payload
+      // Mise à jour de la pagination
       setHasMore(data.hasNextPage);
-      if (data.hasNextPage) {
-        setPage(data.nextPage);
-      }
+      setPage(data.nextPage || currentPage + 1);
     } catch (error) {
       console.error("🚨 Fetch error:", error);
       setHasMore(false);
@@ -479,6 +465,12 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
 
   const [visibleImages, setVisibleImages] = useState([]);
 
+  const generatePlaceholders = () => {
+    return Array(PLACEHOLDER_COUNT)
+      .fill(null)
+      .map((_, index) => <ImagePlaceholder key={`placeholder-${index}`} />);
+  };
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div className="galeriePC">
@@ -489,18 +481,20 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         />
         <div className="galeriePCWrapper" id="scrollableDiv">
           <div className="gallery-grid">
-            {visibleImages.map((item, index) => (
-              <div key={`${item.id}-${index}`} className="gallery-item">
-                <LazyLoadImage
-                  src={`https://edocms.netlify.app${item.image.url}`}
-                  alt={item.brand?.name || "Gallery image"}
-                  effect="blur"
-                  wrapperClassName="gallery-image-wrapper"
-                  threshold={100}
-                  visibleByDefault={false}
-                />
-              </div>
-            ))}
+            {visibleImages.length > 0
+              ? visibleImages.map((item, index) => (
+                  <div key={`${item.id}-${index}`} className="gallery-item">
+                    <LazyLoadImage
+                      src={`https://edocms.netlify.app${item.image.url}`}
+                      alt={item.brand?.name || "Gallery image"}
+                      effect="blur"
+                      wrapperClassName="gallery-image-wrapper"
+                      threshold={100}
+                      visibleByDefault={false}
+                    />
+                  </div>
+                ))
+              : generatePlaceholders()}
           </div>
 
           <div ref={ref} style={{ height: "50px", margin: "20px 0" }}>
@@ -510,7 +504,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                 Loading page {page}...
               </div>
             )}
-            {!hasMore && !isLoading && (
+            {!hasMore && !isLoading && visibleImages.length > 0 && (
               <div className="end-message">
                 <p>All {visibleImages.length} images loaded</p>
               </div>

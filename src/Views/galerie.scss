@@ -131,11 +131,11 @@
   width: 100%;
 
   .IMGMobile {
-    width: 100%;
+    width: auto;
     height: auto;
 
     img {
-      width: 100%;
+      width: auto;
       height: auto;
       object-fit: contain;
     }
@@ -144,7 +144,6 @@
 
 .galeriePC {
   padding-top: 100px;
-  overflow-y: auto;
 
   .galeriePCWrapper {
     width: 100%;
@@ -194,16 +193,6 @@
       }
     }
   }
-}
-
-// Masquer les scrollbars tout en gardant la fonctionnalité
-.galeriePC::-webkit-scrollbar {
-  display: none;
-}
-
-.galeriePC {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
 }
 
 // Loading indicator
@@ -461,13 +450,12 @@ a {
     width: 100%;
 
     .lazy-load-image-background {
-      display: block;
       width: 100%;
 
       img {
-        width: 100%;
+        width: auto;
         height: auto;
-        display: block;
+        object-fit: contain;
       }
     }
   }
@@ -542,9 +530,9 @@ a {
 
 // Ajouter ces styles pour InfiniteScroll
 .galeriePCWrapper {
-  height: calc(100vh - 100px);
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  padding: 0;
+  display: block;
 
   .gallery-grid {
     display: grid;
@@ -591,4 +579,69 @@ a {
   padding: 20px;
   color: white;
   font-size: 1.2em;
+}
+
+// Ajouter ces styles pour le scroll sur toute la page
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 100%;
+}
+
+html {
+  height: 100%;
+}
+
+// Ajuster le positionnement du footer
+.footer {
+  position: relative;
+  width: 100%;
+  margin-top: 50px;
+}
+
+// Ajuster l'espacement de la grille
+.gallery-grid {
+  padding-bottom: 50px; // Ajouter un espacement en bas de la grille
+}
+
+.gallery-image-wrapper {
+  &.loading {
+    background-color: #f0f0f0;
+    animation: pulse 1.5s infinite;
+    min-height: 300px; // Ajustez selon vos besoins
+
+    .image-placeholder {
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0),
+        rgba(255, 255, 255, 0.5),
+        rgba(255, 255, 255, 0)
+      );
+      background-size: 200% 100%;
+      animation: shimmer 2s infinite;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
