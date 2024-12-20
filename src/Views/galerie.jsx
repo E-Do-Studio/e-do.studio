@@ -1,9 +1,5 @@
 import { useMediaQuery } from "@react-hook/media-query";
-import Lottie from "lottie-react";
 import React, { Suspense, useEffect, useRef, useState } from "react";
-import IMGMobile from "./IMGMobile";
-import IMGPC from "./IMGPC";
-
 import ScrollContainer from "react-indiana-drag-scroll";
 
 import { useLocation } from "react-router-dom";
@@ -97,6 +93,30 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
   const [hasMore, setHasMore] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
+  // Add new state for menu position
+  const [isMenuFixed, setIsMenuFixed] = useState(true);
+  const menuRef = useRef(null);
+  const footerRef = useRef(null);
+
+  // Add scroll event listener
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!menuRef.current || !footerRef.current) return;
+
+      const menuHeight = menuRef.current.offsetHeight;
+      const footerTop = footerRef.current.getBoundingClientRect().top;
+      const windowHeight = window.innerHeight;
+      const buffer = 30; // Distance from footer when menu should stop
+
+      setIsMenuFixed(footerTop > windowHeight - buffer);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Initial check
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   // Fonction pour organiser les images par catégories
   const organizeCategories = (images) => {
     if (!Array.isArray(images) || images.length === 0) {
@@ -134,7 +154,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
   // Configurer l'observer avec des options plus agressives
   const { ref, inView } = useInView({
     threshold: 0,
-    rootMargin: "400px", // Augmenter la marge pour charger plus tôt
+    rootMargin: "200px", // Réduit pour déclencher le chargement plus tôt
     triggerOnce: false,
   });
 
@@ -159,17 +179,13 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       setIsLoading(true);
       console.log("📥 Fetching page:", currentPage, "Category:", category);
 
-      // Construction de l'URL de base
       const url = new URL(`${API_BASE_URL}/gallery`);
-
-      // Construction des paramètres selon le format exact de Payload
       const params = new URLSearchParams({
         depth: 2,
         page: currentPage.toString(),
         limit: IMAGES_PER_PAGE.toString(),
       });
 
-      // Ajout du filtre de catégorie dans le format exact requis
       if (category) {
         const categoryName =
           category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
@@ -188,41 +204,19 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         return;
       }
 
-      // Filtrage des images invalides
-      const validImages = data.docs.filter((item) => {
-        if (!item?.image?.url) {
-          console.log("❌ Invalid image data:", item);
-          return false;
-        }
-        return true;
-      });
+      const validImages = data.docs.filter((item) => item?.image?.url);
 
-      console.log(`✅ Valid images: ${validImages.length}/${data.docs.length}`);
-
-      // Mise à jour des images selon la page
-      if (currentPage === 1) {
-        setImages(validImages);
-        setVisibleImages(validImages);
-      } else {
-        setImages((prev) => {
-          const existingIds = new Set(prev.map((img) => img.id));
-          const newImages = validImages.filter(
-            (img) => !existingIds.has(img.id)
-          );
-          return [...prev, ...newImages];
-        });
-        setVisibleImages((prev) => {
-          const existingIds = new Set(prev.map((img) => img.id));
-          const newImages = validImages.filter(
-            (img) => !existingIds.has(img.id)
-          );
-          return [...prev, ...newImages];
-        });
-      }
+      // Mise à jour des images en conservant les images existantes
+      setImages((prev) =>
+        currentPage === 1 ? validImages : [...prev, ...validImages]
+      );
+      setVisibleImages((prev) =>
+        currentPage === 1 ? validImages : [...prev, ...validImages]
+      );
 
       // Mise à jour de la pagination
       setHasMore(data.hasNextPage);
-      setPage(data.nextPage || currentPage + 1);
+      setPage(currentPage + 1);
     } catch (error) {
       console.error("🚨 Fetch error:", error);
       setHasMore(false);
@@ -237,7 +231,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       console.log("👁️ Observer triggered, loading page:", page);
       fetchImages(page);
     }
-  }, [inView]);
+  }, [inView, isLoading, hasMore, page, category]);
 
   // Modification de la fonction de filtrage
   const filterImages = (images) => {
@@ -480,9 +474,11 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     <Suspense fallback={<div>Loading...</div>}>
       <div className="galeriePC">
         <GalerieMenu
+          ref={menuRef}
           setPageLoad={setPageLoad}
           selectedLink={selectedLink}
           setSelectedLink={setSelectedLink}
+          className={isMenuFixed ? "menu-fixed" : "menu-absolute"}
         />
         <div className="galeriePCWrapper" id="scrollableDiv">
           <div className="gallery-grid">
@@ -524,7 +520,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
           </div>
         </div>
       </div>
-      <Footer AnimationBloc7={true} />
+      <Footer ref={footerRef} AnimationBloc7={true} />
     </Suspense>
   );
 };
