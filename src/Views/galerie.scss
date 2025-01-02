@@ -46,51 +46,103 @@
       box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
     }
 
-    .titrePageGalerie {
-      position: relative;
-      transform: none;
-      font-size: 20px;
-      margin-bottom: 15px;
-      color: black;
-      text-align: center;
-    }
+    // .titrePageGalerie {
+    //   position: relative;
+    //   transform: none;
+    //   font-size: 20px;
+    //   margin-bottom: 15px;
+    //   color: black;
+    //   text-align: center;
+    // }
 
-    ul {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 15px;
-      margin: 0;
-      justify-content: center;
-      padding: 5px;
-      overflow-x: auto;
-      -ms-overflow-style: none;
-      scrollbar-width: none;
+    // ul {
+    //   display: flex;
+    //   flex-wrap: nowrap;
+    //   gap: 15px;
+    //   margin: 0;
+    //   justify-content: center;
+    //   padding: 5px;
+    //   overflow-x: auto;
+    //   -ms-overflow-style: none;
+    //   scrollbar-width: none;
 
-      &::-webkit-scrollbar {
-        display: none;
+    //   &::-webkit-scrollbar {
+    //     display: none;
+    //   }
+
+    //   li {
+    //     margin: 0;
+    //     padding: 8px 15px;
+    //     border-radius: 12px;
+    //     background: rgba(255, 255, 255, 0.3);
+    //     color: black;
+    //     font-size: 0.9em;
+    //     white-space: nowrap;
+    //     flex-shrink: 0;
+    //     transition: all 0.3s ease;
+
+    //     &:hover {
+    //       background: rgba(255, 255, 255, 0.5);
+    //       transform: translateY(-3px);
+    //       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    //     }
+
+    //     &.active {
+    //       background: rgba(255, 255, 255, 0.6);
+    //       color: black;
+    //       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    //     }
+    //   }
+    // }
+
+    .titreAnimationWrapper {
+      left: 31px;
+      top: 88px;
+
+      height: auto;
+      width: 230px;
+      position: fixed;
+      overflow: hidden;
+
+      z-index: 10;
+
+      @include xl {
+        left: 51px;
       }
 
-      li {
-        margin: 0;
-        padding: 8px 15px;
-        border-radius: 12px;
-        background: rgba(255, 255, 255, 0.3);
-        color: black;
-        font-size: 0.9em;
-        white-space: nowrap;
-        flex-shrink: 0;
-        transition: all 0.3s ease;
+      // background:blue;
 
-        &:hover {
-          background: rgba(255, 255, 255, 0.5);
-          transform: translateY(-3px);
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
+      .titrePageGalerie {
+        font-size: 25px;
+        font-weight: 300;
+        line-height: 1.6;
+        letter-spacing: -0.6px;
 
-        &.active {
-          background: rgba(255, 255, 255, 0.6);
-          color: black;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        text-align: left;
+
+        // right:0;
+        // top:88px;
+        position: absolute;
+        transform: translateY(100%);
+        transition: transform 650ms ease-out;
+        text-transform: uppercase;
+      }
+
+      ul {
+        padding: 0;
+        list-style-type: none;
+        margin-top: 40px;
+
+        li {
+          margin-bottom: 1px;
+
+          &:hover {
+            color: grey;
+          }
+
+          &.active {
+            color: rgb(88, 88, 88);
+          }
         }
       }
     }

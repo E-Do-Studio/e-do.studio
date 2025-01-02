@@ -33,35 +33,35 @@ const SCROLL_THRESHOLD = 800;
 const BATCH_DELAY = 300;
 const PLACEHOLDER_COUNT = 12;
 
-const generateRandomOffset = (index) => {
-  const isMobile = window.innerWidth < 1200;
-  const amplitudeMultiplier = isMobile ? 0.6 : 1;
+// const generateRandomOffset = (index) => {
+//   const isMobile = window.innerWidth < 1200;
+//   const amplitudeMultiplier = isMobile ? 0.6 : 1;
 
-  const topOffset =
-    (Math.sin(index * 0.7) * 35 +
-      Math.cos(index * 1.3) * 20 +
-      Math.sin(index * 0.2 + Math.PI) * 25 +
-      Math.cos(index * 2.1) * 15 +
-      Math.sin(index * 0.5 + index * 0.1) * 18) *
-    amplitudeMultiplier;
+//   const topOffset =
+//     (Math.sin(index * 0.7) * 35 +
+//       Math.cos(index * 1.3) * 20 +
+//       Math.sin(index * 0.2 + Math.PI) * 25 +
+//       Math.cos(index * 2.1) * 15 +
+//       Math.sin(index * 0.5 + index * 0.1) * 18) *
+//     amplitudeMultiplier;
 
-  const horizontalOffset = isMobile
-    ? (Math.sin(index * 0.8) * 12 +
-        Math.cos(index * 1.2) * 8 +
-        Math.sin(index * 0.3 + Math.PI / 4) * 10 +
-        Math.cos(index * 1.8) * 6 +
-        Math.sin(index * 0.6 + index * 0.2) * 5) *
-      amplitudeMultiplier
-    : 0;
+//   const horizontalOffset = isMobile
+//     ? (Math.sin(index * 0.8) * 12 +
+//         Math.cos(index * 1.2) * 8 +
+//         Math.sin(index * 0.3 + Math.PI / 4) * 10 +
+//         Math.cos(index * 1.8) * 6 +
+//         Math.sin(index * 0.6 + index * 0.2) * 5) *
+//       amplitudeMultiplier
+//     : 0;
 
-  const randomFactor = Math.sin(index * 123.456) * 20 * amplitudeMultiplier;
+//   const randomFactor = Math.sin(index * 123.456) * 20 * amplitudeMultiplier;
 
-  return {
-    top: Math.round(topOffset + randomFactor),
-    bottom: isMobile ? 0 : Math.round(topOffset - randomFactor),
-    left: isMobile ? Math.round(horizontalOffset) : 0,
-  };
-};
+//   return {
+//     top: Math.round(topOffset + randomFactor),
+//     bottom: isMobile ? 0 : Math.round(topOffset - randomFactor),
+//     left: isMobile ? Math.round(horizontalOffset) : 0,
+//   };
+// };
 
 const imageCache = {
   data: new Map(),
@@ -167,6 +167,12 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     setHasMore(true);
     setIsLoading(false);
     fetchImages(1);
+
+    // Ajout du smooth scroll vers le haut
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
   }, [category]);
 
   const fetchImages = async (currentPage) => {
@@ -354,8 +360,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       duration: 500,
       delay: 300,
     });
-
-    //Animation du bouton
   }, []);
 
   const videoRefs = useRef([]);
@@ -434,7 +438,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       return null;
     }
 
-    const offsets = generateRandomOffset(index);
+    // const offsets = generateRandomOffset(index);
     const imageUrl = `https://edocms.netlify.app${item.image.url}`;
 
     return (
