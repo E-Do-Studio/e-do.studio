@@ -87,9 +87,9 @@ const Footer = forwardRef(({ AnimationBloc7, colorTheme }, ref) => {
   return (
     <footer
       className={colorThemeState}
-      style={{
-        height: location.pathname !== "/" ? "100vh" : "unset",
-      }}
+      // style={{
+      //   height: location.pathname !== "/" ? "100vh" : "unset",
+      // }}
       ref={ref}
     >
       <div className="footerPrincipalWrapper">

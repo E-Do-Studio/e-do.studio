@@ -52,45 +52,35 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
         <>
           <span className="ligne ligne_1">
             <div className="sousLigne">
-              <span className="mot">Une</span>{" "}
-              <span className="mot">nouvelle</span>{" "}
-              <span className="mot">génération</span>
+              <span className="mot">Une nouvelle génération</span>
             </div>
           </span>
           <span className="ligne ligne_2">
             <div className="sousLigne">
-              <span className="mot">de</span>{" "}
-              <span className="mot">studio</span>{" "}
-              <span className="mot">photo</span>
+              <span className="mot">de studio photo</span>
             </div>{" "}
             <img src={accrocheIMG1} className="accrocheIMG1" alt="" />
           </span>
           <span className="ligne ligne_3">
             <div className="sousLigne">
-              <span className="mot">et</span> <span className="mot">vidéo</span>{" "}
-              <span className="mot">tout</span>{" "}
-              <span className="mot">équipé</span>
+              <span className="mot">et vidéo tout équipé</span>
             </div>
           </span>
           <span className="ligne ligne_4">
             <div className="sousLigne">
-              <span className="mot">pour </span>{" "}
-              <span className="mot">l'e-commerce</span>{" "}
-              <span className="mot">et</span>
+              <span className="mot">pour l'e-commerce et</span>
             </div>
           </span>
           <span className="ligne ligne_5">
             <img src={accrocheIMG2} className="accrocheIMG2" alt="" />{" "}
             <div className="sousLigne">
-              <span className="mot">la</span>{" "}
-              <span className="mot">création</span>
+              <span className="mot">la création</span>
             </div>
           </span>
           <span className="ligne ligne_6">
             <div className="sousLigne">
               {" "}
-              <span className="mot">social</span>{" "}
-              <span className="mot">media.</span>
+              <span className="mot">social média.</span>
             </div>
           </span>
           <span className="ligne ligne_7">
@@ -98,20 +88,13 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
           </span>
           <span className="ligne ligne_8">
             <div className="sousLigne">
-              <span className="mot">E-Do</span>{" "}
-              <span className="mot">vous</span>{" "}
-              <span className="mot">propose</span>{" "}
-              <span className="mot">des</span>
+              <span className="mot">E-Do vous propose des</span>
             </div>
           </span>
           <span className="ligne ligne_9">
             <div className="sousLigne">
               {" "}
-              <span className="mot">outils</span>{" "}
-              <span className="mot">de</span>{" "}
-              <span className="mot">
-                shootings<span className="copyright">®</span>
-              </span>
+              <span className="mot">outils de shootings®</span>
             </div>
           </span>
           <span className="ligne ligne_10">
@@ -125,55 +108,40 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
         <>
           <span className="ligne ligne_1">
             <div className="sousLigne">
-              <span className="mot">A</span> <span className="mot">new</span>{" "}
-              <span className="mot">generation</span>{" "}
-              <span className="mot">of</span>{" "}
+              <span className="mot">A new generation of</span>
             </div>
           </span>
           <span className="ligne ligne_2">
             <div className="sousLigne">
-              <span className="mot">photo</span>{" "}
-              <span className="mot">and</span>{" "}
-              <span className="mot">video</span>{" "}
+              <span className="mot">photo and vidéo</span>
             </div>{" "}
             <img src={accrocheIMG1} className="accrocheIMG1" alt="" />{" "}
           </span>
           <span className="ligne ligne_3">
             <div className="sousLigne">
-              <span className="mot">studio</span>{" "}
-              <span className="mot">fully</span>{" "}
-              <span className="mot">equipped</span>{" "}
-              <span className="mot">for</span>{" "}
+            <span className="mot">studio fully equipped for</span>
             </div>
           </span>
           <span className="ligne ligne_4">
             <div className="sousLigne">
-              <span className="mot">e-commerce</span>{" "}
-              <span className="mot">and</span>{" "}
-              <span className="mot">social</span>{" "}
+            <span className="mot">e-commerce and social</span>
             </div>{" "}
           </span>
           <span className="ligne ligne_5">
             <img src={accrocheIMG2} className="accrocheIMG2" alt="" />
             <div className="sousLigne">
-              <span className="mot">media</span>{" "}
-              <span className="mot">content</span>{" "}
+            <span className="mot">media content</span>
             </div>
           </span>
           <span className="ligne ligne_6">
             {" "}
             <div className="sousLigne">
-              <span className="mot">creation.</span>{" "}
-              <span className="mot">E-Do</span>{" "}
-              <span className="mot">offers</span>{" "}
-              <span className="mot">you</span>{" "}
+            <span className="mot">creation. E-Do offers you</span>
             </div>
           </span>
           <span className="ligne ligne_7">
             <div className="sousLigne">
-              <span className="mot">incomparable</span>{" "}
-              <span className="mot">shootings</span>
-              <span className="mot">®</span> <span className="mot">tools.</span>
+            <span className="mot">incomparable shootings® tools</span>
             </div>
           </span>
         </>
@@ -191,7 +159,7 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
         targets: ".sousLigne .mot",
         translateY: [100, 0],
         easing: "easeOutExpo",
-        duration: 1500,
+        duration: 2000,
         delay: (el, i) => 60 * i,
       });
 
@@ -219,46 +187,23 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
         <>
           <span className="ligne ligne_1">
             <div className="sousLigne">
-              <span className="mot">Une</span>{" "}
-              <span className="mot">nouvelle</span>{" "}
-              <span className="mot">génération</span>{" "}
-              <span className="mot">de</span>{" "}
-              <span className="mot">studio</span>{" "}
-              <span className="mot">photo</span> <span className="mot">et</span>{" "}
-              <span className="mot">vidéo</span>
+              <span className="mot">Une nouvelle génération de studio photo et vidéo</span>
             </div>
           </span>
           <span className="ligne ligne_2">
             <img src={accrocheIMG1} className="accrocheIMG1" alt="" />{" "}
             <div className="sousLigne">
-              <span className="mot">tout</span>{" "}
-              <span className="mot">équipé</span>{" "}
-              <span className="mot">pour</span>{" "}
-              <span className="mot">l'e-commerce</span>{" "}
-              <span className="mot">et</span> <span className="mot">la</span>{" "}
-              <span className="mot">création</span>
+              <span className="mot">tout équipé pour l'e-commerce et la création</span>
             </div>
           </span>
           <span className="ligne ligne_3">
             <div className="sousLigne">
-              <span className="mot">de</span>{" "}
-              <span className="mot">contenu</span>{" "}
-              <span className="mot">social</span>{" "}
-              <span className="mot">media.</span>{" "}
-              <span className="mot">E-Do</span>{" "}
-              <span className="mot">vous</span>{" "}
-              <span className="mot">propose</span>{" "}
+              <span className="mot">de contenu social media. E-do vous propose</span>
             </div>
           </span>
           <span className="ligne ligne_4">
             <div className="sousLigne">
-              <span className="mot">des</span>{" "}
-              <span className="mot">outils</span>{" "}
-              <span className="mot">de</span>{" "}
-              <span className="mot">
-                shootings<span className="copyright">®</span>
-              </span>{" "}
-              <span className="mot">incomparables.</span>
+              <span className="mot">des outils de shootings® incomparables.</span>
             </div>{" "}
             <img src={accrocheIMG2} className="accrocheIMG2" alt="" />
           </span>
@@ -267,40 +212,23 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
         <>
           <span className="ligne ligne_1">
             <div className="sousLigne">
-              <span className="mot">A</span> <span className="mot">new</span>{" "}
-              <span className="mot">generation</span>{" "}
-              <span className="mot">of</span> <span className="mot">photo</span>{" "}
-              <span className="mot">and</span>{" "}
-              <span className="mot">video</span>{" "}
-              <span className="mot">studio</span>{" "}
-              <span className="mot">fully</span>{" "}
+              <span className="mot">A new generation of photo and video studio fully</span>
             </div>
           </span>
           <span className="ligne ligne_2">
             <img src={accrocheIMG1} className="accrocheIMG1" alt="" />{" "}
             <div className="sousLigne">
-              <span className="mot">equipped</span>{" "}
-              <span className="mot">for</span>{" "}
-              <span className="mot">e-commerce</span>{" "}
-              <span className="mot">and</span>{" "}
-              <span className="mot">social</span>{" "}
-              <span className="mot">media</span>
+              <span className="mot">equiped for e-commerce and social media</span>
             </div>
           </span>
           <span className="ligne ligne_3">
             <div className="sousLigne">
-              <span className="mot">content</span>{" "}
-              <span className="mot">creation.</span>{" "}
-              <span className="mot">E-Do</span>{" "}
-              <span className="mot">offers</span>{" "}
-              <span className="mot">you</span>{" "}
-              <span className="mot">incomparable</span>{" "}
+              <span className="mot">content creation. E-DO offers you incomparable</span>
             </div>
           </span>
           <span className="ligne ligne_4">
             <div className="sousLigne">
-              <span className="mot">shootings</span>
-              <span className="mot">®</span> <span className="mot">tools.</span>
+              <span className="mot">shootings® tools.</span>
             </div>{" "}
             <img src={accrocheIMG2} className="accrocheIMG2" alt="" />
           </span>
