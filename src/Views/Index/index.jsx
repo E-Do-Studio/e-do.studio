@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import ReactFullpage from "@fullpage/react-fullpage";
 import OnImagesLoaded from "react-on-images-loaded";
 import { useMediaQuery } from "@react-hook/media-query";
 import { Helmet } from "react-helmet";
-
 import anime from "animejs/lib/anime.es.js";
 
 import "./index.scss";
@@ -14,21 +12,16 @@ import Services from "./services.jsx";
 import Services2 from "./services2.jsx";
 import Testimonial from "./testimonial.jsx";
 import Conclusion from "./conclusion.jsx";
-
 import Footer from "../../Components/Layout/Footer/footer";
 
 const Index = ({ setPageLoad, setBackgroundBlack }) => {
   const [pagePreload, setPagePreload] = useState(false);
   const [destinationIndex, setDestinationIndex] = useState(null);
   const [destinationDirection, setDestinationDirection] = useState(null);
-
-  const [fullpageApi, setFullpageApi] = useState(null);
-
   const [AccrocheSlideLeave, setAccrocheSlideLeave] = useState(false);
   const [AccrocheSlideLeaveAnimationFin, setAccrocheSlideLeaveAnimationFin] =
     useState(false);
   const [AccrocheSlideLeaveReset, setAccrocheSlideLeaveReset] = useState(false);
-
   const [AnimationBloc3, setAnimationBloc3] = useState(false);
   const [AnimationBloc4, setAnimationBloc4] = useState(false);
   const [AnimationBloc5, setAnimationBloc5] = useState(false);
@@ -40,10 +33,6 @@ const Index = ({ setPageLoad, setBackgroundBlack }) => {
   useEffect(() => {
     setPageLoad(true);
     window.scrollTo(0, 0);
-    // if(pagePreload){
-    //     console.log("test")
-    //     setPageLoad(true)
-    // }
   }, []);
 
   useEffect(() => {
@@ -54,16 +43,93 @@ const Index = ({ setPageLoad, setBackgroundBlack }) => {
     }
   }, [matches]);
 
-  const dotClick = (dot) => {
-    console.log("lol");
-    if (dot === 1) {
-      fullpageApi.moveSectionUp();
-    } else if (dot === 2) {
-      fullpageApi.moveSectionDown();
+  // Ajout des gestionnaires de scroll pour déclencher les animations
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+
+      // Récupérer les positions des sections
+      const sections = document.querySelectorAll(".section");
+      sections.forEach((section, index) => {
+        const rect = section.getBoundingClientRect();
+
+        if (rect.top < windowHeight * 0.75) {
+          // Déclencher les animations en fonction de l'index
+          switch (index) {
+            case 2:
+              setAnimationBloc3(true);
+              break;
+            case 3:
+              setAnimationBloc4(true);
+              break;
+            case 4:
+              setAnimationBloc5(true);
+              break;
+            case 5:
+              setAnimationBloc6(true);
+              break;
+            case 6:
+              setAnimationBloc7(true);
+              break;
+          }
+        }
+      });
+
+      // Gestion des dots de navigation
+      const servicesSection = document.querySelectorAll(".section")[2];
+      const services2Section = document.querySelectorAll(".section")[3];
+
+      if (servicesSection && services2Section) {
+        const servicesRect = servicesSection.getBoundingClientRect();
+        const services2Rect = services2Section.getBoundingClientRect();
+
+        if (
+          (servicesRect.top < windowHeight && servicesRect.bottom > 0) ||
+          (services2Rect.top < windowHeight && services2Rect.bottom > 0)
+        ) {
+          anime({
+            targets: ".DotsServices",
+            opacity: 1,
+            duration: 500,
+            begin: () => {
+              document.querySelector(".DotsServices").style.display = "block";
+            },
+          });
+
+          // Mise à jour des dots actifs
+          if (services2Rect.top < windowHeight / 2) {
+            document.querySelector(".dot2").style.background = "black";
+            document.querySelector(".dot1").style.background =
+              "rgba(0, 0, 0, 0.13)";
+          } else {
+            document.querySelector(".dot1").style.background = "black";
+            document.querySelector(".dot2").style.background =
+              "rgba(0, 0, 0, 0.13)";
+          }
+        } else {
+          anime({
+            targets: ".DotsServices",
+            opacity: 0,
+            duration: 500,
+            complete: () => {
+              document.querySelector(".DotsServices").style.display = "none";
+            },
+          });
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const scrollToSection = (index) => {
+    const sections = document.querySelectorAll(".section");
+    if (sections[index]) {
+      sections[index].scrollIntoView({ behavior: "smooth" });
     }
   };
-
-  //Gestion des DOT Navigation pour les services
 
   return (
     <>
@@ -115,208 +181,73 @@ const Index = ({ setPageLoad, setBackgroundBlack }) => {
         />
       </Helmet>
 
-      <ReactFullpage
-        //fullpage options
-        licenseKey={"5E4D08E1-DDAE45CA-862C78DF-5A8D06A5"}
-        scrollingSpeed={650} /* Options here */
-        scrollBar={false}
-        verticalCentered={false}
-        css3={true}
-        easing="linear"
-        // normalScrollElements = '.section1, .sectionWrapper'
-        scrollOverflow={true}
-        afterRender={() => {}}
-        onLeave={(origin, destination, direction) => {
-          setDestinationIndex(destination.index);
-          setDestinationDirection(direction);
-          //Animation du bouton avant slide vers le bas pour Accroche
-          if (
-            direction === "down" &&
-            destination.index === 1 &&
-            !AccrocheSlideLeaveAnimationFin
-          ) {
-            setAccrocheSlideLeave(true);
-            return false;
-          }
+      <OnImagesLoaded onLoaded={() => setPagePreload(true)}>
+        <main>
+          <section className="section">
+            <div className="sectionWrapper">
+              <Accroche
+                pagePreload={pagePreload}
+                AccrocheSlideLeave={AccrocheSlideLeave}
+                AccrocheSlideLeaveAnimationFin={AccrocheSlideLeaveAnimationFin}
+                setAccrocheSlideLeave={setAccrocheSlideLeave}
+                setAccrocheSlideLeaveAnimationFin={
+                  setAccrocheSlideLeaveAnimationFin
+                }
+                AccrocheSlideLeaveReset={AccrocheSlideLeaveReset}
+                setAccrocheSlideLeaveReset={setAccrocheSlideLeaveReset}
+              />
+            </div>
+          </section>
 
-          //Animation sur l'arrivé du bloc 3
-          if (direction === "down" && destination.index === 2) {
-            setAnimationBloc3(true);
-          }
-          if (direction === "down" && destination.index === 3) {
-            setAnimationBloc4(true);
-          }
+          <section className="section">
+            <Arguments
+              AccrocheSlideLeaveAnimationFin={AccrocheSlideLeaveAnimationFin}
+            />
+          </section>
 
-          if (direction === "down" && destination.index === 4) {
-            setAnimationBloc5(true);
-          }
-          if (direction === "down" && destination.index === 5) {
-            setAnimationBloc6(true);
-          }
-          if (direction === "down" && destination.index === 6) {
-            setAnimationBloc7(true);
-            // setBackgroundBlack(true) //Change la navbar de couleur
-          } else {
-            // setBackgroundBlack(false)
-          }
+          <section className="section">
+            <Services
+              setAnimationBloc3={setAnimationBloc3}
+              AnimationBloc3={AnimationBloc3}
+            />
+          </section>
 
-          // console.log(destination.index, direction)
+          <section className="section">
+            <Services2
+              setAnimationBloc4={setAnimationBloc4}
+              AnimationBloc4={AnimationBloc4}
+            />
+          </section>
 
-          //Gestion des dots de navigation des sections Services
-          if (
-            (direction === "down" && destination.index === 2) ||
-            (direction === "down" && destination.index === 3) ||
-            (direction === "up" && destination.index === 2) ||
-            (direction === "up" && destination.index === 3)
-          ) {
-            // console.log('test')
-            anime({
-              targets: ".DotsServices",
-              opacity: 1,
-              duration: 500,
-              delay: 600,
-              begin: () => {
-                document.querySelector(".DotsServices").style.display = "block";
-              },
-            });
+          <section className="section" style={{ overflow: "hidden" }}>
+            <Testimonial AnimationBloc5={AnimationBloc5} />
+          </section>
 
-            if (
-              destination.index === 3 &&
-              (direction === "down" || direction === "up")
-            ) {
-              document.querySelector(".dot2").style.background = "black";
-              document.querySelector(".dot1").style.background =
-                "rgba(0, 0, 0, 0.13)";
-            } else {
-              document.querySelector(".dot1").style.background = "black";
-              document.querySelector(".dot2").style.background =
-                "rgba(0, 0, 0, 0.13)";
-            }
-          } else {
-            // document.querySelector('.DotsServices').style.opacity = 0
-            anime({
-              targets: ".DotsServices",
-              opacity: 0,
-              duration: 500,
-              complete: () => {
-                document.querySelector(".DotsServices").style.display = "none";
-              },
-            });
-          }
-        }}
-        afterLoad={(origin, destination, direction) => {
-          //Animation du bouton avant slide vers le bas pour Accroche - RESET des States
-          if (
-            origin.index === 0 &&
-            destination.index === 1 &&
-            (AccrocheSlideLeave || AccrocheSlideLeaveAnimationFin)
-          ) {
-            setAccrocheSlideLeave(false);
-            setAccrocheSlideLeaveAnimationFin(false);
-            setAccrocheSlideLeaveReset(true);
-          }
-        }}
-        render={({ state, fullpageApi }) => {
-          setFullpageApi(fullpageApi);
+          <section
+            className="section"
+            style={{ overflow: "hidden", width: "100%" }}
+          >
+            <Conclusion
+              AnimationBloc6={AnimationBloc6}
+              AnimationBloc7={AnimationBloc7}
+              DestinationIndex={destinationIndex}
+              DestinationDirection={destinationDirection}
+            />
+          </section>
 
-          return (
-            <OnImagesLoaded
-              onLoaded={() => {
-                setPagePreload(true);
-              }}
-              // onTimeout={this.runTimeoutFunction}
-              // timeout={7000}
-            >
-              <ReactFullpage.Wrapper>
-                <div className="section">
-                  <div className="sectionWrapper">
-                    <Accroche
-                      pagePreload={pagePreload}
-                      fullpageApi={fullpageApi}
-                      AccrocheSlideLeave={AccrocheSlideLeave}
-                      AccrocheSlideLeaveAnimationFin={
-                        AccrocheSlideLeaveAnimationFin
-                      }
-                      setAccrocheSlideLeave={setAccrocheSlideLeave}
-                      setAccrocheSlideLeaveAnimationFin={
-                        setAccrocheSlideLeaveAnimationFin
-                      }
-                      AccrocheSlideLeaveReset={AccrocheSlideLeaveReset}
-                      setAccrocheSlideLeaveReset={setAccrocheSlideLeaveReset}
-                    />
-                  </div>
-                </div>
-
-                <div className="section">
-                  <Arguments
-                    fullpageApi={fullpageApi}
-                    AccrocheSlideLeaveAnimationFin={
-                      AccrocheSlideLeaveAnimationFin
-                    }
-                  />
-                </div>
-
-                <div className="section">
-                  <Services
-                    setAnimationBloc3={setAnimationBloc3}
-                    AnimationBloc3={AnimationBloc3}
-                  />
-                </div>
-
-                <div className="section">
-                  <Services2
-                    setAnimationBloc4={setAnimationBloc4}
-                    AnimationBloc4={AnimationBloc4}
-                  />
-                </div>
-
-                <div className="section" style={{ overflow: "hidden" }}>
-                  <Testimonial
-                    AnimationBloc5={AnimationBloc5}
-                    fullpageApi={fullpageApi}
-                  />
-                </div>
-
-                <div
-                  className="section"
-                  style={{ overflow: "hidden", width: "100%" }}
-                >
-                  <Conclusion
-                    AnimationBloc6={AnimationBloc6}
-                    AnimationBloc7={AnimationBloc7}
-                    DestinationIndex={destinationIndex}
-                    DestinationDirection={destinationDirection}
-                    fullpageApi={fullpageApi}
-                  />
-                </div>
-                <div className="section">
-                  <Footer AnimationBloc7={AnimationBloc7} />
-                </div>
-
-                {/* ELEMENTS A DROITE POUR LA SECTION SERVICE ET SERVICE 2 */}
-              </ReactFullpage.Wrapper>
-            </OnImagesLoaded>
-          );
-        }}
-      />
+          <section className="section">
+            <Footer AnimationBloc7={AnimationBloc7} />
+          </section>
+        </main>
+      </OnImagesLoaded>
 
       <div className="DotsServices">
-        <div
-          className="dot1 dot"
-          onClick={() => {
-            dotClick(1);
-          }}
-        >
+        {/* <div className="dot1 dot" onClick={() => scrollToSection(2)}>
           D
         </div>
-        <div
-          className="dot2 dot"
-          onClick={() => {
-            dotClick(2);
-          }}
-        >
+        <div className="dot2 dot" onClick={() => scrollToSection(3)}>
           D
-        </div>
+        </div> */}
       </div>
     </>
   );

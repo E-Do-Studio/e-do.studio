@@ -1,273 +1,293 @@
-@import '../../Assets/scss/styles.scss';
+@import "../../Assets/scss/styles.scss";
 
-.sectionAccueil{
-    // background:green;
-    height:100%;
-    width:100%;
-    // min-height:100%;
-    // min-height: 470px;
-    display: flex;
+.sectionAccueil {
+  // background:green;
+  height: 100%;
+  width: 100%;
+  // min-height:100%;
+  // min-height: 470px;
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  // justify-content:center;
+  // padding: 30px 0;
+  // padding:30px 0;
+  box-sizing: border-box;
+
+  // @include rwd(340){min-height: 500px;}
+
+  // @include rwd(360){min-height: 550px;}
+  @include rwd(380) {
+    font-size: 35px;
+  }
+}
+
+.SA_accrocheMobile {
+  // background:blue;
+  width: calc(100% - 64px);
+  margin-left: auto;
+  margin-right: auto;
+
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1.09;
+  letter-spacing: -0.9px;
+  // background:red;
+  // position:absolute;
+
+  @include rwd(340) {
+    font-size: 27px;
+    line-height: 1.14;
+  }
+
+  @include rwd(360) {
+    font-size: 29px;
+  }
+  @include rwd(380) {
+    font-size: 30px;
+    width: 312px;
+  }
+  @include rwd(400) {
+    font-size: 31px;
+    width: 330px;
+  }
+
+  // @include rwd(470){width:312px;}
+
+  @media screen and (min-height: 600px) {
+    line-height: 1.16;
+  }
+
+  .ligne {
+    display: block;
+  }
+
+  .ligne_2 {
     position: relative;
-    flex-direction: column;
-    // justify-content:center;
-    // padding: 30px 0;
-    // padding:30px 0;
-    box-sizing:border-box;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .accrocheIMG1 {
+      height: 26px;
+      display: inline-block;
+      margin-left: 12px;
+    }
+  }
 
-    // @include rwd(340){min-height: 500px;}
-
-    // @include rwd(360){min-height: 550px;}
-    @include rwd(380){font-size:35px;}
-
+  .ligne_5 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    .accrocheIMG2 {
+      height: 26px;
+      margin-right: 12px;
+    }
+  }
 }
 
+.SA_accrochePC {
+  display: inline-block;
+  // background:red;
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 33px;
+  line-height: 1.22;
+  letter-spacing: -1.55px;
+  text-align: center;
+  padding-bottom: 30px;
 
-.SA_accrocheMobile{
-    // background:blue;
-    width: calc(100% - 64px);
-    margin-left:auto;
-    margin-right:auto;
+  @include rwd(820) {
+    font-size: 35px;
+  }
+  @include rwd(900) {
+    font-size: 38px;
+  }
+  @include rwd(1000) {
+    font-size: 42px;
+    padding-bottom: 45px;
+  }
+  @include rwd(1200) {
+    font-size: 45px;
+    padding-bottom: 45px;
+  }
 
-    font-size:25px;
-    font-weight: 300;
-    line-height: 1.09;
-    letter-spacing: -0.90px;
-    // background:red;
-    // position:absolute;
+  @include xxl {
+    font-size: 52px;
+    line-height: 1.17;
+    letter-spacing: -1.44px;
+    padding-bottom: 80px;
+  }
 
-    @include rwd(340){ 
-        font-size:27px;
-        line-height: 1.14;
+  @include rwd(1600) {
+    font-size: 60px;
+  }
+
+  @include qhd {
+    font-size: 70px;
+  }
+
+  .ligne {
+    display: block;
+  }
+
+  .ligne_2 {
+    position: relative;
+    .accrocheIMG1 {
+      position: absolute;
+      height: 30px;
+      left: -52px;
+      top: 6px;
+
+      @include rwd(820) {
+        height: 34px;
+        left: -58px;
+      }
+
+      @include lg {
+        height: 38px;
+      }
+
+      @include xxl {
+        height: 54px;
+        left: -105px;
+        top: 5px;
+      }
+
+      @include rwd(1600) {
+        height: 60px;
+      }
+
+      @include qhd {
+        height: 70px;
+        left: -125px;
+      }
     }
+  }
 
-    @include rwd(360){font-size:29px;}
-    @include rwd(380){font-size:30px;width:312px; }
-    @include rwd(400){font-size:31px;width:330px; }
+  .ligne_4 {
+    position: relative;
+    .accrocheIMG2 {
+      position: absolute;
+      height: 30px;
+      right: -30px;
+      top: 6px;
 
-    // @include rwd(470){width:312px;}
+      @include rwd(820) {
+        height: 34px;
+        right: -34px;
+      }
+      @include lg {
+        height: 38px;
+      }
 
+      @include xxl {
+        height: 54px;
+        right: -60px;
+        top: 5px;
+      }
 
-    @media screen and (min-height:600px){line-height: 1.16;}
+      @include rwd(1600) {
+        height: 60px;
+      }
 
-    .ligne{
-        display: block;
+      @include qhd {
+        height: 70px;
+      }
     }
-
-    .ligne_2{
-        position: relative;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        .accrocheIMG1{
-            height:26px;
-            display: inline-block;
-            margin-left:12px;
-        }
-    }
-
-    .ligne_5{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        .accrocheIMG2{
-            height:26px;
-            margin-right:12px;
-        }
-    }
-
+  }
 }
-
-.SA_accrochePC{
-    display: inline-block;
-    // background:red;
-    margin-left:auto;
-    margin-right:auto;
-    font-size: 33px;
-    line-height: 1.22;
-    letter-spacing: -1.55px;
-    text-align: center;
-    padding-bottom:30px;
-
-    @include rwd(820){font-size: 35px;}
-    @include rwd(900){font-size: 38px;}
-    @include rwd(1000){font-size: 42px;padding-bottom:45px;}
-    @include rwd(1200){font-size: 45px;padding-bottom:45px;}
-
-    @include xxl{
-        font-size: 52px;
-        line-height: 1.17;
-        letter-spacing: -1.44px;
-        padding-bottom:80px;
-    }
-
-    @include rwd(1600){
-        font-size: 60px;
-    }
-
-    @include qhd{font-size: 70px;}
-
-    .ligne{
-        display: block;
-    }
-
-    .ligne_2{
-        position: relative;
-        .accrocheIMG1{
-            position: absolute;
-            height:30px;
-            left:-52px;
-            top:6px;
-
-            @include rwd(820){
-                height:34px;
-                left:-58px;
-            }
-
-            @include lg{
-                height:38px;
-            }
-
-            @include xxl{
-                height:54px;
-                left:-105px;
-                top:5px;
-            }
-
-            @include rwd(1600){
-                height:60px;
-
-            }
-        
-
-            @include qhd{
-                height:70px;
-                left:-125px;
-            }
-        }
-    }
-
-    .ligne_4{
-        position: relative;
-        .accrocheIMG2{
-            position: absolute;
-            height:30px;
-            right:-30px;
-            top:6px;
-
-            @include rwd(820){
-                height:34px;
-                right:-34px;
-            }
-            @include lg{
-                height:38px;
-            }
-
-            @include xxl{
-                height:54px;
-                right:-60px;
-                top:5px;
-            }
-
-            @include rwd(1600){
-                height:60px;
-
-            }
-
-            @include qhd{
-                height:70px;
-            }
-        }
-    }
-}
-
-
 
 //Animation du texte
-.sousLigne{
-    display:block;
-    overflow: hidden;
+.sousLigne {
+  display: block;
+  overflow: hidden;
 
-    .mot{
-        display: inline-block;
-    }
-}
-
-
-
-.SA_LienReserverContainer{
-    display:block;
-    overflow: hidden;
-    text-align: center;
-    max-width: calc(100% - 62px);
-    margin-left:auto;
-    margin-right:auto;
-    // height:40px;
-    // background:red;
-    
-
-    a{
-        // color:red;
-        margin-bottom:8px;
-        position: relative;
-        &:before{
-            content: "";
-            position: absolute;
-            width: 0;
-            height: 1px;
-            bottom: 0;
-            left: 0;
-            top:20px;
-            // top:0px;
-            background-color: rgb(0, 0, 0);
-            visibility: hidden;
-            transition: all 0.3s ease-in-out;  
-        }
-
-        &:hover:before{
-            visibility: visible;
-            width: 100%;
-        }
-    }
-}
-
-.SA_LienReserver{
+  .mot {
     display: inline-block;
-    font-size: 14px;
-    letter-spacing: -0.34px;
-    text-align: center;
-    margin-left:auto;
-    margin-right:auto;
-
-    @include qhd{font-size: 18px;}
-
+  }
 }
 
-.boutonAnimation{
-    width:90px;
-    height:90px;
-    margin-left:auto;
-    margin-right:auto;
-    cursor:pointer;
-    // background:red;
+.SA_LienReserverContainer {
+  display: block;
+  overflow: hidden;
+  text-align: center;
+  max-width: calc(100% - 62px);
+  margin-left: auto;
+  margin-right: auto;
+  // height:40px;
+  // background:red;
 
-    @include xl{
-        width:140px;
-        height:140px;
+  a {
+    // color:red;
+    margin-bottom: 8px;
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 1px;
+      bottom: 0;
+      left: 0;
+      top: 20px;
+      // top:0px;
+      background-color: rgb(0, 0, 0);
+      visibility: hidden;
+      transition: all 0.3s ease-in-out;
     }
 
+    &:hover:before {
+      visibility: visible;
+      width: 100%;
+    }
+  }
 }
 
+.SA_LienReserver {
+  display: inline-block;
+  font-size: 14px;
+  letter-spacing: -0.34px;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
 
+  @include qhd {
+    font-size: 18px;
+  }
+}
 
+.boutonAnimation {
+  width: 90px;
+  height: 90px;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  // background:red;
 
+  @include xl {
+    width: 140px;
+    height: 140px;
+  }
+}
 
-.copyright{
-    font-size:23px;
+.copyright {
+  font-size: 23px;
 
-    @include rwd(360){font-size:24px;}
-    @include rwd(380){font-size:25px;}
-    @include md{font-size:31px;}
-    @include lg{font-size:33px;}
-    @include rwd(1400){font-size:42px;}
-    @include qhd{font-size:53px;}
+  @include rwd(360) {
+    font-size: 24px;
+  }
+  @include rwd(380) {
+    font-size: 25px;
+  }
+  @include md {
+    font-size: 31px;
+  }
+  @include lg {
+    font-size: 33px;
+  }
+  @include rwd(1400) {
+    font-size: 42px;
+  }
+  @include qhd {
+    font-size: 53px;
+  }
 }
