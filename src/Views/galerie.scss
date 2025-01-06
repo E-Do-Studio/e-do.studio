@@ -1,149 +1,65 @@
-@import "../Assets/scss/styles.scss";
+// Structure de base
+.galeriePC {
+  padding-top: 100px;
+  width: 100%;
+  min-height: 100vh;
 
-.pageGalerie {
-  // padding: 130px 0 100px 0;
-
-  @include xl {
-    padding: 0;
+  .galeriePCWrapper {
+    width: 100%;
+    height: 100%;
+    padding: 0 50px;
   }
 
-  // .titreAnimationWrapper {
-  //   width: auto;
-  //   min-width: 300px;
-  //   max-width: 80%;
-  //   height: auto;
-  //   padding: 15px 25px;
-  //   background: rgba(255, 255, 255, 0.8);
-  //   color: black;
-  //   backdrop-filter: blur(10px);
-  //   -webkit-backdrop-filter: blur(10px);
-  //   border-radius: 20px;
-  //   border: 1px solid rgba(255, 255, 255, 0.2);
-  //   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  //   z-index: 1000;
-  //   display: flex;
-  //   flex-direction: column;
-  //   transition: all 0.3s ease;
+  @media screen and (max-width: 1024px) {
+    padding: 0 32px;
+  }
+}
 
-  //   // Styles for fixed position (default)
-  //   &.menu-fixed {
-  //     position: fixed;
-  //     left: 50%;
-  //     bottom: 30px;
-  //     transform: translateX(-50%);
-  //   }
+// Layout principal avec menu et grille
+.gallery-layout {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+}
 
-  //   // Styles for absolute position (when reaching footer)
-  //   &.menu-absolute {
-  //     position: absolute;
-  //     left: 50%;
-  //     bottom: calc(100% + 30px); // Position above the footer
-  //     transform: translateX(-50%);
-  //   }
-
-  //   &:hover {
-  //     transform: translateX(-50%) translateY(-5px);
-  //     box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-  //   }
-
-  // .titrePageGalerie {
-  //   position: relative;
-  //   transform: none;
-  //   font-size: 20px;
-  //   margin-bottom: 15px;
-  //   color: black;
-  //   text-align: center;
-  // }
-
-  // ul {
-  //   display: flex;
-  //   flex-wrap: nowrap;
-  //   gap: 15px;
-  //   margin: 0;
-  //   justify-content: center;
-  //   padding: 5px;
-  //   overflow-x: auto;
-  //   -ms-overflow-style: none;
-  //   scrollbar-width: none;
-
-  //   &::-webkit-scrollbar {
-  //     display: none;
-  //   }
-
-  //   li {
-  //     margin: 0;
-  //     padding: 8px 15px;
-  //     border-radius: 12px;
-  //     background: rgba(255, 255, 255, 0.3);
-  //     color: black;
-  //     font-size: 0.9em;
-  //     white-space: nowrap;
-  //     flex-shrink: 0;
-  //     transition: all 0.3s ease;
-
-  //     &:hover {
-  //       background: rgba(255, 255, 255, 0.5);
-  //       transform: translateY(-3px);
-  //       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  //     }
-
-  //     &.active {
-  //       background: rgba(255, 255, 255, 0.6);
-  //       color: black;
-  //       box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  //     }
-  //   }
-  // }
+// Menu
+.menu-column {
+  position: sticky;
+  top: 100px;
+  height: fit-content;
 
   .titreAnimationWrapper {
-    background: rgba(246, 246, 246, 0.5);
-    color: black;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    left: 31px;
-    top: 88px;
     border-radius: 20px;
-    padding: 15px 25px;
-
-    height: auto;
-    width: 230px;
-    position: fixed;
-    overflow: hidden;
-
-    z-index: 10;
-
-    @include xl {
-      left: 180px;
-    }
-
-    // background:blue;
+    // padding: 15px 25px;
+    width: 100%;
+    max-width: 300px;
+    box-sizing: border-box;
+    opacity: 1; // Supprimer l'animation d'opacité par défaut
 
     .titrePageGalerie {
       font-size: 25px;
       font-weight: 300;
       line-height: 1.6;
       letter-spacing: -0.6px;
-
       text-align: left;
-
-      // right:0;
-      // top:88px;
-      position: absolute;
-      transform: translateY(100%);
-      transition: transform 650ms ease-out;
-      text-transform: uppercase;
+      margin-bottom: 1rem;
+      transform: none; // Supprimer l'animation de transform
     }
 
     ul {
       padding: 0;
-      list-style-type: none;
-      margin-top: 50px;
-      display: flex;
-      flex-direction: column;
-      gap: 0.2rem;
+      margin: 0;
+      list-style: none;
+      margin-top: 20px;
 
       li {
-        margin-bottom: 1px;
+        margin-bottom: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
         &:hover {
           color: grey;
@@ -152,41 +68,31 @@
         &.active {
           color: rgb(88, 88, 88);
         }
+
+        svg {
+          margin-left: 5px;
+          position: relative;
+          top: 2px;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover svg {
+          transform: translateX(3px);
+        }
       }
     }
 
-
-
-    // Sous-catégories
     .sub-category {
-      position: absolute;
-      bottom: 100%;
-      left: 0;
+      position: relative;
+      margin-left: 1rem !important;
       width: 100%;
-      margin: 0 !important;
-      padding: 10px;
-      // background: rgba(255, 255, 255, 0.8);
-      backdrop-filter: blur(10px);
-      border-radius: 15px;
-      box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
-      transform: translateY(-10px);
-      display: none;
-
-      ul {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-      }
-
-      &.active {
-        display: block;
-      }
+      display: block;
 
       li {
         font-size: 0.85em;
         padding: 6px 12px;
         margin-bottom: 5px;
         background: rgba(255, 255, 255, 0.2);
-        flex-shrink: 0;
 
         &:hover {
           background: rgba(255, 255, 255, 0.4);
@@ -196,571 +102,89 @@
   }
 }
 
-.galerieMobile {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  padding: 20px;
-  box-sizing: border-box;
-  width: 100%;
-
-  .IMGMobile {
-    width: auto;
-    height: auto;
-
-    img {
-      width: auto;
-      height: auto;
-      object-fit: contain;
-    }
-  }
-}
-
-.galeriePC {
-  padding-top: 100px;
-
-  .galeriePCWrapper {
-    width: 100%;
-    padding: 160px 0;
-    display: block;
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      width: 100%;
-      max-width: 1600px;
-      margin: 0;
-      grid-gap: 2rem;
-      font-size: 0;
-
-      // Tablette (768px à 1199px)
-      @media screen and (max-width: 1199px) {
-        grid-template-columns: repeat(3, 1fr);
-      }
-
-      // Mobile (jusqu'à 767px)
-      @media screen and (max-width: 767px) {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .gallery-item {
-        width: 100%;
-        position: relative;
-        overflow: hidden;
-
-        .gallery-image-wrapper {
-          width: 100%;
-          height: 100%;
-
-          img {
-            width: 100%;
-            height: 100%;
-            // object-fit: cover;
-            object-fit: contain;
-            display: block;
-          }
-        }
-
-        &:hover {
-          opacity: 0.8;
-          cursor: pointer;
-        }
-      }
-    }
-  }
-}
-
-// Loading indicator
-.loading-indicator {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  width: 100%;
-  color: white;
-  font-size: 1.2em;
-  gap: 10px;
-
-  .spinner {
-    width: 20px;
-    height: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-top-color: white;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-  }
-}
-
-@keyframes spin {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-// Sous catégorie
-ul {
-  a {
-    width: 100%;
-  }
-}
-
-.sub-category {
-  width: 100%;
-  margin-top: 0px !important;
-  margin-left: 10px;
-
-  li {
-    width: 100%;
-  }
-}
-
-.brand {
-  margin-right: 51px;
-  font-size: 22px;
-}
-
-.brand-display {
-  display: block;
-  position: absolute;
-  top: 13%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 999;
-  text-transform: uppercase;
-  font-weight: 900;
-  text-align: center;
-}
-
-.rotate {
-  transform: rotate(90deg);
-  transition: transform 0.2s ease-in-out;
-}
-
-a {
-  li {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    svg {
-      margin-left: 5px;
-      position: relative;
-      top: 2px;
-      transition: transform 0.3s ease;
-    }
-
-    &:hover svg {
-      transform: translateX(3px);
-    }
-  }
-}
-
-// Ajouter la hauteur de l'écran moins la hauteur du footer pour obtenir la hauteur à laquelle le menu doit s'arrêter
-@media (max-width: 768px) {
-  .titreAnimationWrapper {
-    bottom: 20px;
-    width: 90%;
-    padding: 12px 20px;
-
-    ul {
-      gap: 8px;
-
-      li {
-        padding: 6px 12px;
-        font-size: 0.85em;
-      }
-    }
-  }
-}
-
-// Style pour l'état de chargement
-.lazy-load-image-background {
-  width: 100%;
-  height: 100%;
-
-  &.opacity {
-    animation: lazyLoadFadeIn 0.3s ease-in;
-  }
-}
-
-@keyframes lazyLoadFadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-// Animation pour l'apparition du menu
-.titreAnimationWrapper {
-  animation: dockSlideUp 0.5s ease-out forwards;
-  opacity: 0;
-}
-
-@keyframes dockSlideUp {
-  from {
-    opacity: 0;
-    transform: translateX(-50%) translateY(30px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-}
-
-// Add styles for image loading and error states
-.IMGPC,
-.IMGMobile {
-  position: relative;
-
-  &.loading {
-    // background: rgba(255, 255, 255, 0.1);
-
-    &::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      // background: linear-gradient(
-      //   90deg,
-      //   transparent,
-      //   rgba(255, 255, 255, 0.2),
-      //   transparent
-      // );
-      animation: shimmer 1.5s infinite;
-    }
-  }
-
-  &.error {
-    // background: rgba(255, 255, 255, 0.05);
-
-    &::after {
-      content: "Image unavailable";
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 0.9em;
-    }
-  }
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-// Ajouter ces styles à la fin du fichier pour gérer le lazy loading
-.gallery-image-wrapper,
-.mobile-image-wrapper {
-  width: 100%;
-  height: 100%;
-  display: block;
-  background-color: rgba(0, 0, 0, 0.05);
-  transition: opacity 0.3s ease;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: opacity 0.3s ease;
-  }
-
-  &.lazy-load-image-loaded {
-    background-color: transparent;
-  }
-}
-
-.lazy-load-image-background {
-  &.opacity {
-    opacity: 0;
-
-    &.lazy-load-image-loaded {
-      opacity: 1;
-    }
-  }
-}
-
-// Optimisation des transitions
-.gallery-item {
-  img {
-    will-change: opacity;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
-  }
-}
-
-// Modifier les styles de lazy loading
-.gallery-item,
-.IMGMobile {
-  position: relative;
-  overflow: hidden;
-  // background-color: #e0e0e0;
-
-  .image-placeholder {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #e0e0e0;
-    animation: pulse 2s infinite ease-in-out;
-  }
-}
-
-// Styles de la grille desktop
+// Grille d'images
 .gallery-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
   width: 100%;
-  max-width: 1600px;
-  margin: 0;
-  grid-gap: 1rem;
 
   .gallery-item {
     width: 100%;
+    position: relative;
 
-    .lazy-load-image-background {
+    .gallery-image-container {
+      position: relative;
       width: 100%;
+      height: 100%;
+      overflow: hidden;
+      aspect-ratio: 1;
 
-      img {
-        width: auto;
-        height: auto;
-        // object-fit: contain;
-      }
-    }
-  }
-}
-
-// Styles mobile
-.galerieMobile {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 20px;
-  padding: 20px;
-
-  @media screen and (min-width: 768px) and (max-width: 1199px) {
-    grid-template-columns: repeat(3, 1fr);
-  }
-
-  .IMGMobile {
-    width: 100%;
-
-    .lazy-load-image-background {
-      display: block;
-      width: 100%;
-
-      img {
+      .gallery-image-wrapper {
         width: 100%;
-        height: auto;
-        display: block;
+        height: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          transition: all 0.3s ease-in-out;
+        }
+      }
+
+      &:hover {
+        .gallery-image-wrapper img {
+          filter: brightness(1.2) blur(2px);
+          transform: scale(1.02);
+        }
+
+        .brand-overlay {
+          opacity: 1;
+          visibility: visible;
+        }
       }
     }
   }
 }
 
-// Animation du placeholder
-@keyframes pulse {
-  0% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.7;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-
-// Transitions des images
-.gallery-image-wrapper,
-.mobile-image-wrapper {
-  opacity: 0;
-  transition: opacity 0.3s ease-in-out;
-
-  &.lazy-load-image-loaded {
-    opacity: 1;
-
-    &+.image-placeholder {
-      display: none;
-    }
-  }
-}
-
-// Effet de blur
-.lazy-load-image-background {
-  &.blur {
-    filter: blur(20px);
-    transition: filter 0.3s ease-out;
-
-    &.lazy-load-image-loaded {
-      filter: blur(0);
-    }
-  }
-}
-
-// Ajouter ces styles pour InfiniteScroll
-.galeriePCWrapper {
-  width: 100%;
-  padding: 0;
-  display: block;
-
+// Responsive
+@media screen and (max-width: 1199px) {
   .gallery-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    width: 100%;
-    max-width: 1600px;
-    margin: 0;
-    grid-gap: 1rem;
-
-    @media screen and (max-width: 1199px) {
-      grid-template-columns: repeat(3, 1fr);
-    }
-
-    @media screen and (max-width: 767px) {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-// Style pour le loader
-.loading-indicator {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-  width: 100%;
-  color: white;
-  font-size: 1.2em;
-  gap: 10px;
-
-  .spinner {
-    width: 20px;
-    height: 20px;
-    border: 2px solid rgba(255, 255, 255, 0.3);
-    border-top-color: white;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+@media screen and (max-width: 1024px) {
+  .galeriePCWrapper {
+    padding: 0 32px;
   }
-}
 
-// Style pour le message de fin
-.end-message {
-  text-align: center;
-  padding: 20px;
-  color: white;
-  font-size: 1.2em;
-}
+  .gallery-layout {
+    grid-template-columns: 1fr;
+  }
 
-// Ajouter ces styles pour le scroll sur toute la page
-body {
-  overflow-y: auto;
-  overflow-x: hidden;
-  height: 100%;
-}
+  .menu-column {
+    position: relative;
+    top: 0;
+    margin-bottom: 2rem;
 
-html {
-  height: 100%;
-}
-
-// Ajuster le positionnement du footer
-.footer {
-  position: relative;
-  width: 100%;
-  margin-top: 50px;
-}
-
-// Ajuster l'espacement de la grille
-.gallery-grid {
-  padding-bottom: 50px; // Ajouter un espacement en bas de la grille
-}
-
-.gallery-image-wrapper {
-  &.loading {
-    background-color: #f0f0f0;
-    animation: pulse 1.5s infinite;
-    min-height: 300px; // Ajustez selon vos besoins
-
-    .image-placeholder {
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg,
-          rgba(255, 255, 255, 0),
-          rgba(255, 255, 255, 0.5),
-          rgba(255, 255, 255, 0));
-      background-size: 200% 100%;
-      animation: shimmer 2s infinite;
+    .titreAnimationWrapper {
+      max-width: 100%;
     }
   }
 }
 
-@keyframes pulse {
-  0% {
-    opacity: 1;
-  }
-
-  50% {
-    opacity: 0.7;
-  }
-
-  100% {
-    opacity: 1;
+@media screen and (max-width: 767px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 }
 
-@keyframes shimmer {
-  0% {
-    background-position: 200% 0;
-  }
-
-  100% {
-    background-position: -200% 0;
-  }
-}
-
-// Ajoutez ces styles pour l'effet de hover
-
-.gallery-image-container {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  aspect-ratio: 1; // Pour maintenir un ratio carré
-
-  .gallery-image-wrapper {
-    width: 100%;
-    height: 100%;
-
-    img {
-      width: 100%;
-      height: 100%;
-      // object-fit: contain;
-      transition: all 0.3s ease-in-out;
-    }
-  }
-
-  &:hover {
-    .gallery-image-wrapper img {
-      filter: brightness(1.2) blur(2px);
-      transform: scale(1.02);
-    }
-
-    .brand-overlay {
-      opacity: 1;
-      visibility: visible;
-    }
-  }
+// Autres styles nécessaires
+.rotate {
+  transform: rotate(90deg);
+  transition: transform 0.2s ease-in-out;
 }
 
 .brand-overlay {
@@ -775,7 +199,6 @@ html {
   transition: all 0.3s ease-in-out;
 
   .brand-name {
-    // background-color: rgba(255, 255, 255, 0.9);
     color: #000;
     padding: 8px 16px;
     border-radius: 4px;
@@ -786,15 +209,76 @@ html {
   }
 }
 
-// Assurez-vous que la grille est bien configurée
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
-  width: 100%;
+.loading-item {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 8px 0;
 
-  .gallery-item {
-    width: 100%;
-    position: relative;
+  .loading-placeholder {
+    height: 20px;
+    width: 80%;
+    background: linear-gradient(
+      90deg,
+      rgba(240, 240, 240, 0.1) 0%,
+      rgba(240, 240, 240, 0.3) 50%,
+      rgba(240, 240, 240, 0.1) 100%
+    );
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+    border-radius: 4px;
+
+    &:nth-child(2) {
+      width: 60%;
+    }
+    &:nth-child(3) {
+      width: 70%;
+    }
+  }
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+// Ajouter ces styles à votre fichier SCSS existant
+.categories-menu {
+  .category-group {
+    .subcategories {
+      margin-left: 20px;
+      overflow: hidden;
+
+      li {
+        font-size: 0.9em;
+        padding: 8px 15px;
+
+        &:before {
+          content: "•";
+          margin-right: 8px;
+          opacity: 0.6;
+        }
+      }
+    }
+  }
+}
+
+// Animation pour l'apparition des sous-catégories
+.subcategories {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

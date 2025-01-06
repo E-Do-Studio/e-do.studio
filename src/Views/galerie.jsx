@@ -154,90 +154,197 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
   // Configurer l'observer avec des options plus agressives
   const { ref, inView } = useInView({
     threshold: 0,
-    rootMargin: "200px", // Réduit pour déclencher le chargement plus tôt
+    rootMargin: "400px", // Augmenter la marge pour déclencher plus tôt
     triggerOnce: false,
+    root: null, // Explicitement définir root comme null
   });
 
-  // Effet pour le chargement initial
+  // Effet unique pour gérer le chargement initial et les changements de catégorie
   useEffect(() => {
-    console.log("🔄 Reset gallery for category:", category);
-    setImages([]);
-    setVisibleImages([]);
-    setPage(1);
-    setHasMore(true);
-    setIsLoading(false);
-    fetchImages(1);
-
-    // Ajout du smooth scroll vers le haut
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
+    console.log("🔵 Component mounted with:", {
+      category,
+      subcategory,
+      page,
+      hasMore,
+      isLoading,
+      imagesCount: images.length,
+      visibleImagesCount: visibleImages.length,
     });
-  }, [category]);
+  }, []); // Log initial
 
-  const fetchImages = async (currentPage) => {
-    try {
-      if (isLoading) {
-        console.log("⏳ Already loading, skipping fetch");
-        return;
-      }
-
-      setIsLoading(true);
-      console.log("📥 Fetching page:", currentPage, "Category:", category);
-
-      const url = new URL(`${API_BASE_URL}/gallery`);
-      const params = new URLSearchParams({
-        depth: 2,
-        page: currentPage.toString(),
-        limit: IMAGES_PER_PAGE.toString(),
+  useEffect(() => {
+    const loadImages = async () => {
+      console.log("⚡ Starting loadImages with:", {
+        category,
+        isLoading,
+        currentPage: page,
+        hasMore,
       });
 
-      if (category) {
-        const categoryName =
-          category.charAt(0).toUpperCase() + category.slice(1).toLowerCase();
-        params.append("where[categories.name][equals]", categoryName);
+      try {
+        setIsLoading(true);
+        console.log("🗑️ Resetting state...");
+        setImages([]);
+        setVisibleImages([]);
+        setPage(1);
+        setHasMore(true);
+
+        const url = new URL(`${API_BASE_URL}/gallery`);
+        url.searchParams.append("depth", "2");
+        url.searchParams.append("page", "1");
+        url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
+
+        if (category) {
+          console.log("🏷️ Adding category filter:", category);
+          url.searchParams.append("where[categories.name][equals]", category);
+        }
+
+        console.log("🔍 Fetching URL:", url.toString());
+
+        const response = await fetch(url);
+        console.log("📥 Response status:", response.status);
+
+        const data = await response.json();
+        console.log("📦 Response data:", {
+          totalDocs: data.totalDocs,
+          limit: data.limit,
+          page: data.page,
+          hasNextPage: data.hasNextPage,
+          docsCount: data.docs?.length,
+        });
+
+        if (!data || !Array.isArray(data.docs)) {
+          throw new Error("Invalid response format");
+        }
+
+        const validImages = data.docs.filter((item) => item?.image?.url);
+        console.log(
+          `✅ Found ${validImages.length} images for ${category || "All"}`
+        );
+
+        setImages(validImages);
+        setVisibleImages(validImages);
+        setHasMore(data.hasNextPage);
+        setPage(2); // Prépare pour la prochaine page
+        window.scrollTo(0, 0);
+
+        console.log("✅ Initial load complete:", {
+          newImagesCount: validImages.length,
+          hasMore: data.hasNextPage,
+          nextPage: 2,
+        });
+      } catch (error) {
+        console.error("❌ Error details:", {
+          message: error.message,
+          category,
+          page,
+        });
+      } finally {
+        setIsLoading(false);
       }
+    };
 
-      const finalUrl = `${url}?${params}`;
-      console.log("🔍 Request URL:", finalUrl);
+    console.log("🔄 Category or subcategory changed, triggering loadImages");
+    loadImages();
+  }, [category, subcategory]); // Ajouter subcategory comme dépendance
 
-      const response = await fetch(finalUrl);
-      const data = await response.json();
+  // Effet séparé pour la pagination infinie
+  useEffect(() => {
+    const loadMore = async () => {
+      console.log("👀 Infinite scroll check:", {
+        inView,
+        isLoading,
+        hasMore,
+        currentPage: page,
+        category,
+        visibleImagesCount: visibleImages.length,
+        totalDocs: images.length,
+      });
 
-      if (!data || !Array.isArray(data.docs)) {
-        console.error("❌ Invalid response format:", data);
-        setHasMore(false);
+      if (!inView || isLoading || !hasMore) {
+        console.log("⏸️ Skipping load more:", {
+          inView,
+          isLoading,
+          hasMore,
+          reason: !inView
+            ? "not in view"
+            : isLoading
+            ? "loading"
+            : "no more images",
+        });
         return;
       }
 
-      const validImages = data.docs.filter((item) => item?.image?.url);
+      try {
+        setIsLoading(true);
 
-      // Mise à jour des images en conservant les images existantes
-      setImages((prev) =>
-        currentPage === 1 ? validImages : [...prev, ...validImages]
-      );
-      setVisibleImages((prev) =>
-        currentPage === 1 ? validImages : [...prev, ...validImages]
-      );
+        const url = new URL(`${API_BASE_URL}/gallery`);
+        url.searchParams.append("depth", "2");
+        url.searchParams.append("page", page.toString());
+        url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
 
-      // Mise à jour de la pagination
-      setHasMore(data.hasNextPage);
-      setPage(currentPage + 1);
-    } catch (error) {
-      console.error("🚨 Fetch error:", error);
-      setHasMore(false);
-    } finally {
-      setIsLoading(false);
-    }
-  };
+        if (category) {
+          url.searchParams.append("where[categories.name][equals]", category);
+        }
 
-  // Effet pour le chargement des pages suivantes
-  useEffect(() => {
-    if (inView && !isLoading && hasMore) {
-      console.log("👁️ Observer triggered, loading page:", page);
-      fetchImages(page);
-    }
-  }, [inView, isLoading, hasMore, page, category]);
+        console.log(
+          "🔄 Loading page",
+          page,
+          "for category:",
+          category || "All"
+        );
+
+        const response = await fetch(url);
+        if (!response.ok)
+          throw new Error(`HTTP error! status: ${response.status}`);
+
+        const data = await response.json();
+        console.log("📦 Page data:", {
+          page,
+          totalDocs: data.totalDocs,
+          receivedDocs: data.docs?.length,
+          hasNextPage: data.hasNextPage,
+        });
+
+        if (!data || !Array.isArray(data.docs)) {
+          throw new Error("Invalid response format");
+        }
+
+        const validImages = data.docs.filter((item) => item?.image?.url);
+
+        if (validImages.length === 0) {
+          console.log("⚠️ No valid images in this batch");
+          setHasMore(false);
+          return;
+        }
+
+        setImages((prev) => [...prev, ...validImages]);
+        setVisibleImages((prev) => [...prev, ...validImages]);
+        setHasMore(data.hasNextPage);
+        setPage((prev) => prev + 1);
+
+        console.log(
+          "✅ Successfully loaded page",
+          page,
+          "with",
+          validImages.length,
+          "images"
+        );
+      } catch (error) {
+        console.error("❌ Error loading more images:", error);
+        setHasMore(false);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    // Utiliser un délai pour éviter les appels trop fréquents
+    const timeoutId = setTimeout(() => {
+      loadMore();
+    }, 100);
+
+    return () => clearTimeout(timeoutId);
+  }, [inView, category, page, isLoading, hasMore]);
 
   // Modification de la fonction de filtrage
   const filterImages = (images) => {
@@ -474,42 +581,63 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       .map((_, index) => <ImagePlaceholder key={`placeholder-${index}`} />);
   };
 
+  // Log pour les changements d'état importants
+  useEffect(() => {
+    console.log("📊 State update:", {
+      totalImages: images.length,
+      visibleImages: visibleImages.length,
+      currentPage: page,
+      hasMore,
+      isLoading,
+      category,
+    });
+  }, [images, visibleImages, page, hasMore, isLoading, category]);
+
   return (
     <Suspense fallback={<div>Loading...</div>}>
       <div className="galeriePC">
-        <GalerieMenu
-          ref={menuRef}
-          setPageLoad={setPageLoad}
-          selectedLink={selectedLink}
-          setSelectedLink={setSelectedLink}
-          className={isMenuFixed ? "menu-fixed" : "menu-absolute"}
-        />
         <div className="galeriePCWrapper" id="scrollableDiv">
-          <div className="gallery-grid">
-            {visibleImages.length > 0
-              ? visibleImages.map((item, index) => (
-                  <div key={`${item.id}-${index}`} className="gallery-item">
-                    <div className="gallery-image-container">
-                      <LazyLoadImage
-                        src={`https://edocms.netlify.app${item.image.url}`}
-                        alt={item.brand?.name || "Gallery image"}
-                        effect="blur"
-                        wrapperClassName="gallery-image-wrapper"
-                        threshold={100}
-                        visibleByDefault={false}
-                      />
-                      <div className="brand-overlay">
-                        <span className="brand-name">
-                          {item.brand?.name || "Marque"}
-                        </span>
+          <div className="gallery-layout">
+            <div className="menu-column">
+              <GalerieMenu
+                setPageLoad={setPageLoad}
+                selectedLink={selectedLink}
+                setSelectedLink={setSelectedLink}
+              />
+            </div>
+            <div className="gallery-grid">
+              {visibleImages.length > 0
+                ? visibleImages.map((item, index) => (
+                    <div key={`${item.id}-${index}`} className="gallery-item">
+                      <div className="gallery-image-container">
+                        <LazyLoadImage
+                          src={`https://edocms.netlify.app${item.image.url}`}
+                          alt={item.brand?.name || "Gallery image"}
+                          effect="blur"
+                          wrapperClassName="gallery-image-wrapper"
+                          threshold={100}
+                          visibleByDefault={false}
+                        />
+                        <div className="brand-overlay">
+                          <span className="brand-name">
+                            {item.brand?.name || "Marque"}
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                ))
-              : generatePlaceholders()}
+                  ))
+                : generatePlaceholders()}
+            </div>
           </div>
 
-          <div ref={ref} style={{ height: "50px", margin: "20px 0" }}>
+          <div
+            ref={ref}
+            style={{
+              height: "100px", // Augmenter la hauteur
+              margin: "20px 0",
+              visibility: isLoading ? "visible" : "hidden", // Garder l'élément dans le DOM
+            }}
+          >
             {isLoading && (
               <div className="loading-indicator">
                 <div className="spinner"></div>
