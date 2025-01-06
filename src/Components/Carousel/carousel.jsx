@@ -46,16 +46,18 @@ const Carousel = () => {
     <div className="splide" ref={sliderRef}>
       <div className="splide__track">
         <ul className="splide__list">
-          {imagesCarousel.map((doc, index) =>
-            doc.image.map((img, imgIndex) => (
-              <li className="splide__slide" key={`${index}-${imgIndex}`}>
-                <img
-                  src={`https://edocms.netlify.app${img.sizes.card.url}`}
-                  alt={img.alt || `Slide ${index}-${imgIndex}`}
-                  loading="lazy"
-                />
-              </li>
-            ))
+          {imagesCarousel.map((doc) =>
+            Array.isArray(doc?.image)
+              ? doc.image.map((imageUrl, imgIndex) => (
+                  <li className="splide__slide" key={imgIndex}>
+                    <img
+                      src={`https://edocms.netlify.app${imageUrl}`}
+                      alt={`Slide ${imgIndex + 1}`}
+                      loading="lazy"
+                    />
+                  </li>
+                ))
+              : null
           )}
         </ul>
       </div>

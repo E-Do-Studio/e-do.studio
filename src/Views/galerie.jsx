@@ -90,7 +90,16 @@ const generateUniqueId = () =>
 const getFetchOptions = () => ({
   headers: {
     Accept: "application/json",
-    "Cache-Control": "no-store", // Simplifié à un seul en-tête de cache
+    "Content-Type": "application/json",
+    "Cache-Control": "no-store,no-cache,must-revalidate,private",
+    Pragma: "no-cache",
+    Origin: window.location.origin,
+    "X-Requested-With": "XMLHttpRequest",
+    "Accept-Encoding": "br",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "PUT, PATCH, POST, GET, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers":
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization, Content-Encoding",
   },
 });
 
@@ -207,11 +216,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
 
         console.log("Fetching URL:", url.toString());
 
-        const response = await fetch(url, {
-          headers: {
-            Accept: "application/json",
-          },
-        });
+        const response = await fetch(url, getFetchOptions());
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -274,11 +279,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
 
         console.log("Loading more from URL:", url.toString());
 
-        const response = await fetch(url, {
-          headers: {
-            Accept: "application/json",
-          },
-        });
+        const response = await fetch(url, getFetchOptions());
 
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
