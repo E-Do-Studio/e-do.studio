@@ -131,9 +131,10 @@ const Index = ({ setPageLoad, setBackgroundBlack }) => {
     }
   };
 
+
   return (
     <>
-      <Helmet defer={false}>
+    <Helmet defer={false}>
         <meta charSet="utf-8" />
         <title>
           E-Do Studio - Production express de photos et vidéos premiums

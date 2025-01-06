@@ -1,0 +1,22 @@
+.splide {
+    .splide__track {
+        .splide__list {
+            .splide__slide {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                margin: 20px;
+
+                img {
+                    width: 250px;
+                    height: auto;
+                    object-fit: cover;
+                }
+            }
+        }
+    }
+}
+.splide__arrow{
+    width: 2.5rem;
+    height: 2.5rem;
+}

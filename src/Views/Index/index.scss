@@ -1,15 +1,17 @@
 @import "../../Assets/scss/styles.scss";
 
-.section {
-  z-index: 1;
-  width: 100%;
-  display: flex;
-  // background:pink;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+
+.section{
+    z-index:1;
+    width:100%;
+    display: flex;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // background:pink;
+    
 }
 
 .sectionWrapper {

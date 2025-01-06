@@ -11,11 +11,12 @@
     @include rwd(1150){
         flex-direction: row;
         align-items: center;
-        padding:0 80px;
+        // padding:0 80px;
         justify-content: space-between;
         max-width:1180px;
         margin-left:auto;
         margin-right:auto;
+        width: 90vw;
     }
 
     @include qhd{max-width:1450px;}
@@ -35,7 +36,7 @@
             margin-bottom:18px;
             margin-right:31px;
 
- 
+
 
             @include rwd(335){
                 margin-bottom:18px;

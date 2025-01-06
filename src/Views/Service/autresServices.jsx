@@ -436,7 +436,7 @@ const AutresServices = ({ location, data }) => {
             </button>
           </Link>
         </div>
-
+        
         <div className="sliderTextSuiv sliderTextUnique">
           <div
             className="sliderTitrePrincipal sliderTitrePrincipalSuiv"

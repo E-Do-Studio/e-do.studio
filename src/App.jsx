@@ -16,7 +16,6 @@ import Index from "./Views/Index/index";
 import Landing from "./Views/Landing/landing";
 import Cyclorama from "./Views/Service/cyclorama";
 import Service from "./Views/Service/service";
-import SiteAgence from "./Views/agence";
 import Article from "./Views/article";
 import Blog from "./Views/blog";
 import Galerie from "./Views/galerie";
@@ -343,12 +342,6 @@ const App = () => {
                   path="([\/]blog[\/][a-z-]*[\/])"
                   exact
                   render={() => <Article setPageLoad={setPageLoad} />}
-                />
-
-                <Route
-                  path="/site-agence"
-                  exact
-                  render={() => <SiteAgence setPageLoad={setPageLoad} />}
                 />
 
                 <Route
