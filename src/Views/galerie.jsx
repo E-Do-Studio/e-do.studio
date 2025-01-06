@@ -76,6 +76,17 @@ const ImagePlaceholder = () => (
   </div>
 );
 
+// Fonction utilitaire pour générer un ID unique
+const generateUniqueId = () =>
+  `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
+
+// Modifier la fonction getFetchOptions
+const getFetchOptions = () => ({
+  headers: {
+    Accept: "application/json",
+  },
+});
+
 const Galerie = ({ setPageLoad, setSelectedLink }) => {
   const matches = useMediaQuery("only screen and (min-width: 1200px)");
   const location = useLocation();
@@ -176,6 +187,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     const loadImages = async () => {
       console.log("⚡ Starting loadImages with:", {
         category,
+        subcategory,
         isLoading,
         currentPage: page,
         hasMore,
@@ -183,7 +195,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
 
       try {
         setIsLoading(true);
-        console.log("🗑️ Resetting state...");
         setImages([]);
         setVisibleImages([]);
         setPage(1);
@@ -193,15 +204,37 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         url.searchParams.append("depth", "2");
         url.searchParams.append("page", "1");
         url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
+        url.searchParams.append("nocache", generateUniqueId()); // Utiliser un ID unique au lieu de timestamp
 
         if (category) {
           console.log("🏷️ Adding category filter:", category);
-          url.searchParams.append("where[categories.name][equals]", category);
+
+          if (subcategory) {
+            console.log("🏷️ Adding category and subcategory filters:", {
+              category,
+              subcategory,
+            });
+
+            // Correction pour utiliser la bonne structure d'URL
+            url.searchParams.append(
+              "where[and][0][categories.name][equals]",
+              category
+            );
+            url.searchParams.append(
+              "where[and][1][sub_categories.name][equals]", // Correction ici
+              subcategory
+            );
+
+            console.log("🔍 Final URL with subcategory:", url.toString());
+          } else {
+            url.searchParams.append("where[categories.name][equals]", category);
+            console.log("🔍 Final URL category only:", url.toString());
+          }
         }
 
-        console.log("🔍 Fetching URL:", url.toString());
+        console.log("🔍 Request URL:", url.toString());
 
-        const response = await fetch(url);
+        const response = await fetch(url, getFetchOptions());
         console.log("📥 Response status:", response.status);
 
         const data = await response.json();
@@ -257,6 +290,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         hasMore,
         currentPage: page,
         category,
+        subcategory,
         visibleImagesCount: visibleImages.length,
         totalDocs: images.length,
       });
@@ -282,19 +316,36 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         url.searchParams.append("depth", "2");
         url.searchParams.append("page", page.toString());
         url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
+        url.searchParams.append("nocache", generateUniqueId()); // Utiliser un ID unique au lieu de timestamp
 
         if (category) {
-          url.searchParams.append("where[categories.name][equals]", category);
+          console.log("🏷️ Adding category filter:", category);
+
+          if (subcategory) {
+            console.log("🏷️ Adding category and subcategory filters:", {
+              category,
+              subcategory,
+            });
+
+            url.searchParams.append(
+              "where[and][0][categories.name][equals]",
+              category
+            );
+            url.searchParams.append(
+              "where[and][1][sub_categories.name][equals]",
+              subcategory
+            );
+
+            console.log("🔍 Final URL with subcategory:", url.toString());
+          } else {
+            url.searchParams.append("where[categories.name][equals]", category);
+            console.log("🔍 Final URL category only:", url.toString());
+          }
         }
 
-        console.log(
-          "🔄 Loading page",
-          page,
-          "for category:",
-          category || "All"
-        );
+        console.log("🔍 Request URL:", url.toString());
 
-        const response = await fetch(url);
+        const response = await fetch(url, getFetchOptions());
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
 
@@ -338,13 +389,12 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       }
     };
 
-    // Utiliser un délai pour éviter les appels trop fréquents
     const timeoutId = setTimeout(() => {
       loadMore();
     }, 100);
 
     return () => clearTimeout(timeoutId);
-  }, [inView, category, page, isLoading, hasMore]);
+  }, [inView, category, subcategory, page, isLoading, hasMore]);
 
   // Modification de la fonction de filtrage
   const filterImages = (images) => {
@@ -638,12 +688,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               visibility: isLoading ? "visible" : "hidden", // Garder l'élément dans le DOM
             }}
           >
-            {isLoading && (
-              <div className="loading-indicator">
-                <div className="spinner"></div>
-                Loading page {page}...
-              </div>
-            )}
             {!hasMore && !isLoading && visibleImages.length > 0 && (
               <div className="end-message">
                 <p>All {visibleImages.length} images loaded</p>

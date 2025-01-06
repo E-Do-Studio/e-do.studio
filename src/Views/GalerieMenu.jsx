@@ -92,36 +92,65 @@ const GalerieMenu = ({ setPageLoad }) => {
   }, []);
 
   const renderCategories = () => {
-    if (isLoading) {
-      return (
-        <>
-          <li className="loading-item">
-            <div className="loading-placeholder"></div>
-            <div className="loading-placeholder"></div>
-            <div className="loading-placeholder"></div>
-          </li>
-        </>
-      );
-    }
+    console.log("🎨 Starting renderCategories with:", {
+      categoriesCount: categories.length,
+      subcategoriesKeys: Object.keys(subcategories),
+      currentCategory,
+      currentSubcategory,
+    });
 
     return (
       <>
         <Link to="/galerie">
           <li className={!currentCategory ? "active" : ""}>{t("All")}</li>
         </Link>
-        {categories.map((category) => (
-          <Link
-            key={category.id}
-            to={`/galerie?category=${encodeURIComponent(category.name)}`}
-          >
-            <li className={currentCategory === category.name ? "active" : ""}>
-              {t(category.name)}
-              <BsChevronRight
-                className={currentCategory === category.name ? "rotate" : ""}
-              />
-            </li>
-          </Link>
-        ))}
+
+        {categories.map((category) => {
+          const categorySubcategories = subcategories[category.id] || [];
+
+          return (
+            <div key={category.id} className="category-group">
+              <Link
+                to={`/galerie?category=${encodeURIComponent(category.name)}`}
+              >
+                <li
+                  className={currentCategory === category.name ? "active" : ""}
+                >
+                  {t(category.name)}
+                  {categorySubcategories.length > 0 && (
+                    <BsChevronRight
+                      className={
+                        currentCategory === category.name ? "rotate" : ""
+                      }
+                    />
+                  )}
+                </li>
+              </Link>
+
+              {currentCategory === category.name &&
+                categorySubcategories.length > 0 && (
+                  <ul className="subcategories">
+                    {categorySubcategories.map((subcat) => (
+                      <Link
+                        key={subcat.id}
+                        to={`/galerie?category=${encodeURIComponent(
+                          category.name
+                        )}&subcategory=${encodeURIComponent(subcat.name)}`}
+                      >
+                        <li
+                          className={
+                            currentSubcategory === subcat.name ? "active" : ""
+                          }
+                        >
+                          - {t(subcat.name)}
+                        </li>
+                      </Link>
+                    ))}
+                  </ul>
+                )}
+            </div>
+          );
+        })}
       </>
     );
   };

@@ -250,19 +250,8 @@
 .categories-menu {
   .category-group {
     .subcategories {
-      margin-left: 20px;
+      margin: 1rem;
       overflow: hidden;
-
-      li {
-        font-size: 0.9em;
-        padding: 8px 15px;
-
-        &:before {
-          content: "•";
-          margin-right: 8px;
-          opacity: 0.6;
-        }
-      }
     }
   }
 }
