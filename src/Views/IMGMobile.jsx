@@ -1,10 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { useMediaQuery } from "@react-hook/media-query";
-import { Waypoint } from "react-waypoint";
-import ScrollContainer from "react-indiana-drag-scroll";
-import { Helmet } from "react-helmet";
-import Lottie from "lottie-react";
 
 const IMGMobile = ({
   src,
@@ -13,61 +7,34 @@ const IMGMobile = ({
   left,
   right,
   ajustHauteur,
-  linkUrl,
+  marque,
   alt,
+  linkUrl,
 }) => {
-  const image = useRef();
-  const [animETAT, setAnimETAT] = useState(false);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    // image.current.style.transform = 'translateX(-100%)'
-  }, []);
-
-  const animIMG = () => {
-    //Lance l'animation
-    // console.log('test')
-    if (!animETAT) {
-      setAnimETAT(true);
-      image.current.style.transform = "translateX(0%) scale(0.9)";
-      setTimeout(() => {
-        image.current.style.transition = "all 600ms ease-out";
-        image.current.style.transform = "translateX(0%) scale(1)";
-      }, 280);
-    }
-  };
-
   return (
-    <>
-      <Waypoint onEnter={animIMG} />
+    <Link to={linkUrl} style={{ width: "100%" }}>
       <div
-        className="IMGMobileLigne"
+        className="IMGMobile"
         style={{
-          height: haut + "vw",
-          marginTop: ajustHauteur ? ajustHauteur + "vw" : "unset",
+          width: "100%",
+          aspectRatio: "1",
+          transform: `translate(${left}, ${ajustHauteur}vh)`,
+          position: "relative",
+          transition: "transform 0.3s ease-out",
+          marginBottom: "20px",
         }}
       >
-        <div
-          className="IMGMobile"
+        <img
+          src={src}
+          alt={alt || marque}
           style={{
-            width: lar + "vw",
-            height: haut + "vw",
-            left: left ? left : "unset",
-            right: right ? right : "unset",
+            width: "100%",
+            height: "100%",
+            objectFit: "cover",
           }}
-        >
-          <Link to={linkUrl}>
-            <img
-              src={process.env.PUBLIC_URL + "/img/galerie/" + src}
-              alt=""
-              ref={image}
-              style={{}}
-              alt={alt}
-            />
-          </Link>
-        </div>
+        />
       </div>
-    </>
+    </Link>
   );
 };
 

@@ -1,16 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useSwipeable } from "react-swipeable";
-import anime from "animejs/lib/anime.es.js";
-import Image from "react-image-webp";
 import { useMediaQuery } from "@react-hook/media-query";
-import { Link } from "react-router-dom";
+import anime from "animejs/lib/anime.es.js";
 import Lottie from "lottie-react";
-
+import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
+import { useSwipeable } from "react-swipeable";
 import boutonSliderNoir from "../../Assets/animations/boutonSliderNoir.json";
 
 import "./autresServices.scss";
 
-import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
 const serviceVide = {
@@ -485,19 +482,17 @@ const AutresServices = ({ location, data }) => {
       <div className="sliderIMG">
         <img
           className="sliderIMG_IMGPrec sliderIMG_IMG"
-          src={process.env.PUBLIC_URL + "/img/menuservices/" + imgPrec + ".jpg"}
+          src={`/img/menuservices/${imgPrec}.jpg`}
         />
 
         <img
           className="sliderIMG_IMGActu sliderIMG_IMG"
-          src={
-            process.env.PUBLIC_URL + "/img/menuservices/" + imgActuel + ".jpg"
-          }
+          src={`/img/menuservices/${imgActuel}.jpg`}
         />
 
         <img
           className="sliderIMG_IMGSuiv sliderIMG_IMG"
-          src={process.env.PUBLIC_URL + "/img/menuservices/" + imgSuiv + ".jpg"}
+          src={`/img/menuservices/${imgSuiv}.jpg`}
         />
       </div>
 

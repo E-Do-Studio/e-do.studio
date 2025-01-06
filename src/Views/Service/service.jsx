@@ -1,20 +1,16 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useLocation } from "react-router-dom";
-import Slider from "react-slick";
 import { useMediaQuery } from "@react-hook/media-query";
-import Image from "react-image-webp";
-import { Link } from "react-router-dom";
 import anime from "animejs/lib/anime.es.js";
-import { Waypoint } from "react-waypoint";
+import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet";
+import { Link, useLocation } from "react-router-dom";
+import Slider from "react-slick";
+import { Waypoint } from "react-waypoint";
 
-import AutresServices from "./autresServices.jsx";
 import Footer from "../../Components/Layout/Footer/footer";
+import AutresServices from "./autresServices.jsx";
 
 import "./service.scss";
-import { ConsoleView } from "react-device-detect";
 
-import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
 const serviceData = [
@@ -400,12 +396,7 @@ const Service = ({ setPageLoad }) => {
                         <div key={index} className="sliderTopUnique">
                           <img
                             className="sliderTopUnique_IMG"
-                            src={
-                              process.env.PUBLIC_URL +
-                              "/img/services/" +
-                              imgSlide +
-                              ".jpg"
-                            }
+                            src={`/img/services/${imgSlide}.jpg`}
                           />
                         </div>
                       );
@@ -564,12 +555,7 @@ const Service = ({ setPageLoad }) => {
           <div className="PS_TarifsIMGBox">
             <img
               className="PS_TarifsIMG"
-              src={
-                process.env.PUBLIC_URL +
-                "/img/menuservices/" +
-                pageData.imgTarif +
-                ".jpg"
-              }
+              src={`/img/menuservices/${pageData.imgTarif}.jpg`}
             />
           </div>
 

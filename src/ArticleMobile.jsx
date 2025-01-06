@@ -1,10 +1,8 @@
 import React from "react";
 
-//import lucas from 'Assets/img/blog/lucas.jpg';
-//import share from 'Assets/img/blog/share.svg';
-import perso from "Assets/img/blog/perso.svg";
+import perso from "./Assets/img/blog/perso.svg";
 
-class ArticleDesktop extends React.Component {
+class ArticleMobile extends React.Component {
   constructor(props) {
     super(props);
     this.state = { article: [] };
@@ -42,8 +40,8 @@ class ArticleDesktop extends React.Component {
     if (articlesFound) {
       return this.state.article_rs.map(
         function (item, index) {
-          let options = { day: "numeric", month: "long", year: "numeric" };
-          let date = new Date(item.date);
+          var options = { day: "numeric", month: "long", year: "numeric" };
+          var date = new Date(item.date);
           date = date.toLocaleDateString("fr-FR", options);
           let pictures = item.other_pictures.split(";");
           function otherPictures() {
@@ -60,8 +58,10 @@ class ArticleDesktop extends React.Component {
             }
           }
           return (
-            <div className="flexContent" key={index}>
-              <div className="leftMenu column">
+            <div className="article" key={index}>
+              <h2 className="category">{item.category}</h2>
+              <h1 className="articleTitle">{item.title}</h1>
+              <div className="authorBlock">
                 {item.author_picture ? (
                   <img
                     src={item.author_picture}
@@ -78,16 +78,11 @@ class ArticleDesktop extends React.Component {
                   </div>
                 )}
                 <span className="author">{item.author}</span>
-                <br />
                 <span className="team">E-Do Team</span>
-                <br />
                 <span className="date">{date}</span>
-                <br />
                 {/*<span className="share">Partager <img src={share} alt="Partager l'article" /></span>*/}
               </div>
-              <div className="mainArticleContent column">
-                <h2 className="category">{item.category}</h2>
-                <h1 className="articleTitle">{item.title}</h1>
+              <div className="mainArticleContent">
                 <img className="mainPicture" src={item.main_picture} />
                 <p className="articleContent">{item.post_content}</p>
                 {otherPictures()}
@@ -102,4 +97,4 @@ class ArticleDesktop extends React.Component {
   }
 }
 
-export default ArticleDesktop;
+export default ArticleMobile;

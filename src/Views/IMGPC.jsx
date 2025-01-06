@@ -64,35 +64,36 @@ const IMGPC = React.memo(function IMGPCComponent({
       <div
         className="IMGPCColonne"
         style={{
-          width: lar + "vw",
+          width: "100%",
+          height: "auto",
+          position: "relative",
         }}
       >
         <div
           className="IMGPC"
           style={{
-            width: lar + "vw",
-            height: haut + "vw",
-            top: ajustHauteurTop ? ajustHauteurTop + "vh" : "unset",
-            bottom: ajustHauteurBottom ? ajustHauteurBottom + "vh" : "unset",
+            width: "100%",
+            height: "100%",
+            // transform: `translateY(${ajustHauteurTop}vh)`,
+            position: "relative",
+            // transition: "transform 0.3s ease-out",
           }}
         >
           {src && (
-            <Link
-              to={linkUrl}
-              style={{ cursor: "url(cursor/cursor.svg), auto" }}
-            >
+            <Link to={linkUrl} style={{ width: "100%", height: "100%" }}>
               <div
                 className="img-container"
                 onMouseOver={handleHover}
                 onMouseOut={handleMouseOut}
               >
                 <img
-                  src={process.env.PUBLIC_URL + "/img/galerie/" + src}
+                  src={src}
                   alt={alt}
                   ref={image}
                   style={{
+                    // height: "354px",
                     opacity: imgHover ? 0.4 : 1,
-                    transition: "all 300ms ease-out",
+                    // transition: "all 300ms ease-out",
                   }}
                   className={anim === 1 ? "imgAnim1" : ""}
                   marque={marque}

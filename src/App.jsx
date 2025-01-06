@@ -1,39 +1,38 @@
-import React, { useState, useRef, useEffect } from "react";
-import ReactDOM from "react-dom";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { useEffect, useRef, useState } from "react";
 import { Helmet } from "react-helmet";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
-import "Assets/vendor/normalize.css";
-import "Assets/scss/index.scss";
+import "./Assets/scss/index.scss";
+import "./Assets/vendor/normalize.css";
 import "./index.scss";
 
-import ViewportProvider from "Hooks/viewportProvider";
+import ViewportProvider from "./Hooks/viewportProvider";
 
 import Navbar from "./Components/Layout/Navbar/navbar";
 
-import Index from "Views/Index/index";
-import ServicesMenu from "Views/servicesMenu";
-import Service from "Views/Service/service";
-import Galerie from "Views/galerie";
-import GalerieHorizontal from "Views/galerie-horizontal";
-import GalerieVertical from "Views/galerie-vertical";
-import GalerieLive from "Views/galerie-live";
-import GalerieEclipse from "Views/galerie-eclipse";
-import Galerie360 from "Views/galerie360";
-import Contact from "Views/Contact/contact";
-import Merci from "Views/Contact/merci";
-import Mentionslegales from "Views/mentionslegales";
-import SiteAgence from "Views/agence";
-import Reservation from "Views/reservation";
-import Landing from "Views/Landing/landing";
-import Cyclorama from "Views/Service/cyclorama";
-import Blog from "Views/blog";
-import Article from "Views/article";
+import Contact from "./Views/Contact/contact";
+import Merci from "./Views/Contact/merci";
+import Index from "./Views/Index/index";
+import Landing from "./Views/Landing/landing";
+import Cyclorama from "./Views/Service/cyclorama";
+import Service from "./Views/Service/service";
+import SiteAgence from "./Views/agence";
+import Article from "./Views/article";
+import Blog from "./Views/blog";
+import Galerie from "./Views/galerie";
+import GalerieEclipse from "./Views/galerie-eclipse";
+import GalerieHorizontal from "./Views/galerie-horizontal";
+import GalerieLive from "./Views/galerie-live";
+import GalerieVertical from "./Views/galerie-vertical";
+import Galerie360 from "./Views/galerie360";
+import Mentionslegales from "./Views/mentionslegales";
+import Reservation from "./Views/reservation";
+import ServicesMenu from "./Views/servicesMenu";
 
 import Popup from "./Components/Layout/Popup/popup";
 
-import Visualisation from "Views/visualisation";
-import Retouches from "Views/Service/retouches";
+import Retouches from "./Views/Service/retouches";
+import Visualisation from "./Views/visualisation";
 
 // import { createBrowserHistory } from 'history';
 // import { createBrowserHistory } from "history";
@@ -47,7 +46,7 @@ import IMGFichier from "./Assets/img/accueil/machine-photo-mannequin-invisible.j
 //     // ReactGA.pageview(window.location.pathname + window.location.search);
 // });
 
-import TestAccroche from "Views/TestAccroche/test-accroche";
+import TestAccroche from "./Views/TestAccroche/test-accroche";
 
 const App = () => {
   // const [windowWidth, windowHeight] = useWindowSize(); //Force le rendu au redimensionnement de la fenêtre

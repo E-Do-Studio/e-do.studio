@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, forwardRef } from "react";
 import { Link } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import anime from "animejs/lib/anime.es.js";
@@ -8,7 +8,7 @@ import "./footer.scss";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
-const Footer = ({ AnimationBloc7, colorTheme }) => {
+const Footer = forwardRef(({ AnimationBloc7, colorTheme }, ref) => {
   const { t, i18n } = useTranslation("footer");
   let location = useLocation();
   const [colorThemeState, setColorThemeState] = useState("footerPrincipale");
@@ -87,9 +87,10 @@ const Footer = ({ AnimationBloc7, colorTheme }) => {
   return (
     <footer
       className={colorThemeState}
-      style={{
-        height: location.pathname !== "/" ? "100vh" : "unset",
-      }}
+      // style={{
+      //   height: location.pathname !== "/" ? "100vh" : "unset",
+      // }}
+      ref={ref}
     >
       <div className="footerPrincipalWrapper">
         <div className="FP_Infos">
@@ -221,6 +222,6 @@ const Footer = ({ AnimationBloc7, colorTheme }) => {
       </div>
     </footer>
   );
-};
+});
 
 export default Footer;
