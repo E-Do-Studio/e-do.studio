@@ -169,10 +169,10 @@ const GalerieMenu = ({ setPageLoad }) => {
         <div className="titreAnimationWrapper">
           <h1 className="titrePageGalerie" ref={titrePageGalerie}>
             {currentSubcategory
-              ? t(currentSubcategory.toUpperCase())
+              ? t(currentSubcategory).toUpperCase()
               : currentCategory
-              ? t(currentCategory.toUpperCase())
-              : t("GALLERY")}
+              ? t(currentCategory).toUpperCase()
+              : t("GALLERY").toUpperCase()}
           </h1>
           <ul className="categories-menu">{renderCategories()}</ul>
         </div>

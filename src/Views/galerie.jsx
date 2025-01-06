@@ -68,13 +68,19 @@ const imageCache = {
   timestamp: new Map(),
 };
 
-const ImagePlaceholder = () => (
-  <div className="gallery-item">
-    <div className="gallery-image-wrapper loading">
-      <div className="image-placeholder"></div>
+const ImagePlaceholder = (image) => {
+  const aspectRatio =
+    image?.height && image?.width ? (image.height / image.width) * 100 : 100;
+
+  return (
+    <div className="image-placeholder-wrapper">
+      <div
+        className="image-placeholder"
+        style={{ paddingBottom: `${aspectRatio}%` }}
+      />
     </div>
-  </div>
-);
+  );
+};
 
 // Fonction utilitaire pour générer un ID unique
 const generateUniqueId = () =>
@@ -84,6 +90,7 @@ const generateUniqueId = () =>
 const getFetchOptions = () => ({
   headers: {
     Accept: "application/json",
+    "Cache-Control": "no-store", // Simplifié à un seul en-tête de cache
   },
 });
 
@@ -165,171 +172,84 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
   // Configurer l'observer avec des options plus agressives
   const { ref, inView } = useInView({
     threshold: 0,
-    rootMargin: "400px", // Augmenter la marge pour déclencher plus tôt
+    rootMargin: "600px",
     triggerOnce: false,
-    root: null, // Explicitement définir root comme null
   });
 
   // Effet unique pour gérer le chargement initial et les changements de catégorie
   useEffect(() => {
-    console.log("🔵 Component mounted with:", {
-      category,
-      subcategory,
-      page,
-      hasMore,
-      isLoading,
-      imagesCount: images.length,
-      visibleImagesCount: visibleImages.length,
-    });
-  }, []); // Log initial
-
-  useEffect(() => {
-    const loadImages = async () => {
-      console.log("⚡ Starting loadImages with:", {
-        category,
-        subcategory,
-        isLoading,
-        currentPage: page,
-        hasMore,
-      });
-
+    const loadInitialImages = async () => {
       try {
         setIsLoading(true);
+        setPage(1);
         setImages([]);
         setVisibleImages([]);
-        setPage(1);
         setHasMore(true);
 
         const url = new URL(`${API_BASE_URL}/gallery`);
         url.searchParams.append("depth", "2");
         url.searchParams.append("page", "1");
-        url.searchParams.append("sort", "brand");
         url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
-        url.searchParams.append("nocache", generateUniqueId()); // Utiliser un ID unique au lieu de timestamp
+        url.searchParams.append("sort", "-createdAt");
 
+        // Ajuster la structure de la requête pour les catégories
         if (category) {
-          console.log("🏷️ Adding category filter:", category);
-
           if (subcategory) {
-            console.log("🏷️ Adding category and subcategory filters:", {
-              category,
-              subcategory,
-            });
-
-            // Correction pour utiliser la bonne structure d'URL
+            url.searchParams.append("where[categories.name][equals]", category);
             url.searchParams.append(
-              "where[and][0][categories.name][equals]",
-              category
-            );
-            url.searchParams.append(
-              "where[and][1][sub_categories.name][equals]", // Correction ici
+              "where[sub_categories.name][equals]",
               subcategory
             );
-
-            console.log("🔍 Final URL with subcategory:", url.toString());
           } else {
             url.searchParams.append("where[categories.name][equals]", category);
-            console.log("🔍 Final URL category only:", url.toString());
           }
         }
 
-        console.log("🔍 Request URL:", url.toString());
+        console.log("Fetching URL:", url.toString());
 
-        const response = await fetch(url, getFetchOptions());
-        console.log("📥 Response status:", response.status);
+        const response = await fetch(url, {
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
         const data = await response.json();
-        console.log("📦 Response data:", {
-          totalDocs: data.totalDocs,
-          limit: data.limit,
-          page: data.page,
-          hasNextPage: data.hasNextPage,
-          docsCount: data.docs?.length,
-        });
+        console.log("Received data:", data);
 
         if (!data || !Array.isArray(data.docs)) {
           throw new Error("Invalid response format");
         }
 
         const validImages = data.docs.filter((item) => item?.image?.url);
-        console.log(
-          `✅ Found ${validImages.length} images for ${category || "All"}`
-        );
+        console.log("Valid images:", validImages.length);
 
-        setImages(validImages);
-        setVisibleImages(validImages);
-        setHasMore(data.hasNextPage);
-        setPage(2); // Prépare pour la prochaine page
-        window.scrollTo(0, 0);
-
-        console.log("✅ Initial load complete:", {
-          newImagesCount: validImages.length,
-          hasMore: data.hasNextPage,
-          nextPage: 2,
-        });
+        if (validImages.length > 0) {
+          setImages(validImages);
+          setVisibleImages(validImages);
+          setHasMore(data.hasNextPage);
+          setPage(2);
+        } else {
+          setHasMore(false);
+        }
       } catch (error) {
-        console.error("❌ Error details:", {
-          message: error.message,
-          category,
-          page,
-        });
+        console.error("Error loading initial images:", error);
+        setHasMore(false);
       } finally {
         setIsLoading(false);
       }
     };
 
-    console.log("🔄 Category or subcategory changed, triggering loadImages");
-    loadImages();
-  }, [category, subcategory]); // Ajouter subcategory comme dépendance
+    loadInitialImages();
+  }, [category, subcategory]);
 
-  const redirection = (categories) => {
-    switch (categories.name) {
-      case "Ghost":
-        window.location.href = "/service-mannequin-vertical";
-        break;
-      case "Piqué":
-        window.location.href = "/service-mannequin-vertical";
-        break;
-      case "Flat":
-        window.location.href = "/service-packshot-horizontal";
-        break;
-      case "Access":
-        window.location.href = "/service-accessoires-eclipse";
-        break;
-      case "On Model":
-        window.location.href = "/service-mise-en-scene-live";
-        break;
-      default:
-        console.log("No category found");
-    }
-  };
   // Effet séparé pour la pagination infinie
   useEffect(() => {
     const loadMore = async () => {
-      console.log("👀 Infinite scroll check:", {
-        inView,
-        isLoading,
-        hasMore,
-        currentPage: page,
-        category,
-        subcategory,
-        visibleImagesCount: visibleImages.length,
-        totalDocs: images.length,
-      });
-
-      if (!inView || isLoading || !hasMore) {
-        console.log("⏸️ Skipping load more:", {
-          inView,
-          isLoading,
-          hasMore,
-          reason: !inView
-            ? "not in view"
-            : isLoading
-            ? "loading"
-            : "no more images",
-        });
-        return;
-      }
+      if (!inView || isLoading || !hasMore) return;
 
       try {
         setIsLoading(true);
@@ -338,73 +258,52 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         url.searchParams.append("depth", "2");
         url.searchParams.append("page", page.toString());
         url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
-        url.searchParams.append("nocache", generateUniqueId()); // Utiliser un ID unique au lieu de timestamp
+        url.searchParams.append("sort", "-createdAt");
 
         if (category) {
-          console.log("🏷️ Adding category filter:", category);
-
           if (subcategory) {
-            console.log("🏷️ Adding category and subcategory filters:", {
-              category,
-              subcategory,
-            });
-
+            url.searchParams.append("where[categories.name][equals]", category);
             url.searchParams.append(
-              "where[and][0][categories.name][equals]",
-              category
-            );
-            url.searchParams.append(
-              "where[and][1][sub_categories.name][equals]",
+              "where[sub_categories.name][equals]",
               subcategory
             );
-
-            console.log("🔍 Final URL with subcategory:", url.toString());
           } else {
             url.searchParams.append("where[categories.name][equals]", category);
-            console.log("🔍 Final URL category only:", url.toString());
           }
         }
 
-        console.log("🔍 Request URL:", url.toString());
+        console.log("Loading more from URL:", url.toString());
 
-        const response = await fetch(url, getFetchOptions());
-        if (!response.ok)
+        const response = await fetch(url, {
+          headers: {
+            Accept: "application/json",
+          },
+        });
+
+        if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
+        }
 
         const data = await response.json();
-        console.log("📦 Page data:", {
-          page,
-          totalDocs: data.totalDocs,
-          receivedDocs: data.docs?.length,
-          hasNextPage: data.hasNextPage,
-        });
+        console.log("Received more data:", data);
 
         if (!data || !Array.isArray(data.docs)) {
           throw new Error("Invalid response format");
         }
 
         const validImages = data.docs.filter((item) => item?.image?.url);
+        console.log("Valid additional images:", validImages.length);
 
-        if (validImages.length === 0) {
-          console.log("⚠️ No valid images in this batch");
+        if (validImages.length > 0) {
+          setImages((prev) => [...prev, ...validImages]);
+          setVisibleImages((prev) => [...prev, ...validImages]);
+          setHasMore(data.hasNextPage);
+          setPage((prev) => prev + 1);
+        } else {
           setHasMore(false);
-          return;
         }
-
-        setImages((prev) => [...prev, ...validImages]);
-        setVisibleImages((prev) => [...prev, ...validImages]);
-        setHasMore(data.hasNextPage);
-        setPage((prev) => prev + 1);
-
-        console.log(
-          "✅ Successfully loaded page",
-          page,
-          "with",
-          validImages.length,
-          "images"
-        );
       } catch (error) {
-        console.error("❌ Error loading more images:", error);
+        console.error("Error loading more images:", error);
         setHasMore(false);
       } finally {
         setIsLoading(false);
@@ -413,7 +312,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
 
     const timeoutId = setTimeout(() => {
       loadMore();
-    }, 100);
+    }, 500);
 
     return () => clearTimeout(timeoutId);
   }, [inView, category, subcategory, page, isLoading, hasMore]);
@@ -582,9 +481,25 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     return categoryLinks[category.toLowerCase()] || "#";
   };
 
+  const generatePlaceholders = () => {
+    return Array(12)
+      .fill(null)
+      .map((_, index) => (
+        <div key={`placeholder-${index}`} className="gallery-item">
+          <div className="gallery-image-container">
+            <div className="gallery-image-wrapper">
+              <div className="image-placeholder-wrapper">
+                <div className="image-placeholder"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      ));
+  };
+
   const renderGalerieItem = (item, index) => {
     if (!item?.image?.url) {
-      return null;
+      return generatePlaceholders()[0];
     }
 
     const imageUrl = `https://edocms.netlify.app${item.image.url}`;
@@ -593,16 +508,22 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     return (
       <LazyLoadComponent key={uniqueKey} threshold={400}>
         <div className="gallery-item">
-          <div className="image-placeholder"></div>
           <div className="gallery-image-container">
-            <LazyLoadImage
-              src={imageUrl}
-              alt={item.brand?.name || "Gallery image"}
-              effect="blur"
-              wrapperClassName="gallery-image-wrapper"
-              threshold={100}
-              visibleByDefault={false}
-            />
+            <div className="gallery-image-wrapper">
+              <LazyLoadImage
+                src={imageUrl}
+                alt={item.brand?.name || "Gallery image"}
+                effect="opacity"
+                placeholder={
+                  <ImagePlaceholder
+                    width={item.image.width}
+                    height={item.image.height}
+                  />
+                }
+                threshold={100}
+                visibleByDefault={false}
+              />
+            </div>
             <div className="brand-overlay">
               <span className="brand-name">{item.brand?.name || ""}</span>
             </div>
@@ -647,12 +568,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
 
   const [visibleImages, setVisibleImages] = useState([]);
 
-  const generatePlaceholders = () => {
-    return Array(PLACEHOLDER_COUNT)
-      .fill(null)
-      .map((_, index) => <ImagePlaceholder key={`placeholder-${index}`} />);
-  };
-
   // Log pour les changements d'état importants
   useEffect(() => {
     console.log("📊 State update:", {
@@ -678,48 +593,29 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               />
             </div>
             <div className="gallery-grid">
-              {visibleImages.length > 0
-                ? visibleImages.map((item, index) => (
-                    <div key={`${item.id}-${index}`} className="gallery-item">
-                      <div
-                        className="gallery-image-container"
-                        onClick={() => {
-                          redirection(visibleImages[0].categories);
-                        }}
-                      >
-                        <LazyLoadImage
-                          src={`https://edocms.netlify.app${item.image.url}`}
-                          alt={item.brand?.name || "Gallery image"}
-                          effect="blur"
-                          wrapperClassName="gallery-image-wrapper"
-                          threshold={100}
-                          visibleByDefault={false}
-                        />
-                        <div className="brand-overlay">
-                          <span className="brand-name">
-                            {item.brand?.name || "Marque"}
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  ))
-                : generatePlaceholders()}
+              {isLoading && visibleImages.length === 0 ? (
+                generatePlaceholders()
+              ) : visibleImages.length > 0 ? (
+                <>
+                  {visibleImages.map((item, index) =>
+                    renderGalerieItem(item, index)
+                  )}
+                  <div
+                    ref={ref}
+                    style={{
+                      width: "100%",
+                      height: "20px",
+                      gridColumn: "1 / -1",
+                      marginBottom: "50px",
+                    }}
+                  />
+                </>
+              ) : (
+                <div className="no-images-message">
+                  Aucune image trouvée pour cette catégorie
+                </div>
+              )}
             </div>
-          </div>
-
-          <div
-            ref={ref}
-            style={{
-              height: "100px", // Augmenter la hauteur
-              margin: "20px 0",
-              visibility: isLoading ? "visible" : "hidden", // Garder l'élément dans le DOM
-            }}
-          >
-            {!hasMore && !isLoading && visibleImages.length > 0 && (
-              <div className="end-message">
-                <p>All {visibleImages.length} images loaded</p>
-              </div>
-            )}
           </div>
         </div>
       </div>
