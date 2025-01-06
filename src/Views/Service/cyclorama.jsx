@@ -6,6 +6,7 @@ import { useCallback, useEffect, useRef } from "react";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
+
 // Modèle 3D
 
 // Images
@@ -33,6 +34,7 @@ import plaquetteCycloFr from "../../Assets/plaquette/CYCLO_E-DO_FR_UPDATE_ELECTR
 // Sections
 import Footer from "../../Components/Layout/Footer/footer";
 import AutresServices from "./autresServices.jsx";
+import Carousel from "../../Components/Carousel/carousel.jsx";
 
 // CSS
 import "./cyclorama.scss";
@@ -154,6 +156,36 @@ const serviceData = [
     slug: "service-accessoires-eclipse",
   },
 ];
+
+// Images du slider
+
+// Fetch des images du slider
+
+// const [imagesCarousel, setImagesCarousel] = useState([]);
+
+// useEffect(() => {
+//   fetch('https://edocms.netlify.app/api/cyclorama?page=1')
+//       .then((response) => response.json())
+//       .then((data) => {
+//         setImagesCarousel(data.docs);
+//       })
+//       .catch((error) => {
+//           console.error('Erreur lors de la récupération des données :', error);
+//       })
+// }, []);
+
+
+
+
+// const imagesCarousel = [
+
+  // "img/cyclorama/cabines.jpg",
+  // "img/cyclorama/cabines.jpg",
+  // "img/cyclorama/cabines.jpg",
+  // "img/cyclorama/cabines.jpg"
+// ];
+
+
 
 const images = [
   {
@@ -501,6 +533,9 @@ const CycloramaDesktop = () => {
             </div>
           </div>
         </div>
+        {/* Carousel */}
+        <Carousel />
+
         <div className="specifications">
           <div className="firstRow">
             <div className="leftColumn">
