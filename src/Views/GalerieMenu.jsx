@@ -102,7 +102,7 @@ const GalerieMenu = ({ setPageLoad }) => {
     return (
       <>
         <Link to="/galerie">
-          <li className={!currentCategory ? "active" : ""}>{t("ALL")}</li>
+          <li className={!currentCategory ? "active" : ""}>{t("All")}</li>
         </Link>
 
         {categories.map((category) => {

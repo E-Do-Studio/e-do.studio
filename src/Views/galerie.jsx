@@ -203,6 +203,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         const url = new URL(`${API_BASE_URL}/gallery`);
         url.searchParams.append("depth", "2");
         url.searchParams.append("page", "1");
+        url.searchParams.append("sort", "brand");
         url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
         url.searchParams.append("nocache", generateUniqueId()); // Utiliser un ID unique au lieu de timestamp
 
@@ -281,6 +282,27 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     loadImages();
   }, [category, subcategory]); // Ajouter subcategory comme dépendance
 
+  const redirection = (categories) => {
+    switch (categories.name) {
+      case "Ghost":
+        window.location.href = "/service-mannequin-vertical";
+        break;
+      case "Piqué":
+        window.location.href = "/service-mannequin-vertical";
+        break;
+      case "Flat":
+        window.location.href = "/service-packshot-horizontal";
+        break;
+      case "Access":
+        window.location.href = "/service-accessoires-eclipse";
+        break;
+      case "On Model":
+        window.location.href = "/service-mise-en-scene-live";
+        break;
+      default:
+        console.log("No category found");
+    }
+  };
   // Effet séparé pour la pagination infinie
   useEffect(() => {
     const loadMore = async () => {
@@ -659,7 +681,12 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               {visibleImages.length > 0
                 ? visibleImages.map((item, index) => (
                     <div key={`${item.id}-${index}`} className="gallery-item">
-                      <div className="gallery-image-container">
+                      <div
+                        className="gallery-image-container"
+                        onClick={() => {
+                          redirection(visibleImages[0].categories);
+                        }}
+                      >
                         <LazyLoadImage
                           src={`https://edocms.netlify.app${item.image.url}`}
                           alt={item.brand?.name || "Gallery image"}
