@@ -9,27 +9,79 @@ const GalerieMenu = ({ setPageLoad }) => {
   const titrePageGalerie = useRef();
   const matches = useMediaQuery("only screen and (min-width: 1200px)");
   const [categories, setCategories] = useState([]);
+  const [subcategories, setSubcategories] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
   const currentCategory = searchParams.get("category");
+  const currentSubcategory = searchParams.get("subcategory");
   const { t } = useTranslation("gallery");
+
+  console.log("🔄 GalerieMenu rendered with:", {
+    currentCategory,
+    currentSubcategory,
+    isLoading,
+    categoriesCount: categories.length,
+    subcategoriesMap: Object.keys(subcategories),
+  });
 
   useEffect(() => {
     const fetchCategories = async () => {
+      console.log("🚀 Starting categories fetch...");
       try {
         setIsLoading(true);
-        const response = await fetch(
+        const categoriesResponse = await fetch(
           "https://edocms.netlify.app/api/categories"
         );
-        const data = await response.json();
-        if (data.docs) {
-          setCategories(data.docs);
+
+        console.log("📥 Response received:", {
+          categoriesStatus: categoriesResponse.status,
+        });
+
+        const categoriesData = await categoriesResponse.json();
+
+        console.log("📦 Raw Categories data:", {
+          count: categoriesData.docs?.length,
+          categories: categoriesData.docs,
+        });
+
+        if (categoriesData.docs) {
+          console.log("✅ Setting categories:", categoriesData.docs.length);
+          setCategories(categoriesData.docs);
+
+          const subcategoriesByCategory = categoriesData.docs.reduce(
+            (acc, category) => {
+              if (
+                category.subCategories &&
+                Array.isArray(category.subCategories)
+              ) {
+                acc[category.id] = category.subCategories.map((subcat) => ({
+                  id: subcat.id,
+                  name: subcat.name,
+                  categoryId: category.id,
+                }));
+              }
+              return acc;
+            },
+            {}
+          );
+
+          console.log("🗂️ Final organized subcategories:", {
+            categoryCount: Object.keys(subcategoriesByCategory).length,
+            byCategory: subcategoriesByCategory,
+          });
+
+          setSubcategories(subcategoriesByCategory);
         }
       } catch (error) {
-        console.error("Error fetching categories:", error);
+        console.error("❌ Error fetching categories:", {
+          error,
+          message: error.message,
+          stack: error.stack,
+        });
       } finally {
         setIsLoading(false);
+        console.log("✨ Fetch complete");
       }
     };
 
@@ -40,25 +92,80 @@ const GalerieMenu = ({ setPageLoad }) => {
   }, []);
 
   const renderCategories = () => {
+    console.log("🎨 Starting renderCategories with:", {
+      categoriesCount: categories.length,
+      subcategoriesKeys: Object.keys(subcategories),
+      currentCategory,
+      currentSubcategory,
+    });
+
+    if (isLoading) {
+      console.log("⏳ Rendering loading state");
+      return (
+        <li className="loading-item">
+          <div className="loading-placeholder"></div>
+        </li>
+      );
+    }
+
     return (
       <>
         <Link to="/galerie">
-          <li className={!currentCategory ? "active" : ""}>{t("All")}</li>
+          <li className={!currentCategory ? "active" : ""}>{t("ALL")}</li>
         </Link>
 
-        {categories.map((category) => (
-          <Link
-            key={category.id}
-            to={`/galerie?category=${encodeURIComponent(category.name)}`}
-          >
-            <li className={currentCategory === category.name ? "active" : ""}>
-              {t(category.name)}
-              <BsChevronRight
-                className={currentCategory === category.name ? "rotate" : ""}
-              />
-            </li>
-          </Link>
-        ))}
+        {categories.map((category) => {
+          const categorySubcategories = subcategories[category.id] || [];
+          console.log(`📑 Rendering category ${category.name}:`, {
+            id: category.id,
+            subcategoriesCount: categorySubcategories.length,
+            isCurrentCategory: currentCategory === category.name,
+            subcategories: categorySubcategories,
+          });
+
+          return (
+            <div key={category.id} className="category-group">
+              <Link
+                to={`/galerie?category=${encodeURIComponent(category.name)}`}
+              >
+                <li
+                  className={currentCategory === category.name ? "active" : ""}
+                >
+                  {t(category.name)}
+                  {categorySubcategories.length > 0 && (
+                    <BsChevronRight
+                      className={
+                        currentCategory === category.name ? "rotate" : ""
+                      }
+                    />
+                  )}
+                </li>
+              </Link>
+
+              {currentCategory === category.name &&
+                categorySubcategories.length > 0 && (
+                  <ul className="subcategories">
+                    {categorySubcategories.map((subcat) => (
+                      <Link
+                        key={subcat.id}
+                        to={`/galerie?category=${encodeURIComponent(
+                          category.name
+                        )}&subcategory=${encodeURIComponent(subcat.name)}`}
+                      >
+                        <li
+                          className={
+                            currentSubcategory === subcat.name ? "active" : ""
+                          }
+                        >
+                          {t(subcat.name)}
+                        </li>
+                      </Link>
+                    ))}
+                  </ul>
+                )}
+            </div>
+          );
+        })}
       </>
     );
   };
@@ -76,9 +183,13 @@ const GalerieMenu = ({ setPageLoad }) => {
       <div className="pageGalerie">
         <div className="titreAnimationWrapper">
           <h1 className="titrePageGalerie" ref={titrePageGalerie}>
-            {currentCategory ? t(currentCategory.toUpperCase()) : t("GALLERY")}
+            {currentSubcategory
+              ? t(currentSubcategory.toUpperCase())
+              : currentCategory
+              ? t(currentCategory.toUpperCase())
+              : t("GALLERY")}
           </h1>
-          <ul>{renderCategories()}</ul>
+          <ul className="categories-menu">{renderCategories()}</ul>
         </div>
       </div>
     </>

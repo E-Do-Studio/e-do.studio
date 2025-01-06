@@ -197,7 +197,22 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
 
         if (category) {
           console.log("🏷️ Adding category filter:", category);
-          url.searchParams.append("where[categories.name][equals]", category);
+
+          if (subcategory) {
+            console.log("🏷️ Adding category and subcategory filters");
+            // Correction du chemin pour les sous-catégories (sub_categories au lieu de subcategories)
+            url.searchParams.append(
+              "where[and][0][categories.name][equals]",
+              category
+            );
+            url.searchParams.append(
+              "where[and][1][sub_categories.name][equals]",
+              subcategory
+            );
+          } else {
+            // Si pas de sous-catégorie, on filtre uniquement par catégorie
+            url.searchParams.append("where[categories.name][equals]", category);
+          }
         }
 
         console.log("🔍 Fetching URL:", url.toString());
@@ -252,9 +267,9 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       }
     };
 
-    console.log("🔄 Category changed, triggering loadImages");
+    console.log("🔄 Category or subcategory changed, triggering loadImages");
     loadImages();
-  }, [category]); // Dépend uniquement de la catégorie
+  }, [category, subcategory]); // Ajouter subcategory comme dépendance
 
   // Effet séparé pour la pagination infinie
   useEffect(() => {
@@ -293,15 +308,26 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         url.searchParams.append("_t", Date.now());
 
         if (category) {
-          url.searchParams.append("where[categories.name][equals]", category);
+          console.log("🏷️ Adding category filter:", category);
+
+          if (subcategory) {
+            console.log("🏷️ Adding category and subcategory filters");
+            // Utilisation de l'opérateur 'and' pour combiner les conditions
+            url.searchParams.append(
+              "where[and][0][categories.name][equals]",
+              category
+            );
+            url.searchParams.append(
+              "where[and][1][sub_categories.name][equals]",
+              subcategory
+            );
+          } else {
+            // Si pas de sous-catégorie, on filtre uniquement par catégorie
+            url.searchParams.append("where[categories.name][equals]", category);
+          }
         }
 
-        console.log(
-          "🔄 Loading page",
-          page,
-          "for category:",
-          category || "All"
-        );
+        console.log("🔍 Final URL:", url.toString());
 
         const fetchOptions = {
           cache: "no-store",
