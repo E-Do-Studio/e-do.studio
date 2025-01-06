@@ -193,49 +193,15 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         url.searchParams.append("depth", "2");
         url.searchParams.append("page", "1");
         url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
-<<<<<<< HEAD
-        url.searchParams.append("_t", Date.now());
-
-        if (category) {
-          console.log("🏷️ Adding category filter:", category);
-
-          if (subcategory) {
-            console.log("🏷️ Adding category and subcategory filters");
-            // Correction du chemin pour les sous-catégories (sub_categories au lieu de subcategories)
-            url.searchParams.append(
-              "where[and][0][categories.name][equals]",
-              category
-            );
-            url.searchParams.append(
-              "where[and][1][sub_categories.name][equals]",
-              subcategory
-            );
-          } else {
-            // Si pas de sous-catégorie, on filtre uniquement par catégorie
-            url.searchParams.append("where[categories.name][equals]", category);
-          }
-=======
 
         if (category) {
           console.log("🏷️ Adding category filter:", category);
           url.searchParams.append("where[categories.name][equals]", category);
->>>>>>> 3ebe6061c (menu final)
         }
 
         console.log("🔍 Fetching URL:", url.toString());
 
-<<<<<<< HEAD
-        const fetchOptions = {
-          cache: "no-store",
-          headers: {
-            Accept: "application/json",
-          },
-        };
-
-        const response = await fetch(url, fetchOptions);
-=======
         const response = await fetch(url);
->>>>>>> 3ebe6061c (menu final)
         console.log("📥 Response status:", response.status);
 
         const data = await response.json();
@@ -278,15 +244,9 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       }
     };
 
-<<<<<<< HEAD
     console.log("🔄 Category or subcategory changed, triggering loadImages");
     loadImages();
   }, [category, subcategory]); // Ajouter subcategory comme dépendance
-=======
-    console.log("🔄 Category changed, triggering loadImages");
-    loadImages();
-  }, [category]); // Dépend uniquement de la catégorie
->>>>>>> 3ebe6061c (menu final)
 
   // Effet séparé pour la pagination infinie
   useEffect(() => {
@@ -322,40 +282,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         url.searchParams.append("depth", "2");
         url.searchParams.append("page", page.toString());
         url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
-<<<<<<< HEAD
-        url.searchParams.append("_t", Date.now());
-
-        if (category) {
-          console.log("🏷️ Adding category filter:", category);
-
-          if (subcategory) {
-            console.log("🏷️ Adding category and subcategory filters");
-            // Utilisation de l'opérateur 'and' pour combiner les conditions
-            url.searchParams.append(
-              "where[and][0][categories.name][equals]",
-              category
-            );
-            url.searchParams.append(
-              "where[and][1][sub_categories.name][equals]",
-              subcategory
-            );
-          } else {
-            // Si pas de sous-catégorie, on filtre uniquement par catégorie
-            url.searchParams.append("where[categories.name][equals]", category);
-          }
-        }
-
-        console.log("🔍 Final URL:", url.toString());
-
-        const fetchOptions = {
-          cache: "no-store",
-          headers: {
-            Accept: "application/json",
-          },
-        };
-
-        const response = await fetch(url, fetchOptions);
-=======
 
         if (category) {
           url.searchParams.append("where[categories.name][equals]", category);
@@ -369,7 +295,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         );
 
         const response = await fetch(url);
->>>>>>> 3ebe6061c (menu final)
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
 
@@ -713,15 +638,12 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               visibility: isLoading ? "visible" : "hidden", // Garder l'élément dans le DOM
             }}
           >
-<<<<<<< HEAD
-=======
             {isLoading && (
               <div className="loading-indicator">
                 <div className="spinner"></div>
                 Loading page {page}...
               </div>
             )}
->>>>>>> 3ebe6061c (menu final)
             {!hasMore && !isLoading && visibleImages.length > 0 && (
               <div className="end-message">
                 <p>All {visibleImages.length} images loaded</p>
