@@ -40,22 +40,10 @@ const GalerieMenu = ({ setPageLoad }) => {
   }, []);
 
   const renderCategories = () => {
-    if (isLoading) {
-      return (
-        <>
-          <li className="loading-item">
-            <div className="loading-placeholder"></div>
-            <div className="loading-placeholder"></div>
-            <div className="loading-placeholder"></div>
-          </li>
-        </>
-      );
-    }
-
     return (
       <>
         <Link to="/galerie">
-          <li className={!currentCategory ? "active" : ""}>{t("ALL")}</li>
+          <li className={!currentCategory ? "active" : ""}>{t("All")}</li>
         </Link>
 
         {categories.map((category) => (

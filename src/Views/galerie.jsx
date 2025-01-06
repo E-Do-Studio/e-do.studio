@@ -193,6 +193,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         url.searchParams.append("depth", "2");
         url.searchParams.append("page", "1");
         url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
+        url.searchParams.append("_t", Date.now());
 
         if (category) {
           console.log("🏷️ Adding category filter:", category);
@@ -201,7 +202,14 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
 
         console.log("🔍 Fetching URL:", url.toString());
 
-        const response = await fetch(url);
+        const fetchOptions = {
+          cache: "no-store",
+          headers: {
+            Accept: "application/json",
+          },
+        };
+
+        const response = await fetch(url, fetchOptions);
         console.log("📥 Response status:", response.status);
 
         const data = await response.json();
@@ -282,6 +290,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         url.searchParams.append("depth", "2");
         url.searchParams.append("page", page.toString());
         url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
+        url.searchParams.append("_t", Date.now());
 
         if (category) {
           url.searchParams.append("where[categories.name][equals]", category);
@@ -294,7 +303,14 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
           category || "All"
         );
 
-        const response = await fetch(url);
+        const fetchOptions = {
+          cache: "no-store",
+          headers: {
+            Accept: "application/json",
+          },
+        };
+
+        const response = await fetch(url, fetchOptions);
         if (!response.ok)
           throw new Error(`HTTP error! status: ${response.status}`);
 
@@ -638,12 +654,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
               visibility: isLoading ? "visible" : "hidden", // Garder l'élément dans le DOM
             }}
           >
-            {isLoading && (
-              <div className="loading-indicator">
-                <div className="spinner"></div>
-                Loading page {page}...
-              </div>
-            )}
             {!hasMore && !isLoading && visibleImages.length > 0 && (
               <div className="end-message">
                 <p>All {visibleImages.length} images loaded</p>
