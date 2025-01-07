@@ -98,6 +98,9 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
 
   const [visibleImages, setVisibleImages] = useState([]);
 
+  console.log(visibleImages);
+  
+
   // Add scroll event listener
   useEffect(() => {
     const handleScroll = () => {
@@ -392,6 +395,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       </LazyLoadComponent>
     );
   };
+  
 
   const redirection = (categories) => {
     switch (categories.name) {
