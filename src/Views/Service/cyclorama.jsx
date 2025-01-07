@@ -466,6 +466,8 @@ const CycloramaDesktop = () => {
               alt="Bouton de scroll"
             />
           </div>
+        <div>
+        </div>
           <div className="rightColumn">
             <img src={cycloPlan} alt="Plan du Cyclorama" />
           </div>
