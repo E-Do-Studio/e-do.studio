@@ -192,10 +192,10 @@ const Menu = ({ pageLoad }) => {
               <li>
                 <Link
                   className="Link"
-                  to="/galerie"
+                  to="/pre-galerie"
                   onClick={handleCloseMenuMobile}
                 >
-                  {location.pathname === "/galerie" ? (
+                  {location.pathname === "/pre-galerie" ? (
                     <div className="lienDeco"></div>
                   ) : (
                     ""
