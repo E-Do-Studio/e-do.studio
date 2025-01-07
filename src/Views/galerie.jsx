@@ -33,36 +33,6 @@ const SCROLL_THRESHOLD = 800;
 const BATCH_DELAY = 300;
 const PLACEHOLDER_COUNT = 12;
 
-// const generateRandomOffset = (index) => {
-//   const isMobile = window.innerWidth < 1200;
-//   const amplitudeMultiplier = isMobile ? 0.6 : 1;
-
-//   const topOffset =
-//     (Math.sin(index * 0.7) * 35 +
-//       Math.cos(index * 1.3) * 20 +
-//       Math.sin(index * 0.2 + Math.PI) * 25 +
-//       Math.cos(index * 2.1) * 15 +
-//       Math.sin(index * 0.5 + index * 0.1) * 18) *
-//     amplitudeMultiplier;
-
-//   const horizontalOffset = isMobile
-//     ? (Math.sin(index * 0.8) * 12 +
-//         Math.cos(index * 1.2) * 8 +
-//         Math.sin(index * 0.3 + Math.PI / 4) * 10 +
-//         Math.cos(index * 1.8) * 6 +
-//         Math.sin(index * 0.6 + index * 0.2) * 5) *
-//       amplitudeMultiplier
-//     : 0;
-
-//   const randomFactor = Math.sin(index * 123.456) * 20 * amplitudeMultiplier;
-
-//   return {
-//     top: Math.round(topOffset + randomFactor),
-//     bottom: isMobile ? 0 : Math.round(topOffset - randomFactor),
-//     left: isMobile ? Math.round(horizontalOffset) : 0,
-//   };
-// };
-
 const imageCache = {
   data: new Map(),
   timestamp: new Map(),
@@ -125,6 +95,8 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
   const menuRef = useRef(null);
   const footerRef = useRef(null);
 
+  const [visibleImages, setVisibleImages] = useState([]);
+
   // Add scroll event listener
   useEffect(() => {
     const handleScroll = () => {
@@ -174,7 +146,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       {}
     );
 
-    console.log("Formatted categories:", formattedCategories);
+    // console.log("Formatted categories:", formattedCategories);
     setCategories(formattedCategories);
   };
 
@@ -336,152 +308,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       : category.toUpperCase()
     : "all";
 
-  // Log pour le débogage
-  useEffect(() => {
-    console.log("Raw images data:", images);
-    console.log("Organized categories:", categories);
-    console.log("Current category:", category);
-    console.log("Current subcategory:", subcategory);
-  }, [images, categories, category, subcategory]);
-
-  const PMS_BoutonPCNextButton = useRef();
-  const PMS_BoutonPCPrecButton = useRef();
-
-  const sliderNavSuiv = () => {
-    PMS_BoutonPCNextButton.current.play();
-    setTimeout(() => {
-      PMS_BoutonPCNextButton.current.stop();
-    }, 600);
-  };
-
-  const sliderNavPrec = () => {
-    PMS_BoutonPCPrecButton.current.play();
-    setTimeout(() => {
-      PMS_BoutonPCPrecButton.current.stop();
-    }, 600);
-  };
-
-  function scrollLeft() {
-    const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
-    const scrollAmount = 500;
-
-    if (scrollBox.scrollLeft === 0) {
-      scrollBox.scrollTo({
-        left: scrollBox.scrollWidth - scrollBox.clientWidth,
-        behavior: "smooth",
-      });
-    } else {
-      scrollBox.scrollBy({
-        left: -scrollAmount,
-        behavior: "smooth",
-      });
-    }
-
-    sliderNavPrec();
-  }
-
-  function scrollRight() {
-    const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
-    const scrollAmount = 500;
-
-    if (
-      scrollBox.scrollLeft + scrollBox.clientWidth >=
-      scrollBox.scrollWidth - 1
-    ) {
-      scrollBox.scrollTo({
-        left: 0,
-        behavior: "smooth",
-      });
-    } else {
-      scrollBox.scrollBy({
-        left: scrollAmount,
-        behavior: "smooth",
-      });
-    }
-
-    sliderNavSuiv();
-  }
-
-  useEffect(() => {
-    const scrollBox = document.getElementsByClassName("galeriePCWrapper")[0];
-
-    const keyScroll = (e) => {
-      const key = e.keyCode;
-      if (key == "39") {
-        scrollBox.scrollBy({
-          left: 500,
-          behavior: "smooth",
-        });
-      } else if (key == "37") {
-        scrollBox.scrollBy({
-          left: -500,
-          behavior: "smooth",
-        });
-      }
-    };
-
-    document.addEventListener("keydown", keyScroll);
-  }, []);
-
-  useEffect(() => {
-    anime({
-      targets: ".PMS_BoutonPCNextButton",
-      opacity: [0, 1],
-      easing: "easeInOutSine",
-      duration: 500,
-      delay: 300,
-    });
-
-    anime({
-      targets: ".PMS_BoutonPCPrecButton",
-      opacity: [0, 1],
-      easing: "easeInOutSine",
-      duration: 500,
-      delay: 300,
-    });
-  }, []);
-
-  const videoRefs = useRef([]);
-  const generateRef = () => {
-    const ref = React.createRef();
-    videoRefs.current.push(ref);
-    return ref;
-  };
-
-  const handleHover = (event, index) => {
-    setImgHover(true);
-    setMarque(index);
-    if (videoRefs.current[index] && videoRefs.current[index].current) {
-      videoRefs.current[index].current.style.opacity = 0.8;
-      videoRefs.current[index].current.style.filter = "grayscale(1)";
-    }
-  };
-
-  const handleMouseOut = (event, index) => {
-    setImgHover(false);
-    setMarque("");
-    if (videoRefs.current[index] && videoRefs.current[index].current) {
-      videoRefs.current[index].current.style.opacity = 1;
-      videoRefs.current[index].current.style.filter = "grayscale(0)";
-    }
-  };
-
-  const [imgHover, setImgHover] = useState(false);
-  const [marque, setMarque] = useState("");
-
-  const getCategoryLink = (category) => {
-    if (!category) return "#";
-
-    const categoryLinks = {
-      live: "/service-mise-en-scene-live",
-      horizontal: "/service-packshot-horizontal",
-      vertical: "/service-mannequin-vertical",
-      eclipse: "/service-accessoires-eclipse",
-    };
-
-    return categoryLinks[category.toLowerCase()] || "#";
-  };
-
   const generatePlaceholders = () => {
     return Array(12)
       .fill(null)
@@ -511,7 +337,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         <div className="gallery-item">
           <div
             className="gallery-image-container"
-            onClick={() => redirection(visibleImages[0].categories)}
+            onClick={() => redirection(item.categories)}
           >
             <div className="gallery-image-wrapper">
               <LazyLoadImage
@@ -536,53 +362,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       </LazyLoadComponent>
     );
   };
-
-  const renderMobileItem = (item, index) => {
-    if (!item?.image?.url) {
-      return null;
-    }
-
-    // const offsets = generateRandomOffset(index);
-    const imageUrl = `https://edocms.netlify.app${item.image.url}`;
-
-    return (
-      <LazyLoadComponent key={item.id || index} threshold={200}>
-        <div
-          className="IMGMobile"
-          style={{
-            left: `${20 + offsets.left}px`,
-            marginTop: `${offsets.top}px`,
-          }}
-        >
-          <div className="image-placeholder"></div>
-          <LazyLoadImage
-            src={imageUrl}
-            alt={item.brand?.name || "Gallery image"}
-            effect="blur"
-            wrapperClassName="mobile-image-wrapper"
-            beforeLoad={() => console.log("Loading started", imageUrl)}
-            afterLoad={() => console.log("Loading finished", imageUrl)}
-            threshold={100}
-            visibleByDefault={false}
-          />
-        </div>
-      </LazyLoadComponent>
-    );
-  };
-
-  const [visibleImages, setVisibleImages] = useState([]);
-
-  // Log pour les changements d'état importants
-  useEffect(() => {
-    console.log("📊 State update:", {
-      totalImages: images.length,
-      visibleImages: visibleImages.length,
-      currentPage: page,
-      hasMore,
-      isLoading,
-      category,
-    });
-  }, [images, visibleImages, page, hasMore, isLoading, category]);
 
   const redirection = (categories) => {
     switch (categories.name) {
