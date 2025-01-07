@@ -28,8 +28,10 @@ const Carousel = () => {
         drag: "free", // Permet un défilement manuel fluide
         focus: "center", // Centre les éléments visibles
         perPage: 4, // Nombre d'images visibles
+        pagination: false,
+        arrows: false, // Désactive les flèches
         autoScroll: {
-          speed: -1, // Vitesse du défilement (valeur positive pour défiler vers la gauche, négative pour la droite)
+          speed: -2, // Vitesse du défilement (valeur positive pour défiler vers la gauche, négative pour la droite)
         },
         pauseOnHover: true, // Pause le défilement quand la souris est dessus
       });
