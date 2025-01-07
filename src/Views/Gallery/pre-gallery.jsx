@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
+
 import "./pre-gallery.scss";
+import Footer from "../../Components/Layout/Footer/footer";
 
 const PreGallery = ({ setPageLoad }) => {
   const history = useHistory();
@@ -20,7 +22,12 @@ const PreGallery = ({ setPageLoad }) => {
           "https://edocms.netlify.app/api/categories"
         );
         const data = await response.json();
-        setCategories(data.docs);
+        const sortedCategories = data.docs.sort((a, b) => {
+          if (a.name.toLowerCase() === "piqué") return -1;
+          if (b.name.toLowerCase() === "piqué") return 1;
+          return 0;
+        });
+        setCategories(sortedCategories);
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
@@ -52,30 +59,33 @@ const PreGallery = ({ setPageLoad }) => {
   };
 
   return (
-    <div className="pre-gallery-container">
-      <h1>Choisissez votre catégorie</h1>
-      <div className="categories-grid">
-        {categories.map((category) => (
-          <div
-            key={category.id}
-            className="category-card"
-            onClick={() => handleCategoryClick(category)}
-          >
-            {category.image && (
-              <div
-                className="category-image"
-                style={{
-                  backgroundImage: `url(https://edocms.netlify.app${category.image.url})`,
-                }}
-              />
-            )}
-            <div className="category-content">
-              <h2>{category.name}</h2>
+    <>
+      <div className="pre-gallery-container">
+        <h1>Choisissez votre catégorie</h1>
+        <div className="categories-grid">
+          {categories.map((category) => (
+            <div
+              key={category.id}
+              className="category-card"
+              onClick={() => handleCategoryClick(category)}
+            >
+              {category.image && (
+                <div
+                  className="category-image"
+                  style={{
+                    backgroundImage: `url(https://edocms.netlify.app${category.image.url})`,
+                  }}
+                />
+              )}
+              <div className="category-content">
+                <h2>{category.name}</h2>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </div>
+      <Footer AnimationBloc7={true} colorTheme="black" />
+    </>
   );
 };
 
