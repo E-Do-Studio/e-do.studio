@@ -140,10 +140,6 @@
     gap: 1rem;
   }
 
-  .gallery-item:nth-child(3n+1) {
-    grid-column-start: span 1;
-  }
-
   .gallery-item:nth-child(1n+2) {
     grid-row-end: span 2;
   }
