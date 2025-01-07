@@ -57,6 +57,7 @@ const generateUniqueId = () =>
   `${Date.now()}-${Math.random().toString(36).substr(2, 9)}`;
 
 // Modifier la fonction getFetchOptions
+// NE PAS TOUCHER !!!
 const getFetchOptions = () => ({
   headers: {
     Accept: "application/json",
@@ -174,14 +175,17 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         url.searchParams.append("depth", "2");
         url.searchParams.append("page", "1");
         url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
-        url.searchParams.append("sort", "-createdAt");
+        url.searchParams.append("sort", "brand");
 
         // Ajuster la structure de la requête pour les catégories
         if (category) {
           if (subcategory) {
-            url.searchParams.append("where[categories.name][equals]", category);
             url.searchParams.append(
-              "where[sub_categories.name][equals]",
+              "where[and][0][categories.name][equals]",
+              category
+            );
+            url.searchParams.append(
+              "where[and][1][sub_categories.name][equals]",
               subcategory
             );
           } else {
@@ -238,13 +242,16 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         url.searchParams.append("depth", "2");
         url.searchParams.append("page", page.toString());
         url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
-        url.searchParams.append("sort", "-createdAt");
+        url.searchParams.append("sort", "brand");
 
         if (category) {
           if (subcategory) {
-            url.searchParams.append("where[categories.name][equals]", category);
             url.searchParams.append(
-              "where[sub_categories.name][equals]",
+              "where[and][0][categories.name][equals]",
+              category
+            );
+            url.searchParams.append(
+              "where[and][1][sub_categories.name][equals]",
               subcategory
             );
           } else {
@@ -332,8 +339,13 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       return generatePlaceholders()[0];
     }
 
-    const imageUrl = `https://edocms.netlify.app${item.image.url}`;
+    const fileUrl = `https://edocms.netlify.app${item.image.url}`;
     const uniqueKey = `${item.id || "img"}-${index}`;
+    const isVideo = item.image.url.toLowerCase().endsWith(".mp4");
+    const aspectRatio =
+      !isVideo && item.image.height && item.image.width
+        ? (item.image.height / item.image.width) * 100
+        : 100;
 
     return (
       <LazyLoadComponent key={uniqueKey} threshold={400}>
@@ -341,21 +353,39 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
           <div
             className="gallery-image-container"
             onClick={() => redirection(item.categories)}
+            style={!isVideo ? { paddingBottom: `${aspectRatio}%` } : {}}
           >
-            <div className="gallery-image-wrapper">
-              <LazyLoadImage
-                src={imageUrl}
-                alt={item.brand?.name || "Gallery image"}
-                effect="opacity"
-                placeholder={
-                  <ImagePlaceholder
-                    width={item.image.width}
-                    height={item.image.height}
-                  />
-                }
-                threshold={100}
-                visibleByDefault={false}
-              />
+            <div
+              className={`gallery-image-wrapper ${
+                isVideo ? "video-wrapper" : ""
+              }`}
+            >
+              {isVideo ? (
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="gallery-video"
+                >
+                  <source src={fileUrl} type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+              ) : (
+                <LazyLoadImage
+                  src={fileUrl}
+                  alt={item.brand?.name || "Gallery image"}
+                  effect="opacity"
+                  placeholder={
+                    <ImagePlaceholder
+                      width={item.image.width}
+                      height={item.image.height}
+                    />
+                  }
+                  threshold={100}
+                  visibleByDefault={false}
+                />
+              )}
             </div>
             <div className="brand-overlay">
               <span className="brand-name">{item.brand?.name || ""}</span>
@@ -409,6 +439,8 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   {visibleImages.map((item, index) =>
                     renderGalerieItem(item, index)
                   )}
+
+                  {/* Load more images */}
                   <div
                     ref={ref}
                     style={{
@@ -420,9 +452,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   />
                 </>
               ) : (
-                <div className="no-images-message">
-                  Aucune image trouvée pour cette catégorie
-                </div>
+                <div className="no-images-message">Aucune image trouvée</div>
               )}
             </div>
           </div>
