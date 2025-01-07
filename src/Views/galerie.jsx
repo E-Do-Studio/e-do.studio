@@ -509,7 +509,10 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     return (
       <LazyLoadComponent key={uniqueKey} threshold={400}>
         <div className="gallery-item">
-          <div className="gallery-image-container">
+          <div
+            className="gallery-image-container"
+            onClick={() => redirection(visibleImages[0].categories)}
+          >
             <div className="gallery-image-wrapper">
               <LazyLoadImage
                 src={imageUrl}
@@ -580,6 +583,28 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       category,
     });
   }, [images, visibleImages, page, hasMore, isLoading, category]);
+
+  const redirection = (categories) => {
+    switch (categories.name) {
+      case "Ghost":
+        window.location.href = "/service-mannequin-vertical";
+        break;
+      case "Piqué":
+        window.location.href = "/service-mannequin-vertical";
+        break;
+      case "Flat":
+        window.location.href = "/service-packshot-horizontal";
+        break;
+      case "Access":
+        window.location.href = "/service-accessoires-eclipse";
+        break;
+      case "On Model":
+        window.location.href = "/service-mise-en-scene-live";
+        break;
+      default:
+        console.log("No category found");
+    }
+  };
 
   return (
     <Suspense fallback={<div>Loading...</div>}>
