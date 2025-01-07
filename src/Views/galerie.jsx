@@ -177,9 +177,12 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         // Ajuster la structure de la requête pour les catégories
         if (category) {
           if (subcategory) {
-            url.searchParams.append("where[categories.name][equals]", category);
             url.searchParams.append(
-              "where[sub_categories.name][equals]",
+              "where[and][0][categories.name][equals]",
+              category
+            );
+            url.searchParams.append(
+              "where[and][1][sub_categories.name][equals]",
               subcategory
             );
           } else {
@@ -236,13 +239,16 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         url.searchParams.append("depth", "2");
         url.searchParams.append("page", page.toString());
         url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
-        url.searchParams.append("sort", "-createdAt");
+        url.searchParams.append("sort", "brand");
 
         if (category) {
           if (subcategory) {
-            url.searchParams.append("where[categories.name][equals]", category);
             url.searchParams.append(
-              "where[sub_categories.name][equals]",
+              "where[and][0][categories.name][equals]",
+              category
+            );
+            url.searchParams.append(
+              "where[and][1][sub_categories.name][equals]",
               subcategory
             );
           } else {
