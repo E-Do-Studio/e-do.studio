@@ -5,14 +5,16 @@
   min-height: 100vh;
 
   .galeriePCWrapper {
-    // width: 100%;
     height: 100%;
     padding: 0 50px;
     position: relative;
   }
 
   @media screen and (max-width: 1024px) {
-    // padding: 0 32px;
+    .galeriePCWrapper {
+      padding-left: 32px;
+      padding-right: 32px;
+    }
   }
 }
 
@@ -145,22 +147,42 @@
       width: 100%;
       overflow: hidden;
 
-      :hover {
-        cursor: pointer;
-      }
-
       .gallery-image-wrapper {
         width: 100%;
+        position: relative;
+        display: block;
 
         img {
           width: 100%;
           height: auto;
           object-fit: contain;
           transition: all 0.3s ease-in-out;
+          display: block;
+        }
+      }
+
+      .image-placeholder-wrapper {
+        width: 100%;
+        position: relative;
+        background: #f5f5f5;
+
+        .image-placeholder {
+          width: 100%;
+          position: relative;
+          background: linear-gradient(
+            90deg,
+            #f0f0f0 0%,
+            #f8f8f8 50%,
+            #f0f0f0 100%
+          );
+          background-size: 200% 100%;
+          animation: shimmer 1.5s infinite linear;
         }
       }
 
       &:hover {
+        cursor: pointer;
+
         .gallery-image-wrapper img {
           filter: brightness(1.2) blur(2px);
           transform: scale(1.02);
@@ -169,6 +191,33 @@
         .brand-overlay {
           opacity: 1;
           visibility: visible;
+        }
+      }
+
+      .brand-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease-in-out;
+        z-index: 3;
+
+        .brand-name {
+          color: #000;
+          padding: 12px 24px;
+          border-radius: 4px;
+          font-size: 1.2rem;
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          max-width: 80%;
+          text-align: center;
         }
       }
     }
@@ -186,6 +235,7 @@
   .galeriePCWrapper {
     padding-left: 32px;
     padding-right: 32px;
+    margin-bottom: 60px;
   }
 
   .gallery-layout {
@@ -215,63 +265,33 @@
   transition: transform 0.2s ease-in-out;
 }
 
-.brand-overlay {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: rgba(255, 255, 255, 0.2);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease-in-out;
-
-  .brand-name {
-    color: #000;
-    padding: 8px 16px;
-    border-radius: 4px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
+.image-placeholder {
+  width: 100%;
+  padding-bottom: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(240, 240, 240, 0.1) 0%,
+    rgba(240, 240, 240, 0.3) 50%,
+    rgba(240, 240, 240, 0.1) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 4px;
 }
 
-.loading-item {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding: 8px 0;
-
-  .loading-placeholder {
-    height: 20px;
-    width: 80%;
-    background: linear-gradient(
-      90deg,
-      rgba(240, 240, 240, 0.1) 0%,
-      rgba(240, 240, 240, 0.3) 50%,
-      rgba(240, 240, 240, 0.1) 100%
-    );
-    background-size: 200% 100%;
-    animation: loading 1.5s infinite;
-    border-radius: 4px;
-
-    &:nth-child(2) {
-      width: 60%;
-    }
-    &:nth-child(3) {
-      width: 70%;
-    }
-  }
-}
-
-@keyframes loading {
+@keyframes shimmer {
   0% {
     background-position: 200% 0;
   }
   100% {
     background-position: -200% 0;
   }
+}
+
+// Supprimer les anciens styles de loading spinner
+.loading-trigger,
+.loading-spinner {
+  display: none;
 }
 
 // Ajouter ces styles à votre fichier SCSS existant
@@ -299,5 +319,32 @@
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+.loading-trigger {
+  width: 100%;
+  height: 20px;
+  margin: 20px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #000;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }

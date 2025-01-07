@@ -5,6 +5,22 @@ import { Helmet } from "react-helmet";
 import { useTranslation } from "react-i18next";
 import { BsChevronRight } from "@react-icons/all-files/bs/BsChevronRight";
 
+const getFetchOptions = () => ({
+  headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json",
+    "Cache-Control": "no-store,no-cache,must-revalidate,private",
+    Pragma: "no-cache",
+    Origin: window.location.origin,
+    "X-Requested-With": "XMLHttpRequest",
+    "Accept-Encoding": "br",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "PUT, PATCH, POST, GET, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers":
+      "Origin, X-Requested-With, Content-Type, Accept, Authorization, Content-Encoding",
+  },
+});
+
 const GalerieMenu = ({ setPageLoad }) => {
   const titrePageGalerie = useRef();
   const matches = useMediaQuery("only screen and (min-width: 1200px)");
@@ -31,7 +47,8 @@ const GalerieMenu = ({ setPageLoad }) => {
       try {
         setIsLoading(true);
         const categoriesResponse = await fetch(
-          "https://edocms.netlify.app/api/categories"
+          "https://edocms.netlify.app/api/categories",
+          getFetchOptions()
         );
 
         console.log("📥 Response received:", {
@@ -169,10 +186,10 @@ const GalerieMenu = ({ setPageLoad }) => {
         <div className="titreAnimationWrapper">
           <h1 className="titrePageGalerie" ref={titrePageGalerie}>
             {currentSubcategory
-              ? t(currentSubcategory.toUpperCase())
+              ? t(currentSubcategory).toUpperCase()
               : currentCategory
-              ? t(currentCategory.toUpperCase())
-              : t("GALLERY")}
+              ? t(currentCategory).toUpperCase()
+              : t("GALLERY").toUpperCase()}
           </h1>
           <ul className="categories-menu">{renderCategories()}</ul>
         </div>

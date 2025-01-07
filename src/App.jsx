@@ -129,7 +129,6 @@ const App = () => {
       </Helmet>
 
       <ViewportProvider>
-        {/* basename={'/'} */}
         <BrowserRouter>
           <main>
             <Switch>
