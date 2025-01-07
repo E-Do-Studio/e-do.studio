@@ -172,7 +172,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
         url.searchParams.append("depth", "2");
         url.searchParams.append("page", "1");
         url.searchParams.append("limit", IMAGES_PER_PAGE.toString());
-        url.searchParams.append("sort", "-createdAt");
+        url.searchParams.append("sort", "brand");
 
         // Ajuster la structure de la requête pour les catégories
         if (category) {
