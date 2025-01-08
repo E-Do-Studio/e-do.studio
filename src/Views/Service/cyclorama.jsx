@@ -459,12 +459,6 @@ const CycloramaDesktop = () => {
                 {t("Get the Cyclorama brochure")}
               </div>
             </a>
-            <img
-              className="scrollButton"
-              src={scrollCircle}
-              onClick={goDown}
-              alt="Bouton de scroll"
-            />
           </div>
         <div>
         </div>

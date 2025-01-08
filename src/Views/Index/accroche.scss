@@ -255,20 +255,6 @@
   }
 }
 
-.boutonAnimation {
-  width: 90px;
-  height: 90px;
-  margin-left: auto;
-  margin-right: auto;
-  cursor: pointer;
-  // background:red;
-
-  @include xl {
-    width: 140px;
-    height: 140px;
-  }
-}
-
 .copyright {
   font-size: 23px;
 

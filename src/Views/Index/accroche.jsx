@@ -422,32 +422,6 @@ const Accroche = ({
           {t("( BOOK A SESSION ON OUR MACHINES )")}
         </Link>
       </div>
-
-      <div className="boutonAnimation" ref={boutonNav}>
-        <Lottie
-          className="animBoutonFlecheBas"
-          lottieRef={animBoutonFlecheBas}
-          animationData={boutonflechebas}
-          onClick={() => {
-            setBoutonNavClick(true);
-          }}
-          autoplay={false}
-          onEnterFrame={(event) => {
-            if (event.currentTime > 36 && !AccrocheSlideLeave) {
-              animBoutonFlecheBas.current.pause();
-            }
-            //Animation terminé on lance le slide
-            if (
-              event.currentTime >= event.totalTime - 30 &&
-              !AccrocheSlideLeaveAnimationFin
-            ) {
-              animBoutonFlecheBas.current.pause();
-              setAccrocheSlideLeaveAnimationFin(true);
-              fullpageApi.moveSectionDown();
-            }
-          }}
-        />
-      </div>
     </div>
   );
 };
