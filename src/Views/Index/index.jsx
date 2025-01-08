@@ -225,7 +225,7 @@ const Index = ({ setPageLoad, setBackgroundBlack }) => {
           </section>
 
           <section
-            className="section"
+            className="section sectionConclusionContainer"
             style={{ overflow: "hidden", width: "100%" }}
           >
             <Conclusion
