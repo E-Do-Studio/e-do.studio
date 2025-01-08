@@ -11,8 +11,6 @@ import "./accroche.scss";
 
 import boutonflechebas from "../../Assets/animations/boutonflechebas.json";
 
-import accrocheIMG1 from "../../Assets/img/accueil/accueilAccroche1.jpg";
-import accrocheIMG2 from "../../Assets/img/accueil/accueilAccroche2.jpg";
 
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
@@ -27,20 +25,6 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
         easing: "easeOutExpo",
         duration: 1500,
         delay: (el, i) => 60 * i,
-      });
-      anime({
-        targets: ".accrocheIMG1",
-        scale: [0, 1],
-        duration: 1200,
-        delay: 500,
-        easing: "easeOutExpo",
-      });
-      anime({
-        targets: ".accrocheIMG2",
-        scale: [0, 1],
-        duration: 1200,
-        delay: 1000,
-        easing: "easeOutExpo",
       });
       setAccrocheAffiche(true);
     }
@@ -59,7 +43,6 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
             <div className="sousLigne">
               <span className="mot">de studio photo</span>
             </div>{" "}
-            <img src={accrocheIMG1} className="accrocheIMG1" alt="" />
           </span>
           <span className="ligne ligne_3">
             <div className="sousLigne">
@@ -72,7 +55,6 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
             </div>
           </span>
           <span className="ligne ligne_5">
-            <img src={accrocheIMG2} className="accrocheIMG2" alt="" />{" "}
             <div className="sousLigne">
               <span className="mot">la création</span>
             </div>
@@ -94,7 +76,7 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
           <span className="ligne ligne_9">
             <div className="sousLigne">
               {" "}
-              <span className="mot">outils de shootings®</span>
+              <span className="mot">outils de shootings</span>
             </div>
           </span>
           <span className="ligne ligne_10">
@@ -115,7 +97,6 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
             <div className="sousLigne">
               <span className="mot">photo and vidéo</span>
             </div>{" "}
-            <img src={accrocheIMG1} className="accrocheIMG1" alt="" />{" "}
           </span>
           <span className="ligne ligne_3">
             <div className="sousLigne">
@@ -128,7 +109,6 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
             </div>{" "}
           </span>
           <span className="ligne ligne_5">
-            <img src={accrocheIMG2} className="accrocheIMG2" alt="" />
             <div className="sousLigne">
             <span className="mot">media content</span>
             </div>
@@ -141,7 +121,7 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
           </span>
           <span className="ligne ligne_7">
             <div className="sousLigne">
-            <span className="mot">incomparable shootings® tools</span>
+            <span className="mot">incomparable shootings tools</span>
             </div>
           </span>
         </>
@@ -162,21 +142,6 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
         duration: 2000,
         delay: (el, i) => 60 * i,
       });
-
-      anime({
-        targets: ".accrocheIMG1",
-        scale: [0, 1],
-        duration: 1200,
-        delay: 500,
-        easing: "easeOutExpo",
-      });
-      anime({
-        targets: ".accrocheIMG2",
-        scale: [0, 1],
-        duration: 1200,
-        delay: 1000,
-        easing: "easeOutExpo",
-      });
       setAccrocheAffiche(true);
     }
   }, []);
@@ -191,7 +156,6 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
             </div>
           </span>
           <span className="ligne ligne_2">
-            <img src={accrocheIMG1} className="accrocheIMG1" alt="" />{" "}
             <div className="sousLigne">
               <span className="mot">tout équipé pour l'e-commerce et la création</span>
             </div>
@@ -203,9 +167,8 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
           </span>
           <span className="ligne ligne_4">
             <div className="sousLigne">
-              <span className="mot">des outils de shootings® incomparables.</span>
+              <span className="mot">des outils de shootings incomparables.</span>
             </div>{" "}
-            <img src={accrocheIMG2} className="accrocheIMG2" alt="" />
           </span>
         </>
       ) : (
@@ -216,7 +179,6 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
             </div>
           </span>
           <span className="ligne ligne_2">
-            <img src={accrocheIMG1} className="accrocheIMG1" alt="" />{" "}
             <div className="sousLigne">
               <span className="mot">equiped for e-commerce and social media</span>
             </div>
@@ -228,9 +190,8 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
           </span>
           <span className="ligne ligne_4">
             <div className="sousLigne">
-              <span className="mot">shootings® tools.</span>
+              <span className="mot">shootings tools.</span>
             </div>{" "}
-            <img src={accrocheIMG2} className="accrocheIMG2" alt="" />
           </span>
         </>
       )}
