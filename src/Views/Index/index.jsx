@@ -13,6 +13,7 @@ import Services2 from "./services2.jsx";
 import Testimonial from "./testimonial.jsx";
 import Conclusion from "./conclusion.jsx";
 import Footer from "../../Components/Layout/Footer/footer";
+import imgStudio from "../../Assets/img/landing/studio.jpg";
 
 const Index = ({ setPageLoad, setBackgroundBlack }) => {
   const [pagePreload, setPagePreload] = useState(false);
@@ -131,10 +132,9 @@ const Index = ({ setPageLoad, setBackgroundBlack }) => {
     }
   };
 
-
   return (
     <>
-    <Helmet defer={false}>
+      <Helmet defer={false}>
         <meta charSet="utf-8" />
         <title>
           E-Do Studio - Production express de photos et vidéos premiums
@@ -184,7 +184,15 @@ const Index = ({ setPageLoad, setBackgroundBlack }) => {
 
       <OnImagesLoaded onLoaded={() => setPagePreload(true)}>
         <main>
-          <section className="section">
+          <section
+            className="section home-section"
+            style={{
+              backgroundImage: `url(${imgStudio})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              backgroundAttachment: "fixed",
+            }}
+          >
             <div className="sectionWrapper">
               <Accroche
                 pagePreload={pagePreload}

@@ -1,17 +1,20 @@
 @import "../../Assets/scss/styles.scss";
 
+.section {
+  z-index: 1;
+  width: 100%;
+  display: flex;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  // background:pink;
+}
 
-.section{
-    z-index:1;
-    width:100%;
-    display: flex;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    // background:pink;
-    
+.home-section {
+  filter: brightness(90%);
+  -webkit-filter: brightness(90%);
 }
 
 .sectionWrapper {
