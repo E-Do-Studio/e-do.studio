@@ -20,7 +20,6 @@ import cyclo from "../../Assets/img/cyclorama/cyclo.jpg";
 import cycloWebp from "../../Assets/img/cyclorama/cyclo.webp";
 import leftArrow from "../../Assets/img/cyclorama/leftArrow.svg";
 import rightArrow from "../../Assets/img/cyclorama/rightArrow.svg";
-import scrollCircle from "../../Assets/img/cyclorama/scrollButton.svg";
 import studio from "../../Assets/img/cyclorama/studio.jpg";
 import studioWebp from "../../Assets/img/cyclorama/studio.webp";
 import table from "../../Assets/img/cyclorama/table.jpg";
@@ -582,11 +581,11 @@ const CycloramaDesktop = () => {
                 </div>
                 <div className="right">
                   <div className="tarifsTitle">{t("PRICES")}</div>
-                  <div className="fees">*Weekend fees 25%.</div>
+                  <div className="fees"><p>*Weekend fees 25%.</p></div>
                 </div>
               </div>
               <Link to="/contact">
-                <div className="reserver">{t("Book")}</div>
+                <div className="reserver"><p>{t("Book")}</p></div>
               </Link>
             </div>
           </div>
@@ -707,9 +706,6 @@ const CycloramaMobile = () => {
           <div className="cycloPlanBox">
             <img src={cycloPlan} alt="Plan du cyclorama" />
           </div>
-          <div className="scrollButton" onClick={goDown}>
-            <img src={scrollCircle} alt="Bouton de scroll" />
-          </div>
           <div className="images">
             <div className="largeImage">
               <picture>
@@ -772,6 +768,9 @@ const CycloramaMobile = () => {
             </div>
           </div>
         </div>
+
+        {/* Carousel */}
+        <Carousel />
         <div className="specifications">
           <div className="firstText">
             {t(
@@ -816,9 +815,9 @@ const CycloramaMobile = () => {
               -{">"} {t("On estimate : contact us")}
             </div>
             <div className="tarifsTitle">{t("PRICES")}</div>
-            <div className="fees">*Weekend fees 25%.</div>
+            <div className="fees"><p>*Weekend fees 25%.</p></div>
             <Link to="/contact">
-              <div className="reserver">{t("Book")}</div>
+              <div className="reserver"><p>{t("Book")}</p></div>
             </Link>
           </div>
           <hr />
