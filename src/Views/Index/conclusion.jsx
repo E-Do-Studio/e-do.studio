@@ -523,11 +523,6 @@ const Conclusion = ({
           height="31"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <path
-            stroke="#000"
-            fill="none"
-            d="M7.12.94l-.5 29.17M.62 23.99l6 6 6-6"
-          />
         </svg>
       </div>
 
