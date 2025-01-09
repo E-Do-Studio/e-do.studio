@@ -46,6 +46,7 @@ import IMGFichier from "./Assets/img/accueil/machine-photo-mannequin-invisible.j
 // });
 
 import TestAccroche from "./Views/TestAccroche/test-accroche";
+import PreGallery from "./Views/Gallery/pre-gallery";
 
 const App = () => {
   // const [windowWidth, windowHeight] = useWindowSize(); //Force le rendu au redimensionnement de la fenêtre
@@ -199,6 +200,12 @@ const App = () => {
                   render={() => (
                     <Retouches setPageLoad={setPageLoad} key={Date.now()} />
                   )}
+                />
+
+                <Route
+                  path="/pre-galerie"
+                  exact
+                  render={() => <PreGallery setPageLoad={setPageLoad} />}
                 />
 
                 <Route
