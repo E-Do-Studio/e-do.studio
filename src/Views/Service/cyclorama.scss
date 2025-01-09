@@ -1,46 +1,46 @@
 @import '../../Assets/scss/styles.scss';
 
-.pageCycloramaDesktop{
-    .presentation{
-        padding-top:252px;
-        padding-left:133px;
-        padding-right:185px;
-        padding-bottom:75px;
+.pageCycloramaDesktop {
+    .presentation {
+        padding-top: 252px;
+        padding-left: 133px;
+        padding-right: 185px;
+        padding-bottom: 75px;
         box-sizing: border-box;
         max-width: 100vw;
         display: flex;
         justify-content: space-between;
 
-        .leftColumn{
+        .leftColumn {
             width: 140px;
 
-            .titreNosServices{
+            .titreNosServices {
                 font-size: 16px;
                 width: 140px;
                 float: left;
             }
         }
 
-        .middleColumn{
+        .middleColumn {
             width: 575px;
 
-            .mainTitle{
+            .mainTitle {
                 font-size: 60px;
                 min-width: 800px;
                 line-height: 1.4;
             }
-    
-            .subtitle{
+
+            .subtitle {
                 font-size: 60px;
                 line-height: 1.4;
             }
-    
-            .text{
+
+            .text {
                 width: 360px;
                 line-height: 25px;
             }
 
-            .button{
+            .button {
                 background-color: black;
                 border-radius: 40px;
                 width: 172px;
@@ -51,12 +51,12 @@
                 padding: 10px 0 8px 0;
             }
 
-            .lienPlaquette{
+            .lienPlaquette {
                 text-decoration: underline;
                 margin-top: 15px;
             }
 
-            .scrollButton{
+            .scrollButton {
                 margin-left: 380px;
                 margin-top: 49px;
                 transition: transform 250ms ease;
@@ -68,42 +68,45 @@
             }
         }
 
-        .rightColumn{
+        .rightColumn {
             width: 310px;
 
-            img{
+            img {
                 width: 80%;
             }
         }
     }
 
-    .images{
+    .images {
         width: 100vw;
         height: 50vw;
         box-sizing: border-box;
         display: flex;
 
-        .leftBlock{
+        .leftBlock {
             height: 50vw;
             width: 50vw;
 
-            img{
+            img {
                 width: 100%;
                 height: 100%;
                 cursor: pointer;
             }
         }
 
-        .rightBlock{
+        .rightBlock {
             height: 50vw;
             width: 50vw;
             display: flex;
 
-            .right1, .right2, .right3, .right4{
+            .right1,
+            .right2,
+            .right3,
+            .right4 {
                 width: 25vw;
                 height: 25vw;
 
-                img{
+                img {
                     width: 100%;
                     height: 100%;
                     cursor: pointer;
@@ -112,126 +115,131 @@
         }
     }
 
-    .specifications{
+    .specifications {
         width: 100vw;
         box-sizing: border-box;
-        background-color: black;
+        background-color: white;
         padding: 64px 180px;
-        color: white;
+        color: black;
+        border-bottom: 1px solid #757575;
 
-        .firstRow{
+        .firstRow {
             display: flex;
             width: 100%;
             box-sizing: border-box;
 
-            .leftColumn{
+            .leftColumn {
                 width: 50%;
                 box-sizing: border-box;
                 padding: 47px 32px 0 32px;
 
-                .text{
+                .text {
                     font-size: 1.1vw;
                     line-height: 1.4;
                 }
             }
 
-            .separation{
+            .separation {
                 width: 1px;
                 height: 200px;
                 background-color: #757575;
             }
 
-            .rightColumn{
+            .rightColumn {
                 width: 50%;
                 box-sizing: border-box;
                 padding: 47px 32px 0 32px;
 
-                .text{
+                .text {
                     font-size: 2.5vw;
                     text-align: right;
                 }
             }
         }
 
-        hr{
+        hr {
             margin: 32px 0;
             border: 0.5px solid #757575;
         }
 
-        .secondRow{
+        .secondRow {
             display: flex;
             width: 100%;
             box-sizing: border-box;
-            
-            .leftColumn{
+
+            .leftColumn {
                 width: 50%;
                 box-sizing: border-box;
                 padding: 0 32px;
                 max-height: 289px;
 
-                ul{
+                ul {
                     list-style-type: circle;
                     margin-top: 0;
 
-                    li{
+                    li {
                         font-size: 1.9vw;
                         line-height: 1.1;
                     }
                 }
             }
 
-            .separation{
+            .separation {
                 width: 1px;
                 height: 289px;
                 background-color: #757575;
             }
 
-            .rightColumn{
+            .rightColumn {
                 width: 50%;
                 box-sizing: border-box;
                 padding: 0 47px;
                 max-height: 289px;
 
-                .flex{
+                .flex {
                     width: 100%;
                     box-sizing: border-box;
                     display: flex;
 
-                    .left{
+                    .left {
                         width: 50%;
                         box-sizing: border-box;
 
-                        .title{
+                        .title {
                             font-size: 40px;
                         }
 
-                        .subtitle{
+                        .subtitle {
                             font-size: 15px;
                             margin-top: 4px;
                         }
                     }
 
-                    .right{
+                    .right {
                         width: 50%;
                         box-sizing: border-box;
                         text-align: right;
 
-                        .tarifsTitle{
+                        .tarifsTitle {
                             font-size: 15px;
                         }
 
-                        .fees{
+                        .fees {
                             background-color: #252525;
                             padding: 8px 10px 6px 10px;
                             width: fit-content;
                             margin-top: 6px;
                             float: right;
+
+                            p {
+                                color: white;
+                            }
                         }
                     }
                 }
 
-                .reserver{
-                    background-color: white;
+                .reserver {
+                    background-color: black;
                     width: 170px;
                     height: 170px;
                     border-radius: 50%;
@@ -241,7 +249,7 @@
                     font-size: 28px;
                     color: black;
                     text-align: center;
-                    padding: 66px 30px;
+                    padding: 70px 30px;
                     box-sizing: border-box;
                     transition: transform 250ms ease;
 
@@ -249,16 +257,20 @@
                         transform: scale(1.2);
                         cursor: pointer;
                     }
+
+                    p {
+                        color: white;
+                    }
                 }
             }
         }
 
-        .thirdRow{
+        .thirdRow {
             display: flex;
             width: 100%;
             box-sizing: border-box;
 
-            .leftColumn{
+            .leftColumn {
                 width: 50%;
                 box-sizing: border-box;
                 padding: 0 32px;
@@ -266,13 +278,13 @@
                 line-height: 1.67;
             }
 
-            .separation{
+            .separation {
                 width: 1px;
                 height: 120px;
                 background-color: #757575;
             }
 
-            .rightColumn{
+            .rightColumn {
                 width: 50%;
                 box-sizing: border-box;
                 padding: 0 32px;
@@ -282,36 +294,36 @@
             }
         }
 
-        .rappel{
+        .rappel {
             font-size: 15px;
             margin: 65px 32px 0 32px;
 
-            span{
+            span {
                 opacity: 0.7;
             }
         }
     }
 
-    .PS_AutresServices{
-        background:white;
+    .PS_AutresServices {
+        background: white;
         padding: 65px 0;
-        color:black;
+        color: black;
 
-        .PS_AutresServicesWrapper{
-            position:relative;
+        .PS_AutresServicesWrapper {
+            position: relative;
             // max-width:500px;
-            margin-left:auto;
-            margin-right:auto;
+            margin-left: auto;
+            margin-right: auto;
 
-            @include rwd(600){
-                margin-left:80px;
+            @include rwd(600) {
+                margin-left: 80px;
             }
 
-            @include lg{
-                margin-left:auto;
-                margin-right:auto;
+            @include lg {
+                margin-left: auto;
+                margin-right: auto;
                 // margin-left:80px;
-                margin-left:0px;
+                margin-left: 0px;
             }
 
             // @include rwd(1250){
@@ -323,55 +335,65 @@
             // @include rwd(1700){margin-left:300px;}
             // @include rwd(2000){margin-left:320px;}
             // @include rwd(2400){margin-left:410px;}
-            
 
-            .PS_TitreSection{
-                position:absolute;
-                top:-20px;
-                left:31px;
 
-                @include lg{
-                    top:100px;
-                    left:111px;
+            .PS_TitreSection {
+                position: absolute;
+                top: -20px;
+                left: 31px;
+
+                @include lg {
+                    top: 100px;
+                    left: 111px;
                 }
 
-                @include rwd(1250){
-                    left:161px;
+                @include rwd(1250) {
+                    left: 161px;
                 }
-                @include rwd(1500){
-                    left:211px;
+
+                @include rwd(1500) {
+                    left: 211px;
                 }
-                @include rwd(1700){left:331px;}
-                @include rwd(2000){left:351px;}
-                @include rwd(2400){left:441px;}
+
+                @include rwd(1700) {
+                    left: 331px;
+                }
+
+                @include rwd(2000) {
+                    left: 351px;
+                }
+
+                @include rwd(2400) {
+                    left: 441px;
+                }
             }
         }
 
-        .sliderNavPC path{
+        .sliderNavPC path {
             stroke: black;
         }
     }
 }
 
-.pageCycloramaMobile{
-    .presentation{
+.pageCycloramaMobile {
+    .presentation {
         padding: 115px 32px 32px 32px;
 
-        .title{
+        .title {
             margin-top: 36px;
             font-size: 25px;
         }
-    
-        .subtitle{
+
+        .subtitle {
             font-size: 25px;
         }
-    
-        .text{
+
+        .text {
             margin-top: 9px;
             line-height: 21px;
         }
 
-        .button{
+        .button {
             background-color: black;
             border-radius: 40px;
             width: 172px;
@@ -382,155 +404,160 @@
             padding: 10px 0 8px 0;
         }
 
-        .lienPlaquette{
+        .lienPlaquette {
             text-decoration: underline;
             margin-top: 20px;
             text-align: center;
         }
-    
-        .cycloPlanBox{
+
+        .cycloPlanBox {
             margin-top: 36px;
             text-align: center;
-    
-            img{
+
+            img {
                 box-sizing: border-box;
                 height: 45vw;
             }
         }
-    
-        .scrollButton{
+
+        .scrollButton {
             margin-top: 40px;
             text-align: center;
         }
-    
-        .images{
+
+        .images {
             width: 100%;
             margin-top: 36px;
             box-sizing: border-box;
 
-            .largeImage{
+            .largeImage {
                 width: 100%;
                 box-sizing: border-box;
                 height: fit-content;
 
-                img{
+                img {
                     width: 100%;
                     box-sizing: border-box;
-                    vertical-align:top;
+                    vertical-align: top;
                 }
             }
 
-            .firstRow{
+            .firstRow {
                 width: 100%;
                 display: flex;
 
-                .left{
+                .left {
                     width: 50%;
 
-                    img{
+                    img {
                         width: 100%;
-                        vertical-align:top;
+                        vertical-align: top;
                     }
                 }
 
-                .right{
+                .right {
                     width: 50%;
 
-                    img{
+                    img {
                         width: 100%;
-                        vertical-align:top;
+                        vertical-align: top;
                     }
                 }
             }
 
-            .secondRow{
+            .secondRow {
                 width: 100%;
                 display: flex;
 
-                .left{
+                .left {
                     width: 50%;
 
-                    img{
+                    img {
                         width: 100%;
-                        vertical-align:top;
+                        vertical-align: top;
                     }
                 }
 
-                .right{
+                .right {
                     width: 50%;
 
-                    img{
+                    img {
                         width: 100%;
-                        vertical-align:top;
+                        vertical-align: top;
                     }
                 }
             }
         }
     }
 
-    .specifications{
+    .specifications {
         padding: 45px 32px;
-        background-color: black;
-        color: white;
+        background-color: white;
+        color: black;
+        border-bottom: 1px solid #757575;
 
-        .firstText{
+        .firstText {
             font-size: 18px;
             line-height: 24px;
         }
 
-        hr{
+        hr {
             border: 0.5px solid #757575;
             margin: 26px 0;
         }
 
-        .cycloSpec{
+        .cycloSpec {
             font-size: 2rem;
             text-align: right;
         }
 
-        .specList{
+        .specList {
             font-size: 26px;
-            
-            ul{
+
+            ul {
                 list-style-type: "- ";
 
-                li{
+                li {
                     margin-bottom: 5px;
                 }
             }
         }
 
-        .secondText{
+        .secondText {
             font-size: 18px;
             line-height: 24px;
         }
 
-        .locationBox{
+        .locationBox {
             position: relative;
 
-            .title{
+            .title {
                 font-size: 40px;
             }
 
-            .subtitle{
+            .subtitle {
                 font-size: 15px;
                 margin-top: 4px;
             }
 
-            .tarifsTitle{
+            .tarifsTitle {
                 font-size: 15px;
                 margin-top: 14px;
             }
 
-            .fees{
+            .fees {
                 padding: 8px 10px 6px 10px;
                 background-color: #252525;
                 width: fit-content;
                 margin-top: 6px;
+
+                p {
+                    color: white;
+                }
             }
 
-            .reserver{
-                background-color: white;
+            .reserver {
+                background-color: black;
                 color: black;
                 height: 95px;
                 width: 95px;
@@ -541,35 +568,39 @@
                 position: absolute;
                 right: 0;
                 bottom: 0;
+
+                p {
+                    color: white;
+                }
             }
         }
 
-        .thirdText{
+        .thirdText {
             font-size: 18px;
             line-height: 24px;
         }
     }
 
-    .PS_AutresServices{
-        background:white;
+    .PS_AutresServices {
+        background: white;
         padding: 65px 0;
-        color:black;
+        color: black;
 
-        .PS_AutresServicesWrapper{
-            position:relative;
+        .PS_AutresServicesWrapper {
+            position: relative;
             // max-width:500px;
-            margin-left:auto;
-            margin-right:auto;
+            margin-left: auto;
+            margin-right: auto;
 
-            @include rwd(600){
-                margin-left:80px;
+            @include rwd(600) {
+                margin-left: 80px;
             }
 
-            @include lg{
-                margin-left:auto;
-                margin-right:auto;
+            @include lg {
+                margin-left: auto;
+                margin-right: auto;
                 // margin-left:80px;
-                margin-left:0px;
+                margin-left: 0px;
             }
 
             // @include rwd(1250){
@@ -581,27 +612,37 @@
             // @include rwd(1700){margin-left:300px;}
             // @include rwd(2000){margin-left:320px;}
             // @include rwd(2400){margin-left:410px;}
-            
 
-            .PS_TitreSection{
-                position:absolute;
-                top:-20px;
-                left:31px;
 
-                @include lg{
-                    top:100px;
-                    left:111px;
+            .PS_TitreSection {
+                position: absolute;
+                top: -20px;
+                left: 31px;
+
+                @include lg {
+                    top: 100px;
+                    left: 111px;
                 }
 
-                @include rwd(1250){
-                    left:161px;
+                @include rwd(1250) {
+                    left: 161px;
                 }
-                @include rwd(1500){
-                    left:211px;
+
+                @include rwd(1500) {
+                    left: 211px;
                 }
-                @include rwd(1700){left:331px;}
-                @include rwd(2000){left:351px;}
-                @include rwd(2400){left:441px;}
+
+                @include rwd(1700) {
+                    left: 331px;
+                }
+
+                @include rwd(2000) {
+                    left: 351px;
+                }
+
+                @include rwd(2400) {
+                    left: 441px;
+                }
             }
         }
     }
@@ -609,11 +650,13 @@
 
 @mixin mobile($_max-width) {
     @media screen and (max-width: $_max-width) {
-        &{ @content; }
+        & {
+            @content;
+        }
     }
 }
 
-.slider{
+.slider {
     display: none;
     position: fixed;
     top: 0;
@@ -623,7 +666,7 @@
     z-index: 100000;
     background-color: rgba(0, 0, 0, 0.7);
 
-    .imagesBoxes{
+    .imagesBoxes {
         position: absolute;
         top: 0;
         left: 0;
@@ -635,18 +678,18 @@
         scrollbar-width: none;
         scroll-snap-type: x mandatory;
 
-        &::-webkit-scrollbar{
+        &::-webkit-scrollbar {
             display: none;
         }
 
-        .imageBox{
+        .imageBox {
             min-height: 100%;
             min-width: 100%;
             position: relative;
             overflow: hidden;
             scroll-snap-align: start;
 
-            .imageAndTitle{
+            .imageAndTitle {
                 height: 85%;
                 position: absolute;
                 top: 50%;
@@ -654,11 +697,11 @@
                 transform: translate(-50%, -50%);
                 text-align: center;
 
-                img{
+                img {
                     height: 95%;
                 }
-        
-                p{
+
+                p {
                     margin-top: 10px;
                     font-size: 20px;
                     color: white;
@@ -667,18 +710,18 @@
         }
     }
 
-    .navigation{
+    .navigation {
         position: fixed;
         top: 95vh;
         left: 50%;
         transform: translate(-50%, 0);
         display: flex;
 
-        .points{
+        .points {
             display: flex;
             margin: 10.5px 5px;
 
-            .point{
+            .point {
                 content: "";
                 height: 9px;
                 width: 9px;
@@ -689,29 +732,30 @@
             }
         }
 
-        .leftArrow, .rightArrow{
+        .leftArrow,
+        .rightArrow {
             cursor: pointer;
         }
-        
-        .selected{
+
+        .selected {
             background-color: white;
         }
     }
 
-    .close{
+    .close {
         position: absolute;
         top: 25px;
         right: 35px;
         cursor: pointer;
     }
 
-    @include mobile(1023px){
-        .imageAndTitle{
+    @include mobile(1023px) {
+        .imageAndTitle {
             position: absolute !important;
             top: 50% !important;
             height: fit-content !important;
-            
-            img{
+
+            img {
                 width: 100vw;
                 height: unset !important;
             }

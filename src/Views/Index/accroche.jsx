@@ -11,9 +11,6 @@ import "./accroche.scss";
 
 import boutonflechebas from "../../Assets/animations/boutonflechebas.json";
 
-import accrocheIMG1 from "../../Assets/img/accueil/accueilAccroche1.jpg";
-import accrocheIMG2 from "../../Assets/img/accueil/accueilAccroche2.jpg";
-
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
@@ -27,20 +24,6 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
         easing: "easeOutExpo",
         duration: 1500,
         delay: (el, i) => 60 * i,
-      });
-      anime({
-        targets: ".accrocheIMG1",
-        scale: [0, 1],
-        duration: 1200,
-        delay: 500,
-        easing: "easeOutExpo",
-      });
-      anime({
-        targets: ".accrocheIMG2",
-        scale: [0, 1],
-        duration: 1200,
-        delay: 1000,
-        easing: "easeOutExpo",
       });
       setAccrocheAffiche(true);
     }
@@ -59,7 +42,6 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
             <div className="sousLigne">
               <span className="mot">de studio photo</span>
             </div>{" "}
-            <img src={accrocheIMG1} className="accrocheIMG1" alt="" />
           </span>
           <span className="ligne ligne_3">
             <div className="sousLigne">
@@ -72,7 +54,6 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
             </div>
           </span>
           <span className="ligne ligne_5">
-            <img src={accrocheIMG2} className="accrocheIMG2" alt="" />{" "}
             <div className="sousLigne">
               <span className="mot">la création</span>
             </div>
@@ -88,19 +69,19 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
           </span>
           <span className="ligne ligne_8">
             <div className="sousLigne">
-              <span className="mot">E-Do vous propose des</span>
+              <span className="mot">E-Do vous propose un</span>
             </div>
           </span>
           <span className="ligne ligne_9">
             <div className="sousLigne">
               {" "}
-              <span className="mot">outils de shootings®</span>
+              <span className="mot">espace de shootings</span>
             </div>
           </span>
           <span className="ligne ligne_10">
             <div className="sousLigne">
               {" "}
-              <span className="mot">incomparables.</span>
+              <span className="mot">incomparable.</span>
             </div>
           </span>
         </>
@@ -115,33 +96,31 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
             <div className="sousLigne">
               <span className="mot">photo and vidéo</span>
             </div>{" "}
-            <img src={accrocheIMG1} className="accrocheIMG1" alt="" />{" "}
           </span>
           <span className="ligne ligne_3">
             <div className="sousLigne">
-            <span className="mot">studio fully equipped for</span>
+              <span className="mot">studio fully equipped for</span>
             </div>
           </span>
           <span className="ligne ligne_4">
             <div className="sousLigne">
-            <span className="mot">e-commerce and social</span>
+              <span className="mot">e-commerce and social</span>
             </div>{" "}
           </span>
           <span className="ligne ligne_5">
-            <img src={accrocheIMG2} className="accrocheIMG2" alt="" />
             <div className="sousLigne">
-            <span className="mot">media content</span>
+              <span className="mot">media content</span>
             </div>
           </span>
           <span className="ligne ligne_6">
             {" "}
             <div className="sousLigne">
-            <span className="mot">creation. E-Do offers you</span>
+              <span className="mot">creation. E-Do offers you</span>
             </div>
           </span>
           <span className="ligne ligne_7">
             <div className="sousLigne">
-            <span className="mot">incomparable shootings® tools</span>
+            <span className="mot">incomparable shooting space.</span>
             </div>
           </span>
         </>
@@ -162,21 +141,6 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
         duration: 2000,
         delay: (el, i) => 60 * i,
       });
-
-      anime({
-        targets: ".accrocheIMG1",
-        scale: [0, 1],
-        duration: 1200,
-        delay: 500,
-        easing: "easeOutExpo",
-      });
-      anime({
-        targets: ".accrocheIMG2",
-        scale: [0, 1],
-        duration: 1200,
-        delay: 1000,
-        easing: "easeOutExpo",
-      });
       setAccrocheAffiche(true);
     }
   }, []);
@@ -187,50 +151,58 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
         <>
           <span className="ligne ligne_1">
             <div className="sousLigne">
-              <span className="mot">Une nouvelle génération de studio photo et vidéo</span>
+              <span className="mot">
+                Une nouvelle génération de studio photo et vidéo
+              </span>
             </div>
           </span>
           <span className="ligne ligne_2">
-            <img src={accrocheIMG1} className="accrocheIMG1" alt="" />{" "}
             <div className="sousLigne">
-              <span className="mot">tout équipé pour l'e-commerce et la création</span>
+              <span className="mot">
+                tout équipé pour l'e-commerce et la création
+              </span>
             </div>
           </span>
           <span className="ligne ligne_3">
             <div className="sousLigne">
-              <span className="mot">de contenu social media. E-do vous propose</span>
+              <span className="mot">
+                de contenu social media. E-do vous propose
+              </span>
             </div>
           </span>
           <span className="ligne ligne_4">
             <div className="sousLigne">
-              <span className="mot">des outils de shootings® incomparables.</span>
+              <span className="mot">un espace de shooting incomparable.</span>
             </div>{" "}
-            <img src={accrocheIMG2} className="accrocheIMG2" alt="" />
           </span>
         </>
       ) : (
         <>
           <span className="ligne ligne_1">
             <div className="sousLigne">
-              <span className="mot">A new generation of photo and video studio fully</span>
+              <span className="mot">
+                A new generation of photo and video studio fully
+              </span>
             </div>
           </span>
           <span className="ligne ligne_2">
-            <img src={accrocheIMG1} className="accrocheIMG1" alt="" />{" "}
             <div className="sousLigne">
-              <span className="mot">equiped for e-commerce and social media</span>
+              <span className="mot">
+                equiped for e-commerce and social media
+              </span>
             </div>
           </span>
           <span className="ligne ligne_3">
             <div className="sousLigne">
-              <span className="mot">content creation. E-DO offers you incomparable</span>
+              <span className="mot">
+                content creation. E-DO offers you incomparable
+              </span>
             </div>
           </span>
           <span className="ligne ligne_4">
             <div className="sousLigne">
-              <span className="mot">shootings® tools.</span>
+              <span className="mot">shooting space.</span>
             </div>{" "}
-            <img src={accrocheIMG2} className="accrocheIMG2" alt="" />
           </span>
         </>
       )}
@@ -413,40 +385,33 @@ const Accroche = ({
         </div>
       )}
 
-      <div className="SA_LienReserverContainer">
-        <Link
-          to="/reservation"
-          className="SA_LienReserver"
-          ref={SA_LienReserver}
-        >
-          {t("( BOOK A SESSION ON OUR MACHINES )")}
-        </Link>
-      </div>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "24px",
+        }}
+      >
+        <div className="SA_LienReserverContainer">
+          <Link
+            to="/reservation"
+            className="SA_LienReserver"
+            ref={SA_LienReserver}
+          >
+            {t("BOOK A SESSION ON OUR MACHINES")}
+          </Link>
+        </div>
 
-      <div className="boutonAnimation" ref={boutonNav}>
-        <Lottie
-          className="animBoutonFlecheBas"
-          lottieRef={animBoutonFlecheBas}
-          animationData={boutonflechebas}
-          onClick={() => {
-            setBoutonNavClick(true);
-          }}
-          autoplay={false}
-          onEnterFrame={(event) => {
-            if (event.currentTime > 36 && !AccrocheSlideLeave) {
-              animBoutonFlecheBas.current.pause();
-            }
-            //Animation terminé on lance le slide
-            if (
-              event.currentTime >= event.totalTime - 30 &&
-              !AccrocheSlideLeaveAnimationFin
-            ) {
-              animBoutonFlecheBas.current.pause();
-              setAccrocheSlideLeaveAnimationFin(true);
-              fullpageApi.moveSectionDown();
-            }
-          }}
-        />
+        <div className="SA_LienReserverContainer">
+          <Link
+            to="/service-production-libre-cyclorama"
+            className="SA_LienReserver"
+            ref={SA_LienReserver}
+          >
+            {t("BOOK A SESSION ON OUR CYCLORAMA")}
+          </Link>
+        </div>
       </div>
     </div>
   );

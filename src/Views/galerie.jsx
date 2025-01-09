@@ -1,7 +1,7 @@
 import { useMediaQuery } from "@react-hook/media-query";
 import React, { Suspense, useEffect, useRef, useState } from "react";
 import ScrollContainer from "react-indiana-drag-scroll";
-
+import { useTranslation } from "react-i18next";
 import { useLocation } from "react-router-dom";
 
 import anime from "animejs/lib/anime.es.js";
@@ -25,13 +25,13 @@ import { debounce } from "lodash";
 import { useInView } from "react-intersection-observer";
 
 const API_BASE_URL = "https://edocms.netlify.app/api";
-const IMAGES_PER_PAGE = 12;
+const IMAGES_PER_PAGE = 20;
 const CACHE_DURATION = 24 * 60 * 60 * 1000;
-const SCROLL_DEBOUNCE = 2000;
-const IMAGE_LOAD_BATCH = 10;
-const SCROLL_THRESHOLD = 800;
-const BATCH_DELAY = 300;
-const PLACEHOLDER_COUNT = 12;
+const SCROLL_DEBOUNCE = 500;
+const IMAGE_LOAD_BATCH = 15;
+const SCROLL_THRESHOLD = 400;
+const BATCH_DELAY = 150;
+const PLACEHOLDER_COUNT = 20;
 
 const imageCache = {
   data: new Map(),
@@ -74,6 +74,20 @@ const getFetchOptions = () => ({
   },
 });
 
+// Add Loader component at the top level
+const Loader = () => {
+  const { t } = useTranslation("gallery");
+
+  return (
+    <div className="gallery-loader">
+      <div className="progress-bar">
+        <div className="progress-bar-value"></div>
+      </div>
+      <p>{t("Loading...")}</p>
+    </div>
+  );
+};
+
 const Galerie = ({ setPageLoad, setSelectedLink }) => {
   const matches = useMediaQuery("only screen and (min-width: 1200px)");
   const location = useLocation();
@@ -99,7 +113,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
   const [visibleImages, setVisibleImages] = useState([]);
 
   console.log(visibleImages);
-  
 
   // Add scroll event listener
   useEffect(() => {
@@ -395,7 +408,6 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       </LazyLoadComponent>
     );
   };
-  
 
   const redirection = (categories) => {
     switch (categories.name) {
@@ -420,7 +432,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
   };
 
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Loader />}>
       <div className="galeriePC">
         <div className="galeriePCWrapper" id="scrollableDiv">
           <div className="gallery-layout">
@@ -433,14 +445,12 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
             </div>
             <div className="gallery-grid">
               {isLoading && visibleImages.length === 0 ? (
-                generatePlaceholders()
+                <Loader />
               ) : visibleImages.length > 0 ? (
                 <>
                   {visibleImages.map((item, index) =>
                     renderGalerieItem(item, index)
                   )}
-
-                  {/* Load more images */}
                   <div
                     ref={ref}
                     style={{
@@ -450,6 +460,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                       marginBottom: "50px",
                     }}
                   />
+                  {isLoading && <Loader />}
                 </>
               ) : (
                 <div className="no-images-message">Aucune image trouvée</div>

@@ -124,6 +124,7 @@
           rgba(0, 0, 0, 0.8) 0%,
           rgba(0, 0, 0, 0.4) 60%,
           transparent 100%);
+
       color: white;
 
       h2 {
@@ -139,15 +140,12 @@
   .pre-gallery-container {
     padding: 1rem;
     height: 75vh;
-
     h1 {
       font-size: 2rem;
-      // margin-bottom: 2rem;
       padding-top: 100px;
     }
 
     .categories-grid {
-      // position: static;
       display: flex;
       flex-direction: column;
       gap: 1rem;
