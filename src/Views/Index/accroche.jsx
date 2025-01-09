@@ -11,7 +11,6 @@ import "./accroche.scss";
 
 import boutonflechebas from "../../Assets/animations/boutonflechebas.json";
 
-
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 
@@ -100,23 +99,23 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
           </span>
           <span className="ligne ligne_3">
             <div className="sousLigne">
-            <span className="mot">studio fully equipped for</span>
+              <span className="mot">studio fully equipped for</span>
             </div>
           </span>
           <span className="ligne ligne_4">
             <div className="sousLigne">
-            <span className="mot">e-commerce and social</span>
+              <span className="mot">e-commerce and social</span>
             </div>{" "}
           </span>
           <span className="ligne ligne_5">
             <div className="sousLigne">
-            <span className="mot">media content</span>
+              <span className="mot">media content</span>
             </div>
           </span>
           <span className="ligne ligne_6">
             {" "}
             <div className="sousLigne">
-            <span className="mot">creation. E-Do offers you</span>
+              <span className="mot">creation. E-Do offers you</span>
             </div>
           </span>
           <span className="ligne ligne_7">
@@ -152,17 +151,23 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
         <>
           <span className="ligne ligne_1">
             <div className="sousLigne">
-              <span className="mot">Une nouvelle génération de studio photo et vidéo</span>
+              <span className="mot">
+                Une nouvelle génération de studio photo et vidéo
+              </span>
             </div>
           </span>
           <span className="ligne ligne_2">
             <div className="sousLigne">
-              <span className="mot">tout équipé pour l'e-commerce et la création</span>
+              <span className="mot">
+                tout équipé pour l'e-commerce et la création
+              </span>
             </div>
           </span>
           <span className="ligne ligne_3">
             <div className="sousLigne">
-              <span className="mot">de contenu social media. E-do vous propose</span>
+              <span className="mot">
+                de contenu social media. E-do vous propose
+              </span>
             </div>
           </span>
           <span className="ligne ligne_4">
@@ -175,17 +180,23 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
         <>
           <span className="ligne ligne_1">
             <div className="sousLigne">
-              <span className="mot">A new generation of photo and video studio fully</span>
+              <span className="mot">
+                A new generation of photo and video studio fully
+              </span>
             </div>
           </span>
           <span className="ligne ligne_2">
             <div className="sousLigne">
-              <span className="mot">equiped for e-commerce and social media</span>
+              <span className="mot">
+                equiped for e-commerce and social media
+              </span>
             </div>
           </span>
           <span className="ligne ligne_3">
             <div className="sousLigne">
-              <span className="mot">content creation. E-DO offers you incomparable</span>
+              <span className="mot">
+                content creation. E-DO offers you incomparable
+              </span>
             </div>
           </span>
           <span className="ligne ligne_4">
@@ -374,14 +385,33 @@ const Accroche = ({
         </div>
       )}
 
-      <div className="SA_LienReserverContainer">
-        <Link
-          to="/reservation"
-          className="SA_LienReserver"
-          ref={SA_LienReserver}
-        >
-          {t("( BOOK A SESSION ON OUR MACHINES )")}
-        </Link>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "24px",
+        }}
+      >
+        <div className="SA_LienReserverContainer">
+          <Link
+            to="/reservation"
+            className="SA_LienReserver"
+            ref={SA_LienReserver}
+          >
+            {t("BOOK A SESSION ON OUR MACHINES")}
+          </Link>
+        </div>
+
+        <div className="SA_LienReserverContainer">
+          <Link
+            to="/service-production-libre-cyclorama"
+            className="SA_LienReserver"
+            ref={SA_LienReserver}
+          >
+            {t("BOOK A SESSION ON OUR CYCLORAMA")}
+          </Link>
+        </div>
       </div>
     </div>
   );
