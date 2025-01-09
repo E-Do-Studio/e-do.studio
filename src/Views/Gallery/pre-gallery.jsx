@@ -23,11 +23,25 @@ const PreGallery = ({ setPageLoad }) => {
         );
         const data = await response.json();
         const sortedCategories = data.docs.sort((a, b) => {
-          if (a.name.toLowerCase() === "piqué") return -1;
-          if (b.name.toLowerCase() === "piqué") return 1;
+          if (a.name.toLowerCase() === "on model") return -1;
+          if (b.name.toLowerCase() === "on model") return 1;
           return 0;
         });
-        setCategories(sortedCategories);
+
+        // Filtrer la catégorie "Access" et récupérer uniquement les sous-catégories "Sunglasses" et "Shoes"
+        const accessCategory = data.docs.find((category) => category.name.toLowerCase() === "access");
+
+        const filteredSubCategories = accessCategory?.subCategories?.filter((sub) =>
+          ["sunglasses", "shoes"].includes(sub.name.toLowerCase())
+        ) || [];
+
+        // Concaténer les sous-catégories filtrées dans le tableau `sortedCategories`
+        const combinedCategories = [...sortedCategories, ...filteredSubCategories];
+
+        console.log(combinedCategories);
+
+        setCategories(combinedCategories);
+
       } catch (error) {
         console.error("Error fetching categories:", error);
       }
@@ -35,6 +49,8 @@ const PreGallery = ({ setPageLoad }) => {
 
     fetchCategories();
   }, []);
+
+
 
   const handleCategoryClick = (category) => {
     switch (category.name.toLowerCase()) {
@@ -52,6 +68,12 @@ const PreGallery = ({ setPageLoad }) => {
         break;
       case "ghost":
         history.push(`/galerie?category=${category.name}`);
+        break;
+      case "sunglasses":
+        history.push(`/galerie?category=Access&subcategory=Sunglasses`);
+        break;
+      case "shoes":
+        history.push(`/galerie?category=Access&subcategory=Shoes`);
         break;
       default:
         history.push("/galerie");
