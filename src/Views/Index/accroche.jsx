@@ -387,14 +387,33 @@ const Accroche = ({
         </div>
       )}
 
-      <div className="SA_LienReserverContainer">
-        <Link
-          to="/reservation"
-          className="SA_LienReserver"
-          ref={SA_LienReserver}
-        >
-          {t("BOOK A SESSION ON OUR MACHINES")}
-        </Link>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          gap: "24px",
+        }}
+      >
+        <div className="SA_LienReserverContainer">
+          <Link
+            to="/reservation"
+            className="SA_LienReserver"
+            ref={SA_LienReserver}
+          >
+            {t("BOOK A SESSION ON OUR MACHINES")}
+          </Link>
+        </div>
+
+        <div className="SA_LienReserverContainer">
+          <Link
+            to="/service-production-libre-cyclorama"
+            className="SA_LienReserver"
+            ref={SA_LienReserver}
+          >
+            {t("BOOK A SESSION ON OUR CYCLORAMA")}
+          </Link>
+        </div>
       </div>
     </div>
   );

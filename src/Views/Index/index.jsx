@@ -3,6 +3,8 @@ import OnImagesLoaded from "react-on-images-loaded";
 import { useMediaQuery } from "@react-hook/media-query";
 import { Helmet } from "react-helmet";
 import anime from "animejs/lib/anime.es.js";
+import handleViewport from "react-in-viewport";
+import { useTranslation } from "react-i18next";
 
 import "./index.scss";
 
@@ -14,6 +16,36 @@ import Testimonial from "./testimonial.jsx";
 import Conclusion from "./conclusion.jsx";
 import Footer from "../../Components/Layout/Footer/footer";
 import imgStudio from "../../Assets/img/landing/studio.jpg";
+
+const AnimationImgStudio = (props) => {
+  const { t } = useTranslation();
+  const { forwardedRef, enterCount } = props;
+
+  if (enterCount >= 1) {
+    return (
+      <div ref={forwardedRef} className="imgStudioAnimationBlock">
+        <div className="imgBlockAnimation large">
+          <picture>
+            <source srcSet={imgStudio} type="image/webp" />
+            <img src={imgStudio} alt="Studio E-Do" />
+          </picture>
+        </div>
+      </div>
+    );
+  }
+  return (
+    <div ref={forwardedRef} className="imgStudioAnimationBlock">
+      <div className="imgBlockAnimation">
+        <picture>
+          <source srcSet={imgStudio} type="image/webp" />
+          <img src={imgStudio} alt="Studio E-Do" />
+        </picture>
+      </div>
+    </div>
+  );
+};
+
+const ViewportAnimationImgStudio = handleViewport(AnimationImgStudio);
 
 const Index = ({ setPageLoad, setBackgroundBlack }) => {
   const [pagePreload, setPagePreload] = useState(false);
@@ -184,15 +216,18 @@ const Index = ({ setPageLoad, setBackgroundBlack }) => {
 
       <OnImagesLoaded onLoaded={() => setPagePreload(true)}>
         <main>
-          <section
-            className="section home-section"
-            style={{
-              backgroundImage: `url(${imgStudio})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              backgroundAttachment: "fixed",
-            }}
-          >
+          <section className="section home-section">
+            <ViewportAnimationImgStudio
+              pagePreload={pagePreload}
+              AccrocheSlideLeave={AccrocheSlideLeave}
+              AccrocheSlideLeaveAnimationFin={AccrocheSlideLeaveAnimationFin}
+              setAccrocheSlideLeave={setAccrocheSlideLeave}
+              setAccrocheSlideLeaveAnimationFin={
+                setAccrocheSlideLeaveAnimationFin
+              }
+              AccrocheSlideLeaveReset={AccrocheSlideLeaveReset}
+              setAccrocheSlideLeaveReset={setAccrocheSlideLeaveReset}
+            />
             <div className="sectionWrapper">
               <Accroche
                 pagePreload={pagePreload}
