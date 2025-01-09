@@ -69,19 +69,19 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
           </span>
           <span className="ligne ligne_8">
             <div className="sousLigne">
-              <span className="mot">E-Do vous propose des</span>
+              <span className="mot">E-Do vous propose un</span>
             </div>
           </span>
           <span className="ligne ligne_9">
             <div className="sousLigne">
               {" "}
-              <span className="mot">outils de shootings</span>
+              <span className="mot">espace de shootings</span>
             </div>
           </span>
           <span className="ligne ligne_10">
             <div className="sousLigne">
               {" "}
-              <span className="mot">incomparables.</span>
+              <span className="mot">incomparable.</span>
             </div>
           </span>
         </>
@@ -120,7 +120,7 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
           </span>
           <span className="ligne ligne_7">
             <div className="sousLigne">
-              <span className="mot">incomparable shootings tools</span>
+            <span className="mot">incomparable shooting space.</span>
             </div>
           </span>
         </>
@@ -172,9 +172,7 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
           </span>
           <span className="ligne ligne_4">
             <div className="sousLigne">
-              <span className="mot">
-                des outils de shootings incomparables.
-              </span>
+              <span className="mot">un espace de shooting incomparable.</span>
             </div>{" "}
           </span>
         </>
@@ -203,7 +201,7 @@ const SAAccrochePC = ({ setAccrocheAffiche, accrocheAffiche }) => {
           </span>
           <span className="ligne ligne_4">
             <div className="sousLigne">
-              <span className="mot">shootings tools.</span>
+              <span className="mot">shooting space.</span>
             </div>{" "}
           </span>
         </>
