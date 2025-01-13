@@ -17,6 +17,7 @@ import postProdEn from "./Translation/en/postProd.json";
 import landingEn from "./Translation/en/landing.json";
 import galleryEn from "./Translation/en/gallery.json";
 import retouchesEn from "./Translation/en/retouches.json";
+import preGalleryEn from "./Translation/en/preGallery.json";
 
 // initialize the i18next library
 i18next.use(initReactI18next).init({
@@ -36,6 +37,7 @@ i18next.use(initReactI18next).init({
       landing: landingEn,
       gallery: galleryEn,
       retouches: retouchesEn,
+      preGallery: preGalleryEn,
     },
   },
 

@@ -4,9 +4,16 @@ import { useHistory } from "react-router-dom";
 import "./pre-gallery.scss";
 import Footer from "../../Components/Layout/Footer/footer";
 
+import i18next from "i18next";
+
+import { useTranslation } from "react-i18next";
+
 const PreGallery = ({ setPageLoad }) => {
   const history = useHistory();
   const [categories, setCategories] = useState([]);
+  const { t, i18n } = useTranslation("preGallery");
+
+
 
   useEffect(() => {
     // Simuler le chargement terminé
@@ -53,6 +60,10 @@ const PreGallery = ({ setPageLoad }) => {
 
 
   const handleCategoryClick = (category) => {
+    // Traduire les noms de catégories
+
+    
+
     switch (category.name.toLowerCase()) {
       case "on model":
         history.push(`/galerie?category=${category.name}`);
@@ -80,27 +91,49 @@ const PreGallery = ({ setPageLoad }) => {
     }
   };
 
+  // console.log(categories[0].image.url);
+
   return (
     <>
       <div className="pre-gallery-container">
-        <h1>Choisissez votre catégorie</h1>
+        <h1>{t("Choose your category")}</h1>
         <div className="categories-grid">
-          {categories.map((category) => (
+          {categories?.map((category) => (
             <div
               key={category.id}
               className="category-card"
               onClick={() => handleCategoryClick(category)}
             >
-              {category.image && (
-                <div
-                  className="category-image"
-                  style={{
-                    backgroundImage: `url(https://edocms.netlify.app${category.image.url})`,
-                  }}
-                />
+              {/* Vérifie si c'est une vidéo ou une image */}
+              {category.image?.url?.endsWith(".mp4") ? (
+                <div className="category-video">
+                  <video
+                    autoPlay
+                    loop
+                    muted
+                    playsInline
+                    className="video-player">
+                    <source
+                      src={`https://edocms.netlify.app${category.image.url}`}
+                      type="video/mp4"
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+              ) : (
+                /* Affichage de l'image */
+                category.image && (
+                  <div
+                    className="category-image"
+                    style={{
+                      backgroundImage: `url(https://edocms.netlify.app${category.image.url})`,
+                    }}
+                  />
+                )
               )}
               <div className="category-content">
-                <h2>{category.name}</h2>
+                <h2>{t(category.name)}</h2>
+                {/* <h2>{category.name}</h2> */}
               </div>
             </div>
           ))}
@@ -109,6 +142,6 @@ const PreGallery = ({ setPageLoad }) => {
       <Footer AnimationBloc7={true} colorTheme="black" />
     </>
   );
-};
+}
 
 export default PreGallery;
