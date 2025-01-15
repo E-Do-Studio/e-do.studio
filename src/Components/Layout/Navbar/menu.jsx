@@ -348,7 +348,7 @@ const Menu = ({ pageLoad }) => {
 
             <div className="menuMobile_LiensWrapper">
               <div className="menuMobile_LiensWrapperLien">
-                <Link to="/galerie" onClick={handleCloseMenuMobile}>
+                <Link to="/pre-galerie" onClick={handleCloseMenuMobile}>
                   {t("Gallery")}
                 </Link>
               </div>
