@@ -22,70 +22,70 @@
     // ON MODEL
     &>*:nth-child(1) {
       position: absolute;
-      left: 5%;
+      left: 26%;
       top: 5%;
-      width: 20%;
+      width: 22%;
       height: 85%;
     }
 
     // ACCESS
     &>*:nth-child(2) {
       position: absolute;
-      left: 28.5%;
-      top: 5%;
-      width: 20%;
-      height: 40%;
+      top: 50%;
+      right: 0%;
+      width: 22%;
+      height: 45%;
     }
 
     // FLAT
     &>*:nth-child(3) {
       position: absolute;
-      right: 5%;
-      top: 5%;
-      width: 20%;
-      height: 40%;
+      right: 0%;
+      top: 1%;
+      width: 22%;
+      height: 44%;
     }
 
     // PIQUÉ
     &>*:nth-child(4) {
       position: absolute;
-      right: 5%;
-      top: 50%;
-      width: 20%;
-      height: 40%;
+      top: 3%;
+      right: 26%;
+      width: 22%;
+      height: 52%;
     }
 
     // GHOST
     &>*:nth-child(5) {
       position: absolute;
-      top: 5%;
-      right: 28.5%;
-      width: 20%;
-      height: 40%;
+      left: 0%;
+      top: 0%;
+      width: 22%;
+      height: 60%;
     }
 
     // SHOES
     &>*:nth-child(6) {
       position: absolute;
-      right: 28.5%;
-      top: 50%;
-      width: 20%;
-      height: 40%;
+      left: 0;
+      top: 65%;
+      width: 22%;
+      height: 30%;
     }
 
     // SUNGLASSES
     &>*:nth-child(7) {
       position: absolute;
-      left: 28.5%;
-      top: 50%;
-      width: 20%;
-      height: 40%;
+      right: 26%;
+      top: 60%;
+      width: 22%;
+      height: 35%;
     }
   }
 
   .category-card {
     position: relative;
-    border-radius: 8px;
+    // border-radius: 8px;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -112,8 +112,6 @@
       background-repeat: no-repeat;
       background-position: center;
       transition: transform 0.3s ease;
-
-
     }
 
     .category-content {
@@ -143,7 +141,7 @@
         font-size: 1.4rem;
         font-weight: 600;
         color: white;
-        text-shadow: 2px 2px 20px rgba(0,0,0,0.86);
+        text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.86);
         // text-align: center;
       }
     }
@@ -186,28 +184,28 @@
       &>*:nth-child(2) {
         position: absolute;
         left: 25.5%;
-        top: 15%;
+        top: 20%;
         width: 23%;
-        height: 35%;
+        height: 30%;
       }
 
       // FLAT
       &>*:nth-child(3) {
         position: absolute;
         right: 0%;
-        top: 15%;
+        top: 20%;
         width: 23%;
-        height: 35%;
+        height: 30%;
       }
 
       // PIQUÉ
       &>*:nth-child(4) {
         position: absolute;
         right: 0%;
-        top: 55%;
+        top: 60%;
         bottom: 0%;
         width: 23%;
-        height: 35%;
+        height: 30%;
       }
 
       // GHOST
@@ -217,7 +215,7 @@
         top: 15%;
         bottom: 0%;
         width: 23%;
-        height: 35%;
+        height: 30%;
       }
 
       // SHOES
@@ -226,16 +224,16 @@
         right: 25.5%;
         top: 55%;
         width: 23%;
-        height: 35%;
+        height: 30%;
       }
 
       // SUNGLASSES
       &>*:nth-child(7) {
         position: absolute;
         left: 25.5%;
-        top: 55%;
+        top: 60%;
         width: 23%;
-        height: 35%;
+        height: 30%;
       }
 
       .category-content {
@@ -243,10 +241,10 @@
         padding: 0;
 
 
-      // background: linear-gradient(to top,
-      // rgba(0, 0, 0, 0.8) 0%,
-      // rgba(0, 0, 0, 0.4) 60%,
-      // transparent 100%);
+        // background: linear-gradient(to top,
+        // rgba(0, 0, 0, 0.8) 0%,
+        // rgba(0, 0, 0, 0.4) 60%,
+        // transparent 100%);
 
         h2 {
           font-size: 0.7rem !important;

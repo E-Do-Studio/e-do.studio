@@ -35,53 +35,53 @@ const SAAccrocheMobile = ({ setAccrocheAffiche, accrocheAffiche }) => {
         <>
           <span className="ligne ligne_1">
             <div className="sousLigne">
-              <span className="mot">Une nouvelle génération</span>
+              <span className="mot">Une nouvelle génération de studio photo et vidéo</span>
             </div>
           </span>
-          <span className="ligne ligne_2">
+          {/* <span className="ligne ligne_2">
             <div className="sousLigne">
               <span className="mot">de studio photo</span>
             </div>{" "}
-          </span>
+          </span> */}
           <span className="ligne ligne_3">
             <div className="sousLigne">
-              <span className="mot">et vidéo tout équipé</span>
+              <span className="mot">tout équipé pour l'e-commerce et la création</span>
             </div>
           </span>
-          <span className="ligne ligne_4">
+          {/* <span className="ligne ligne_4">
             <div className="sousLigne">
               <span className="mot">pour l'e-commerce et</span>
             </div>
-          </span>
-          <span className="ligne ligne_5">
+          </span> */}
+          {/* <span className="ligne ligne_5">
             <div className="sousLigne">
-              <span className="mot">la création</span>
+              <span className="mot">la création social média.</span>
             </div>
-          </span>
-          <span className="ligne ligne_6">
+          </span> */}
+          {/* <span className="ligne ligne_6">
             <div className="sousLigne">
               {" "}
               <span className="mot">social média.</span>
             </div>
-          </span>
-          <span className="ligne ligne_7">
+          </span> */}
+          {/* <span className="ligne ligne_7">
             <div className="sousLigne"></div>
-          </span>
+          </span> */}
           <span className="ligne ligne_8">
             <div className="sousLigne">
-              <span className="mot">E-Do vous propose un</span>
+              <span className="mot">de contenu social média. E-Do vous propose</span>
             </div>
           </span>
-          <span className="ligne ligne_9">
+          {/* <span className="ligne ligne_9">
             <div className="sousLigne">
               {" "}
               <span className="mot">espace de shootings</span>
             </div>
-          </span>
+          </span> */}
           <span className="ligne ligne_10">
             <div className="sousLigne">
               {" "}
-              <span className="mot">incomparable.</span>
+              <span className="mot">un espace de shootings incomparable.</span>
             </div>
           </span>
         </>
