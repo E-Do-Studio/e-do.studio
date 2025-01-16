@@ -170,7 +170,7 @@ const Menu = ({ pageLoad }) => {
                   ) : (
                     ""
                   )}
-                  cyclo
+                  cyclorama
                 </Link>
               </li>
 
@@ -331,7 +331,7 @@ const Menu = ({ pageLoad }) => {
                   to="/service-production-libre-cyclorama"
                   onClick={handleMenuMobile}
                 >
-                  Cyclo
+                  Cyclorama
                 </Link>
               </div>
               <div className="menuMobile_LiensWrapperInfos"></div>
