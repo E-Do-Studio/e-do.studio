@@ -445,7 +445,6 @@ const RetouchesCarousel = ({ selectedCat, setSelectedCat }) => {
                           textAlign: "center",
                         }}
                       >
-                        {t("After")}
                       </p>
                     </div>
                   ))}
