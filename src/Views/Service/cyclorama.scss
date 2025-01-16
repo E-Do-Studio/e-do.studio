@@ -3,23 +3,21 @@
 .pageCycloramaDesktop {
     .presentation {
         padding-top: 252px;
-        padding-left: 133px;
-        padding-right: 185px;
         padding-bottom: 75px;
         box-sizing: border-box;
         max-width: 100vw;
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
 
-        .leftColumn {
-            width: 140px;
+        // .leftColumn {
+        //     width: 140px;
 
-            .titreNosServices {
-                font-size: 16px;
-                width: 140px;
-                float: left;
-            }
-        }
+        //     .titreNosServices {
+        //         font-size: 16px;
+        //         width: 140px;
+        //         float: left;
+        //     }
+        // }
 
         .middleColumn {
             width: 575px;

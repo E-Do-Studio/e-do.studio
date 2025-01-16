@@ -408,24 +408,9 @@ const CycloramaDesktop = () => {
       </div>
       <div className="pageCycloramaDesktop">
         <div className="presentation">
-          <div className="leftColumn">
+          {/* <div className="leftColumn">
             <div className="titreNosServices">{t("OUR SERVICES")}</div>
-            {/* <Canvas
-              style={{
-                width: "25vw",
-                height: "500px",
-                position: "absolute",
-                top: "200px",
-                left: "0",
-              }}
-            >
-              <Suspense fallback={null}>
-                <Model />
-                <OrbitControls autoRotate />
-                <Environment preset="studio" />
-              </Suspense>
-            </Canvas> */}
-          </div>
+          </div> */}
           <div className="middleColumn">
             <div className="mainTitle">CYCLORAMA</div>
             <div className="subtitle">{t("FREE PRODUCTION")}</div>
@@ -662,7 +647,7 @@ const CycloramaMobile = () => {
       </div>
       <div className="pageCycloramaMobile">
         <div className="presentation">
-          <div className="preTitle">{t("OUR SERVICES")}</div>
+          {/* <div className="preTitle">{t("OUR SERVICES")}</div> */}
           <div className="title">CYCLORAMA</div>
           <div className="subtitle">{t("FREE PRODUCTION")}</div>
           <div className="text">
