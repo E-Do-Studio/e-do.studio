@@ -148,6 +148,11 @@
                         align-self: flex-end;
                         margin-bottom:14px;
                     }
+                    textarea{
+                        margin: 0;
+                        padding: 0;
+                        height: 90px !important;
+                    }
 
                     @include qhd{
                         margin-bottom:0px;
@@ -195,7 +200,7 @@
                 }
 
                 textarea{
-                    height:140px;
+                    height:90px;
                     resize: vertical;
                     &::placeholder{
                         max-width:240px;
