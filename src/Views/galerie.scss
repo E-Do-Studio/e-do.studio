@@ -137,6 +137,10 @@
   font-size: 0;
   line-height: 0;
   margin-top: 5rem;
+  column-fill: balance;
+  margin-bottom: 2rem;
+  column-gap: 1rem;
+
   @media screen and (max-width: 1024px) {
     width: 100%;
     columns: 3 250px;
@@ -150,11 +154,13 @@
     break-inside: avoid;
     margin: 0;
     padding: 0;
-    display: block;
+    display: inline-block;
     width: 100%;
     position: relative;
     line-height: 0;
     padding-bottom: 1rem;
+    -webkit-column-break-inside: avoid;
+    page-break-inside: avoid;
 
     .gallery-image-container {
       position: relative;
@@ -163,6 +169,8 @@
       margin: 0;
       padding: 0;
       line-height: 0;
+      background-color: #f5f5f5;
+      cursor: pointer;
 
       .gallery-image-wrapper {
         position: relative;
@@ -172,49 +180,70 @@
 
         &.video-wrapper {
           position: relative;
-          height: auto;
+          height: 0;
+          overflow: hidden;
         }
+      }
 
-        img {
-          width: 100%;
-          display: block;
-          margin: 0;
-          padding: 0;
-          vertical-align: bottom;
-        }
+      .gallery-image-lazy-wrapper {
+        position: absolute !important;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
 
-        .gallery-video {
+        .gallery-image {
+          position: absolute;
+          top: 0;
+          left: 0;
           width: 100%;
           height: 100%;
-          display: block;
+          object-fit: cover;
+          opacity: 0;
+          transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+          will-change: opacity, transform;
+        }
+
+        &.lazy-load-image-loaded {
+          .gallery-image {
+            opacity: 1;
+          }
         }
       }
 
       .image-placeholder-wrapper {
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
-        position: relative;
-        background: #f5f5f5;
+        height: 100%;
+        background-color: #f5f5f5;
+        overflow: hidden;
 
-        .image-placeholder {
+        .image-placeholder-shimmer {
+          position: absolute;
+          top: 0;
+          left: 0;
           width: 100%;
-          position: relative;
+          height: 100%;
           background: linear-gradient(
             90deg,
-            #f0f0f0 0%,
-            #f8f8f8 50%,
-            #f0f0f0 100%
+            #f5f5f5 0%,
+            #fafafa 20%,
+            #f5f5f5 40%,
+            #f5f5f5 100%
           );
           background-size: 200% 100%;
           animation: shimmer 1.5s infinite linear;
+          transform: translateZ(0);
+          will-change: transform;
         }
       }
 
       &:hover {
-        cursor: pointer;
-
-        .gallery-image-wrapper img {
-          filter: brightness(1.2) blur(2px);
-          transform: scale(1.02);
+        .gallery-image {
+          transform: scale(1.05);
+          filter: brightness(0.9);
         }
 
         .brand-overlay {
@@ -236,19 +265,49 @@
         visibility: hidden;
         transition: all 0.3s ease-in-out;
         z-index: 3;
+        background: rgba(255, 255, 255, 0.8);
+        backdrop-filter: blur(4px);
+        padding: 1rem;
 
         .brand-name {
           color: #000;
-          padding: 12px 24px;
+          padding: 8px 16px;
           border-radius: 4px;
-          font-size: 1.2rem;
+          font-size: 1rem;
           font-weight: 500;
           text-transform: uppercase;
           letter-spacing: 1px;
-          max-width: 80%;
+          max-width: 90%;
           text-align: center;
+          transform: translateY(10px);
+          transition: transform 0.3s ease-in-out;
+          word-break: break-word;
+          hyphens: auto;
+          line-height: 1.2;
         }
       }
+
+      &:hover .brand-overlay .brand-name {
+        transform: translateY(0);
+      }
+    }
+
+    .gallery-video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      opacity: 1;
+      transition: transform 0.3s ease-in-out;
+      will-change: transform;
+      background: #f5f5f5;
+    }
+
+    &:hover .gallery-video {
+      transform: scale(1.05);
+      filter: brightness(0.9);
     }
   }
 }
@@ -301,7 +360,6 @@
   0% {
     background-position: 200% 0;
   }
-
   100% {
     background-position: -200% 0;
   }
