@@ -41,13 +41,12 @@ const imageCache = {
 const ImagePlaceholder = (image) => {
   const aspectRatio =
     image?.height && image?.width ? (image.height / image.width) * 100 : 100;
-
   return (
-    <div className="image-placeholder-wrapper">
-      <div
-        className="image-placeholder"
-        style={{ paddingBottom: `${aspectRatio}%` }}
-      />
+    <div
+      className="image-placeholder-wrapper"
+      style={{ paddingBottom: `${aspectRatio}%` }}
+    >
+      <div className="image-placeholder-shimmer" />
     </div>
   );
 };
@@ -336,7 +335,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       .fill(null)
       .map((_, index) => (
         <div key={`placeholder-${index}`} className="gallery-item">
-          <div className="gallery-image-container">
+          <div className="">
             <div className="gallery-image-wrapper">
               <div className="image-placeholder-wrapper">
                 <div className="image-placeholder"></div>
@@ -356,22 +355,40 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     const uniqueKey = `${item.id || "img"}-${index}`;
     const isVideo = item.image.url.toLowerCase().endsWith(".mp4");
     const aspectRatio =
-      !isVideo && item.image.height && item.image.width
+      item.image.height && item.image.width
         ? (item.image.height / item.image.width) * 100
-        : 100;
+        : 56.25; // 16:9 ratio par défaut pour les vidéos
 
     return (
-      <LazyLoadComponent key={uniqueKey} threshold={400}>
+      <LazyLoadComponent
+        key={uniqueKey}
+        threshold={400}
+        placeholder={
+          <div className="gallery-item">
+            <div className="gallery-image-container">
+              <div
+                className="gallery-image-wrapper"
+                style={{ paddingBottom: `${aspectRatio}%` }}
+              >
+                <ImagePlaceholder
+                  width={item.image.width}
+                  height={item.image.height}
+                />
+              </div>
+            </div>
+          </div>
+        }
+      >
         <div className="gallery-item">
           <div
             className="gallery-image-container"
             onClick={() => redirection(item.categories)}
-            style={!isVideo ? { paddingBottom: `${aspectRatio}%` } : {}}
           >
             <div
               className={`gallery-image-wrapper ${
                 isVideo ? "video-wrapper" : ""
               }`}
+              style={{ paddingBottom: `${aspectRatio}%` }}
             >
               {isVideo ? (
                 <video
@@ -380,6 +397,15 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   muted
                   playsInline
                   className="gallery-video"
+                  onLoadedMetadata={(e) => {
+                    const video = e.target;
+                    const wrapper = video.parentElement;
+                    if (wrapper) {
+                      wrapper.style.paddingBottom = `${
+                        (video.videoHeight / video.videoWidth) * 100
+                      }%`;
+                    }
+                  }}
                 >
                   <source src={fileUrl} type="video/mp4" />
                   Your browser does not support the video tag.
@@ -389,12 +415,17 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
                   src={fileUrl}
                   alt={item.brand?.name || "Gallery image"}
                   effect="opacity"
-                  placeholder={
-                    <ImagePlaceholder
-                      width={item.image.width}
-                      height={item.image.height}
-                    />
-                  }
+                  beforeLoad={() => {
+                    const img = new Image();
+                    img.src = fileUrl;
+                  }}
+                  afterLoad={(img) => {
+                    if (img) {
+                      img.style.opacity = "1";
+                    }
+                  }}
+                  wrapperClassName="gallery-image-lazy-wrapper"
+                  className="gallery-image"
                   threshold={100}
                   visibleByDefault={false}
                 />
