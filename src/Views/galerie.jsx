@@ -336,7 +336,7 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
       .fill(null)
       .map((_, index) => (
         <div key={`placeholder-${index}`} className="gallery-item">
-          <div className="gallery-image-container">
+          <div className="">
             <div className="gallery-image-wrapper">
               <div className="image-placeholder-wrapper">
                 <div className="image-placeholder"></div>
@@ -357,8 +357,8 @@ const Galerie = ({ setPageLoad, setSelectedLink }) => {
     const isVideo = item.image.url.toLowerCase().endsWith(".mp4");
     const aspectRatio =
       !isVideo && item.image.height && item.image.width
-        ? (item.image.height / item.image.width) * 100
-        : 100;
+        ? (item.image.height / item.image.width) * 0
+        : 0;
 
     return (
       <LazyLoadComponent key={uniqueKey} threshold={400}>
