@@ -119,10 +119,14 @@ const GalerieMenu = ({ setPageLoad }) => {
     return (
       <>
         <Link to="/galerie">
-          <li onClick={ () => {
-                  window.scrollTo(0, 0);
-                }}
-                className={!currentCategory ? "active" : ""}>{t("All")}</li>
+          <li
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
+            className={!currentCategory ? "active" : ""}
+          >
+            {t("All")}
+          </li>
         </Link>
 
         {categories.map((category) => {
@@ -133,9 +137,10 @@ const GalerieMenu = ({ setPageLoad }) => {
               <Link
                 to={`/galerie?category=${encodeURIComponent(category.name)}`}
               >
-                <li onClick={ () => {
-                  window.scrollTo(0, 0);
-                }}
+                <li
+                  onClick={() => {
+                    window.scrollTo(0, 0);
+                  }}
                   className={currentCategory === category.name ? "active" : ""}
                 >
                   {t(category.name)}
@@ -194,8 +199,7 @@ const GalerieMenu = ({ setPageLoad }) => {
               ? t(currentSubcategory).toUpperCase()
               : currentCategory
               ? t(currentCategory).toUpperCase()
-              : t("GALLERY").toUpperCase()
-              }
+              : t("GALLERY").toUpperCase()}
           </h1>
           <ul className="categories-menu">{renderCategories()}</ul>
         </div>

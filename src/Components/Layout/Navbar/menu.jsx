@@ -31,6 +31,13 @@ const Menu = ({ pageLoad }) => {
     setMenuMobile(false);
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   useEffect(() => {
     if (pageLoad) {
       setAnimParams(0);
@@ -178,7 +185,10 @@ const Menu = ({ pageLoad }) => {
                 <Link
                   className="Link"
                   to="/service-retouches"
-                  onClick={handleCloseMenuMobile}
+                  onClick={() => {
+                    handleCloseMenuMobile();
+                    scrollToTop();
+                  }}
                 >
                   {location.pathname === "/service-retouches" ? (
                     <div className="lienDeco"></div>
@@ -193,7 +203,10 @@ const Menu = ({ pageLoad }) => {
                 <Link
                   className="Link"
                   to="/pre-galerie"
-                  onClick={handleCloseMenuMobile}
+                  onClick={() => {
+                    handleCloseMenuMobile();
+                    scrollToTop();
+                  }}
                 >
                   {location.pathname === "/pre-galerie" ? (
                     <div className="lienDeco"></div>
