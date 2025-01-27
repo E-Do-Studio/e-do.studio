@@ -14,6 +14,8 @@ const Menu = ({ pageLoad }) => {
 
   const location = useLocation();
 
+  console.log("location.pathname", location.pathname);
+
   const [animParams, setAnimParams] = useState(-34);
   const [menuMobile, setMenuMobile] = useState(false);
 
@@ -208,7 +210,8 @@ const Menu = ({ pageLoad }) => {
                     scrollToTop();
                   }}
                 >
-                  {location.pathname === "/pre-galerie" ? (
+                  {location.pathname === "/pre-galerie" ||
+                  location.pathname === "/galerie" ? (
                     <div className="lienDeco"></div>
                   ) : (
                     ""
