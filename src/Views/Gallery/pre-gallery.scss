@@ -143,80 +143,84 @@
 
 @media (max-width: 768px) {
   .pre-gallery-container {
-    padding: 1rem;
+    // padding: 1rem;
     height: 75vh;
+    // height: 100vh;
+
 
     h1 {
       font-size: 2rem;
-      padding-top: 100px;
+      // padding-top: 100px;
     }
 
     .categories-grid {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
-      padding: 1rem;
+      // gap: 1rem;
+      // padding: 1rem; 
+      height: calc(100vh - 5vh);
+      margin-bottom: 100px;
 
       // ON MODEL
       &>*:nth-child(1) {
         position: absolute;
-        left: 27%;
-        top: 5%;
-        width: 22%;
-        height: 84%;
+        left: 3%;
+        top: 63%;
+        width: 28%;
+        height: 62%;
       }
 
       // ACCESS
       &>*:nth-child(2) {
         position: absolute;
-        top: 49%;
-        right: 7.5%;
-        width: 85%;
-        height: 40%;
+        top: 31.5%;
+        right: 57%;
+        width: 40%;
+        height: 29.5%;
       }
 
       // FLAT
       &>*:nth-child(3) {
         position: absolute;
-        right: 3%;
-        top: 5%;
-        width: 22%;
-        height: 40%;
+        right: 57%;
+        top: 0%;
+        width: 40%;
+        height: 29.5%;
       }
 
       // PIQUÉ
       &>*:nth-child(4) {
         position: absolute;
-        top: 5%;
-        right: 27%;
-        width: 22%;
-        height: 50%;
+        top: 0%;
+        right: 31%;
+        width: 25%;
+        height: 61%;
       }
 
       // GHOST
       &>*:nth-child(5) {
         position: absolute;
-        left: 3%;
-        top: 5%;
-        width: 22%;
-        height: 50%;
+        left: 70%;
+        top: 0%;
+        width: 25%;
+        height: 61%;
       }
 
       // SHOES
       &>*:nth-child(6) {
         position: absolute;
-        left: 7.5%;
-        top: 48%;
-        width: 85%;
+        left: 32% !important;
+        top: 63%;
+        width: 65%;
         height: 30%;
       }
 
       // SUNGLASSES
       &>*:nth-child(7) {
         position: absolute;
-        right: 7.5%;
-        top: 80%;
-        width: 85%;
+        right: 3%;
+        top: 95%;
+        width: 65%;
         height: 30%;
       }
 
@@ -240,7 +244,84 @@
 
     h1 {
       font-size: 1.5rem;
-      padding-top: 100px;
+      padding-top: 50px;
+    }
+
+    .categories-grid {
+      height: calc(100vh);
+      margin-bottom: 120px;
+
+      // ON MODEL
+      &>*:nth-child(1) {
+        position: absolute;
+        left: 3%;
+        top: 63%;
+        width: 28%;
+        height: 62%;
+      }
+
+      // ACCESS
+      &>*:nth-child(2) {
+        position: absolute;
+        top: 31.5%;
+        right: 57%;
+        width: 40%;
+        height: 29.5%;
+      }
+
+      // FLAT
+      &>*:nth-child(3) {
+        position: absolute;
+        right: 57%;
+        top: 0%;
+        width: 40%;
+        height: 29.5%;
+      }
+
+      // PIQUÉ
+      &>*:nth-child(4) {
+        position: absolute;
+        top: 0%;
+        right: 31%;
+        width: 25%;
+        height: 61%;
+      }
+
+      // GHOST
+      &>*:nth-child(5) {
+        position: absolute;
+        left: 70%;
+        top: 0%;
+        width: 25%;
+        height: 61%;
+      }
+
+      // SHOES
+      &>*:nth-child(6) {
+        position: absolute;
+        left: 32% !important;
+        top: 63%;
+        width: 65%;
+        height: 30%;
+      }
+
+      // SUNGLASSES
+      &>*:nth-child(7) {
+        position: absolute;
+        right: 3%;
+        top: 95%;
+        width: 65%;
+        height: 30%;
+      }
+
+      .category-content {
+        text-align: center;
+        padding: 0;
+
+        h2 {
+          font-size: 0.7rem !important;
+        }
+      }
     }
   }
 }
