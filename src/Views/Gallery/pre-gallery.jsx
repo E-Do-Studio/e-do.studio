@@ -137,6 +137,22 @@ const PreGallery = ({ setPageLoad }) => {
               </div>
             </div>
           ))}
+          
+          {/* Nouvelle carte statique */}
+          <div
+            className="category-card static-card"
+            onClick={() => history.push('/galerie?category=VotreCategorie')}
+          >
+            <div
+              className="category-image"
+              style={{
+                backgroundImage: `url(https://edocms.netlify.app/api/media/file/Everyday_Blazer_Black.webp)`,
+              }}
+            />
+            <div className="category-content">
+              <h2>360</h2>
+            </div>
+          </div>
         </div>
       </div>
       <Footer AnimationBloc7={true} colorTheme="black" />
