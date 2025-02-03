@@ -138,17 +138,23 @@ const PreGallery = ({ setPageLoad }) => {
             </div>
           ))}
           
-          {/* Nouvelle carte statique */}
+          {/* Remplacer la carte statique par l'iframe */}
           <div
-            className="category-card static-card"
-            onClick={() => history.push('/galerie?category=VotreCategorie')}
+            className="category-card iframe-card"
+            onClick={() => history.push('/galerie?category=360')}
           >
-            <div
-              className="category-image"
-              style={{
-                backgroundImage: `url(https://edocms.netlify.app/api/media/file/Everyday_Blazer_Black.webp)`,
-              }}
-            />
+            <div className="iframe-container">
+              <iframe
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                allowFullScreen
+                mozallowfullscreen="true"
+                webkitallowfullscreen="true"
+                style={{ border: 0 }}
+                src="https://api.cappasity.com/api/player/7c8f155a-4944-481e-974b-a2735553a68f/embedded?autorun=1&closebutton=0&logo=0&analytics=1&uipadx=0&uipady=0&enablestoreurl=0&storeurl=&hidehints=0&language=&autorotate=0&autorotatetime=10&autorotatedelay=2&autorotatedir=1&hidefullscreen=1&hideautorotateopt=1&hidesettingsbtn=1&enableimagezoom=1&zoomquality=1&hidezoomopt=1&arbutton=1"
+              />
+            </div>
             <div className="category-content">
               <h2>360</h2>
             </div>

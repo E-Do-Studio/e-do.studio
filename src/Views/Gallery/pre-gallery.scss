@@ -82,13 +82,28 @@
       height: 18%;
     }
 
-    // STATIC CARD
+    // IFRAME CARD
     &>*:nth-child(8) {
       position: absolute;
       right: 27%;
       top: 71%;
       width: 22%;
       height: 18%;
+
+      .iframe-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+      }
+
+      iframe {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
     }
   }
 
@@ -282,5 +297,18 @@
     .category-content h2 {
       font-size: 0.8rem !important;
     }
+  }
+}
+
+// Ajuster le style au survol pour l'iframe
+.category-card.iframe-card {
+  &:hover {
+    .iframe-container {
+      transform: scale(1.05);
+    }
+  }
+
+  .iframe-container {
+    transition: transform 0.3s ease;
   }
 }
