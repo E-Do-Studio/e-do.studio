@@ -51,56 +51,21 @@ const Galerie360 = ({ setPageLoad, setSelectedLink }) => {
             />
           </div>
           
-          <div className="gallery-grid">
-            {!matches ? (
-              <div className="galerieMobile">
-                <motion.div 
-                  className="gallery-360__grid"
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {iframeUrls.map((url, index) => (
-                    <motion.div 
-                      key={index}
-                      className="gallery-360__item"
-                      variants={itemVariants}
-                    >
-                      <iframe
-                        allowFullScreen
-                        mozallowfullscreen="true"
-                        webkitallowfullscreen="true"
-                        src={`${url}${commonIframeParams}`}
-                      />
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </div>
-            ) : (
-              <div className="gallery-360__grid">
-                <motion.div 
-                  className="gallery-360__grid"
-                  variants={containerVariants}
-                  initial="hidden"
-                  animate="visible"
-                >
-                  {iframeUrls.map((url, index) => (
-                    <motion.div 
-                      key={index}
-                      className="gallery-360__item"
-                      variants={itemVariants}
-                    >
-                      <iframe
-                        allowFullScreen
-                        mozallowfullscreen="true"
-                        webkitallowfullscreen="true"
-                        src={`${url}${commonIframeParams}`}
-                      />
-                    </motion.div>
-                  ))}
-                </motion.div>
-              </div>
-            )}
+          <div className="gallery360__grid">
+            {iframeUrls.map((url, index) => (
+              <motion.div 
+                key={index}
+                className="gallery360__item"
+                variants={itemVariants}
+              >
+                <iframe
+                  allowFullScreen
+                  mozallowfullscreen="true"
+                  webkitallowfullscreen="true"
+                  src={`${url}${commonIframeParams}`}
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       </div>
