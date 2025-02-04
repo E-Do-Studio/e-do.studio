@@ -141,7 +141,7 @@ const PreGallery = ({ setPageLoad }) => {
           {/* Remplacer la carte statique par l'iframe */}
           <div
             className="category-card iframe-card"
-            onClick={() => history.push('/galerie?category=360')}
+            onClick={() => history.push('/galerie360')}
           >
             <div className="iframe-container">
               <iframe

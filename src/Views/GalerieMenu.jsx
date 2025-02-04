@@ -123,9 +123,20 @@ const GalerieMenu = ({ setPageLoad }) => {
             onClick={() => {
               window.scrollTo(0, 0);
             }}
-            className={!currentCategory ? "active" : ""}
+            className={!currentCategory && location.pathname === '/galerie' ? "active" : ""}
           >
             {t("All")}
+          </li>
+        </Link>
+
+        <Link to="/galerie360">
+          <li
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
+            className={location.pathname === '/galerie360' ? 'category-360 active' : 'category-360'}
+          >
+            360°
           </li>
         </Link>
 
@@ -199,6 +210,8 @@ const GalerieMenu = ({ setPageLoad }) => {
               ? t(currentSubcategory).toUpperCase()
               : currentCategory
               ? t(currentCategory).toUpperCase()
+              : location.pathname === '/galerie360'
+              ? "360°"
               : t("GALLERY").toUpperCase()}
           </h1>
           <ul className="categories-menu">{renderCategories()}</ul>

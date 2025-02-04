@@ -104,6 +104,18 @@
         &:hover svg {
           transform: translateX(3px);
         }
+
+        &.category-360 {
+          font-weight: 500;
+
+          &:hover {
+            color: #666;
+          }
+
+          &.active {
+            color: #333;
+          }
+        }
       }
     }
 
