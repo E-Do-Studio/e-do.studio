@@ -31,8 +31,8 @@
     // ACCESS
     &>*:nth-child(2) {
       position: absolute;
-      top: 49%;
       right: 3%;
+      top: 27%;
       width: 22%;
       height: 40%;
     }
@@ -40,8 +40,8 @@
     // FLAT
     &>*:nth-child(3) {
       position: absolute;
-      right: 3%;
-      top: 5%;
+      top: 49%;
+      right: 27%;
       width: 22%;
       height: 40%;
     }
@@ -76,8 +76,8 @@
     // SUNGLASSES
     &>*:nth-child(7) {
       position: absolute;
-      right: 27%;
-      top: 49%;
+      right: 3%;
+      top: 5%;
       width: 22%;
       height: 18%;
     }
@@ -85,7 +85,7 @@
     // IFRAME CARD
     &>*:nth-child(8) {
       position: absolute;
-      right: 27%;
+      right: 3%;
       top: 71%;
       width: 22%;
       height: 18%;
