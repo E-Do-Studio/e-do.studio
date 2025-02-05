@@ -159,13 +159,37 @@
   }
 }
 
-.category-video video {
-  width: 100%;
-  height: 69vh;
-  object-fit: cover;
+// .category-video video {
+//   width: 100%;
+//   height: 69vh;
+//   object-fit: cover;
+// }
+
+.category-video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  video {
+    width: 113%;
+    height: 130vh;
+    margin-left: -13%;
+    object-fit: cover;
+  }
 }
 
 @media (max-width: 768px) {
+  .category-video {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    video {
+      width: 109%;
+      margin-left: -9%;
+    }
+  }
+
   .pre-gallery-container {
     padding: 1rem;
     height: auto;
@@ -179,8 +203,9 @@
       // margin-bottom: 2rem
       height: auto;
       min-height: 185vh;
+
       // ON MODEL
-      & > *:nth-child(1) {
+      &>*:nth-child(1) {
         position: absolute;
         left: 2%;
         top: 0;
@@ -189,7 +214,7 @@
       }
 
       // ACCESS
-      & > *:nth-child(2) {
+      &>*:nth-child(2) {
         position: absolute;
         right: 2%;
         top: 0;
@@ -198,7 +223,7 @@
       }
 
       // FLAT
-      & > *:nth-child(3) {
+      &>*:nth-child(3) {
         position: absolute;
         right: 2%;
         top: 260px;
@@ -207,7 +232,7 @@
       }
 
       // SUNGLASSES
-      & > *:nth-child(7) {
+      &>*:nth-child(7) {
         position: absolute;
         left: 2%;
         top: 520px;
@@ -216,7 +241,7 @@
       }
 
       // GHOST
-      & > *:nth-child(5) {
+      &>*:nth-child(5) {
         position: absolute;
         left: 2%;
         top: 780px;
@@ -225,7 +250,7 @@
       }
 
       // PIQUÉ
-      & > *:nth-child(4) {
+      &>*:nth-child(4) {
         position: absolute;
         right: 2%;
         top: 780px;
@@ -234,7 +259,7 @@
       }
 
       // SHOES
-      & > *:nth-child(6) {
+      &>*:nth-child(6) {
         position: absolute;
         left: 2%;
         top: 1040px;
@@ -260,16 +285,14 @@
 
     .category-card {
       .category-content {
-        text-align: center;
-        padding: 0;
+        text-align: left;
         width: 100%;
         left: 50%;
         transform: translateX(-50%);
 
         h2 {
           font-size: 1rem !important;
-          padding-left: 0;
-          padding-right: 0;
+          padding-left: 0.5rem;
           width: 100%;
         }
       }
