@@ -520,11 +520,12 @@ const CycloramaDesktop = () => {
           <div className="firstRow">
             <div className="leftColumn">
               <div className="text">
-                {t(
+              <br></br>
+                {/* {t(
                   "Renting the photo studio gives you access to two creative spaces in the same place."
                 )}
                 <br></br>
-                <br></br>
+                <br></br> */}
                 {t(
                   "We know that the comfort takes part in the good progress of creations so we have equipped our photo studio with all the necessary amenities."
                 )}
@@ -566,7 +567,7 @@ const CycloramaDesktop = () => {
                 </div>
                 <div className="right">
                   <div className="tarifsTitle">{t("PRICES")}</div>
-                  <div className="fees"><p>*Weekend fees 25%.</p></div>
+                  <div className="fees"><p>*Weekend fee 25%.</p></div>
                 </div>
               </div>
               <Link to="/contact">
@@ -584,7 +585,7 @@ const CycloramaDesktop = () => {
             <div className="separation"></div>
             <div className="rightColumn">
               {t(
-                "For any additional equipment requests, our photo equipment rental service offers a vast catalog of lighting, accessories, cameras and production equipment, on quotation."
+                "For any equipment requests, our photo equipment rental service offers a vast catalog of lighting, accessories, cameras and production equipment, on quotation."
               )}
             </div>
           </div>
@@ -800,7 +801,7 @@ const CycloramaMobile = () => {
               -{">"} {t("On estimate : contact us")}
             </div>
             <div className="tarifsTitle">{t("PRICES")}</div>
-            <div className="fees"><p>*Weekend fees 25%.</p></div>
+            <div className="fees"><p>*Weekend fee 25%.</p></div>
             <Link to="/contact">
               <div className="reserver"><p>{t("Book")}</p></div>
             </Link>

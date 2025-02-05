@@ -104,18 +104,6 @@
         &:hover svg {
           transform: translateX(3px);
         }
-
-        &.category-360 {
-          font-weight: 500;
-
-          &:hover {
-            color: #666;
-          }
-
-          &.active {
-            color: #333;
-          }
-        }
       }
     }
 
@@ -446,12 +434,11 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  height: auto;
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  height: 100vh;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   background: transparent;
   z-index: 100;
   padding: 0;

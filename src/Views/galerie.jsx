@@ -82,7 +82,7 @@ const Loader = () => {
       <div className="progress-bar">
         <div className="progress-bar-value"></div>
       </div>
-      <p>{t("Loading...")}</p>
+      {/* <p>{t("Loading...")}</p> */}
     </div>
   );
 };
