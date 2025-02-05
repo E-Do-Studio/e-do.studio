@@ -116,6 +116,17 @@ const GalerieMenu = ({ setPageLoad }) => {
       currentSubcategory,
     });
 
+    const desiredOrder = ['On Model', 'Access', 'Ghost', 'Piqué', 'Flat'];
+    
+    // Créer une copie triée des catégories
+    const sortedCategories = [...categories].sort((a, b) => {
+      const indexA = desiredOrder.indexOf(a.name);
+      const indexB = desiredOrder.indexOf(b.name);
+      if (indexA === -1) return 1;
+      if (indexB === -1) return -1;
+      return indexA - indexB;
+    });
+
     return (
       <>
         <Link to="/galerie">
@@ -129,18 +140,7 @@ const GalerieMenu = ({ setPageLoad }) => {
           </li>
         </Link>
 
-        <Link to="/galerie360">
-          <li
-            onClick={() => {
-              window.scrollTo(0, 0);
-            }}
-            className={location.pathname === '/galerie360' ? 'category-360 active' : 'category-360'}
-          >
-            360°
-          </li>
-        </Link>
-
-        {categories.map((category) => {
+        {sortedCategories.map((category) => {
           const categorySubcategories = subcategories[category.id] || [];
 
           return (
@@ -189,6 +189,17 @@ const GalerieMenu = ({ setPageLoad }) => {
             </div>
           );
         })}
+
+        <Link to="/galerie360">
+          <li
+            onClick={() => {
+              window.scrollTo(0, 0);
+            }}
+            className={location.pathname === '/galerie360' ? 'category-360 active' : 'category-360'}
+          >
+            360°
+          </li>
+        </Link>
       </>
     );
   };
